@@ -9,10 +9,12 @@ import (
 	"path"
 	"strings"
 
+	"project-integrity-calculator/internal/gh"
+
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/object"
-	"github.com/google/go-github/v69/github"
+	"github.com/google/go-github/v70/github"
 )
 
 type CodeIntegrity struct {
@@ -62,26 +64,28 @@ func main() {
 		*targetBranch = r.GetDefaultBranch()
 	}
 
-	var lc *git.Repository
-	if *mode == "clone" {
-		// TODO: check auth to make this work on non public repos
-		//	Auth: &http.BasicAuth{
-		// Username: "abc123", // anything except an empty string
-		// Password: "github_access_token",
-		// },
-		fmt.Printf("Cloning %s to %s\n", *r.CloneURL, *cloneTarget)
-		lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
-		defer os.RemoveAll(*cloneTarget)
-	} else {
-		lc, err = git.PlainOpen(*localPath)
-	}
-	if err != nil {
-		log.Fatal(err)
-	}
+	gh.GetPullRequestStats(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token)
 
-	sc, err := getSignedCommitCount(lc, *targetBranch)
-	fmt.Printf("Number of commits: %d\n", sc.NumberCommits)
-	fmt.Printf("Number of verified commits: %d\n", sc.NumberVerified)
+	// var lc *git.Repository
+	// if *mode == "clone" {
+	// 	// TODO: check auth to make this work on non public repos
+	// 	//	Auth: &http.BasicAuth{
+	// 	// Username: "abc123", // anything except an empty string
+	// 	// Password: "github_access_token",
+	// 	// },
+	// 	fmt.Printf("Cloning %s to %s\n", *r.CloneURL, *cloneTarget)
+	// 	lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
+	// 	defer os.RemoveAll(*cloneTarget)
+	// } else {
+	// 	lc, err = git.PlainOpen(*localPath)
+	// }
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// sc, err := getSignedCommitCount(lc, *targetBranch)
+	// fmt.Printf("Number of commits: %d\n", sc.NumberCommits)
+	// fmt.Printf("Number of verified commits: %d\n", sc.NumberVerified)
 }
 
 type IntegrityConfig struct {
