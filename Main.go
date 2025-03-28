@@ -82,54 +82,6 @@ func main() {
 	sc, err := getSignedCommitCount(lc, *targetBranch)
 	fmt.Printf("Number of commits: %d\n", sc.NumberCommits)
 	fmt.Printf("Number of verified commits: %d\n", sc.NumberVerified)
-
-	// lOpt := github.ListOptions{Page: 1, PerPage: 100}
-	// opt := &github.PullRequestListOptions{
-	// 	State:       "closed",
-	// 	Base:        *targetBranch,
-	// 	ListOptions: lOpt,
-	// }
-
-	// prNums := []int{}
-
-	// for {
-
-	// 	prs, res, err := client.PullRequests.List(context.Background(), ownerAndRepoSplit[0], ownerAndRepoSplit[1], opt)
-	// 	if err != nil {
-	// 		continue
-
-	// 	}
-	// 	for _, pr := range prs {
-
-	// 		fmt.Printf("PR %d\n", pr.GetNumber())
-	// 		prNums = append(prNums, pr.GetNumber())
-	// 	}
-
-	// 	if res.NextPage == 0 {
-	// 		break
-	// 	}
-	// 	lOpt.Page = res.NextPage
-	// }
-	// sc, err := getSignedCommitCount(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
-
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// ic, err := getIntegrityConfig(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// fmt.Printf("Number of required reviewers: %d\n", ic.ApprovingCount)
-	// fmt.Printf("Require last push approval: %t\n", ic.SameAuthorCanApprove)
-	// fmt.Printf("Require signatures: %t\n", ic.RequireSignatures)
-
-	// how many PRs without review
-	// get all PRs
-	// filter by target branch (should be default (or protected if we want to be more precise))
-	// filter by merged
-	// get reviews for PR
 }
 
 type IntegrityConfig struct {
@@ -187,7 +139,6 @@ func getSignedCommitCount(lc *git.Repository, targetBranch string) (*SignedCommi
 	hash, err := lc.ResolveRevision(plumbing.Revision(targetBranch))
 	if err != nil {
 		return nil, err
-
 	}
 
 	fmt.Printf("Hash %s\n", hash.String())
