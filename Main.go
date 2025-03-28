@@ -5,8 +5,13 @@ import (
 	"flag"
 	"fmt"
 	"log"
+	"os"
+	"path"
 	"strings"
 
+	"github.com/go-git/go-git/v5"
+	"github.com/go-git/go-git/v5/plumbing"
+	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/google/go-github/v69/github"
 )
 
@@ -15,10 +20,17 @@ type CodeIntegrity struct {
 	SignedCommit
 }
 
-var ownerAndRepo = flag.String("ownerAndRepo", "", "owner/repo to query")
-var token = flag.String("token", "", "github token to use")
+var (
+	ownerAndRepo = flag.String("ownerAndRepo", "", "GitHub repository link (e.g., https://github.com/owner/repo)")
+	token        = flag.String("token", "", "GitHub access token")
+	targetBranch = flag.String("branch", "", "Target branch to analyze. Defaults to the default branch of the repository")
+	mode         = flag.String("mode", "local", "Mode: 'local' or 'clone'")
+	localPath    = flag.String("localPath", "", "Path to the local repository (required if mode is 'local')")
+	cloneTarget  = flag.String("cloneTarget", "", "Target to clone. Defaults to tmp")
+)
 
 func main() {
+	// TODO: add input validation
 	flag.Parse()
 
 	if *ownerAndRepo == "" {
@@ -29,8 +41,16 @@ func main() {
 		panic("token is required")
 	}
 
+	if *mode == "local" && *localPath == "" {
+		panic("localPath is required if mode is 'local'")
+	}
+
+	if *mode == "clone" && *cloneTarget == "" {
+		*cloneTarget = path.Join(os.TempDir(), "codeintegrity")
+	}
+
 	client := github.NewClient(nil).WithAuthToken(*token)
-	// TODO: add input validation
+
 	ownerAndRepoSplit := strings.Split(*ownerAndRepo, "/")
 	// possible protection rules https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-rulesets/available-rules-for-rulesets
 	r, _, err := client.Repositories.Get(context.Background(), ownerAndRepoSplit[0], ownerAndRepoSplit[1])
@@ -38,22 +58,72 @@ func main() {
 		log.Fatal(err)
 	}
 
-	defaultBranch := r.GetDefaultBranch()
-	sc, err := getSignedCommitCount(ownerAndRepoSplit[0], ownerAndRepoSplit[1], defaultBranch, client)
+	if *targetBranch == "" {
+		*targetBranch = r.GetDefaultBranch()
+	}
 
+	var lc *git.Repository
+	if *mode == "clone" {
+		// TODO: check auth to make this work on non public repos
+		//	Auth: &http.BasicAuth{
+		// Username: "abc123", // anything except an empty string
+		// Password: "github_access_token",
+		// },
+		fmt.Printf("Cloning %s to %s\n", *r.CloneURL, *cloneTarget)
+		lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
+		defer os.RemoveAll(*cloneTarget)
+	} else {
+		lc, err = git.PlainOpen(*localPath)
+	}
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	sc, err := getSignedCommitCount(lc, *targetBranch)
 	fmt.Printf("Number of commits: %d\n", sc.NumberCommits)
 	fmt.Printf("Number of verified commits: %d\n", sc.NumberVerified)
 
-	ic, err := getIntegrityConfig(ownerAndRepoSplit[0], ownerAndRepoSplit[1], defaultBranch, client)
-	if err != nil {
-		log.Fatal(err)
-	}
-	fmt.Printf("Number of required reviewers: %d\n", ic.ApprovingCount)
-	fmt.Printf("Require last push approval: %t\n", ic.SameAuthorCanApprove)
-	fmt.Printf("Require signatures: %t\n", ic.RequireSignatures)
+	// lOpt := github.ListOptions{Page: 1, PerPage: 100}
+	// opt := &github.PullRequestListOptions{
+	// 	State:       "closed",
+	// 	Base:        *targetBranch,
+	// 	ListOptions: lOpt,
+	// }
+
+	// prNums := []int{}
+
+	// for {
+
+	// 	prs, res, err := client.PullRequests.List(context.Background(), ownerAndRepoSplit[0], ownerAndRepoSplit[1], opt)
+	// 	if err != nil {
+	// 		continue
+
+	// 	}
+	// 	for _, pr := range prs {
+
+	// 		fmt.Printf("PR %d\n", pr.GetNumber())
+	// 		prNums = append(prNums, pr.GetNumber())
+	// 	}
+
+	// 	if res.NextPage == 0 {
+	// 		break
+	// 	}
+	// 	lOpt.Page = res.NextPage
+	// }
+	// sc, err := getSignedCommitCount(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
+
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// ic, err := getIntegrityConfig(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+
+	// fmt.Printf("Number of required reviewers: %d\n", ic.ApprovingCount)
+	// fmt.Printf("Require last push approval: %t\n", ic.SameAuthorCanApprove)
+	// fmt.Printf("Require signatures: %t\n", ic.RequireSignatures)
 
 	// how many PRs without review
 	// get all PRs
@@ -69,9 +139,9 @@ type IntegrityConfig struct {
 	AllowForcePushes     bool
 }
 
-func getIntegrityConfig(owner string, repo string, defaultBranch string, gh *github.Client) (*IntegrityConfig, error) {
+func getIntegrityConfig(owner string, repo string, targetBranch string, gh *github.Client) (*IntegrityConfig, error) {
 
-	protection, _, err := gh.Repositories.GetBranchProtection(context.Background(), owner, repo, defaultBranch)
+	protection, _, err := gh.Repositories.GetBranchProtection(context.Background(), owner, repo, targetBranch)
 	if err != nil {
 		return nil, err
 	}
@@ -112,80 +182,36 @@ type SignedCommit struct {
 }
 
 // getSignedCommitCount returns the number of commits and the number of verified commits
-func getSignedCommitCount(owner string, repo string, defaultBranch string, gh *github.Client) (*SignedCommit, error) {
+func getSignedCommitCount(lc *git.Repository, targetBranch string) (*SignedCommit, error) {
 
-	numberCommits := 0
-	numberVerified := 0
+	hash, err := lc.ResolveRevision(plumbing.Revision(targetBranch))
+	if err != nil {
+		return nil, err
 
-	commitOpt := &github.CommitsListOptions{SHA: defaultBranch, ListOptions: github.ListOptions{Page: 1, PerPage: 100}}
+	}
 
-	allCommitSHAs := make(map[string]struct{})
+	fmt.Printf("Hash %s\n", hash.String())
+	c, _ := lc.CommitObject(*hash)
+	fmt.Printf("Commit %+v\n", c)
+	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
 
-	for {
+	hashs := []string{}
+	cc := 0
+	csc := 0
 
-		commits, res, err := gh.Repositories.ListCommits(context.Background(), owner, repo, commitOpt)
-
-		if err != nil {
-			return nil, err
-		}
-
-		for _, commit := range commits {
-			allCommitSHAs[commit.GetSHA()] = struct{}{}
-		}
-
-		numberCommits += len(commits)
-		for _, commitResponse := range commits {
-			if commitResponse.Commit.Verification.Verified != nil && *commitResponse.Commit.Verification.Verified == true {
-				numberVerified++
+	iter.ForEach(func(c *object.Commit) error {
+		if !c.Hash.IsZero() {
+			hashs = append(hashs, c.Hash.String())
+			cc++
+			if c.PGPSignature != "" {
+				csc++
 			}
 		}
-
-		if res.NextPage == 0 {
-			break
-		}
-		commitOpt.Page = res.NextPage
-	}
-
-	prOpt := &github.PullRequestListOptions{
-		State:       "closed",
-		Base:        defaultBranch,
-		ListOptions: github.ListOptions{Page: 1, PerPage: 100},
-	}
-
-	for {
-		prs, res, err := gh.PullRequests.List(context.Background(), owner, repo, prOpt)
-		if err != nil {
-			// TODO: we can still calculate part of the stats
-			return nil, err
-		}
-
-		for _, pr := range prs {
-			for {
-				commits, commitRes, err := gh.PullRequests.ListCommits(context.Background(), owner, repo, pr.GetNumber(), &prOpt.ListOptions)
-				if err != nil {
-					// TODO:
-				}
-
-				for _, commit := range commits {
-					delete(allCommitSHAs, *commit.SHA)
-				}
-
-				if commitRes.NextPage == 0 {
-					break
-				}
-				prOpt.Page = commitRes.NextPage
-			}
-		}
-
-		if res.NextPage == 0 {
-			break
-		}
-		prOpt.Page = res.NextPage
-	}
-	fmt.Printf("%d Commits not from PRs\n", len(allCommitSHAs))
+		return nil
+	})
 
 	return &SignedCommit{
-		NumberCommits:  numberCommits,
-		NumberVerified: numberVerified,
+		NumberCommits:  cc,
+		NumberVerified: csc,
 	}, nil
 }
