@@ -12,15 +12,9 @@ import (
 	"project-integrity-calculator/internal/gh"
 
 	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing"
-	"github.com/go-git/go-git/v5/plumbing/object"
+	"github.com/go-git/go-git/v5/config"
 	"github.com/google/go-github/v70/github"
 )
-
-type CodeIntegrity struct {
-	IntegrityConfig
-	SignedCommit
-}
 
 var (
 	ownerAndRepo = flag.String("ownerAndRepo", "", "GitHub repository link (e.g., https://github.com/owner/repo)")
@@ -64,109 +58,81 @@ func main() {
 		*targetBranch = r.GetDefaultBranch()
 	}
 
-	gh.GetPullRequestStats(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token)
+	var lc *git.Repository
+	if *mode == "clone" {
+		// TODO: check auth to make this work on non public repos
+		//	Auth: &http.BasicAuth{
+		// Username: "abc123", // anything except an empty string
+		// Password: "github_access_token",
+		// },
+		fmt.Printf("Cloning %s to %s\n", *r.CloneURL, *cloneTarget)
+		lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
+		defer os.RemoveAll(*cloneTarget)
+	} else {
+		lc, err = git.PlainOpen(*localPath)
+	}
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	// var lc *git.Repository
-	// if *mode == "clone" {
-	// 	// TODO: check auth to make this work on non public repos
-	// 	//	Auth: &http.BasicAuth{
-	// 	// Username: "abc123", // anything except an empty string
-	// 	// Password: "github_access_token",
-	// 	// },
-	// 	fmt.Printf("Cloning %s to %s\n", *r.CloneURL, *cloneTarget)
-	// 	lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
-	// 	defer os.RemoveAll(*cloneTarget)
-	// } else {
-	// 	lc, err = git.PlainOpen(*localPath)
-	// }
+	sc, err := gh.GetCommitData(lc, *targetBranch)
+	fmt.Printf("Number of commits: %d\n", sc.NumberCommits)
+	fmt.Printf("Number of verified commits: %d\n", sc.NumberVerified)
+
+	// TODO: fix 2025/03/29 09:18:35 branch is not protected response
+	// ic, err := gh.GetIntegrityConfig(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
 	// if err != nil {
 	// 	log.Fatal(err)
 	// }
 
-	// sc, err := getSignedCommitCount(lc, *targetBranch)
-	// fmt.Printf("Number of commits: %d\n", sc.NumberCommits)
-	// fmt.Printf("Number of verified commits: %d\n", sc.NumberVerified)
-}
-
-type IntegrityConfig struct {
-	ApprovingCount       int
-	SameAuthorCanApprove bool
-	RequireSignatures    bool
-	AllowForcePushes     bool
-}
-
-func getIntegrityConfig(owner string, repo string, targetBranch string, gh *github.Client) (*IntegrityConfig, error) {
-
-	protection, _, err := gh.Repositories.GetBranchProtection(context.Background(), owner, repo, targetBranch)
+	prStats, err := gh.GetPullRequestStats(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token, 1) //ic.ApprovingCount)
 	if err != nil {
-		return nil, err
+		log.Fatal(err)
 	}
 
-	pr := protection.GetRequiredPullRequestReviews()
+	fmt.Printf("Number of sufficient reviews: %d\n", prStats.NumberSufficientReviews)
+	fmt.Printf("PR Numbers: %v\n", prStats.PRNumbers)
 
-	reviewerCount := 0
-	sameAutor := true
+	refSpecs := []config.RefSpec{}
 
-	if pr != nil {
-		reviewerCount = pr.RequiredApprovingReviewCount
-		sameAutor = pr.RequireLastPushApproval
+	for _, prn := range prStats.PRNumbers {
+		refspec := fmt.Sprintf("+refs/pull/%d/head:pull/%d", prn, prn)
+		log.Printf("Refspec %s", refspec)
+		refSpecs = append(refSpecs, config.RefSpec(refspec))
 	}
 
-	signaturesEnforced := false
-	sigProtection := protection.GetRequiredSignatures()
-	if sigProtection != nil {
-		signaturesEnforced = *sigProtection.Enabled
-	}
-
-	allowForcePushes := true
-	fp := protection.AllowForcePushes
-	if fp != nil {
-		allowForcePushes = fp.Enabled
-	}
-
-	return &IntegrityConfig{
-		ApprovingCount:       reviewerCount,
-		SameAuthorCanApprove: sameAutor,
-		RequireSignatures:    signaturesEnforced,
-		AllowForcePushes:     allowForcePushes,
-	}, nil
-}
-
-type SignedCommit struct {
-	NumberCommits  int
-	NumberVerified int
-}
-
-// getSignedCommitCount returns the number of commits and the number of verified commits
-func getSignedCommitCount(lc *git.Repository, targetBranch string) (*SignedCommit, error) {
-
-	hash, err := lc.ResolveRevision(plumbing.Revision(targetBranch))
+	lc.Fetch(&git.FetchOptions{
+		RefSpecs: refSpecs},
+	)
 	if err != nil {
-		return nil, err
+		log.Fatal(err)
 	}
 
-	fmt.Printf("Hash %s\n", hash.String())
-	c, _ := lc.CommitObject(*hash)
-	fmt.Printf("Commit %+v\n", c)
-	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
+	fmt.Printf("Overall commit count: %d\n", sc.NumberCommits)
 
-	hashs := []string{}
-	cc := 0
-	csc := 0
+	for _, prn := range prStats.PRNumbers {
 
-	iter.ForEach(func(c *object.Commit) error {
-		if !c.Hash.IsZero() {
-			hashs = append(hashs, c.Hash.String())
-			cc++
-			if c.PGPSignature != "" {
-				csc++
-			}
+		prBranch := fmt.Sprintf("pull/%d", prn)
+
+		sc2, err := gh.GetCommitData(lc, prBranch)
+		if err != nil {
+			log.Fatal(err)
 		}
-		return nil
-	})
+		fmt.Printf("Number of commits: %d\n", sc2.NumberCommits)
+		fmt.Printf("Number of verified commits: %d\n", sc2.NumberVerified)
 
-	return &SignedCommit{
-		NumberCommits:  cc,
-		NumberVerified: csc,
-	}, nil
+		// TODO: this doesn't work right now investigate map
+		// TODO: this is not the right way to do this. we currently take all commits from the PR
+		// this is a flaw, as later branches contain commits which have been directly introduced
+		// without a pr. therefore, we accidently validate them.
+		// we need to compare base branch with pr branch at the moment of the pr
+		fmt.Printf("sc2 hashs %+v\n", sc2.Hashs)
+		for k := range sc2.Hashs {
+			fmt.Printf("Deleting %s\n", k)
+			delete(sc.Hashs, k)
+		}
+	}
+
+	fmt.Printf("commit count without PR: %d\n", len(sc.Hashs))
+	fmt.Printf("remaining hashs %+v\n", sc.Hashs)
 }
