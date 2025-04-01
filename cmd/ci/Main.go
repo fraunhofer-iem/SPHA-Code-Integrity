@@ -12,7 +12,6 @@ import (
 	"strings"
 
 	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/google/go-github/v70/github"
 )
 
@@ -59,6 +58,7 @@ func main() {
 	}
 
 	var lc *git.Repository
+	var repoDir string
 	if *mode == "clone" {
 		// TODO: check auth to make this work on non public repos
 		//	Auth: &http.BasicAuth{
@@ -68,8 +68,10 @@ func main() {
 		fmt.Printf("Cloning %s to %s\n", *r.CloneURL, *cloneTarget)
 		lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
 		defer os.RemoveAll(*cloneTarget)
+		repoDir = *cloneTarget
 	} else {
 		lc, err = git.PlainOpen(*localPath)
+		repoDir = *localPath
 	}
 	if err != nil {
 		log.Fatal(err)
@@ -77,9 +79,9 @@ func main() {
 
 	prs, err := gh.GetPullRequests(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token)
 	fmt.Printf("PRS %+v\n", prs)
-	allNewCommits := vcs.GetMergedPrHashs(prs, *lc)
+	allNewCommits := vcs.GetMergedPrHashs(prs, lc, repoDir)
 
-	allCommits, err := vcs.GetCommitData(lc, *targetBranch)
+	allCommits, err := vcs.GetCommitData(lc, repoDir, *targetBranch)
 	ach := allCommits.Hashs
 	fmt.Printf("Number all commits %d\n", len(ach))
 
@@ -103,11 +105,7 @@ func main() {
 
 	fmt.Println("-----------------Commits without PR-------")
 
-	for h := range allCommits.Hashs {
-		c, err := lc.CommitObject(plumbing.NewHash(h))
-		if err != nil {
-			continue
-		}
+	for _, c := range allCommits.Hashs {
 		fmt.Printf("Commits without PR: %+v\n", c)
 	}
 

@@ -22,7 +22,7 @@ type CommitData struct {
 }
 
 // getSignedCommitCount returns the number of commits and the number of verified commits
-func GetCommitData(lc *git.Repository, targetBranch string) (*CommitData, error) {
+func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*CommitData, error) {
 
 	hash, err := lc.ResolveRevision(plumbing.Revision(targetBranch))
 	if err != nil {
@@ -39,7 +39,11 @@ func GetCommitData(lc *git.Repository, targetBranch string) (*CommitData, error)
 
 	iter.ForEach(func(curr *object.Commit) error {
 		if !curr.Hash.IsZero() {
-			hashs[curr.Hash.String()] = curr
+			patchId, err := GetPatchId(repoDir, curr.Hash.String())
+			if err != nil {
+				return err
+			}
+			hashs[patchId] = curr
 			cc++
 			if c.PGPSignature != "" {
 				csc++
@@ -55,7 +59,7 @@ func GetCommitData(lc *git.Repository, targetBranch string) (*CommitData, error)
 	}, nil
 }
 
-func GetMergedPrHashs(prs []gh.PR, lc git.Repository) map[int]map[string]*object.Commit {
+func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) map[int]map[string]*object.Commit {
 
 	refspecs := []config.RefSpec{}
 	for _, pr := range prs {
@@ -84,14 +88,22 @@ func GetMergedPrHashs(prs []gh.PR, lc git.Repository) map[int]map[string]*object
 
 		iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid)})
 		iter.ForEach(func(curr *object.Commit) error {
-			newCommits[curr.Hash.String()] = curr
+			patchId, err := GetPatchId(repoDir, curr.Hash.String())
+			if err != nil {
+				return err
+			}
+			newCommits[patchId] = curr
 			// fmt.Printf("Head Commit %+v\n", curr)
 			return nil
 		})
 
 		iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid)})
 		iterBase.ForEach(func(curr *object.Commit) error {
-			delete(newCommits, curr.Hash.String())
+			patchId, err := GetPatchId(repoDir, curr.Hash.String())
+			if err != nil {
+				return err
+			}
+			delete(newCommits, patchId)
 			// fmt.Printf("Base Commit %+v\n", curr)
 			return nil
 		})
