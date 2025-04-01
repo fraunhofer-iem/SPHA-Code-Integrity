@@ -2,18 +2,9 @@ package gh
 
 import (
 	"context"
-	"fmt"
 
-	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing"
-	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/google/go-github/v70/github"
 )
-
-type CodeIntegrity struct {
-	IntegrityConfig
-	CommitData
-}
 
 type IntegrityConfig struct {
 	ApprovingCount       int
@@ -56,46 +47,5 @@ func GetIntegrityConfig(owner string, repo string, targetBranch string, gh *gith
 		SameAuthorCanApprove: sameAutor,
 		RequireSignatures:    signaturesEnforced,
 		AllowForcePushes:     allowForcePushes,
-	}, nil
-}
-
-type CommitData struct {
-	NumberCommits  int
-	NumberVerified int
-	Hashs          map[string]struct{}
-}
-
-// getSignedCommitCount returns the number of commits and the number of verified commits
-func GetCommitData(lc *git.Repository, targetBranch string) (*CommitData, error) {
-
-	hash, err := lc.ResolveRevision(plumbing.Revision(targetBranch))
-	if err != nil {
-		return nil, err
-	}
-
-	fmt.Printf("Hash %s\n", hash.String())
-	c, _ := lc.CommitObject(*hash)
-	fmt.Printf("Commit %+v\n", c)
-	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
-
-	hashs := make(map[string]struct{})
-	cc := 0
-	csc := 0
-
-	iter.ForEach(func(curr *object.Commit) error {
-		if !curr.Hash.IsZero() {
-			hashs[curr.Hash.String()] = struct{}{}
-			cc++
-			if c.PGPSignature != "" {
-				csc++
-			}
-		}
-		return nil
-	})
-
-	return &CommitData{
-		NumberCommits:  cc,
-		NumberVerified: csc,
-		Hashs:          hashs,
 	}, nil
 }

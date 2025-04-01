@@ -107,13 +107,8 @@ repository(owner: $owner, name: $name) {
 
 const URL = "https://api.github.com/graphql"
 
-type PullRequestStats struct {
-	NumberSufficientReviews int
-	PRNumbers               []int
-}
-
 // Helper function to execute a GraphQL request.
-func executeGraphQLRequest(client *http.Client, url, token, query string, variables map[string]any, result any) error {
+func executeGraphQLRequest(client *http.Client, url, token, query string, variables map[string]any, result *PrReviewResponse) error {
 	reqPayload := GraphQLRequest{
 		Query:     query,
 		Variables: variables,
@@ -144,7 +139,7 @@ func executeGraphQLRequest(client *http.Client, url, token, query string, variab
 	return nil
 }
 
-func GetPullRequestStats(owner, repo, branch, token string, threshold int) (*PullRequestStats, error) {
+func GetPullRequests(owner, repo, branch, token string) ([]PR, error) {
 	variables := map[string]any{
 		"owner":  owner,
 		"name":   repo,
@@ -153,17 +148,14 @@ func GetPullRequestStats(owner, repo, branch, token string, threshold int) (*Pul
 
 	client := &http.Client{}
 	var gqlResp PrReviewResponse
+	prs := []PR{}
 
 	// Execute the initial query.
 	if err := executeGraphQLRequest(client, URL, token, initialPRQuery, variables, &gqlResp); err != nil {
-		return nil, err
+		return prs, err
 	}
 
-	stats := &PullRequestStats{
-		PRNumbers: []int{},
-	}
-
-	fillPrStats(gqlResp.Data.Repository.PullRequests.Nodes, threshold, stats)
+	prs = append(prs, gqlResp.Data.Repository.PullRequests.Nodes...)
 
 	// Cursor iteration for paginated results.
 	for gqlResp.Data.Repository.PullRequests.PageInfo.HasNextPage {
@@ -174,28 +166,8 @@ func GetPullRequestStats(owner, repo, branch, token string, threshold int) (*Pul
 			break
 		}
 
-		fillPrStats(gqlResp.Data.Repository.PullRequests.Nodes, threshold, stats)
+		prs = append(prs, gqlResp.Data.Repository.PullRequests.Nodes...)
 	}
 
-	return stats, nil
-}
-
-func fillPrStats(prs []PR, threshold int, stats *PullRequestStats) {
-
-	// We only take the first 100 reviews into account. However, if you have
-	// more than 100 reviews, you have different problems.
-	for _, pr := range prs {
-		stats.PRNumbers = append(stats.PRNumbers, pr.Number)
-		ac := 0
-		for _, r := range pr.Reviews.Nodes {
-			if r.State == "APPROVED" {
-				ac++
-			}
-
-			if ac >= threshold {
-				stats.NumberSufficientReviews++
-				break
-			}
-		}
-	}
+	return prs, nil
 }
