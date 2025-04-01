@@ -3,6 +3,7 @@ package vcs
 import (
 	"fmt"
 	"log"
+	"os/exec"
 
 	"project-integrity-calculator/internal/gh"
 
@@ -93,11 +94,30 @@ func GetMergedPrHashs(prs []gh.PR, lc git.Repository) map[int]map[string]*object
 			return nil
 		})
 
-		// fmt.Printf("New Commits: %+v\n", newCommits)
-
-		// fmt.Printf("PR Number: %d END\n", pr.Number)
 		allNewCommits[pr.Number] = newCommits
 	}
 
 	return allNewCommits
+}
+
+func GetPatchId(dir string, hash string) (string, error) {
+	show := exec.Command("git", "show", hash)
+	showOut, err := show.StdoutPipe()
+	if err != nil {
+		return "", err
+	}
+
+	patchId := exec.Command("git", "patch-id", "--stable")
+	patchId.Stdin = showOut
+
+	show.Dir = dir
+	patchId.Dir = dir
+
+	patchId.Start()
+	show.Start()
+
+	show.Wait()
+	patchId.Wait()
+
+	return "", nil
 }

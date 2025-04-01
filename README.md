@@ -11,6 +11,7 @@ This project contains the calculations of a Code Integrity Score. Code integrity
 
 ## Usage
 
+You need to have git installed in order to run this program as some of the calculations (`git patch-id`) is not implemented in go-git) rely on calling the git CLI. 
 This project contains a CLI application written in GO. To run it and get all available `flags` execute:
 
 ```
