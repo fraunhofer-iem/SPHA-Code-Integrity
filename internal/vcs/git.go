@@ -1,9 +1,11 @@
 package vcs
 
 import (
+	"bufio"
 	"fmt"
 	"log"
 	"os/exec"
+	"strings"
 
 	"project-integrity-calculator/internal/gh"
 
@@ -101,23 +103,36 @@ func GetMergedPrHashs(prs []gh.PR, lc git.Repository) map[int]map[string]*object
 }
 
 func GetPatchId(dir string, hash string) (string, error) {
-	show := exec.Command("git", "show", hash)
-	showOut, err := show.StdoutPipe()
+	showCmd := exec.Command("git", "show", hash)
+	showCmd.Dir = dir
+	out, err := showCmd.StdoutPipe()
 	if err != nil {
 		return "", err
 	}
 
-	patchId := exec.Command("git", "patch-id", "--stable")
-	patchId.Stdin = showOut
+	patchIdCmd := exec.Command("git", "patch-id", "--stable")
+	patchIdCmd.Dir = dir
+	patchIdCmd.Stdin = out
 
-	show.Dir = dir
-	patchId.Dir = dir
+	patchOut, err := patchIdCmd.StdoutPipe()
+	if err != nil {
+		return "", err
+	}
 
-	patchId.Start()
-	show.Start()
+	patchIdCmd.Start()
+	showCmd.Start()
 
-	show.Wait()
-	patchId.Wait()
+	scanner := bufio.NewScanner(patchOut)
 
-	return "", nil
+	output := ""
+	for scanner.Scan() {
+		output += scanner.Text()
+	}
+
+	showCmd.Wait()
+	patchIdCmd.Wait()
+
+	patchId := strings.Split(output, " ")[0]
+
+	return patchId, nil
 }
