@@ -81,37 +81,36 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) map[int]m
 	allNewCommits := make(map[int]map[string]*object.Commit)
 
 	for _, pr := range prs {
-
-		// fmt.Printf("START PR Number: %d\n", pr.Number)
-
-		newCommits := make(map[string]*object.Commit)
-
-		iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid)})
-		iter.ForEach(func(curr *object.Commit) error {
-			patchId, err := GetPatchId(repoDir, curr.Hash.String())
-			if err != nil {
-				return err
-			}
-			newCommits[patchId] = curr
-			// fmt.Printf("Head Commit %+v\n", curr)
-			return nil
-		})
-
-		iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid)})
-		iterBase.ForEach(func(curr *object.Commit) error {
-			patchId, err := GetPatchId(repoDir, curr.Hash.String())
-			if err != nil {
-				return err
-			}
-			delete(newCommits, patchId)
-			// fmt.Printf("Base Commit %+v\n", curr)
-			return nil
-		})
-
-		allNewCommits[pr.Number] = newCommits
+		allNewCommits[pr.Number] = getNewCommitsFromPr(pr, lc, repoDir)
 	}
 
 	return allNewCommits
+}
+
+func getNewCommitsFromPr(pr gh.PR, lc *git.Repository, repoDir string) map[string]*object.Commit {
+
+	newCommits := make(map[string]*object.Commit)
+
+	iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid)})
+	iter.ForEach(func(curr *object.Commit) error {
+		patchId, err := GetPatchId(repoDir, curr.Hash.String())
+		if err != nil {
+			return err
+		}
+		newCommits[patchId] = curr
+		return nil
+	})
+
+	iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid)})
+	iterBase.ForEach(func(curr *object.Commit) error {
+		patchId, err := GetPatchId(repoDir, curr.Hash.String())
+		if err != nil {
+			return err
+		}
+		delete(newCommits, patchId)
+		return nil
+	})
+	return newCommits
 }
 
 func GetPatchId(dir string, hash string) (string, error) {

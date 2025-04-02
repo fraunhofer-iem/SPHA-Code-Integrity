@@ -8,8 +8,10 @@ import (
 	"os"
 	"path"
 	"project-integrity-calculator/internal/gh"
+	"project-integrity-calculator/internal/logging"
 	"project-integrity-calculator/internal/vcs"
 	"strings"
+	"time"
 
 	"github.com/go-git/go-git/v5"
 	"github.com/google/go-github/v70/github"
@@ -22,11 +24,16 @@ var (
 	mode         = flag.String("mode", "local", "Mode: 'local' or 'clone'")
 	localPath    = flag.String("localPath", "", "Path to the local repository (required if mode is 'local')")
 	cloneTarget  = flag.String("cloneTarget", "", "Target to clone. Defaults to tmp")
+	logLevel     = flag.Int("logLevel", 0, "Can be 0 for INFO, -4 for DEBUG, 4 for WARN, or 8 for ERROR. Defaults to INFO.")
 )
 
 func main() {
+
+	start := time.Now()
 	// TODO: add input validation
 	flag.Parse()
+
+	logger := logging.SetUpLogging(*logLevel)
 
 	if *ownerAndRepo == "" {
 		panic("ownerAndRepo is required")
@@ -169,4 +176,7 @@ func main() {
 
 	// fmt.Printf("commit count without PR: %d\n", len(sc.Hashs))
 	// fmt.Printf("remaining hashs %+v\n", sc.Hashs)
+
+	elapsed := time.Since(start)
+	logger.Info("Finished syft transform", "time elapsed", elapsed)
 }
