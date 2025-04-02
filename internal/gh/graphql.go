@@ -107,6 +107,8 @@ repository(owner: $owner, name: $name) {
 
 const URL = "https://api.github.com/graphql"
 
+var RequestCounter = 0
+
 // Helper function to execute a GraphQL request.
 func executeGraphQLRequest(client *http.Client, url, token, query string, variables map[string]any, result *PrReviewResponse) error {
 	reqPayload := GraphQLRequest{
@@ -127,6 +129,7 @@ func executeGraphQLRequest(client *http.Client, url, token, query string, variab
 	req.Header.Set("Authorization", "Bearer "+token)
 
 	resp, err := client.Do(req)
+	RequestCounter++
 	if err != nil {
 		return fmt.Errorf("HTTP request failed: %v", err)
 	}

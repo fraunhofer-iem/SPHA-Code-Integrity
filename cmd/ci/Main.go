@@ -2,6 +2,7 @@ package main
 
 import (
 	"context"
+	"encoding/json"
 	"flag"
 	"log"
 	"os"
@@ -107,6 +108,19 @@ func main() {
 
 	logger.Info("Number commits from PRs", "number", npr)
 	logger.Info("Number commits without PR", "number", len(ach))
+
+	file, err := os.Create("data.json")
+	if err != nil {
+		panic(err)
+	}
+
+	defer file.Close()
+	encoder := json.NewEncoder(file)
+
+	err = encoder.Encode(&ach)
+	if err != nil {
+		panic(err)
+	}
 
 	elapsed := time.Since(start)
 	logger.Info("Execution finished", "time elapsed", elapsed)
