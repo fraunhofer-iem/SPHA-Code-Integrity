@@ -3,7 +3,6 @@ package main
 import (
 	"context"
 	"flag"
-	"fmt"
 	"log"
 	"os"
 	"path"
@@ -72,7 +71,7 @@ func main() {
 		// Username: "abc123", // anything except an empty string
 		// Password: "github_access_token",
 		// },
-		fmt.Printf("Cloning %s to %s\n", *r.CloneURL, *cloneTarget)
+		logger.Info("Cloning", "clone url", *r.CloneURL, "clone target", *cloneTarget)
 		lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
 		defer os.RemoveAll(*cloneTarget)
 		repoDir = *cloneTarget
@@ -85,36 +84,22 @@ func main() {
 	}
 
 	prs, err := gh.GetPullRequests(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token)
-	fmt.Printf("PRS %+v\n", prs)
-	allNewCommits := vcs.GetMergedPrHashs(prs, lc, repoDir)
+	allPrCommits := vcs.GetMergedPrHashs(prs, lc, repoDir)
 
 	allCommits, err := vcs.GetCommitData(lc, repoDir, *targetBranch)
 	ach := allCommits.Hashs
-	fmt.Printf("Number all commits %d\n", len(ach))
+	logger.Info("Number all commits", *targetBranch, len(ach))
 
-	fmt.Println("all commits hashes")
-	for h, c := range ach {
-		fmt.Printf("hash %s, commit %+v", h, c)
-	}
-
-	fmt.Println("PR Commits list")
 	npr := 0
-	for _, pn := range allNewCommits {
-		for h, c := range pn {
-			fmt.Printf("Removing commit %+v \n", c)
+	for _, pn := range allPrCommits {
+		for h := range pn {
 			npr++
 			delete(ach, h)
 		}
 	}
 
-	fmt.Printf("Number PR commits %d\n", npr)
-	fmt.Printf("Number all commits after delete %d\n", len(ach))
-
-	fmt.Println("-----------------Commits without PR-------")
-
-	for _, c := range allCommits.Hashs {
-		fmt.Printf("Commits without PR: %+v\n", c)
-	}
+	logger.Info("Number commits from PRs", "number", npr)
+	logger.Info("Number commits without PR", "number", len(ach))
 
 	// sc, err := vcs.GetCommitData(lc, *targetBranch)
 	// fmt.Printf("Number of commits: %d\n", sc.NumberCommits)

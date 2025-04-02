@@ -58,9 +58,7 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 		return nil, err
 	}
 
-	fmt.Printf("Hash %s\n", hash.String())
 	c, _ := lc.CommitObject(*hash)
-	fmt.Printf("Commit %+v\n", c)
 	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
 	hashs := make(map[string]*object.Commit)
 	cc := 0
