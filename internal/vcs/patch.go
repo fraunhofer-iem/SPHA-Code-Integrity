@@ -8,34 +8,47 @@ import (
 )
 
 type PatchIdCache struct {
-	logger *slog.Logger
-	cache  map[string]string
+	maxSize int
+	cache   map[string]string
 }
 
-func NewPatchIdCache() *PatchIdCache {
+func NewPatchIdCache(size int) *PatchIdCache {
 	c := PatchIdCache{
-		cache:  make(map[string]string),
-		logger: slog.Default(),
+		cache:   make(map[string]string),
+		maxSize: size,
 	}
 	return &c
 }
 
 func (c *PatchIdCache) Add(key string, value string) {
-	c.logger.Debug("Cache add", "key", key)
+	if len(c.cache) > c.maxSize {
+		slog.Default().Info("Max cache size reached")
+		deleteTarget := len(c.cache) / 10
+		slog.Default().Info("Removing entries", "to remove", deleteTarget)
+		deleteCounter := 0
+		for h := range c.cache {
+			delete(c.cache, h)
+			deleteCounter++
+			if deleteCounter == deleteTarget {
+				break
+			}
+		}
+	}
+	slog.Default().Debug("Cache add", "key", key)
 	c.cache[key] = value
 }
 
 func (c *PatchIdCache) Get(key string) *string {
 	r := c.cache[key]
 	if r == "" {
-		c.logger.Debug("Cache miss", "key", key)
+		slog.Default().Debug("Cache miss", "key", key)
 		return nil
 	}
-	c.logger.Debug("Cache hit", "key", key)
+	slog.Default().Debug("Cache hit", "key", key)
 	return &r
 }
 
-var cache = NewPatchIdCache()
+var cache = NewPatchIdCache(10_000_000)
 
 func GetPatchId(dir string, hash string) (string, error) {
 

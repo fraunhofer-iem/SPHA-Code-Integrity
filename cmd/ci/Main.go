@@ -63,6 +63,13 @@ func main() {
 		*targetBranch = r.GetDefaultBranch()
 	}
 
+	// TODO: fix 2025/03/29 09:18:35 branch is not protected response
+	// ic, err := gh.GetIntegrityConfig(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
+	// if err != nil {
+	// 	log.Fatal(err)
+	// }
+	// logger.Info("code integrity", "conf", ic)
+
 	var lc *git.Repository
 	var repoDir string
 	if *mode == "clone" {
@@ -100,67 +107,6 @@ func main() {
 
 	logger.Info("Number commits from PRs", "number", npr)
 	logger.Info("Number commits without PR", "number", len(ach))
-
-	// sc, err := vcs.GetCommitData(lc, *targetBranch)
-	// fmt.Printf("Number of commits: %d\n", sc.NumberCommits)
-	// fmt.Printf("Number of verified commits: %d\n", sc.NumberVerified)
-
-	// // TODO: fix 2025/03/29 09:18:35 branch is not protected response
-	// // ic, err := gh.GetIntegrityConfig(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
-	// // if err != nil {
-	// // 	log.Fatal(err)
-	// // }
-
-	// // prStats, err := gh.GetPullRequestStats(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token, 1) //ic.ApprovingCount)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// fmt.Printf("Number of sufficient reviews: %d\n", prStats.NumberSufficientReviews)
-	// fmt.Printf("PR Numbers: %v\n", prStats.PRNumbers)
-
-	// refSpecs := []config.RefSpec{}
-
-	// for _, prn := range prStats.PRNumbers {
-	// 	refspec := fmt.Sprintf("+refs/pull/%d/head:pull/%d", prn, prn)
-	// 	log.Printf("Refspec %s", refspec)
-	// 	refSpecs = append(refSpecs, config.RefSpec(refspec))
-	// }
-
-	// lc.Fetch(&git.FetchOptions{
-	// 	RefSpecs: refSpecs},
-	// )
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-
-	// fmt.Printf("Overall commit count: %d\n", sc.NumberCommits)
-
-	// for _, prn := range prStats.PRNumbers {
-
-	// 	prBranch := fmt.Sprintf("pull/%d", prn)
-
-	// 	sc2, err := vcs.GetCommitData(lc, prBranch)
-	// 	if err != nil {
-	// 		log.Fatal(err)
-	// 	}
-	// 	fmt.Printf("Number of commits: %d\n", sc2.NumberCommits)
-	// 	fmt.Printf("Number of verified commits: %d\n", sc2.NumberVerified)
-
-	// 	// TODO: this doesn't work right now investigate map
-	// 	// TODO: this is not the right way to do this. we currently take all commits from the PR
-	// 	// this is a flaw, as later branches contain commits which have been directly introduced
-	// 	// without a pr. therefore, we accidently validate them.
-	// 	// we need to compare base branch with pr branch at the moment of the pr
-	// 	fmt.Printf("sc2 hashs %+v\n", sc2.Hashs)
-	// 	for k := range sc2.Hashs {
-	// 		fmt.Printf("Deleting %s\n", k)
-	// 		delete(sc.Hashs, k)
-	// 	}
-	// }
-
-	// fmt.Printf("commit count without PR: %d\n", len(sc.Hashs))
-	// fmt.Printf("remaining hashs %+v\n", sc.Hashs)
 
 	elapsed := time.Since(start)
 	logger.Info("Execution finished", "time elapsed", elapsed)

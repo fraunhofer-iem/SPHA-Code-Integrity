@@ -2,6 +2,7 @@ package gh
 
 import (
 	"context"
+	"log/slog"
 
 	"github.com/google/go-github/v70/github"
 )
@@ -13,9 +14,10 @@ type IntegrityConfig struct {
 	AllowForcePushes     bool
 }
 
-func GetIntegrityConfig(owner string, repo string, targetBranch string, gh *github.Client) (*IntegrityConfig, error) {
+func GetIntegrityConfig(owner string, repo string, branch string, gh *github.Client) (*IntegrityConfig, error) {
 
-	protection, _, err := gh.Repositories.GetBranchProtection(context.Background(), owner, repo, targetBranch)
+	slog.Default().Debug("Getting integrity config", "owner", owner, "repo", repo, "branch", branch)
+	protection, _, err := gh.Repositories.GetBranchProtection(context.Background(), owner, repo, branch)
 	if err != nil {
 		return nil, err
 	}
