@@ -178,5 +178,5 @@ func main() {
 	// fmt.Printf("remaining hashs %+v\n", sc.Hashs)
 
 	elapsed := time.Since(start)
-	logger.Info("Finished syft transform", "time elapsed", elapsed)
+	logger.Info("Execution finished", "time elapsed", elapsed)
 }

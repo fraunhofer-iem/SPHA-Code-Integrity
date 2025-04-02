@@ -93,24 +93,29 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository, repoDir string) map[strin
 
 	iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid)})
 	iter.ForEach(func(curr *object.Commit) error {
-		patchId, err := GetPatchId(repoDir, curr.Hash.String())
-		if err != nil {
-			return err
-		}
-		newCommits[patchId] = curr
+		newCommits[curr.Hash.String()] = curr
 		return nil
 	})
 
 	iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid)})
 	iterBase.ForEach(func(curr *object.Commit) error {
-		patchId, err := GetPatchId(repoDir, curr.Hash.String())
-		if err != nil {
-			return err
-		}
-		delete(newCommits, patchId)
+		delete(newCommits, curr.Hash.String())
 		return nil
 	})
-	return newCommits
+
+	commitsPatchId := make(map[string]*object.Commit, len(newCommits))
+
+	// TODO: check if it is sufficient to calculate the patch id after identifying
+	// the new commits or if there can be missmatches in the identification process
+	for _, c := range newCommits {
+		patchId, err := GetPatchId(repoDir, c.Hash.String())
+		if err != nil {
+			continue
+		}
+		commitsPatchId[patchId] = c
+	}
+
+	return commitsPatchId
 }
 
 func GetPatchId(dir string, hash string) (string, error) {
