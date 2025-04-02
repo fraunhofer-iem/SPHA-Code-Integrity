@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"log"
+	"log/slog"
 	"os/exec"
 	"strings"
 
@@ -19,6 +20,34 @@ type CommitData struct {
 	NumberCommits  int
 	NumberVerified int
 	Hashs          map[string]*object.Commit
+}
+
+type PatchIdCache struct {
+	logger *slog.Logger
+	cache  map[string]string
+}
+
+func NewPatchIdCache() *PatchIdCache {
+	c := PatchIdCache{
+		cache:  make(map[string]string),
+		logger: slog.Default(),
+	}
+	return &c
+}
+
+func (c *PatchIdCache) Add(key string, value string) {
+	c.logger.Debug("Cache add", "key", key)
+	c.cache[key] = value
+}
+
+func (c *PatchIdCache) Get(key string) *string {
+	r := c.cache[key]
+	if r == "" {
+		c.logger.Debug("Cache miss", "key", key)
+		return nil
+	}
+	c.logger.Debug("Cache hit", "key", key)
+	return &r
 }
 
 // getSignedCommitCount returns the number of commits and the number of verified commits
@@ -93,32 +122,36 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository, repoDir string) map[strin
 
 	iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid)})
 	iter.ForEach(func(curr *object.Commit) error {
-		newCommits[curr.Hash.String()] = curr
+		patchId, err := GetPatchId(repoDir, curr.Hash.String())
+		if err != nil {
+			return err
+		}
+		newCommits[patchId] = curr
 		return nil
 	})
 
 	iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid)})
 	iterBase.ForEach(func(curr *object.Commit) error {
-		delete(newCommits, curr.Hash.String())
+		patchId, err := GetPatchId(repoDir, curr.Hash.String())
+		if err != nil {
+			return err
+		}
+		delete(newCommits, patchId)
 		return nil
 	})
 
-	commitsPatchId := make(map[string]*object.Commit, len(newCommits))
-
-	// TODO: check if it is sufficient to calculate the patch id after identifying
-	// the new commits or if there can be missmatches in the identification process
-	for _, c := range newCommits {
-		patchId, err := GetPatchId(repoDir, c.Hash.String())
-		if err != nil {
-			continue
-		}
-		commitsPatchId[patchId] = c
-	}
-
-	return commitsPatchId
+	return newCommits
 }
 
+var cache = NewPatchIdCache()
+
 func GetPatchId(dir string, hash string) (string, error) {
+
+	cacheResult := cache.Get(hash)
+	if cacheResult != nil {
+		return *cacheResult, nil
+	}
+
 	showCmd := exec.Command("git", "show", hash)
 	showCmd.Dir = dir
 	out, err := showCmd.StdoutPipe()
@@ -149,6 +182,7 @@ func GetPatchId(dir string, hash string) (string, error) {
 	patchIdCmd.Wait()
 
 	patchId := strings.Split(output, " ")[0]
+	cache.Add(hash, patchId)
 
 	return patchId, nil
 }
