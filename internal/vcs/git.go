@@ -34,7 +34,7 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 
 	iter.ForEach(func(curr *object.Commit) error {
 		if !curr.Hash.IsZero() {
-			patchId, err := GetPatchId(repoDir, curr.Hash.String())
+			patchId, err := GetPatchId(repoDir, curr)
 			if err != nil {
 				return err
 			}
@@ -88,7 +88,7 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository, repoDir string) map[strin
 
 	iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid)})
 	iter.ForEach(func(curr *object.Commit) error {
-		patchId, err := GetPatchId(repoDir, curr.Hash.String())
+		patchId, err := GetPatchId(repoDir, curr)
 		if err != nil {
 			return err
 		}
@@ -98,7 +98,7 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository, repoDir string) map[strin
 
 	iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid)})
 	iterBase.ForEach(func(curr *object.Commit) error {
-		patchId, err := GetPatchId(repoDir, curr.Hash.String())
+		patchId, err := GetPatchId(repoDir, curr)
 		if err != nil {
 			return err
 		}

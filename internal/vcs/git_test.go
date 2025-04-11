@@ -11,7 +11,7 @@ import (
 	"github.com/go-git/go-git/v5/plumbing/object"
 )
 
-func TestPatchId(t *testing.T) {
+func setupGit(t *testing.T) string {
 	tmpGit := path.Join(t.TempDir(), "testGit")
 
 	if err := os.Mkdir(tmpGit, os.ModePerm); err != nil {
@@ -26,6 +26,9 @@ func TestPatchId(t *testing.T) {
 		{"touch A", exec.Command("touch", "A")},
 		{"git add A", exec.Command("git", "add", "A")},
 		{"git commit", exec.Command("git", "commit", "-m", "test")},
+		{"touch B", exec.Command("touch", "B")},
+		{"git add B", exec.Command("git", "add", "B")},
+		{"git commit", exec.Command("git", "commit", "-m", "added B")},
 	}
 
 	for _, c := range commands {
@@ -36,6 +39,41 @@ func TestPatchId(t *testing.T) {
 			t.Fatalf("Failed to execute '%s': %v", c.name, err)
 		}
 	}
+
+	return tmpGit
+
+}
+
+func TestPatchDiff(t *testing.T) {
+
+	// tmpGit := setupGit(t)
+	repo, err := git.PlainOpen("/Users/struewer/git/spha/spha.git")
+
+	if err != nil {
+		t.Fatalf("Failed to open git repository: %v", err)
+	}
+
+	commitIter, err := repo.CommitObjects()
+	if err != nil {
+		t.Fatalf("Failed to retrieve commit objects: %v", err)
+	}
+
+	err = commitIter.ForEach(func(c *object.Commit) error {
+		patchId, err := InternalGetPatchId(t.Context(), c)
+		if err != nil {
+			t.Fatalf("Patch Id calculation failed")
+		}
+
+		t.Logf("Patch ID, %+v", patchId)
+
+		return nil
+	})
+
+}
+
+func TestPatchId(t *testing.T) {
+
+	tmpGit := setupGit(t)
 
 	repo, err := git.PlainOpen(tmpGit)
 	if err != nil {

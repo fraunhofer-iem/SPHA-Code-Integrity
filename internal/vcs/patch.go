@@ -1,10 +1,12 @@
 package vcs
 
 import (
-	"bufio"
+	"context"
+	"fmt"
 	"log/slog"
-	"os/exec"
-	"strings"
+
+	"github.com/go-git/go-git/v5/plumbing"
+	"github.com/go-git/go-git/v5/plumbing/object"
 )
 
 type PatchIdCache struct {
@@ -48,46 +50,91 @@ func (c *PatchIdCache) Get(key string) *string {
 	return &r
 }
 
+func getPatchContext(ctx context.Context, c *object.Commit) (*object.Patch, error) {
+	fromTree, err := c.Tree()
+	if err != nil {
+		return nil, err
+	}
+
+	toTree := &object.Tree{}
+	if c.NumParents() != 0 {
+		firstParent, err := c.Parents().Next()
+		if err != nil {
+			return nil, err
+		}
+
+		toTree, err = firstParent.Tree()
+		if err != nil {
+			return nil, err
+		}
+	}
+
+	return toTree.PatchContext(ctx, fromTree)
+}
+
+func InternalGetPatchId(ctx context.Context, c *object.Commit) (*plumbing.Hash, error) {
+	patch, err := getPatchContext(ctx, c)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get patch ctx for commit %s: %w", c.Hash, err)
+	}
+
+	chunks := ""
+	for _, p := range patch.FilePatches() {
+		for _, c := range p.Chunks() {
+			chunks += c.Content()
+		}
+	}
+	h := plumbing.ComputeHash(plumbing.AnyObject, []byte(chunks))
+	return &h, nil
+}
+
 var cache = NewPatchIdCache(10_000_000)
 
-func GetPatchId(dir string, hash string) (string, error) {
+func GetPatchId(dir string, c *object.Commit) (string, error) {
+
+	hash := c.Hash.String()
 
 	cacheResult := cache.Get(hash)
 	if cacheResult != nil {
 		return *cacheResult, nil
 	}
 
-	showCmd := exec.Command("git", "show", hash)
-	showCmd.Dir = dir
-	out, err := showCmd.StdoutPipe()
+	patchId, err := InternalGetPatchId(context.Background(), c)
 	if err != nil {
 		return "", err
 	}
 
-	patchIdCmd := exec.Command("git", "patch-id", "--stable")
-	patchIdCmd.Dir = dir
-	patchIdCmd.Stdin = out
+	// showCmd := exec.Command("git", "show", hash)
+	// showCmd.Dir = dir
+	// out, err := showCmd.StdoutPipe()
+	// if err != nil {
+	// 	return "", err
+	// }
 
-	patchOut, err := patchIdCmd.StdoutPipe()
-	if err != nil {
-		return "", err
-	}
+	// patchIdCmd := exec.Command("git", "patch-id", "--stable")
+	// patchIdCmd.Dir = dir
+	// patchIdCmd.Stdin = out
 
-	patchIdCmd.Start()
-	showCmd.Start()
+	// patchOut, err := patchIdCmd.StdoutPipe()
+	// if err != nil {
+	// 	return "", err
+	// }
 
-	scanner := bufio.NewScanner(patchOut)
+	// patchIdCmd.Start()
+	// showCmd.Start()
 
-	output := ""
-	for scanner.Scan() {
-		output += scanner.Text()
-	}
+	// scanner := bufio.NewScanner(patchOut)
 
-	showCmd.Wait()
-	patchIdCmd.Wait()
+	// output := ""
+	// for scanner.Scan() {
+	// 	output += scanner.Text()
+	// }
 
-	patchId := strings.Split(output, " ")[0]
-	cache.Add(hash, patchId)
+	// showCmd.Wait()
+	// patchIdCmd.Wait()
 
-	return patchId, nil
+	// patchId := strings.Split(output, " ")[0]
+	cache.Add(hash, patchId.String())
+
+	return patchId.String(), nil
 }
