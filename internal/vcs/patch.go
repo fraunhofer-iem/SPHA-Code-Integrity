@@ -73,6 +73,7 @@ func getPatchContext(ctx context.Context, c *object.Commit) (*object.Patch, erro
 }
 
 func InternalGetPatchId(ctx context.Context, c *object.Commit) (*plumbing.Hash, error) {
+	// in tests ~15.32ms
 	patch, err := getPatchContext(ctx, c)
 	if err != nil {
 		return nil, fmt.Errorf("failed to get patch ctx for commit %s: %w", c.Hash, err)
@@ -84,6 +85,7 @@ func InternalGetPatchId(ctx context.Context, c *object.Commit) (*plumbing.Hash, 
 			chunks += c.Content()
 		}
 	}
+	// in tests ~46-250microseconds
 	h := plumbing.ComputeHash(plumbing.AnyObject, []byte(chunks))
 	return &h, nil
 }
@@ -134,6 +136,16 @@ func GetPatchId(dir string, c *object.Commit) (string, error) {
 	// patchIdCmd.Wait()
 
 	// patchId := strings.Split(output, " ")[0]
+
+	// single line alternative
+	// cmd := exec.Command("sh", "-c", fmt.Sprintf("git show %s | git patch-id --stable", hash))
+	// cmd.Dir = dir
+	// out, err := cmd.Output()
+	// if err != nil {
+	// 	return "", err
+	// }
+	// patchId := strings.Split(string(out), " ")[0]
+
 	cache.Add(hash, patchId.String())
 
 	return patchId.String(), nil

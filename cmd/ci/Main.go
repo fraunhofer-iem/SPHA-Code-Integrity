@@ -91,10 +91,21 @@ func main() {
 		log.Fatal(err)
 	}
 
+	methodTimer := time.Now()
 	prs, err := gh.GetPullRequests(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token)
-	allPrCommits := vcs.GetMergedPrHashs(prs, lc, repoDir)
+	elapsed := time.Since(methodTimer)
+	logger.Info("Time to query all Pull requests", "time", elapsed)
 
+	methodTimer = time.Now()
+	allPrCommits := vcs.GetMergedPrHashs(prs, lc, repoDir)
+	elapsed = time.Since(methodTimer)
+	logger.Info("Time to get pr hashes", "time", elapsed)
+
+	methodTimer = time.Now()
 	allCommits, err := vcs.GetCommitData(lc, repoDir, *targetBranch)
+	elapsed = time.Since(methodTimer)
+	logger.Info("Time to get commit hashes from target branch", "time", elapsed)
+
 	ach := allCommits.Hashs
 	logger.Info("Number all commits", *targetBranch, len(ach))
 
@@ -122,6 +133,6 @@ func main() {
 		panic(err)
 	}
 
-	elapsed := time.Since(start)
+	elapsed = time.Since(start)
 	logger.Info("Execution finished", "time elapsed", elapsed)
 }

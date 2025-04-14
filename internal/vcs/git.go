@@ -3,6 +3,8 @@ package vcs
 import (
 	"fmt"
 	"log"
+	"log/slog"
+	"time"
 
 	"project-integrity-calculator/internal/gh"
 
@@ -56,6 +58,7 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 
 func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) map[int]map[string]*object.Commit {
 
+	timer := time.Now()
 	refspecs := []config.RefSpec{}
 	for _, pr := range prs {
 		if pr.State == "MERGED" {
@@ -72,6 +75,8 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) map[int]m
 	if err != nil {
 		log.Fatal(err)
 	}
+	elapsed := time.Since(timer)
+	slog.Default().Info("Fetching PR refs from git", "time", elapsed)
 
 	allNewCommits := make(map[int]map[string]*object.Commit)
 
