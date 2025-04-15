@@ -119,5 +119,13 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository, repoDir string) map[strin
 		return nil
 	})
 
+	// get commit from merge getNewCommit
+	// this is used to identify squashed commits
+	c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid))
+	if err != nil {
+		slog.Default().Error("Get commit object failed for merge commit", "id", pr.MergeCommit.Oid, "error", err)
+	}
+	newCommits[c.Hash.String()] = c
+
 	return newCommits
 }

@@ -8,8 +8,8 @@ import (
 )
 
 type GraphQLRequest struct {
-	Query     string                 `json:"query"`
-	Variables map[string]interface{} `json:"variables"`
+	Query     string         `json:"query"`
+	Variables map[string]any `json:"variables"`
 }
 
 type PrReviewResponse struct {
@@ -30,12 +30,13 @@ type Pagination struct {
 }
 
 type PR struct {
-	BaseRefOid string `json:"baseRefOid"`
-	HeadRefOid string `json:"headRefOid"`
-	Number     int    `json:"number"`
-	Title      string `json:"title"`
-	State      string `json:"state"`
-	Reviews    struct {
+	BaseRefOid  string      `json:"baseRefOid"`
+	HeadRefOid  string      `json:"headRefOid"`
+	Number      int         `json:"number"`
+	Title       string      `json:"title"`
+	State       string      `json:"state"`
+	MergeCommit MergeCommit `json:"mergeCommit"`
+	Reviews     struct {
 		Nodes []struct {
 			State string `json:"state"`
 		} `json:"nodes"`
@@ -43,11 +44,22 @@ type PR struct {
 	} `json:"reviews"`
 }
 
+type MergeCommit struct {
+	Id      string `json:"id"`
+	Oid     string `json:"oid"`
+	Message string `json:"message"`
+}
+
 const initialPRQuery = `
 query ($owner: String!, $name: String!, $branch: String!) {
 	repository(owner: $owner, name: $name) {
 		pullRequests(first: 100, states: MERGED, baseRefName: $branch) {
 			nodes {
+				mergeCommit {
+		            id
+		            oid
+		            message
+		        }
 			    baseRefOid
         		headRefOid
 				number
@@ -79,6 +91,11 @@ query ($owner: String!, $name: String!, $branch: String!, $after: String!) {
 repository(owner: $owner, name: $name) {
 	pullRequests(first: 100, states: MERGED, baseRefName: $branch, after: $after) {
 		nodes {
+			mergeCommit {
+	            id
+	            oid
+	            message
+	        }
 			baseRefOid
    		    headRefOid
 			number

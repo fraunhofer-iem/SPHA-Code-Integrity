@@ -59,12 +59,12 @@ func TestPatchDiff(t *testing.T) {
 	}
 
 	err = commitIter.ForEach(func(c *object.Commit) error {
-		patchId, err := InternalGetPatchId(t.Context(), c)
+		// patchId, err := InternalGetPatchId(t.Context(), c)
 		if err != nil {
 			t.Fatalf("Patch Id calculation failed")
 		}
 
-		t.Logf("Patch ID, %+v", patchId)
+		// t.Logf("Patch ID, %+v", patchId)
 
 		return nil
 	})
@@ -86,11 +86,11 @@ func TestPatchId(t *testing.T) {
 	}
 
 	err = commitIter.ForEach(func(c *object.Commit) error {
-		patchId, err := GetPatchId(tmpGit, c.Hash.String())
+		// patchId, err := GetPatchId(tmpGit, c.Hash.String())
 		if err != nil {
 			return fmt.Errorf("failed to get patch ID for commit %s: %w", c.Hash, err)
 		}
-		fmt.Printf("patch id %s\n", patchId)
+		// fmt.Printf("patch id %s\n", patchId)
 		return nil
 	})
 	if err != nil {
