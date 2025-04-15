@@ -82,7 +82,14 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) map[int]m
 	allNewCommits := make(map[int]map[string]*object.Commit)
 
 	for _, pr := range prs {
-		allNewCommits[pr.Number] = getNewCommitsFromPr(pr, lc, repoDir)
+
+		newCommits := getNewCommitsFromPr(pr, lc, repoDir)
+		patchIdCommits := make(map[string]*object.Commit, len(newCommits))
+		for _, nc := range newCommits {
+			patchId, _ := GetPatchId(repoDir, nc)
+			patchIdCommits[patchId] = nc
+		}
+		allNewCommits[pr.Number] = patchIdCommits
 	}
 
 	return allNewCommits
@@ -90,52 +97,27 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) map[int]m
 
 func getNewCommitsFromPr(pr gh.PR, lc *git.Repository, repoDir string) map[string]*object.Commit {
 
-	slog.Default().Info("START")
 	newCommits := make(map[string]*object.Commit)
-
 	iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid), Order: git.LogOrderCommitterTime})
 
-	// counter := 0
 	end := false
 	iter.ForEach(func(curr *object.Commit) error {
-		slog.Default().Info("head branch", "commit", curr, "end", end)
 		if !end {
-			patchId, err := GetPatchId(repoDir, curr)
-			if err != nil {
-				return err
-			}
-			newCommits[patchId] = curr
+			newCommits[curr.Hash.String()] = curr
 			if curr.Hash.String() == pr.BaseRefOid {
 				end = true
 			}
 			return nil
 		} else {
-			// counter++
-
 			return nil
 		}
 	})
 
-	// slog.Default().Info("Number of skipped commits in feature branch", "counter", counter)
-	// slog.Default().Info("New commits ", "map", newCommits)
-	// counter = 0
 	iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid), Order: git.LogOrderCommitterTime})
 	iterBase.ForEach(func(curr *object.Commit) error {
-		slog.Default().Info("base branch", "commit", curr)
-		patchId, err := GetPatchId(repoDir, curr)
-		if err != nil {
-			return err
-		}
-		// c := newCommits[patchId]
-		// if c != nil {
-		// 	counter++
-		// }
-		delete(newCommits, patchId)
+		delete(newCommits, curr.Hash.String())
 		return nil
 	})
 
-	// slog.Default().Info("Number of commits found in base branch", "counter", counter)
-
-	slog.Default().Info("------------------------STOP")
 	return newCommits
 }

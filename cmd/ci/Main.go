@@ -64,13 +64,6 @@ func main() {
 		*targetBranch = r.GetDefaultBranch()
 	}
 
-	// TODO: fix 2025/03/29 09:18:35 branch is not protected response
-	// ic, err := gh.GetIntegrityConfig(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, client)
-	// if err != nil {
-	// 	log.Fatal(err)
-	// }
-	// logger.Info("code integrity", "conf", ic)
-
 	var lc *git.Repository
 	var repoDir string
 	if *mode == "clone" {
@@ -109,10 +102,18 @@ func main() {
 	ach := allCommits.Hashs
 	logger.Info("Number all commits", *targetBranch, len(ach))
 
+	// remove all commits that are contained in PRs
 	npr := 0
 	for _, pn := range allPrCommits {
 		for h := range pn {
 			npr++
+			delete(ach, h)
+		}
+	}
+
+	// commits with more then one parent are merge commits
+	for h, c := range ach {
+		if len(c.ParentHashes) > 1 {
 			delete(ach, h)
 		}
 	}
