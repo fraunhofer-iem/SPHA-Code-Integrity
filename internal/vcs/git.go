@@ -36,7 +36,7 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 
 	iter.ForEach(func(curr *object.Commit) error {
 		if !curr.Hash.IsZero() {
-			patchId, err := GetPatchId(repoDir, curr)
+			patchId, err := GetPatchId(repoDir, curr.Hash.String())
 			if err != nil {
 				return err
 			}
@@ -70,7 +70,7 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (map[int]
 		newCommits := getNewCommitsFromPr(pr, lc)
 		patchIdCommits := make(map[string]*object.Commit, len(newCommits))
 		for _, nc := range newCommits {
-			patchId, _ := GetPatchId(repoDir, nc)
+			patchId, _ := GetPatchId(repoDir, nc.Hash.String())
 			patchIdCommits[patchId] = nc
 		}
 		allNewCommits[pr.Number] = patchIdCommits
