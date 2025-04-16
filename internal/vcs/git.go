@@ -32,7 +32,7 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 
 	c, _ := lc.CommitObject(*hash)
 	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
-	hashs := set.New[string](100) //make(map[string]*object.Commit)
+	hashs := set.New[string](100)
 	cc := 0
 	csc := 0
 
@@ -65,7 +65,7 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*set.Set
 		return nil, err
 	}
 
-	allNewCommits := set.New[string](len(prs) * 10) //make(map[int]map[string]*object.Commit)
+	allNewCommits := set.New[string](len(prs) * 10)
 
 	for _, pr := range prs {
 
@@ -73,13 +73,10 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*set.Set
 		if err != nil {
 			continue
 		}
-		// patchIdCommits := make(map[string]*object.Commit, len(newCommits))
 		for nc := range newCommits.Items() {
 			patchId, _ := GetPatchId(repoDir, nc)
 			allNewCommits.Insert(patchId)
-			// patchIdCommits[patchId] = nc
 		}
-		// allNewCommits[pr.Number] = patchIdCommits
 	}
 
 	return allNewCommits, nil
@@ -117,39 +114,13 @@ func getNewCommitsFromPr(dir string, pr gh.PR, lc *git.Repository) (*set.Set[str
 	if err != nil {
 		return nil, err
 	}
-	return set.From(newCommits), nil //make(map[string]*object.Commit)
-	// iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid), Order: git.LogOrderCommitterTime})
+	commitSet := set.From(newCommits)
 
-	// iter.ForEach(func(curr *object.Commit) error {
-	// 	h := curr.Hash.String()
-	// 	// slog.Default().Info("first it", "commit", curr)
-	// 	newCommits.Insert(h) //[h] = curr
-	// 	if h == pr.BaseRefOid {
-	// 		slog.Default().Debug("Found base ref and stopping loop")
-	// 		return storer.ErrStop
-	// 	}
-
-	// 	return nil
-	// })
-
-	// iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid), Order: git.LogOrderCommitterTime})
-	// iterBase.ForEach(func(curr *object.Commit) error {
-	// 	// slog.Default().Info("second it", "commit", curr)
-	// 	newCommits.Remove(curr.Hash.String())
-	// 	// delete(newCommits, curr.Hash.String())
-	// 	return nil
-	// })
-
-	// get commit from merge getNewCommit
 	// this is used to identify squashed commits
-	// c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid))
-	// if err != nil {
-	// 	slog.Default().Error("Get commit object failed for merge commit", "id", pr.MergeCommit.Oid, "error", err)
-	// 	return newCommits
-	// }
-	// newCommits.Insert(c.Hash.String())
-
-	// return newCommits
+	if c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid)); err == nil {
+		commitSet.Insert(c.Hash.String())
+	}
+	return commitSet, nil
 }
 
 // getRevList executes the git rev-list command and returns commit hashes.
