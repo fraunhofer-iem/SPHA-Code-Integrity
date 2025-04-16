@@ -12,12 +12,13 @@ import (
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/go-git/go-git/v5/plumbing/storer"
+	"github.com/hashicorp/go-set/v3"
 )
 
 type CommitData struct {
 	NumberCommits  int
 	NumberVerified int
-	Hashs          map[string]*object.Commit
+	Hashs          *set.Set[string]
 }
 
 // getSignedCommitCount returns the number of commits and the number of verified commits
@@ -30,7 +31,7 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 
 	c, _ := lc.CommitObject(*hash)
 	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
-	hashs := make(map[string]*object.Commit)
+	hashs := set.New[string](100) //make(map[string]*object.Commit)
 	cc := 0
 	csc := 0
 
@@ -40,7 +41,7 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 			if err != nil {
 				return err
 			}
-			hashs[patchId] = curr
+			hashs.Insert(patchId)
 			cc++
 			if c.PGPSignature != "" {
 				csc++
@@ -56,24 +57,25 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 	}, nil
 }
 
-func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (map[int]map[string]*object.Commit, error) {
+func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*set.Set[string], error) {
 
 	err := fetchAllRefs(prs, lc)
 	if err != nil {
 		return nil, err
 	}
 
-	allNewCommits := make(map[int]map[string]*object.Commit)
+	allNewCommits := set.New[string](len(prs) * 10) //make(map[int]map[string]*object.Commit)
 
 	for _, pr := range prs {
 
 		newCommits := getNewCommitsFromPr(pr, lc)
-		patchIdCommits := make(map[string]*object.Commit, len(newCommits))
-		for _, nc := range newCommits {
-			patchId, _ := GetPatchId(repoDir, nc.Hash.String())
-			patchIdCommits[patchId] = nc
+		// patchIdCommits := make(map[string]*object.Commit, len(newCommits))
+		for nc := range newCommits.Items() {
+			patchId, _ := GetPatchId(repoDir, nc)
+			allNewCommits.Insert(patchId)
+			// patchIdCommits[patchId] = nc
 		}
-		allNewCommits[pr.Number] = patchIdCommits
+		// allNewCommits[pr.Number] = patchIdCommits
 	}
 
 	return allNewCommits, nil
@@ -104,18 +106,18 @@ func fetchAllRefs(prs []gh.PR, lc *git.Repository) error {
 	return nil
 }
 
-func getNewCommitsFromPr(pr gh.PR, lc *git.Repository) map[string]*object.Commit {
+func getNewCommitsFromPr(pr gh.PR, lc *git.Repository) *set.Set[string] {
 
-	slog.Default().Info("processing pr", "pr number", pr.Number, "base ref", pr.BaseRefOid, "head ref", pr.HeadRefOid)
-	newCommits := make(map[string]*object.Commit)
+	slog.Default().Debug("processing pr", "pr number", pr.Number, "base ref", pr.BaseRefOid, "head ref", pr.HeadRefOid)
+	newCommits := set.New[string](100) //make(map[string]*object.Commit)
 	iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid), Order: git.LogOrderCommitterTime})
 
 	iter.ForEach(func(curr *object.Commit) error {
 		h := curr.Hash.String()
-		slog.Default().Info("first it", "commit", curr)
-		newCommits[h] = curr
+		// slog.Default().Info("first it", "commit", curr)
+		newCommits.Insert(h) //[h] = curr
 		if h == pr.BaseRefOid {
-			slog.Default().Info("should stop now")
+			slog.Default().Info("Found base ref and stopping loop")
 			return storer.ErrStop
 		}
 
@@ -124,8 +126,9 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository) map[string]*object.Commit
 
 	iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid), Order: git.LogOrderCommitterTime})
 	iterBase.ForEach(func(curr *object.Commit) error {
-		slog.Default().Info("second it", "commit", curr)
-		delete(newCommits, curr.Hash.String())
+		// slog.Default().Info("second it", "commit", curr)
+		newCommits.Remove(curr.Hash.String())
+		// delete(newCommits, curr.Hash.String())
 		return nil
 	})
 
@@ -136,7 +139,7 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository) map[string]*object.Commit
 		slog.Default().Error("Get commit object failed for merge commit", "id", pr.MergeCommit.Oid, "error", err)
 		return newCommits
 	}
-	newCommits[c.Hash.String()] = c
+	newCommits.Insert(c.Hash.String())
 
 	return newCommits
 }
