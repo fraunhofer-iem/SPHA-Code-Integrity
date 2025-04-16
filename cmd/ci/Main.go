@@ -72,7 +72,7 @@ func main() {
 		// Username: "abc123", // anything except an empty string
 		// Password: "github_access_token",
 		// },
-		logger.Info("Cloning", "clone url", *r.CloneURL, "clone target", *cloneTarget)
+		logger.Info("Cloning", "clone url", *r.CloneURL, "branch", *targetBranch, "clone target", *cloneTarget)
 		lc, err = git.PlainClone(*cloneTarget, true, &git.CloneOptions{URL: *r.CloneURL})
 		defer os.RemoveAll(*cloneTarget)
 		repoDir = *cloneTarget
@@ -81,21 +81,30 @@ func main() {
 		repoDir = *localPath
 	}
 	if err != nil {
-		log.Fatal(err)
+		panic(err)
 	}
 
 	methodTimer := time.Now()
 	prs, err := gh.GetPullRequests(ownerAndRepoSplit[0], ownerAndRepoSplit[1], *targetBranch, *token)
+	if err != nil {
+		panic(err)
+	}
 	elapsed := time.Since(methodTimer)
 	logger.Info("Time to query all Pull requests", "time", elapsed)
 
 	methodTimer = time.Now()
-	allPrCommits := vcs.GetMergedPrHashs(prs, lc, repoDir)
+	allPrCommits, err := vcs.GetMergedPrHashs(prs, lc, repoDir)
+	if err != nil {
+		panic(err)
+	}
 	elapsed = time.Since(methodTimer)
 	logger.Info("Time to get pr hashes", "time", elapsed)
 
 	methodTimer = time.Now()
 	allCommits, err := vcs.GetCommitData(lc, repoDir, *targetBranch)
+	if err != nil {
+		panic(err)
+	}
 	elapsed = time.Since(methodTimer)
 	logger.Info("Time to get commit hashes from target branch", "time", elapsed)
 

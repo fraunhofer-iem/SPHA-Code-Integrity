@@ -5,8 +5,6 @@ import (
 	"log/slog"
 	"os/exec"
 	"strings"
-
-	"github.com/go-git/go-git/v5/plumbing/object"
 )
 
 type PatchIdCache struct {
@@ -52,9 +50,7 @@ func (c *PatchIdCache) Get(key string) *string {
 
 var cache = NewPatchIdCache(10_000_000)
 
-func GetPatchId(dir string, c *object.Commit) (string, error) {
-
-	hash := c.Hash.String()
+func GetPatchId(dir string, hash string) (string, error) {
 
 	cacheResult := cache.Get(hash)
 	if cacheResult != nil {
