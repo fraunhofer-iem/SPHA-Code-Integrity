@@ -3,6 +3,8 @@ package vcs
 import (
 	"fmt"
 	"log/slog"
+	"os/exec"
+	"strings"
 	"time"
 
 	"project-integrity-calculator/internal/gh"
@@ -11,7 +13,6 @@ import (
 	"github.com/go-git/go-git/v5/config"
 	"github.com/go-git/go-git/v5/plumbing"
 	"github.com/go-git/go-git/v5/plumbing/object"
-	"github.com/go-git/go-git/v5/plumbing/storer"
 	"github.com/hashicorp/go-set/v3"
 )
 
@@ -68,7 +69,10 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*set.Set
 
 	for _, pr := range prs {
 
-		newCommits := getNewCommitsFromPr(pr, lc)
+		newCommits, err := getNewCommitsFromPr(repoDir, pr, lc)
+		if err != nil {
+			continue
+		}
 		// patchIdCommits := make(map[string]*object.Commit, len(newCommits))
 		for nc := range newCommits.Items() {
 			patchId, _ := GetPatchId(repoDir, nc)
@@ -106,40 +110,57 @@ func fetchAllRefs(prs []gh.PR, lc *git.Repository) error {
 	return nil
 }
 
-func getNewCommitsFromPr(pr gh.PR, lc *git.Repository) *set.Set[string] {
+func getNewCommitsFromPr(dir string, pr gh.PR, lc *git.Repository) (*set.Set[string], error) {
 
 	slog.Default().Debug("processing pr", "pr number", pr.Number, "base ref", pr.BaseRefOid, "head ref", pr.HeadRefOid)
-	newCommits := set.New[string](100) //make(map[string]*object.Commit)
-	iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid), Order: git.LogOrderCommitterTime})
+	newCommits, err := getRevList(dir, pr.BaseRefOid, pr.HeadRefOid)
+	if err != nil {
+		return nil, err
+	}
+	return set.From(newCommits), nil //make(map[string]*object.Commit)
+	// iter, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.HeadRefOid), Order: git.LogOrderCommitterTime})
 
-	iter.ForEach(func(curr *object.Commit) error {
-		h := curr.Hash.String()
-		// slog.Default().Info("first it", "commit", curr)
-		newCommits.Insert(h) //[h] = curr
-		if h == pr.BaseRefOid {
-			slog.Default().Debug("Found base ref and stopping loop")
-			return storer.ErrStop
-		}
+	// iter.ForEach(func(curr *object.Commit) error {
+	// 	h := curr.Hash.String()
+	// 	// slog.Default().Info("first it", "commit", curr)
+	// 	newCommits.Insert(h) //[h] = curr
+	// 	if h == pr.BaseRefOid {
+	// 		slog.Default().Debug("Found base ref and stopping loop")
+	// 		return storer.ErrStop
+	// 	}
 
-		return nil
-	})
+	// 	return nil
+	// })
 
-	iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid), Order: git.LogOrderCommitterTime})
-	iterBase.ForEach(func(curr *object.Commit) error {
-		// slog.Default().Info("second it", "commit", curr)
-		newCommits.Remove(curr.Hash.String())
-		// delete(newCommits, curr.Hash.String())
-		return nil
-	})
+	// iterBase, _ := lc.Log(&git.LogOptions{From: plumbing.NewHash(pr.BaseRefOid), Order: git.LogOrderCommitterTime})
+	// iterBase.ForEach(func(curr *object.Commit) error {
+	// 	// slog.Default().Info("second it", "commit", curr)
+	// 	newCommits.Remove(curr.Hash.String())
+	// 	// delete(newCommits, curr.Hash.String())
+	// 	return nil
+	// })
 
 	// get commit from merge getNewCommit
 	// this is used to identify squashed commits
-	c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid))
-	if err != nil {
-		slog.Default().Error("Get commit object failed for merge commit", "id", pr.MergeCommit.Oid, "error", err)
-		return newCommits
-	}
-	newCommits.Insert(c.Hash.String())
+	// c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid))
+	// if err != nil {
+	// 	slog.Default().Error("Get commit object failed for merge commit", "id", pr.MergeCommit.Oid, "error", err)
+	// 	return newCommits
+	// }
+	// newCommits.Insert(c.Hash.String())
 
-	return newCommits
+	// return newCommits
+}
+
+// getRevList executes the git rev-list command and returns commit hashes.
+func getRevList(repoPath, baseRef, headRef string) ([]string, error) {
+	cmd := exec.Command("git", "rev-list", fmt.Sprintf("%s..%s", baseRef, headRef))
+	cmd.Dir = repoPath
+	out, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	// Split by newline to get each commit hash.
+	commits := strings.Split(strings.TrimSpace(string(out)), "\n")
+	return commits, nil
 }
