@@ -117,7 +117,7 @@ func getNewCommitsFromPr(pr gh.PR, lc *git.Repository) *set.Set[string] {
 		// slog.Default().Info("first it", "commit", curr)
 		newCommits.Insert(h) //[h] = curr
 		if h == pr.BaseRefOid {
-			slog.Default().Info("Found base ref and stopping loop")
+			slog.Default().Debug("Found base ref and stopping loop")
 			return storer.ErrStop
 		}
 
