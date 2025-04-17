@@ -1,0 +1,508 @@
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "nameWithOwner": "microsoft/PowerToys",
+          "stargazerCount": 117425,
+          "url": "https://github.com/microsoft/PowerToys"
+        },
+        {
+          "nameWithOwner": "2dust/v2rayN",
+          "stargazerCount": 78232,
+          "url": "https://github.com/2dust/v2rayN"
+        },
+        {
+          "nameWithOwner": "shadowsocks/shadowsocks-windows",
+          "stargazerCount": 58759,
+          "url": "https://github.com/shadowsocks/shadowsocks-windows"
+        },
+        {
+          "nameWithOwner": "PowerShell/PowerShell",
+          "stargazerCount": 47035,
+          "url": "https://github.com/PowerShell/PowerShell"
+        },
+        {
+          "nameWithOwner": "jellyfin/jellyfin",
+          "stargazerCount": 38816,
+          "url": "https://github.com/jellyfin/jellyfin"
+        },
+        {
+          "nameWithOwner": "files-community/Files",
+          "stargazerCount": 36788,
+          "url": "https://github.com/files-community/Files"
+        },
+        {
+          "nameWithOwner": "dotnet/aspnetcore",
+          "stargazerCount": 36468,
+          "url": "https://github.com/dotnet/aspnetcore"
+        },
+        {
+          "nameWithOwner": "huiyadanli/RevokeMsgPatcher",
+          "stargazerCount": 32311,
+          "url": "https://github.com/huiyadanli/RevokeMsgPatcher"
+        },
+        {
+          "nameWithOwner": "ShareX/ShareX",
+          "stargazerCount": 32018,
+          "url": "https://github.com/ShareX/ShareX"
+        },
+        {
+          "nameWithOwner": "DevToys-app/DevToys",
+          "stargazerCount": 28622,
+          "url": "https://github.com/DevToys-app/DevToys"
+        },
+        {
+          "nameWithOwner": "dnSpy/dnSpy",
+          "stargazerCount": 27405,
+          "url": "https://github.com/dnSpy/dnSpy"
+        },
+        {
+          "nameWithOwner": "AvaloniaUI/Avalonia",
+          "stargazerCount": 27377,
+          "url": "https://github.com/AvaloniaUI/Avalonia"
+        },
+        {
+          "nameWithOwner": "NickeManarin/ScreenToGif",
+          "stargazerCount": 24745,
+          "url": "https://github.com/NickeManarin/ScreenToGif"
+        },
+        {
+          "nameWithOwner": "dotnet-architecture/eShopOnContainers",
+          "stargazerCount": 24529,
+          "url": "https://github.com/dotnet-architecture/eShopOnContainers"
+        },
+        {
+          "nameWithOwner": "microsoft/semantic-kernel",
+          "stargazerCount": 24039,
+          "url": "https://github.com/microsoft/semantic-kernel"
+        },
+        {
+          "nameWithOwner": "mxgmn/WaveFunctionCollapse",
+          "stargazerCount": 23931,
+          "url": "https://github.com/mxgmn/WaveFunctionCollapse"
+        },
+        {
+          "nameWithOwner": "CodeHubApp/CodeHub",
+          "stargazerCount": 22765,
+          "url": "https://github.com/CodeHubApp/CodeHub"
+        },
+        {
+          "nameWithOwner": "icsharpcode/ILSpy",
+          "stargazerCount": 22698,
+          "url": "https://github.com/icsharpcode/ILSpy"
+        },
+        {
+          "nameWithOwner": "leiurayer/downkyi",
+          "stargazerCount": 22603,
+          "url": "https://github.com/leiurayer/downkyi"
+        },
+        {
+          "nameWithOwner": "dotnet/maui",
+          "stargazerCount": 22599,
+          "url": "https://github.com/dotnet/maui"
+        },
+        {
+          "nameWithOwner": "BeyondDimension/SteamTools",
+          "stargazerCount": 21796,
+          "url": "https://github.com/BeyondDimension/SteamTools"
+        },
+        {
+          "nameWithOwner": "thangchung/awesome-dotnet-core",
+          "stargazerCount": 20371,
+          "url": "https://github.com/thangchung/awesome-dotnet-core"
+        },
+        {
+          "nameWithOwner": "dotnet/roslyn",
+          "stargazerCount": 19441,
+          "url": "https://github.com/dotnet/roslyn"
+        },
+        {
+          "nameWithOwner": "QL-Win/QuickLook",
+          "stargazerCount": 18891,
+          "url": "https://github.com/QL-Win/QuickLook"
+        },
+        {
+          "nameWithOwner": "Unity-Technologies/ml-agents",
+          "stargazerCount": 17964,
+          "url": "https://github.com/Unity-Technologies/ml-agents"
+        },
+        {
+          "nameWithOwner": "jasontaylordev/CleanArchitecture",
+          "stargazerCount": 17934,
+          "url": "https://github.com/jasontaylordev/CleanArchitecture"
+        },
+        {
+          "nameWithOwner": "DapperLib/Dapper",
+          "stargazerCount": 17835,
+          "url": "https://github.com/DapperLib/Dapper"
+        },
+        {
+          "nameWithOwner": "peass-ng/PEASS-ng",
+          "stargazerCount": 17302,
+          "url": "https://github.com/peass-ng/PEASS-ng"
+        },
+        {
+          "nameWithOwner": "TGSAN/CMWTAT_Digital_Edition",
+          "stargazerCount": 17272,
+          "url": "https://github.com/TGSAN/CMWTAT_Digital_Edition"
+        },
+        {
+          "nameWithOwner": "ardalis/CleanArchitecture",
+          "stargazerCount": 16940,
+          "url": "https://github.com/ardalis/CleanArchitecture"
+        },
+        {
+          "nameWithOwner": "netchx/netch",
+          "stargazerCount": 16729,
+          "url": "https://github.com/netchx/netch"
+        },
+        {
+          "nameWithOwner": "bitwarden/server",
+          "stargazerCount": 16398,
+          "url": "https://github.com/bitwarden/server"
+        },
+        {
+          "nameWithOwner": "ppy/osu",
+          "stargazerCount": 16397,
+          "url": "https://github.com/ppy/osu"
+        },
+        {
+          "nameWithOwner": "dotnet/runtime",
+          "stargazerCount": 16141,
+          "url": "https://github.com/dotnet/runtime"
+        },
+        {
+          "nameWithOwner": "rocksdanister/lively",
+          "stargazerCount": 16138,
+          "url": "https://github.com/rocksdanister/lively"
+        },
+        {
+          "nameWithOwner": "hellzerg/optimizer",
+          "stargazerCount": 15901,
+          "url": "https://github.com/hellzerg/optimizer"
+        },
+        {
+          "nameWithOwner": "marticliment/UniGetUI",
+          "stargazerCount": 15637,
+          "url": "https://github.com/marticliment/UniGetUI"
+        },
+        {
+          "nameWithOwner": "MaterialDesignInXAML/MaterialDesignInXamlToolkit",
+          "stargazerCount": 15549,
+          "url": "https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit"
+        },
+        {
+          "nameWithOwner": "OpenRA/OpenRA",
+          "stargazerCount": 15471,
+          "url": "https://github.com/OpenRA/OpenRA"
+        },
+        {
+          "nameWithOwner": "nilaoda/N_m3u8DL-CLI",
+          "stargazerCount": 14981,
+          "url": "https://github.com/nilaoda/N_m3u8DL-CLI"
+        },
+        {
+          "nameWithOwner": "Klocman/Bulk-Crap-Uninstaller",
+          "stargazerCount": 14310,
+          "url": "https://github.com/Klocman/Bulk-Crap-Uninstaller"
+        },
+        {
+          "nameWithOwner": "BluePointLilac/ContextMenuManager",
+          "stargazerCount": 14133,
+          "url": "https://github.com/BluePointLilac/ContextMenuManager"
+        },
+        {
+          "nameWithOwner": "dotnet/efcore",
+          "stargazerCount": 14051,
+          "url": "https://github.com/dotnet/efcore"
+        },
+        {
+          "nameWithOwner": "Perfare/AssetStudio",
+          "stargazerCount": 13979,
+          "url": "https://github.com/Perfare/AssetStudio"
+        },
+        {
+          "nameWithOwner": "App-vNext/Polly",
+          "stargazerCount": 13710,
+          "url": "https://github.com/App-vNext/Polly"
+        },
+        {
+          "nameWithOwner": "abpframework/abp",
+          "stargazerCount": 13390,
+          "url": "https://github.com/abpframework/abp"
+        },
+        {
+          "nameWithOwner": "Jackett/Jackett",
+          "stargazerCount": 13235,
+          "url": "https://github.com/Jackett/Jackett"
+        },
+        {
+          "nameWithOwner": "dotnet/AspNetCore.Docs",
+          "stargazerCount": 12842,
+          "url": "https://github.com/dotnet/AspNetCore.Docs"
+        },
+        {
+          "nameWithOwner": "winsw/winsw",
+          "stargazerCount": 12801,
+          "url": "https://github.com/winsw/winsw"
+        },
+        {
+          "nameWithOwner": "QuestPDF/QuestPDF",
+          "stargazerCount": 12743,
+          "url": "https://github.com/QuestPDF/QuestPDF"
+        },
+        {
+          "nameWithOwner": "Unity-Technologies/UnityCsReference",
+          "stargazerCount": 12188,
+          "url": "https://github.com/Unity-Technologies/UnityCsReference"
+        },
+        {
+          "nameWithOwner": "duplicati/duplicati",
+          "stargazerCount": 12144,
+          "url": "https://github.com/duplicati/duplicati"
+        },
+        {
+          "nameWithOwner": "MonoGame/MonoGame",
+          "stargazerCount": 12013,
+          "url": "https://github.com/MonoGame/MonoGame"
+        },
+        {
+          "nameWithOwner": "dotnet/csharplang",
+          "stargazerCount": 11910,
+          "url": "https://github.com/dotnet/csharplang"
+        },
+        {
+          "nameWithOwner": "aspnetboilerplate/aspnetboilerplate",
+          "stargazerCount": 11906,
+          "url": "https://github.com/aspnetboilerplate/aspnetboilerplate"
+        },
+        {
+          "nameWithOwner": "JustArchiNET/ArchiSteamFarm",
+          "stargazerCount": 11887,
+          "url": "https://github.com/JustArchiNET/ArchiSteamFarm"
+        },
+        {
+          "nameWithOwner": "kgrzybek/modular-monolith-with-ddd",
+          "stargazerCount": 11832,
+          "url": "https://github.com/kgrzybek/modular-monolith-with-ddd"
+        },
+        {
+          "nameWithOwner": "Sonarr/Sonarr",
+          "stargazerCount": 11652,
+          "url": "https://github.com/Sonarr/Sonarr"
+        },
+        {
+          "nameWithOwner": "jbogard/MediatR",
+          "stargazerCount": 11588,
+          "url": "https://github.com/jbogard/MediatR"
+        },
+        {
+          "nameWithOwner": "nilaoda/BBDown",
+          "stargazerCount": 11361,
+          "url": "https://github.com/nilaoda/BBDown"
+        },
+        {
+          "nameWithOwner": "Radarr/Radarr",
+          "stargazerCount": 11350,
+          "url": "https://github.com/Radarr/Radarr"
+        },
+        {
+          "nameWithOwner": "mono/mono",
+          "stargazerCount": 11253,
+          "url": "https://github.com/mono/mono"
+        },
+        {
+          "nameWithOwner": "Tyrrrz/YoutubeDownloader",
+          "stargazerCount": 11115,
+          "url": "https://github.com/Tyrrrz/YoutubeDownloader"
+        },
+        {
+          "nameWithOwner": "QuantConnect/Lean",
+          "stargazerCount": 11037,
+          "url": "https://github.com/QuantConnect/Lean"
+        },
+        {
+          "nameWithOwner": "srwi/EverythingToolbar",
+          "stargazerCount": 11016,
+          "url": "https://github.com/srwi/EverythingToolbar"
+        },
+        {
+          "nameWithOwner": "JamesNK/Newtonsoft.Json",
+          "stargazerCount": 11014,
+          "url": "https://github.com/JamesNK/Newtonsoft.Json"
+        },
+        {
+          "nameWithOwner": "microsoft/garnet",
+          "stargazerCount": 10969,
+          "url": "https://github.com/microsoft/garnet"
+        },
+        {
+          "nameWithOwner": "coding-horror/basic-computer-games",
+          "stargazerCount": 10962,
+          "url": "https://github.com/coding-horror/basic-computer-games"
+        },
+        {
+          "nameWithOwner": "dotnet/BenchmarkDotNet",
+          "stargazerCount": 10913,
+          "url": "https://github.com/dotnet/BenchmarkDotNet"
+        },
+        {
+          "nameWithOwner": "chocolatey/choco",
+          "stargazerCount": 10704,
+          "url": "https://github.com/chocolatey/choco"
+        },
+        {
+          "nameWithOwner": "xupefei/Locale-Emulator",
+          "stargazerCount": 10523,
+          "url": "https://github.com/xupefei/Locale-Emulator"
+        },
+        {
+          "nameWithOwner": "JosefNemec/Playnite",
+          "stargazerCount": 10456,
+          "url": "https://github.com/JosefNemec/Playnite"
+        },
+        {
+          "nameWithOwner": "dotnet-architecture/eShopOnWeb",
+          "stargazerCount": 10372,
+          "url": "https://github.com/dotnet-architecture/eShopOnWeb"
+        },
+        {
+          "nameWithOwner": "dotnet/orleans",
+          "stargazerCount": 10351,
+          "url": "https://github.com/dotnet/orleans"
+        },
+        {
+          "nameWithOwner": "MathewSachin/Captura",
+          "stargazerCount": 10141,
+          "url": "https://github.com/MathewSachin/Captura"
+        },
+        {
+          "nameWithOwner": "AutoMapper/AutoMapper",
+          "stargazerCount": 10105,
+          "url": "https://github.com/AutoMapper/AutoMapper"
+        },
+        {
+          "nameWithOwner": "spectreconsole/spectre.console",
+          "stargazerCount": 10051,
+          "url": "https://github.com/spectreconsole/spectre.console"
+        },
+        {
+          "nameWithOwner": "gui-cs/Terminal.Gui",
+          "stargazerCount": 10010,
+          "url": "https://github.com/gui-cs/Terminal.Gui"
+        },
+        {
+          "nameWithOwner": "cefsharp/CefSharp",
+          "stargazerCount": 10008,
+          "url": "https://github.com/cefsharp/CefSharp"
+        },
+        {
+          "nameWithOwner": "SubtitleEdit/subtitleedit",
+          "stargazerCount": 9922,
+          "url": "https://github.com/SubtitleEdit/subtitleedit"
+        },
+        {
+          "nameWithOwner": "dodyg/practical-aspnetcore",
+          "stargazerCount": 9918,
+          "url": "https://github.com/dodyg/practical-aspnetcore"
+        },
+        {
+          "nameWithOwner": "wmjordan/PDFPatcher",
+          "stargazerCount": 9907,
+          "url": "https://github.com/wmjordan/PDFPatcher"
+        },
+        {
+          "nameWithOwner": "lucasg/Dependencies",
+          "stargazerCount": 9771,
+          "url": "https://github.com/lucasg/Dependencies"
+        },
+        {
+          "nameWithOwner": "restsharp/RestSharp",
+          "stargazerCount": 9725,
+          "url": "https://github.com/restsharp/RestSharp"
+        },
+        {
+          "nameWithOwner": "d2phap/ImageGlass",
+          "stargazerCount": 9697,
+          "url": "https://github.com/d2phap/ImageGlass"
+        },
+        {
+          "nameWithOwner": "HangfireIO/Hangfire",
+          "stargazerCount": 9650,
+          "url": "https://github.com/HangfireIO/Hangfire"
+        },
+        {
+          "nameWithOwner": "OdysseusYuan/LKY_OfficeTools",
+          "stargazerCount": 9646,
+          "url": "https://github.com/OdysseusYuan/LKY_OfficeTools"
+        },
+        {
+          "nameWithOwner": "Tichau/FileConverter",
+          "stargazerCount": 9604,
+          "url": "https://github.com/Tichau/FileConverter"
+        },
+        {
+          "nameWithOwner": "nopSolutions/nopCommerce",
+          "stargazerCount": 9569,
+          "url": "https://github.com/nopSolutions/nopCommerce"
+        },
+        {
+          "nameWithOwner": "MahApps/MahApps.Metro",
+          "stargazerCount": 9549,
+          "url": "https://github.com/MahApps/MahApps.Metro"
+        },
+        {
+          "nameWithOwner": "mRemoteNG/mRemoteNG",
+          "stargazerCount": 9536,
+          "url": "https://github.com/mRemoteNG/mRemoteNG"
+        },
+        {
+          "nameWithOwner": "File-New-Project/EarTrumpet",
+          "stargazerCount": 9514,
+          "url": "https://github.com/File-New-Project/EarTrumpet"
+        },
+        {
+          "nameWithOwner": "Flow-Launcher/Flow.Launcher",
+          "stargazerCount": 9441,
+          "url": "https://github.com/Flow-Launcher/Flow.Launcher"
+        },
+        {
+          "nameWithOwner": "seerge/g-helper",
+          "stargazerCount": 9385,
+          "url": "https://github.com/seerge/g-helper"
+        },
+        {
+          "nameWithOwner": "unoplatform/uno",
+          "stargazerCount": 9314,
+          "url": "https://github.com/unoplatform/uno"
+        },
+        {
+          "nameWithOwner": "FluentValidation/FluentValidation",
+          "stargazerCount": 9314,
+          "url": "https://github.com/FluentValidation/FluentValidation"
+        },
+        {
+          "nameWithOwner": "felixse/FluentTerminal",
+          "stargazerCount": 9289,
+          "url": "https://github.com/felixse/FluentTerminal"
+        },
+        {
+          "nameWithOwner": "SignalR/SignalR",
+          "stargazerCount": 9260,
+          "url": "https://github.com/SignalR/SignalR"
+        },
+        {
+          "nameWithOwner": "egametang/ET",
+          "stargazerCount": 9220,
+          "url": "https://github.com/egametang/ET"
+        },
+        {
+          "nameWithOwner": "bchavez/Bogus",
+          "stargazerCount": 9205,
+          "url": "https://github.com/bchavez/Bogus"
+        }
+      ]
+    }
+  }
+}

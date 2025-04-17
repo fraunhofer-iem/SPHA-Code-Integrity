@@ -112,21 +112,6 @@ func main() {
 	logger.Info("Number all commits", *targetBranch, ach.Size())
 
 	commitsWithoutPr := ach.Difference(allPrCommits)
-	// remove all commits that are contained in PRs
-	// npr := 0
-	// for _, pn := range allPrCommits {
-	// 	for h := range pn {
-	// 		npr++
-	// 		delete(ach, h)
-	// 	}
-	// }
-
-	// // commits with more then one parent are merge commits
-	// for h, c := range ach {
-	// 	if len(c.ParentHashes) > 1 {
-	// 		delete(ach, h)
-	// 	}
-	// }
 
 	logger.Info("Number commits from PRs", "number", allPrCommits.Size())
 	logger.Info("Number commits without PR", "number", commitsWithoutPr.Size())

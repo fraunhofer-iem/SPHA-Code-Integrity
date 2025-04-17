@@ -1,0 +1,508 @@
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "nameWithOwner": "freeCodeCamp/freeCodeCamp",
+          "stargazerCount": 416616,
+          "url": "https://github.com/freeCodeCamp/freeCodeCamp"
+        },
+        {
+          "nameWithOwner": "kamranahmedse/developer-roadmap",
+          "stargazerCount": 313811,
+          "url": "https://github.com/kamranahmedse/developer-roadmap"
+        },
+        {
+          "nameWithOwner": "vuejs/vue",
+          "stargazerCount": 208708,
+          "url": "https://github.com/vuejs/vue"
+        },
+        {
+          "nameWithOwner": "microsoft/vscode",
+          "stargazerCount": 170108,
+          "url": "https://github.com/microsoft/vscode"
+        },
+        {
+          "nameWithOwner": "yangshun/tech-interview-handbook",
+          "stargazerCount": 125301,
+          "url": "https://github.com/yangshun/tech-interview-handbook"
+        },
+        {
+          "nameWithOwner": "microsoft/TypeScript",
+          "stargazerCount": 104045,
+          "url": "https://github.com/microsoft/TypeScript"
+        },
+        {
+          "nameWithOwner": "excalidraw/excalidraw",
+          "stargazerCount": 97675,
+          "url": "https://github.com/excalidraw/excalidraw"
+        },
+        {
+          "nameWithOwner": "angular/angular",
+          "stargazerCount": 97506,
+          "url": "https://github.com/angular/angular"
+        },
+        {
+          "nameWithOwner": "mui/material-ui",
+          "stargazerCount": 95368,
+          "url": "https://github.com/mui/material-ui"
+        },
+        {
+          "nameWithOwner": "ant-design/ant-design",
+          "stargazerCount": 94291,
+          "url": "https://github.com/ant-design/ant-design"
+        },
+        {
+          "nameWithOwner": "iptv-org/iptv",
+          "stargazerCount": 92461,
+          "url": "https://github.com/iptv-org/iptv"
+        },
+        {
+          "nameWithOwner": "langgenius/dify",
+          "stargazerCount": 92455,
+          "url": "https://github.com/langgenius/dify"
+        },
+        {
+          "nameWithOwner": "puppeteer/puppeteer",
+          "stargazerCount": 90397,
+          "url": "https://github.com/puppeteer/puppeteer"
+        },
+        {
+          "nameWithOwner": "tailwindlabs/tailwindcss",
+          "stargazerCount": 87195,
+          "url": "https://github.com/tailwindlabs/tailwindcss"
+        },
+        {
+          "nameWithOwner": "storybookjs/storybook",
+          "stargazerCount": 86406,
+          "url": "https://github.com/storybookjs/storybook"
+        },
+        {
+          "nameWithOwner": "shadcn-ui/ui",
+          "stargazerCount": 85469,
+          "url": "https://github.com/shadcn-ui/ui"
+        },
+        {
+          "nameWithOwner": "ChatGPTNextWeb/NextChat",
+          "stargazerCount": 82808,
+          "url": "https://github.com/ChatGPTNextWeb/NextChat"
+        },
+        {
+          "nameWithOwner": "n8n-io/n8n",
+          "stargazerCount": 82172,
+          "url": "https://github.com/n8n-io/n8n"
+        },
+        {
+          "nameWithOwner": "gothinkster/realworld",
+          "stargazerCount": 81444,
+          "url": "https://github.com/gothinkster/realworld"
+        },
+        {
+          "nameWithOwner": "supabase/supabase",
+          "stargazerCount": 81047,
+          "url": "https://github.com/supabase/supabase"
+        },
+        {
+          "nameWithOwner": "mermaid-js/mermaid",
+          "stargazerCount": 78202,
+          "url": "https://github.com/mermaid-js/mermaid"
+        },
+        {
+          "nameWithOwner": "vitejs/vite",
+          "stargazerCount": 72144,
+          "url": "https://github.com/vitejs/vite"
+        },
+        {
+          "nameWithOwner": "microsoft/playwright",
+          "stargazerCount": 71755,
+          "url": "https://github.com/microsoft/playwright"
+        },
+        {
+          "nameWithOwner": "hoppscotch/hoppscotch",
+          "stargazerCount": 71188,
+          "url": "https://github.com/hoppscotch/hoppscotch"
+        },
+        {
+          "nameWithOwner": "coder/code-server",
+          "stargazerCount": 71061,
+          "url": "https://github.com/coder/code-server"
+        },
+        {
+          "nameWithOwner": "nestjs/nest",
+          "stargazerCount": 70461,
+          "url": "https://github.com/nestjs/nest"
+        },
+        {
+          "nameWithOwner": "grafana/grafana",
+          "stargazerCount": 67540,
+          "url": "https://github.com/grafana/grafana"
+        },
+        {
+          "nameWithOwner": "strapi/strapi",
+          "stargazerCount": 66152,
+          "url": "https://github.com/strapi/strapi"
+        },
+        {
+          "nameWithOwner": "apache/superset",
+          "stargazerCount": 65755,
+          "url": "https://github.com/apache/superset"
+        },
+        {
+          "nameWithOwner": "immich-app/immich",
+          "stargazerCount": 63791,
+          "url": "https://github.com/immich-app/immich"
+        },
+        {
+          "nameWithOwner": "apache/echarts",
+          "stargazerCount": 63254,
+          "url": "https://github.com/apache/echarts"
+        },
+        {
+          "nameWithOwner": "Eugeny/tabby",
+          "stargazerCount": 63089,
+          "url": "https://github.com/Eugeny/tabby"
+        },
+        {
+          "nameWithOwner": "socketio/socket.io",
+          "stargazerCount": 61916,
+          "url": "https://github.com/socketio/socket.io"
+        },
+        {
+          "nameWithOwner": "reduxjs/redux",
+          "stargazerCount": 61147,
+          "url": "https://github.com/reduxjs/redux"
+        },
+        {
+          "nameWithOwner": "facebook/docusaurus",
+          "stargazerCount": 59403,
+          "url": "https://github.com/facebook/docusaurus"
+        },
+        {
+          "nameWithOwner": "lobehub/lobe-chat",
+          "stargazerCount": 58937,
+          "url": "https://github.com/lobehub/lobe-chat"
+        },
+        {
+          "nameWithOwner": "nuxt/nuxt",
+          "stargazerCount": 56825,
+          "url": "https://github.com/nuxt/nuxt"
+        },
+        {
+          "nameWithOwner": "clash-verge-rev/clash-verge-rev",
+          "stargazerCount": 55098,
+          "url": "https://github.com/clash-verge-rev/clash-verge-rev"
+        },
+        {
+          "nameWithOwner": "remix-run/react-router",
+          "stargazerCount": 54588,
+          "url": "https://github.com/remix-run/react-router"
+        },
+        {
+          "nameWithOwner": "nocodb/nocodb",
+          "stargazerCount": 53789,
+          "url": "https://github.com/nocodb/nocodb"
+        },
+        {
+          "nameWithOwner": "pmndrs/zustand",
+          "stargazerCount": 51692,
+          "url": "https://github.com/pmndrs/zustand"
+        },
+        {
+          "nameWithOwner": "ionic-team/ionic-framework",
+          "stargazerCount": 51624,
+          "url": "https://github.com/ionic-team/ionic-framework"
+        },
+        {
+          "nameWithOwner": "withastro/astro",
+          "stargazerCount": 50538,
+          "url": "https://github.com/withastro/astro"
+        },
+        {
+          "nameWithOwner": "toeverything/AFFiNE",
+          "stargazerCount": 49803,
+          "url": "https://github.com/toeverything/AFFiNE"
+        },
+        {
+          "nameWithOwner": "vuejs/core",
+          "stargazerCount": 49696,
+          "url": "https://github.com/vuejs/core"
+        },
+        {
+          "nameWithOwner": "DefinitelyTyped/DefinitelyTyped",
+          "stargazerCount": 49595,
+          "url": "https://github.com/DefinitelyTyped/DefinitelyTyped"
+        },
+        {
+          "nameWithOwner": "infiniflow/ragflow",
+          "stargazerCount": 49315,
+          "url": "https://github.com/infiniflow/ragflow"
+        },
+        {
+          "nameWithOwner": "laurent22/joplin",
+          "stargazerCount": 48786,
+          "url": "https://github.com/laurent22/joplin"
+        },
+        {
+          "nameWithOwner": "cypress-io/cypress",
+          "stargazerCount": 48524,
+          "url": "https://github.com/cypress-io/cypress"
+        },
+        {
+          "nameWithOwner": "appwrite/appwrite",
+          "stargazerCount": 48183,
+          "url": "https://github.com/appwrite/appwrite"
+        },
+        {
+          "nameWithOwner": "slab/quill",
+          "stargazerCount": 45144,
+          "url": "https://github.com/slab/quill"
+        },
+        {
+          "nameWithOwner": "type-challenges/type-challenges",
+          "stargazerCount": 45070,
+          "url": "https://github.com/type-challenges/type-challenges"
+        },
+        {
+          "nameWithOwner": "pixijs/pixijs",
+          "stargazerCount": 44941,
+          "url": "https://github.com/pixijs/pixijs"
+        },
+        {
+          "nameWithOwner": "TanStack/query",
+          "stargazerCount": 44765,
+          "url": "https://github.com/TanStack/query"
+        },
+        {
+          "nameWithOwner": "jestjs/jest",
+          "stargazerCount": 44705,
+          "url": "https://github.com/jestjs/jest"
+        },
+        {
+          "nameWithOwner": "vercel/hyper",
+          "stargazerCount": 43875,
+          "url": "https://github.com/vercel/hyper"
+        },
+        {
+          "nameWithOwner": "FuelLabs/fuels-ts",
+          "stargazerCount": 43828,
+          "url": "https://github.com/FuelLabs/fuels-ts"
+        },
+        {
+          "nameWithOwner": "babel/babel",
+          "stargazerCount": 43508,
+          "url": "https://github.com/babel/babel"
+        },
+        {
+          "nameWithOwner": "lyswhut/lx-music-desktop",
+          "stargazerCount": 43431,
+          "url": "https://github.com/lyswhut/lx-music-desktop"
+        },
+        {
+          "nameWithOwner": "streamich/react-use",
+          "stargazerCount": 42903,
+          "url": "https://github.com/streamich/react-use"
+        },
+        {
+          "nameWithOwner": "react-hook-form/react-hook-form",
+          "stargazerCount": 42888,
+          "url": "https://github.com/react-hook-form/react-hook-form"
+        },
+        {
+          "nameWithOwner": "RocketChat/Rocket.Chat",
+          "stargazerCount": 42483,
+          "url": "https://github.com/RocketChat/Rocket.Chat"
+        },
+        {
+          "nameWithOwner": "prisma/prisma",
+          "stargazerCount": 41908,
+          "url": "https://github.com/prisma/prisma"
+        },
+        {
+          "nameWithOwner": "styled-components/styled-components",
+          "stargazerCount": 40784,
+          "url": "https://github.com/styled-components/styled-components"
+        },
+        {
+          "nameWithOwner": "cline/cline",
+          "stargazerCount": 40444,
+          "url": "https://github.com/cline/cline"
+        },
+        {
+          "nameWithOwner": "vuetifyjs/vuetify",
+          "stargazerCount": 40437,
+          "url": "https://github.com/vuetifyjs/vuetify"
+        },
+        {
+          "nameWithOwner": "hexojs/hexo",
+          "stargazerCount": 40230,
+          "url": "https://github.com/hexojs/hexo"
+        },
+        {
+          "nameWithOwner": "tldraw/tldraw",
+          "stargazerCount": 39617,
+          "url": "https://github.com/tldraw/tldraw"
+        },
+        {
+          "nameWithOwner": "expo/expo",
+          "stargazerCount": 39133,
+          "url": "https://github.com/expo/expo"
+        },
+        {
+          "nameWithOwner": "chakra-ui/chakra-ui",
+          "stargazerCount": 38950,
+          "url": "https://github.com/chakra-ui/chakra-ui"
+        },
+        {
+          "nameWithOwner": "AykutSarac/jsoncrack.com",
+          "stargazerCount": 37503,
+          "url": "https://github.com/AykutSarac/jsoncrack.com"
+        },
+        {
+          "nameWithOwner": "FlowiseAI/Flowise",
+          "stargazerCount": 37291,
+          "url": "https://github.com/FlowiseAI/Flowise"
+        },
+        {
+          "nameWithOwner": "colinhacks/zod",
+          "stargazerCount": 37149,
+          "url": "https://github.com/colinhacks/zod"
+        },
+        {
+          "nameWithOwner": "ant-design/ant-design-pro",
+          "stargazerCount": 37022,
+          "url": "https://github.com/ant-design/ant-design-pro"
+        },
+        {
+          "nameWithOwner": "trpc/trpc",
+          "stargazerCount": 36977,
+          "url": "https://github.com/trpc/trpc"
+        },
+        {
+          "nameWithOwner": "novuhq/novu",
+          "stargazerCount": 36793,
+          "url": "https://github.com/novuhq/novu"
+        },
+        {
+          "nameWithOwner": "appsmithorg/appsmith",
+          "stargazerCount": 36670,
+          "url": "https://github.com/appsmithorg/appsmith"
+        },
+        {
+          "nameWithOwner": "inkonchain/ink-kit",
+          "stargazerCount": 36582,
+          "url": "https://github.com/inkonchain/ink-kit"
+        },
+        {
+          "nameWithOwner": "upscayl/upscayl",
+          "stargazerCount": 36379,
+          "url": "https://github.com/upscayl/upscayl"
+        },
+        {
+          "nameWithOwner": "NervJS/taro",
+          "stargazerCount": 36367,
+          "url": "https://github.com/NervJS/taro"
+        },
+        {
+          "nameWithOwner": "DIYgod/RSSHub",
+          "stargazerCount": 36251,
+          "url": "https://github.com/DIYgod/RSSHub"
+        },
+        {
+          "nameWithOwner": "slidevjs/slidev",
+          "stargazerCount": 36059,
+          "url": "https://github.com/slidevjs/slidev"
+        },
+        {
+          "nameWithOwner": "mendableai/firecrawl",
+          "stargazerCount": 36025,
+          "url": "https://github.com/mendableai/firecrawl"
+        },
+        {
+          "nameWithOwner": "lerna/lerna",
+          "stargazerCount": 35914,
+          "url": "https://github.com/lerna/lerna"
+        },
+        {
+          "nameWithOwner": "calcom/cal.com",
+          "stargazerCount": 35788,
+          "url": "https://github.com/calcom/cal.com"
+        },
+        {
+          "nameWithOwner": "date-fns/date-fns",
+          "stargazerCount": 35642,
+          "url": "https://github.com/date-fns/date-fns"
+        },
+        {
+          "nameWithOwner": "makeplane/plane",
+          "stargazerCount": 35366,
+          "url": "https://github.com/makeplane/plane"
+        },
+        {
+          "nameWithOwner": "typeorm/typeorm",
+          "stargazerCount": 35204,
+          "url": "https://github.com/typeorm/typeorm"
+        },
+        {
+          "nameWithOwner": "nativefier/nativefier",
+          "stargazerCount": 35138,
+          "url": "https://github.com/nativefier/nativefier"
+        },
+        {
+          "nameWithOwner": "chatchat-space/Langchain-Chatchat",
+          "stargazerCount": 34698,
+          "url": "https://github.com/chatchat-space/Langchain-Chatchat"
+        },
+        {
+          "nameWithOwner": "markedjs/marked",
+          "stargazerCount": 34403,
+          "url": "https://github.com/markedjs/marked"
+        },
+        {
+          "nameWithOwner": "spacedriveapp/spacedrive",
+          "stargazerCount": 34295,
+          "url": "https://github.com/spacedriveapp/spacedrive"
+        },
+        {
+          "nameWithOwner": "jaredpalmer/formik",
+          "stargazerCount": 34226,
+          "url": "https://github.com/jaredpalmer/formik"
+        },
+        {
+          "nameWithOwner": "chatboxai/chatbox",
+          "stargazerCount": 34198,
+          "url": "https://github.com/chatboxai/chatbox"
+        },
+        {
+          "nameWithOwner": "payloadcms/payload",
+          "stargazerCount": 33972,
+          "url": "https://github.com/payloadcms/payload"
+        },
+        {
+          "nameWithOwner": "siyuan-note/siyuan",
+          "stargazerCount": 33949,
+          "url": "https://github.com/siyuan-note/siyuan"
+        },
+        {
+          "nameWithOwner": "reworkd/AgentGPT",
+          "stargazerCount": 33790,
+          "url": "https://github.com/reworkd/AgentGPT"
+        },
+        {
+          "nameWithOwner": "solidjs/solid",
+          "stargazerCount": 33349,
+          "url": "https://github.com/solidjs/solid"
+        },
+        {
+          "nameWithOwner": "immutable-js/immutable-js",
+          "stargazerCount": 33039,
+          "url": "https://github.com/immutable-js/immutable-js"
+        },
+        {
+          "nameWithOwner": "portainer/portainer",
+          "stargazerCount": 32674,
+          "url": "https://github.com/portainer/portainer"
+        }
+      ]
+    }
+  }
+}

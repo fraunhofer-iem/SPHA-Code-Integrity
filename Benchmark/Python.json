@@ -1,0 +1,508 @@
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "nameWithOwner": "public-apis/public-apis",
+          "stargazerCount": 335760,
+          "url": "https://github.com/public-apis/public-apis"
+        },
+        {
+          "nameWithOwner": "donnemartin/system-design-primer",
+          "stargazerCount": 296529,
+          "url": "https://github.com/donnemartin/system-design-primer"
+        },
+        {
+          "nameWithOwner": "vinta/awesome-python",
+          "stargazerCount": 240661,
+          "url": "https://github.com/vinta/awesome-python"
+        },
+        {
+          "nameWithOwner": "TheAlgorithms/Python",
+          "stargazerCount": 199484,
+          "url": "https://github.com/TheAlgorithms/Python"
+        },
+        {
+          "nameWithOwner": "Significant-Gravitas/AutoGPT",
+          "stargazerCount": 174543,
+          "url": "https://github.com/Significant-Gravitas/AutoGPT"
+        },
+        {
+          "nameWithOwner": "AUTOMATIC1111/stable-diffusion-webui",
+          "stargazerCount": 151343,
+          "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+        },
+        {
+          "nameWithOwner": "huggingface/transformers",
+          "stargazerCount": 143099,
+          "url": "https://github.com/huggingface/transformers"
+        },
+        {
+          "nameWithOwner": "ytdl-org/youtube-dl",
+          "stargazerCount": 135168,
+          "url": "https://github.com/ytdl-org/youtube-dl"
+        },
+        {
+          "nameWithOwner": "yt-dlp/yt-dlp",
+          "stargazerCount": 107895,
+          "url": "https://github.com/yt-dlp/yt-dlp"
+        },
+        {
+          "nameWithOwner": "521xueweihan/HelloGitHub",
+          "stargazerCount": 101494,
+          "url": "https://github.com/521xueweihan/HelloGitHub"
+        },
+        {
+          "nameWithOwner": "deepseek-ai/DeepSeek-V3",
+          "stargazerCount": 95724,
+          "url": "https://github.com/deepseek-ai/DeepSeek-V3"
+        },
+        {
+          "nameWithOwner": "nvbn/thefuck",
+          "stargazerCount": 91471,
+          "url": "https://github.com/nvbn/thefuck"
+        },
+        {
+          "nameWithOwner": "pytorch/pytorch",
+          "stargazerCount": 89077,
+          "url": "https://github.com/pytorch/pytorch"
+        },
+        {
+          "nameWithOwner": "fastapi/fastapi",
+          "stargazerCount": 83400,
+          "url": "https://github.com/fastapi/fastapi"
+        },
+        {
+          "nameWithOwner": "django/django",
+          "stargazerCount": 83200,
+          "url": "https://github.com/django/django"
+        },
+        {
+          "nameWithOwner": "openai/whisper",
+          "stargazerCount": 80157,
+          "url": "https://github.com/openai/whisper"
+        },
+        {
+          "nameWithOwner": "home-assistant/core",
+          "stargazerCount": 78115,
+          "url": "https://github.com/home-assistant/core"
+        },
+        {
+          "nameWithOwner": "tensorflow/models",
+          "stargazerCount": 77484,
+          "url": "https://github.com/tensorflow/models"
+        },
+        {
+          "nameWithOwner": "3b1b/manim",
+          "stargazerCount": 76823,
+          "url": "https://github.com/3b1b/manim"
+        },
+        {
+          "nameWithOwner": "comfyanonymous/ComfyUI",
+          "stargazerCount": 74478,
+          "url": "https://github.com/comfyanonymous/ComfyUI"
+        },
+        {
+          "nameWithOwner": "bregman-arie/devops-exercises",
+          "stargazerCount": 73987,
+          "url": "https://github.com/bregman-arie/devops-exercises"
+        },
+        {
+          "nameWithOwner": "fighting41love/funNLP",
+          "stargazerCount": 72503,
+          "url": "https://github.com/fighting41love/funNLP"
+        },
+        {
+          "nameWithOwner": "abi/screenshot-to-code",
+          "stargazerCount": 69573,
+          "url": "https://github.com/abi/screenshot-to-code"
+        },
+        {
+          "nameWithOwner": "pallets/flask",
+          "stargazerCount": 69333,
+          "url": "https://github.com/pallets/flask"
+        },
+        {
+          "nameWithOwner": "d2l-ai/d2l-zh",
+          "stargazerCount": 68490,
+          "url": "https://github.com/d2l-ai/d2l-zh"
+        },
+        {
+          "nameWithOwner": "binary-husky/gpt_academic",
+          "stargazerCount": 68207,
+          "url": "https://github.com/binary-husky/gpt_academic"
+        },
+        {
+          "nameWithOwner": "josephmisiti/awesome-machine-learning",
+          "stargazerCount": 67593,
+          "url": "https://github.com/josephmisiti/awesome-machine-learning"
+        },
+        {
+          "nameWithOwner": "python/cpython",
+          "stargazerCount": 66330,
+          "url": "https://github.com/python/cpython"
+        },
+        {
+          "nameWithOwner": "ansible/ansible",
+          "stargazerCount": 64752,
+          "url": "https://github.com/ansible/ansible"
+        },
+        {
+          "nameWithOwner": "swisskyrepo/PayloadsAllTheThings",
+          "stargazerCount": 64728,
+          "url": "https://github.com/swisskyrepo/PayloadsAllTheThings"
+        },
+        {
+          "nameWithOwner": "xtekky/gpt4free",
+          "stargazerCount": 64058,
+          "url": "https://github.com/xtekky/gpt4free"
+        },
+        {
+          "nameWithOwner": "sherlock-project/sherlock",
+          "stargazerCount": 63696,
+          "url": "https://github.com/sherlock-project/sherlock"
+        },
+        {
+          "nameWithOwner": "keras-team/keras",
+          "stargazerCount": 62885,
+          "url": "https://github.com/keras-team/keras"
+        },
+        {
+          "nameWithOwner": "scikit-learn/scikit-learn",
+          "stargazerCount": 61772,
+          "url": "https://github.com/scikit-learn/scikit-learn"
+        },
+        {
+          "nameWithOwner": "Alvin9999/new-pac",
+          "stargazerCount": 60516,
+          "url": "https://github.com/Alvin9999/new-pac"
+        },
+        {
+          "nameWithOwner": "labmlai/annotated_deep_learning_paper_implementations",
+          "stargazerCount": 60055,
+          "url": "https://github.com/labmlai/annotated_deep_learning_paper_implementations"
+        },
+        {
+          "nameWithOwner": "OpenInterpreter/open-interpreter",
+          "stargazerCount": 59125,
+          "url": "https://github.com/OpenInterpreter/open-interpreter"
+        },
+        {
+          "nameWithOwner": "localstack/localstack",
+          "stargazerCount": 58627,
+          "url": "https://github.com/localstack/localstack"
+        },
+        {
+          "nameWithOwner": "meta-llama/llama",
+          "stargazerCount": 58112,
+          "url": "https://github.com/meta-llama/llama"
+        },
+        {
+          "nameWithOwner": "browser-use/browser-use",
+          "stargazerCount": 56397,
+          "url": "https://github.com/browser-use/browser-use"
+        },
+        {
+          "nameWithOwner": "zylon-ai/private-gpt",
+          "stargazerCount": 55646,
+          "url": "https://github.com/zylon-ai/private-gpt"
+        },
+        {
+          "nameWithOwner": "soimort/you-get",
+          "stargazerCount": 55478,
+          "url": "https://github.com/soimort/you-get"
+        },
+        {
+          "nameWithOwner": "langflow-ai/langflow",
+          "stargazerCount": 55252,
+          "url": "https://github.com/langflow-ai/langflow"
+        },
+        {
+          "nameWithOwner": "scrapy/scrapy",
+          "stargazerCount": 54915,
+          "url": "https://github.com/scrapy/scrapy"
+        },
+        {
+          "nameWithOwner": "geekan/MetaGPT",
+          "stargazerCount": 54693,
+          "url": "https://github.com/geekan/MetaGPT"
+        },
+        {
+          "nameWithOwner": "ageitgey/face_recognition",
+          "stargazerCount": 54596,
+          "url": "https://github.com/ageitgey/face_recognition"
+        },
+        {
+          "nameWithOwner": "CorentinJ/Real-Time-Voice-Cloning",
+          "stargazerCount": 54002,
+          "url": "https://github.com/CorentinJ/Real-Time-Voice-Cloning"
+        },
+        {
+          "nameWithOwner": "AntonOsika/gpt-engineer",
+          "stargazerCount": 53894,
+          "url": "https://github.com/AntonOsika/gpt-engineer"
+        },
+        {
+          "nameWithOwner": "deepfakes/faceswap",
+          "stargazerCount": 53688,
+          "url": "https://github.com/deepfakes/faceswap"
+        },
+        {
+          "nameWithOwner": "ultralytics/yolov5",
+          "stargazerCount": 53444,
+          "url": "https://github.com/ultralytics/yolov5"
+        },
+        {
+          "nameWithOwner": "commaai/openpilot",
+          "stargazerCount": 53127,
+          "url": "https://github.com/commaai/openpilot"
+        },
+        {
+          "nameWithOwner": "All-Hands-AI/OpenHands",
+          "stargazerCount": 52933,
+          "url": "https://github.com/All-Hands-AI/OpenHands"
+        },
+        {
+          "nameWithOwner": "psf/requests",
+          "stargazerCount": 52746,
+          "url": "https://github.com/psf/requests"
+        },
+        {
+          "nameWithOwner": "Z4nzu/hackingtool",
+          "stargazerCount": 52193,
+          "url": "https://github.com/Z4nzu/hackingtool"
+        },
+        {
+          "nameWithOwner": "Textualize/rich",
+          "stargazerCount": 51722,
+          "url": "https://github.com/Textualize/rich"
+        },
+        {
+          "nameWithOwner": "hacksider/Deep-Live-Cam",
+          "stargazerCount": 50311,
+          "url": "https://github.com/hacksider/Deep-Live-Cam"
+        },
+        {
+          "nameWithOwner": "xai-org/grok-1",
+          "stargazerCount": 50249,
+          "url": "https://github.com/xai-org/grok-1"
+        },
+        {
+          "nameWithOwner": "microsoft/markitdown",
+          "stargazerCount": 49178,
+          "url": "https://github.com/microsoft/markitdown"
+        },
+        {
+          "nameWithOwner": "PaddlePaddle/PaddleOCR",
+          "stargazerCount": 48391,
+          "url": "https://github.com/PaddlePaddle/PaddleOCR"
+        },
+        {
+          "nameWithOwner": "charlax/professional-programming",
+          "stargazerCount": 47531,
+          "url": "https://github.com/charlax/professional-programming"
+        },
+        {
+          "nameWithOwner": "minimaxir/big-list-of-naughty-strings",
+          "stargazerCount": 47087,
+          "url": "https://github.com/minimaxir/big-list-of-naughty-strings"
+        },
+        {
+          "nameWithOwner": "hiyouga/LLaMA-Factory",
+          "stargazerCount": 47038,
+          "url": "https://github.com/hiyouga/LLaMA-Factory"
+        },
+        {
+          "nameWithOwner": "Asabeneh/30-Days-Of-Python",
+          "stargazerCount": 45843,
+          "url": "https://github.com/Asabeneh/30-Days-Of-Python"
+        },
+        {
+          "nameWithOwner": "pandas-dev/pandas",
+          "stargazerCount": 45158,
+          "url": "https://github.com/pandas-dev/pandas"
+        },
+        {
+          "nameWithOwner": "vllm-project/vllm",
+          "stargazerCount": 45111,
+          "url": "https://github.com/vllm-project/vllm"
+        },
+        {
+          "nameWithOwner": "lllyasviel/Fooocus",
+          "stargazerCount": 44342,
+          "url": "https://github.com/lllyasviel/Fooocus"
+        },
+        {
+          "nameWithOwner": "RVC-Boss/GPT-SoVITS",
+          "stargazerCount": 44228,
+          "url": "https://github.com/RVC-Boss/GPT-SoVITS"
+        },
+        {
+          "nameWithOwner": "mannaandpoem/OpenManus",
+          "stargazerCount": 43492,
+          "url": "https://github.com/mannaandpoem/OpenManus"
+        },
+        {
+          "nameWithOwner": "microsoft/autogen",
+          "stargazerCount": 43307,
+          "url": "https://github.com/microsoft/autogen"
+        },
+        {
+          "nameWithOwner": "oobabooga/text-generation-webui",
+          "stargazerCount": 43212,
+          "url": "https://github.com/oobabooga/text-generation-webui"
+        },
+        {
+          "nameWithOwner": "odoo/odoo",
+          "stargazerCount": 42324,
+          "url": "https://github.com/odoo/odoo"
+        },
+        {
+          "nameWithOwner": "faif/python-patterns",
+          "stargazerCount": 41251,
+          "url": "https://github.com/faif/python-patterns"
+        },
+        {
+          "nameWithOwner": "THUDM/ChatGLM-6B",
+          "stargazerCount": 41034,
+          "url": "https://github.com/THUDM/ChatGLM-6B"
+        },
+        {
+          "nameWithOwner": "run-llama/llama_index",
+          "stargazerCount": 40989,
+          "url": "https://github.com/run-llama/llama_index"
+        },
+        {
+          "nameWithOwner": "OpenBB-finance/OpenBB",
+          "stargazerCount": 40905,
+          "url": "https://github.com/OpenBB-finance/OpenBB"
+        },
+        {
+          "nameWithOwner": "Stability-AI/stablediffusion",
+          "stargazerCount": 40782,
+          "url": "https://github.com/Stability-AI/stablediffusion"
+        },
+        {
+          "nameWithOwner": "hpcaitech/ColossalAI",
+          "stargazerCount": 40780,
+          "url": "https://github.com/hpcaitech/ColossalAI"
+        },
+        {
+          "nameWithOwner": "karpathy/nanoGPT",
+          "stargazerCount": 40728,
+          "url": "https://github.com/karpathy/nanoGPT"
+        },
+        {
+          "nameWithOwner": "mingrammer/diagrams",
+          "stargazerCount": 40614,
+          "url": "https://github.com/mingrammer/diagrams"
+        },
+        {
+          "nameWithOwner": "apachecn/ailearning",
+          "stargazerCount": 40595,
+          "url": "https://github.com/apachecn/ailearning"
+        },
+        {
+          "nameWithOwner": "getsentry/sentry",
+          "stargazerCount": 40589,
+          "url": "https://github.com/getsentry/sentry"
+        },
+        {
+          "nameWithOwner": "psf/black",
+          "stargazerCount": 40095,
+          "url": "https://github.com/psf/black"
+        },
+        {
+          "nameWithOwner": "unclecode/crawl4ai",
+          "stargazerCount": 39807,
+          "url": "https://github.com/unclecode/crawl4ai"
+        },
+        {
+          "nameWithOwner": "apache/airflow",
+          "stargazerCount": 39651,
+          "url": "https://github.com/apache/airflow"
+        },
+        {
+          "nameWithOwner": "ultralytics/ultralytics",
+          "stargazerCount": 39522,
+          "url": "https://github.com/ultralytics/ultralytics"
+        },
+        {
+          "nameWithOwner": "coqui-ai/TTS",
+          "stargazerCount": 39385,
+          "url": "https://github.com/coqui-ai/TTS"
+        },
+        {
+          "nameWithOwner": "chubin/cheat.sh",
+          "stargazerCount": 39256,
+          "url": "https://github.com/chubin/cheat.sh"
+        },
+        {
+          "nameWithOwner": "google-research/bert",
+          "stargazerCount": 39026,
+          "url": "https://github.com/google-research/bert"
+        },
+        {
+          "nameWithOwner": "floodsung/Deep-Learning-Papers-Reading-Roadmap",
+          "stargazerCount": 38939,
+          "url": "https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap"
+        },
+        {
+          "nameWithOwner": "streamlit/streamlit",
+          "stargazerCount": 38853,
+          "url": "https://github.com/streamlit/streamlit"
+        },
+        {
+          "nameWithOwner": "mitmproxy/mitmproxy",
+          "stargazerCount": 38725,
+          "url": "https://github.com/mitmproxy/mitmproxy"
+        },
+        {
+          "nameWithOwner": "freqtrade/freqtrade",
+          "stargazerCount": 38440,
+          "url": "https://github.com/freqtrade/freqtrade"
+        },
+        {
+          "nameWithOwner": "lm-sys/FastChat",
+          "stargazerCount": 38413,
+          "url": "https://github.com/lm-sys/FastChat"
+        },
+        {
+          "nameWithOwner": "deepspeedai/DeepSpeed",
+          "stargazerCount": 37961,
+          "url": "https://github.com/deepspeedai/DeepSpeed"
+        },
+        {
+          "nameWithOwner": "QuivrHQ/quivr",
+          "stargazerCount": 37711,
+          "url": "https://github.com/QuivrHQ/quivr"
+        },
+        {
+          "nameWithOwner": "gradio-app/gradio",
+          "stargazerCount": 37513,
+          "url": "https://github.com/gradio-app/gradio"
+        },
+        {
+          "nameWithOwner": "LAION-AI/Open-Assistant",
+          "stargazerCount": 37303,
+          "url": "https://github.com/LAION-AI/Open-Assistant"
+        },
+        {
+          "nameWithOwner": "unslothai/unsloth",
+          "stargazerCount": 37192,
+          "url": "https://github.com/unslothai/unsloth"
+        },
+        {
+          "nameWithOwner": "gto76/python-cheatsheet",
+          "stargazerCount": 37071,
+          "url": "https://github.com/gto76/python-cheatsheet"
+        },
+        {
+          "nameWithOwner": "0voice/interview_internal_reference",
+          "stargazerCount": 36883,
+          "url": "https://github.com/0voice/interview_internal_reference"
+        }
+      ]
+    }
+  }
+}

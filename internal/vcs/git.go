@@ -116,7 +116,7 @@ func getNewCommitsFromPr(dir string, pr gh.PR, lc *git.Repository) (*set.Set[str
 	}
 	commitSet := set.From(newCommits)
 
-	// this is used to identify squashed commits
+	// this is used to identify squashed and merge commits
 	if c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid)); err == nil {
 		commitSet.Insert(c.Hash.String())
 	}
