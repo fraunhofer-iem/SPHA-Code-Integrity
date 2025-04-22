@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"project-integrity-calculator/internal/gh"
+	"project-integrity-calculator/internal/io"
 
 	"github.com/go-git/go-git/v5"
 	"github.com/go-git/go-git/v5/config"
@@ -17,9 +18,8 @@ import (
 )
 
 type CommitData struct {
-	NumberCommits  int
-	NumberVerified int
-	Hashs          *set.Set[string]
+	UnsignedCommits []io.Commit
+	Hashs           *set.Set[string]
 }
 
 // getSignedCommitCount returns the number of commits and the number of verified commits
@@ -33,28 +33,32 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 	c, _ := lc.CommitObject(*hash)
 	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
 	hashs := set.New[string](100)
-	cc := 0
-	csc := 0
+	unsignedCommits := make([]io.Commit, 100)
 
 	iter.ForEach(func(curr *object.Commit) error {
 		if !curr.Hash.IsZero() {
-			patchId, err := GetPatchId(repoDir, curr.Hash.String())
+			hashString := curr.Hash.String()
+			patchId, err := GetPatchId(repoDir, hashString)
 			if err != nil {
 				return err
 			}
 			hashs.Insert(patchId)
-			cc++
-			if c.PGPSignature != "" {
-				csc++
+			if curr.PGPSignature != "" {
+				commit := io.Commit{
+					Message: curr.Message,
+					GitOID:  hashString,
+					Date:    curr.Committer.When.String(),
+					Signed:  false,
+				}
+				unsignedCommits = append(unsignedCommits, commit)
 			}
 		}
 		return nil
 	})
 
 	return &CommitData{
-		NumberCommits:  cc,
-		NumberVerified: csc,
-		Hashs:          hashs,
+		Hashs:           hashs,
+		UnsignedCommits: unsignedCommits,
 	}, nil
 }
 

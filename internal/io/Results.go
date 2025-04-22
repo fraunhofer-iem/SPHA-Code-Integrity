@@ -5,12 +5,12 @@ type Result struct {
 }
 
 type Repo struct {
-	Branch                  string
-	Head                    string
-	Url                     string
-	Stats                   Stats
-	CommitsWithoutPR        []Commit
-	CommitsWithoutSignature []Commit
+	Branch           string
+	Head             string
+	Url              string
+	Stats            Stats
+	CommitsWithoutPR []Commit
+	UnsignedCommits  []Commit
 }
 
 type Stats struct {
@@ -25,4 +25,5 @@ type Commit struct {
 	GitOID  string
 	Message string
 	Date    string
+	Signed  bool
 }
