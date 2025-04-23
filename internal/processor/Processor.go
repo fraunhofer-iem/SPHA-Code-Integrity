@@ -58,7 +58,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	logger.Info("Time to query all Pull requests", "time", elapsed)
 
 	methodTimer = time.Now()
-	allPrCommits, err := vcs.GetMergedPrHashs(prs, lc, dir)
+	mergedPrResults, err := vcs.GetMergedPrHashs(prs, lc, dir)
 	if err != nil {
 		return nil, err
 	}
@@ -76,9 +76,9 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	ach := allCommits.Hashs
 	logger.Info("Number all commits", branch, ach.Size())
 
-	commitHashsWithoutPr := ach.Difference(allPrCommits)
+	commitHashsWithoutPr := ach.Difference(mergedPrResults.PatchIds)
 
-	logger.Info("Number commits from PRs", "number", allPrCommits.Size())
+	logger.Info("Number commits from PRs", "number", mergedPrResults.PatchIds.Size())
 	logger.Info("Number commits without PR", "number", commitHashsWithoutPr.Size())
 
 	head := ""
@@ -87,11 +87,16 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		head = h.Hash().String()
 	}
 
+	// slog.Default().Info("map", "m", mergedPrResults.Hashs)
 	commitsWithoutPr := make([]io.Commit, commitHashsWithoutPr.Size())
 	for h := range commitHashsWithoutPr.Items() {
-		hash := plumbing.NewHash(h)
+		originalHash := mergedPrResults.Hashs[h]
+		hash := plumbing.NewHash(originalHash)
+		// slog.Default().Info("Hashs", "h", h, "mapvalue", originalHash, "plumbing", hash)
+
 		// todo: commit decoding is pretty expensive, we should add a commit cache
 		c, err := lc.CommitObject(hash)
+		// slog.Default().Info("resolved commit", "commit", c, "calculated hash", hash, "patchid", h)
 		if err != nil {
 			continue
 		}

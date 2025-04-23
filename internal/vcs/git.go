@@ -62,14 +62,20 @@ func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*Co
 	}, nil
 }
 
-func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*set.Set[string], error) {
+type MergedPrHashs struct {
+	PatchIds *set.Set[string]
+	Hashs    map[string]string
+}
+
+func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*MergedPrHashs, error) {
 
 	err := fetchAllRefs(prs, lc)
 	if err != nil {
 		return nil, err
 	}
 
-	allNewCommits := set.New[string](len(prs) * 10)
+	newCommitsPatchIds := set.New[string](len(prs) * 10)
+	idToHash := make(map[string]string, len(prs)*10)
 
 	for _, pr := range prs {
 
@@ -79,11 +85,15 @@ func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*set.Set
 		}
 		for nc := range newCommits.Items() {
 			patchId, _ := GetPatchId(repoDir, nc)
-			allNewCommits.Insert(patchId)
+			idToHash[patchId] = nc
+			newCommitsPatchIds.Insert(patchId)
 		}
 	}
 
-	return allNewCommits, nil
+	return &MergedPrHashs{
+		PatchIds: newCommitsPatchIds,
+		Hashs:    idToHash,
+	}, nil
 }
 
 func fetchAllRefs(prs []gh.PR, lc *git.Repository) error {
@@ -118,13 +128,47 @@ func getNewCommitsFromPr(dir string, pr gh.PR, lc *git.Repository) (*set.Set[str
 	if err != nil {
 		return nil, err
 	}
+	// TODO: we need to check if we can find the commits in lc or if we remove lc completly and go all the way
+	// with doing native git calls
 	commitSet := set.From(newCommits)
+	// slog.Default().Info("got new commits", "commits", commitSet)
+
+	// for h := range commitSet.Items() {
+	// 	c, err := lc.CommitObject(plumbing.NewHash(h))
+	// 	if err != nil {
+	// 		slog.Default().Info("err", "error", err)
+	// 		continue
+	// 	}
+	// 	slog.Default().Info("resolved commit", "commit", c)
+	// }
 
 	// this is used to identify squashed and merge commits
-	if c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid)); err == nil {
-		commitSet.Insert(c.Hash.String())
-	}
+	// commitSet.Insert(pr.MergeCommit.Id)
+	GetCommit(dir, commitSet.Slice())
+
+	// if c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid)); err == nil {
+	// commitSet.Insert(c.Hash.String())
+	// }
 	return commitSet, nil
+}
+
+// TODO: figure out how to handle merge commit ids
+func GetCommit(repoPath string, hashs []string) { //(*[]io.Commit, error) {
+	format := "--format={\"GitOID\":\"%H\", \"Message\":\"%B\", \"Date\":\"%cd\", \"Signed\":\"%G?\"}"
+	args := append([]string{"show", "--no-patch", format}, hashs...)
+	slog.Default().Info("get commit", "args", args)
+	// args := append([]string{"show", "--no-patch"}, hashs[0])
+	cmd := exec.Command("git", args...)
+	cmd.Dir = repoPath
+	out, err := cmd.Output()
+	if err != nil {
+		slog.Default().Error("error during get commit", "err", err, "hashs", hashs)
+		// return nil, err
+	}
+	// Split by newline to get each commit hash.
+	commits := strings.Split(strings.TrimSpace(string(out)), "\n")
+	slog.Default().Info("commits", "c", commits)
+	// return commits, nil
 }
 
 // getRevList executes the git rev-list command and returns commit hashes.
