@@ -45,7 +45,6 @@ type PR struct {
 }
 
 type MergeCommit struct {
-	Id      string `json:"id"`
 	Oid     string `json:"oid"`
 	Message string `json:"message"`
 }

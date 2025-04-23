@@ -58,7 +58,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	logger.Info("Time to query all Pull requests", "time", elapsed)
 
 	methodTimer = time.Now()
-	mergedPrResults, err := vcs.GetMergedPrHashs(prs, lc, dir)
+	mergedPrResults, err := vcs.GetCommitShaForMergedPr(prs, lc, dir)
 	if err != nil {
 		return nil, err
 	}
