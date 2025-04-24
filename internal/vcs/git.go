@@ -1,6 +1,7 @@
 package vcs
 
 import (
+	"encoding/json"
 	"fmt"
 	"log/slog"
 	"os/exec"
@@ -9,51 +10,8 @@ import (
 	"project-integrity-calculator/internal/gh"
 	"project-integrity-calculator/internal/io"
 
-	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/hashicorp/go-set/v3"
 )
-
-type CommitData struct {
-	UnsignedCommits []io.Commit
-	Hashs           *set.Set[string]
-}
-
-// getSignedCommitCount returns the number of commits and the number of verified commits
-func GetCommitData(repoDir string, targetBranch string) (*CommitData, error) {
-
-	// do external process call to git log or git show to get this info
-	c, _ := lc.CommitObject(*hash)
-	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
-	hashs := set.New[string](100)
-	unsignedCommits := make([]io.Commit, 100)
-
-	iter.ForEach(func(curr *object.Commit) error {
-		if !curr.Hash.IsZero() {
-			hashString := curr.Hash.String()
-			patchId, err := GetPatchId(repoDir, hashString)
-			if err != nil {
-				return err
-			}
-			hashs.Insert(patchId)
-			if curr.PGPSignature != "" {
-				commit := io.Commit{
-					Message: curr.Message,
-					GitOID:  hashString,
-					Date:    curr.Committer.When.String(),
-					Signed:  false,
-				}
-				unsignedCommits = append(unsignedCommits, commit)
-			}
-		}
-		return nil
-	})
-
-	return &CommitData{
-		Hashs:           hashs,
-		UnsignedCommits: unsignedCommits,
-	}, nil
-}
 
 func GetCommitShaForMergedPr(prs []gh.PR, repoDir string) (*map[int]*set.Set[string], error) {
 
@@ -70,7 +28,7 @@ func GetCommitShaForMergedPr(prs []gh.PR, repoDir string) (*map[int]*set.Set[str
 	res := make(map[int]*set.Set[string], len(prs))
 
 	for _, pr := range prs {
-		newCommits, err := getNewCommitsFromPr(repoDir, pr)
+		newCommits, err := getCommitHashsForPr(repoDir, pr)
 		if err != nil {
 			continue
 		}
@@ -104,41 +62,71 @@ func fetchAllRefs(prs []gh.PR, dir string) error {
 	return nil
 }
 
-func getNewCommitsFromPr(dir string, pr gh.PR) (*set.Set[string], error) {
+func getCommitHashsForPr(dir string, pr gh.PR) (*set.Set[string], error) {
 
 	slog.Default().Debug("processing pr", "pr number", pr.Number, "base ref", pr.BaseRefOid, "head ref", pr.HeadRefOid)
-	newCommits, err := getRevList(dir, pr.BaseRefOid, pr.HeadRefOid)
+	newCommits, err := getRevList(dir, fmt.Sprintf("%s...%s", pr.BaseRefOid, pr.HeadRefOid))
 	if err != nil {
 		return nil, err
 	}
 	commitSet := set.From(newCommits)
-
 	commitSet.Insert(pr.MergeCommit.Oid)
-	GetCommit(dir, commitSet.Slice())
 
 	return commitSet, nil
 }
 
-func GetCommit(repoPath string, hashs []string) { //(*[]io.Commit, error) {
+func GetCommitsFromHashs(repoPath string, hashs []string) ([]io.Commit, error) {
+	return getCommit(show, repoPath, hashs)
+}
+
+func GetCommitsFromBrach(repoPath, branch string) ([]io.Commit, error) {
+	return getCommit(log, repoPath, []string{branch})
+}
+
+type GitCmd string
+
+const (
+	show GitCmd = "show"
+	log  GitCmd = "log"
+)
+
+func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, error) {
 	format := "--format={\"GitOID\":\"%H\", \"Message\":\"%B\", \"Date\":\"%cd\", \"Signed\":\"%G?\"}"
-	args := append([]string{"show", "--no-patch", format}, hashs...)
+
+	args := append([]string{string(gitCmd), "--no-patch", format}, input...)
 
 	cmd := exec.Command("git", args...)
 	cmd.Dir = repoPath
 	out, err := cmd.Output()
 	if err != nil {
-		slog.Default().Error("error during get commit", "err", err, "hashs", hashs)
-		// return nil, err
+		slog.Default().Error("error during get commit", "err", err, "input", input)
+		return nil, err
 	}
 	// Split by newline to get each commit hash.
-	commits := strings.Split(strings.TrimSpace(string(out)), "\n")
-	slog.Default().Info("commits", "c", commits)
-	// return commits, nil
+	rawCommits := strings.Split(strings.TrimSpace(string(out)), "\n")
+	slog.Default().Info("commits", "c", rawCommits)
+
+	return parseCommits(rawCommits), nil
+}
+
+func parseCommits(rawCommits []string) []io.Commit {
+	commits := make([]io.Commit, len(rawCommits))
+	for _, rc := range rawCommits {
+		var c io.Commit
+		err := json.Unmarshal([]byte(rc), &c)
+		if err != nil {
+			slog.Default().Error("unmarshall for commit failed", "commit", rc)
+			continue
+		}
+		commits = append(commits, c)
+	}
+
+	return commits
 }
 
 // getRevList executes the git rev-list command and returns commit hashes.
-func getRevList(repoPath, baseRef, headRef string) ([]string, error) {
-	cmd := exec.Command("git", "rev-list", fmt.Sprintf("%s...%s", baseRef, headRef))
+func getRevList(repoPath, arg string) ([]string, error) {
+	cmd := exec.Command("git", "rev-list")
 	cmd.Dir = repoPath
 	out, err := cmd.Output()
 	if err != nil {
