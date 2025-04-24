@@ -136,3 +136,14 @@ func getRevList(repoPath, arg string) ([]string, error) {
 	commits := strings.Split(strings.TrimSpace(string(out)), "\n")
 	return commits, nil
 }
+
+func CloneRepo(url, dir string) error {
+	cmd := exec.Command("git", "clone", "--bare", url)
+	cmd.Dir = dir
+	_, err := cmd.Output()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
