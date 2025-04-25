@@ -3,14 +3,14 @@
     "search": {
       "nodes": [
         {
-          "nameWithOwner": "freeCodeCamp/freeCodeCamp",
-          "stargazerCount": 416616,
-          "url": "https://github.com/freeCodeCamp/freeCodeCamp"
+          "nameWithOwner": "fraunhofer-iem/spha",
+          "stargazerCount": 4,
+          "url": "https://github.com/fraunhofer-iem/spha"
         },
         {
-          "nameWithOwner": "kamranahmedse/developer-roadmap",
-          "stargazerCount": 313811,
-          "url": "https://github.com/kamranahmedse/developer-roadmap"
+          "nameWithOwner": "fraunhofer-iem/sbom-processor",
+          "stargazerCount": 0,
+          "url": "https://github.com/fraunhofer-iem/sbom-processor"
         }
       ]
     }

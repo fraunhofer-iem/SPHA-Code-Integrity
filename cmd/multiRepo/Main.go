@@ -81,8 +81,8 @@ func main() {
 			panic(err)
 		}
 
-		*out = path.Join(*out, config.Owner+config.Repo+"-result.json")
-		err = io.StoreResult(*out, *repo)
+		outPath := path.Join(*out, config.Owner+config.Repo+"-result.json")
+		err = io.StoreResult(outPath, *repo)
 		if err != nil {
 			panic(err)
 		}
