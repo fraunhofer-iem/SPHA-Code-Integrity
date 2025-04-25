@@ -151,7 +151,7 @@ func removeControls(s string) string {
 }
 
 func parseCommits(rawCommits []string) []io.Commit {
-	commits := make([]io.Commit, len(rawCommits))
+	commits := make([]io.Commit, 0, len(rawCommits))
 	for _, rc := range rawCommits {
 		split := strings.Split(rc, string(value))
 

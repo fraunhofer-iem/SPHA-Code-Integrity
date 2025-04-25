@@ -86,18 +86,23 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 
 	allCommitShas := set.New[string](len(allCommits))
 	patchIdToCommit := make(map[string]*io.Commit, len(allCommits))
-	for _, c := range allCommits {
+	unsignedCommits := make([]io.Commit, 0, len(allCommits)/3)
+	for i := range allCommits {
+		c := &allCommits[i]
 		pi, err := vcs.GetPatchId(dir, c.GitOID)
 		if err != nil {
 			slog.Default().Warn("Get patch id failed", "err", err)
 			continue
 		}
 		allCommitShas.Insert(pi)
-		patchIdToCommit[pi] = &c
+		patchIdToCommit[pi] = c
+		if c.Signed == "N" || c.Signed == "B" {
+			unsignedCommits = append(unsignedCommits, *c)
+		}
 	}
 
 	commitsWithoutPrShas := allCommitShas.Difference(allCommitsFromPrs)
-	commitsWithoutPr := make([]io.Commit, commitsWithoutPrShas.Size())
+	commitsWithoutPr := make([]io.Commit, 0, commitsWithoutPrShas.Size())
 
 	for h := range commitsWithoutPrShas.Items() {
 		c, ok := patchIdToCommit[h]
@@ -116,12 +121,18 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	logger.Info("Number commits from PRs", "number", allCommitsFromPrs.Size())
 	logger.Info("Number commits without PR", "number", commitsWithoutPrShas.Size())
 
+	heads, err := vcs.GetCommitsFromHashs(dir, []string{branch})
+	head := ""
+	if err == nil || len(heads) == 1 {
+		head = heads[0].GitOID
+	}
+
 	repo := io.Repo{
-		Branch: branch,
-		Url:    r.CloneUrl,
-		// Head:             head,
+		Branch:           branch,
+		Url:              r.CloneUrl,
+		Head:             head,
 		CommitsWithoutPR: commitsWithoutPr,
-		// UnsignedCommits:  allCommits.UnsignedCommits,
+		UnsignedCommits:  unsignedCommits,
 	}
 
 	timerEnd := time.Since(timer)

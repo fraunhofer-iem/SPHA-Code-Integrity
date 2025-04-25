@@ -34,17 +34,14 @@ func (c *PatchIdCache) Add(key string, value string) {
 			}
 		}
 	}
-	slog.Default().Debug("Cache add", "key", key)
 	c.cache[key] = value
 }
 
 func (c *PatchIdCache) Get(key string) *string {
 	r := c.cache[key]
 	if r == "" {
-		slog.Default().Debug("Cache miss", "key", key)
 		return nil
 	}
-	slog.Default().Debug("Cache hit", "key", key)
 	return &r
 }
 
