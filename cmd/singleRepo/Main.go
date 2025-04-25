@@ -73,7 +73,6 @@ func main() {
 	}
 
 	*out = path.Join(*out, "result.json")
-	//TODO: right now we can't resolve all hashs resulting in many empty commits
 	err = io.StoreResult(*out, *repo)
 	if err != nil {
 		panic(err)

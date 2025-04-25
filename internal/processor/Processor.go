@@ -20,9 +20,8 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	logger := slog.Default()
 	timer := time.Now()
 	logger.Info("Started processing of", "repo with config", config)
-	client := gh.NewClient(config.Token)
 
-	r, err := client.GetRepositoryInfo(config.Owner, config.Repo)
+	r, err := gh.GetRepoInfo(config.Owner, config.Repo, config.Token)
 	if err != nil {
 		return nil, err
 	}
@@ -133,6 +132,12 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		Head:             head,
 		CommitsWithoutPR: commitsWithoutPr,
 		UnsignedCommits:  unsignedCommits,
+		Stats: io.Stats{
+			NumberCommits: allCommitShas.Size(),
+			NumberPRs:     len(*commitsFromPrs),
+			Stars:         r.Stars,
+			Languages:     r.Languages,
+		},
 	}
 
 	timerEnd := time.Since(timer)

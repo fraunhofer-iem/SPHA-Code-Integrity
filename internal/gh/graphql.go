@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"log/slog"
 	"net/http"
 )
 
@@ -48,6 +49,23 @@ type MergeCommit struct {
 	Oid     string `json:"oid"`
 	Message string `json:"message"`
 }
+
+const repoDetailsQuery = `
+query ($owner: String!, $name: String!) {
+	repository(owner: $owner, name: $name) {
+    url
+    stargazerCount
+    languages(first:100,  orderBy: {field: SIZE, direction: DESC}){
+      nodes{
+        name
+      }
+    }
+    defaultBranchRef{
+      name
+    }
+  }
+}
+`
 
 const initialPRQuery = `
 query ($owner: String!, $name: String!, $branch: String!) {
@@ -126,7 +144,7 @@ const URL = "https://api.github.com/graphql"
 var RequestCounter = 0
 
 // Helper function to execute a GraphQL request.
-func executeGraphQLRequest(client *http.Client, url, token, query string, variables map[string]any, result *PrReviewResponse) error {
+func executeGraphQLRequest(client *http.Client, url, token, query string, variables map[string]any, result any) error {
 	reqPayload := GraphQLRequest{
 		Query:     query,
 		Variables: variables,
@@ -156,6 +174,59 @@ func executeGraphQLRequest(client *http.Client, url, token, query string, variab
 		return fmt.Errorf("failed to decode JSON response: %v", err)
 	}
 	return nil
+}
+
+type RepoInfo struct {
+	CloneUrl      string
+	DefaultBranch string
+	Languages     []string
+	Stars         int
+}
+
+type RepoInfoResponse struct {
+	Data struct {
+		Repository struct {
+			Url           string `json:"url"`
+			Stars         int    `json:"stargazerCount"`
+			DefaultBranch struct {
+				Name string `json:"name"`
+			} `json:"defaultBranchRef"`
+			Languages struct {
+				Nodes []struct {
+					Name string `json:"name"`
+				} `json:"nodes"`
+			} `json:"languages"`
+		} `json:"repository"`
+	} `json:"data"`
+}
+
+func GetRepoInfo(owner, repo, token string) (*RepoInfo, error) {
+	slog.Default().Info("Getting repo info")
+	variables := map[string]any{
+		"owner": owner,
+		"name":  repo,
+	}
+
+	client := &http.Client{}
+	var repoInfoRes RepoInfoResponse
+
+	err := executeGraphQLRequest(client, URL, token, repoDetailsQuery, variables, &repoInfoRes)
+	if err != nil {
+		slog.Default().Error("Graphql request failed", "err", err)
+		return nil, err
+	}
+
+	languages := make([]string, 0, len(repoInfoRes.Data.Repository.Languages.Nodes))
+	for _, l := range repoInfoRes.Data.Repository.Languages.Nodes {
+		languages = append(languages, l.Name)
+	}
+
+	return &RepoInfo{
+		CloneUrl:      repoInfoRes.Data.Repository.Url,
+		Stars:         repoInfoRes.Data.Repository.Stars,
+		DefaultBranch: repoInfoRes.Data.Repository.DefaultBranch.Name,
+		Languages:     languages,
+	}, nil
 }
 
 func GetPullRequests(owner, repo, branch, token string) ([]PR, error) {

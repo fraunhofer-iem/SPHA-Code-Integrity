@@ -14,11 +14,10 @@ type Repo struct {
 }
 
 type Stats struct {
-	NumberCommits      int
-	NumberPRs          int
-	NumberContributors int
-	Languages          []string
-	Stars              int
+	NumberCommits int
+	NumberPRs     int
+	Languages     []string
+	Stars         int
 }
 
 type Commit struct {
