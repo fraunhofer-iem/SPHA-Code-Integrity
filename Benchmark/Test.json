@@ -1,0 +1,18 @@
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "nameWithOwner": "freeCodeCamp/freeCodeCamp",
+          "stargazerCount": 416616,
+          "url": "https://github.com/freeCodeCamp/freeCodeCamp"
+        },
+        {
+          "nameWithOwner": "kamranahmedse/developer-roadmap",
+          "stargazerCount": 313811,
+          "url": "https://github.com/kamranahmedse/developer-roadmap"
+        }
+      ]
+    }
+  }
+}
