@@ -5,131 +5,82 @@ import (
 	"log/slog"
 	"os/exec"
 	"strings"
-	"time"
+	"unicode"
 
 	"project-integrity-calculator/internal/gh"
 	"project-integrity-calculator/internal/io"
 
-	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/config"
-	"github.com/go-git/go-git/v5/plumbing"
-	"github.com/go-git/go-git/v5/plumbing/object"
 	"github.com/hashicorp/go-set/v3"
 )
 
-type CommitData struct {
-	UnsignedCommits []io.Commit
-	Hashs           *set.Set[string]
-}
+func GetCommitShaForMergedPr(prs []gh.PR, repoDir string) (*map[int]*set.Set[string], error) {
+	logger := slog.Default()
 
-// getSignedCommitCount returns the number of commits and the number of verified commits
-func GetCommitData(lc *git.Repository, repoDir string, targetBranch string) (*CommitData, error) {
+	if len(prs) == 0 {
+		logger.Warn("No PRs provided to GetCommitShaForMergedPr", "repoDir", repoDir)
+		return &map[int]*set.Set[string]{}, nil
+	}
 
-	hash, err := lc.ResolveRevision(plumbing.Revision(targetBranch))
+	err := fetchAllRefs(prs, repoDir)
 	if err != nil {
 		return nil, err
 	}
 
-	c, _ := lc.CommitObject(*hash)
-	iter, _ := lc.Log(&git.LogOptions{From: c.Hash})
-	hashs := set.New[string](100)
-	unsignedCommits := make([]io.Commit, 100)
-
-	iter.ForEach(func(curr *object.Commit) error {
-		if !curr.Hash.IsZero() {
-			hashString := curr.Hash.String()
-			patchId, err := GetPatchId(repoDir, hashString)
-			if err != nil {
-				return err
-			}
-			hashs.Insert(patchId)
-			if curr.PGPSignature != "" {
-				commit := io.Commit{
-					Message: curr.Message,
-					GitOID:  hashString,
-					Date:    curr.Committer.When.String(),
-					Signed:  false,
-				}
-				unsignedCommits = append(unsignedCommits, commit)
-			}
-		}
-		return nil
-	})
-
-	return &CommitData{
-		Hashs:           hashs,
-		UnsignedCommits: unsignedCommits,
-	}, nil
-}
-
-func GetMergedPrHashs(prs []gh.PR, lc *git.Repository, repoDir string) (*set.Set[string], error) {
-
-	err := fetchAllRefs(prs, lc)
-	if err != nil {
-		return nil, err
-	}
-
-	allNewCommits := set.New[string](len(prs) * 10)
+	res := make(map[int]*set.Set[string], len(prs))
 
 	for _, pr := range prs {
-
-		newCommits, err := getNewCommitsFromPr(repoDir, pr, lc)
+		newCommits, err := getCommitHashsForPr(repoDir, pr)
 		if err != nil {
 			continue
 		}
-		for nc := range newCommits.Items() {
-			patchId, _ := GetPatchId(repoDir, nc)
-			allNewCommits.Insert(patchId)
-		}
+		logger.Debug("Commits from pr", "len", newCommits.Size())
+		res[pr.Number] = newCommits
 	}
 
-	return allNewCommits, nil
+	return &res, nil
 }
 
-func fetchAllRefs(prs []gh.PR, lc *git.Repository) error {
-	timer := time.Now()
-	refspecs := []config.RefSpec{}
+func fetchAllRefs(prs []gh.PR, dir string) error {
+	if len(prs) == 0 {
+		return nil
+	}
+
+	args := []string{"fetch", "origin"}
 	for _, pr := range prs {
 		if pr.State == "MERGED" {
 			prn := pr.Number
-			// git fetch origin pull/<pr_number>/head:<local_branch_name>
-			refspec := fmt.Sprintf("+refs/pull/%d/head:pull/%d", prn, prn)
-			refspecs = append(refspecs, config.RefSpec(refspec))
+			args = append(args, fmt.Sprintf("pull/%d/head:pull/%d", prn, prn))
 		}
 	}
 
-	err := lc.Fetch(&git.FetchOptions{
-		RefSpecs: refspecs},
-	)
-	if err != nil && err.Error() != "already up-to-date" {
-		slog.Default().Error("Fetch ran in an error", "error", err)
+	// git fetch origin pull/<pr_number>/head:<local_branch_name> ...
+	cmd := exec.Command("git", args...)
+	cmd.Dir = dir
+	o, err := cmd.CombinedOutput()
+	if err != nil {
+		slog.Default().Error("Git fetch failed", "target dir", dir, "output", o)
 		return err
 	}
-	elapsed := time.Since(timer)
-	slog.Default().Info("Fetching PR refs from git", "time", elapsed)
 
 	return nil
 }
 
-func getNewCommitsFromPr(dir string, pr gh.PR, lc *git.Repository) (*set.Set[string], error) {
+func getCommitHashsForPr(dir string, pr gh.PR) (*set.Set[string], error) {
 
 	slog.Default().Debug("processing pr", "pr number", pr.Number, "base ref", pr.BaseRefOid, "head ref", pr.HeadRefOid)
-	newCommits, err := getRevList(dir, pr.BaseRefOid, pr.HeadRefOid)
+	newCommits, err := getRevList(dir, fmt.Sprintf("%s...%s", pr.BaseRefOid, pr.HeadRefOid))
 	if err != nil {
 		return nil, err
 	}
 	commitSet := set.From(newCommits)
+	commitSet.Insert(pr.MergeCommit.Oid)
 
-	// this is used to identify squashed and merge commits
-	if c, err := lc.CommitObject(plumbing.NewHash(pr.MergeCommit.Oid)); err == nil {
-		commitSet.Insert(c.Hash.String())
-	}
 	return commitSet, nil
 }
 
 // getRevList executes the git rev-list command and returns commit hashes.
-func getRevList(repoPath, baseRef, headRef string) ([]string, error) {
-	cmd := exec.Command("git", "rev-list", fmt.Sprintf("%s..%s", baseRef, headRef))
+func getRevList(repoPath, arg string) ([]string, error) {
+	cmd := exec.Command("git", "rev-list", arg)
 	cmd.Dir = repoPath
 	out, err := cmd.Output()
 	if err != nil {
@@ -138,4 +89,85 @@ func getRevList(repoPath, baseRef, headRef string) ([]string, error) {
 	// Split by newline to get each commit hash.
 	commits := strings.Split(strings.TrimSpace(string(out)), "\n")
 	return commits, nil
+}
+
+func CloneRepo(url, dir string) error {
+	cmd := exec.Command("git", "clone", "--bare", url, dir)
+	_, err := cmd.Output()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
+func GetCommitsFromHashs(repoPath string, hashs []string) ([]io.Commit, error) {
+	return getCommit(show, repoPath, hashs)
+}
+
+func GetCommitsFromBrach(repoPath, branch string) ([]io.Commit, error) {
+	return getCommit(log, repoPath, []string{branch})
+}
+
+type GitCmd string
+
+const (
+	show GitCmd = "show"
+	log  GitCmd = "log"
+)
+
+type DELIMITER string
+
+const (
+	lineBreak DELIMITER = "<<<CUSTOM_LINEBREAK>>>"
+	value     DELIMITER = "<<<VALUE>>>"
+)
+
+func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, error) {
+	format := "--pretty=tformat:%H" + value + "%f %b" + value + "%cd" + value + "%G?" + value + lineBreak
+	args := append([]string{string(gitCmd), "--no-patch", "--oneline", "--expand-tabs", string(format)}, input...)
+
+	cmd := exec.Command("git", args...)
+	cmd.Dir = repoPath
+	out, err := cmd.Output()
+	if err != nil {
+		slog.Default().Error("error during get commit", "err", err, "input", input)
+		return nil, err
+	}
+	str := removeControls(string(out))
+	// Split by newline to get each commit hash.
+	rawCommits := strings.Split(strings.TrimSuffix(str, string(lineBreak)), string(lineBreak))
+
+	return parseCommits(rawCommits), nil
+}
+
+func removeControls(s string) string {
+	return strings.Map(func(r rune) rune {
+		if unicode.IsControl(r) {
+			return -1 // drop it
+		}
+		return r // keep it
+	}, s)
+}
+
+func parseCommits(rawCommits []string) []io.Commit {
+	commits := make([]io.Commit, 0, len(rawCommits))
+	for _, rc := range rawCommits {
+		split := strings.Split(rc, string(value))
+
+		if len(split) < 4 {
+			slog.Default().Warn("Commit parsing failed. Split length to short.", "split", split)
+			continue
+		}
+
+		c := io.Commit{
+			GitOID:  split[0],
+			Message: split[1],
+			Date:    split[2],
+			Signed:  split[3],
+		}
+		commits = append(commits, c)
+	}
+
+	return commits
 }

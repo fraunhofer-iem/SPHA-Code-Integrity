@@ -1,7 +1,6 @@
 package processor
 
 import (
-	"fmt"
 	"log/slog"
 	"os"
 	"project-integrity-calculator/internal/gh"
@@ -9,8 +8,7 @@ import (
 	"project-integrity-calculator/internal/vcs"
 	"time"
 
-	"github.com/go-git/go-git/v5"
-	"github.com/go-git/go-git/v5/plumbing"
+	"github.com/hashicorp/go-set/v3"
 )
 
 type RepoConfig struct {
@@ -29,15 +27,18 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		return nil, err
 	}
 
-	lc, err := getRepo(config, r.CloneUrl)
-	if err != nil {
-		return nil, err
-	}
-
 	var dir string
 	if config.ClonePath != "" {
 		dir = config.ClonePath
-		defer os.RemoveAll(config.ClonePath)
+		err := os.MkdirAll(dir, os.ModePerm)
+		if err != nil {
+			return nil, err
+		}
+		err = vcs.CloneRepo(r.CloneUrl, dir)
+		if err != nil {
+			return nil, err
+		}
+		defer os.RemoveAll(dir)
 	} else {
 		dir = config.LocalPath
 	}
@@ -58,50 +59,72 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	logger.Info("Time to query all Pull requests", "time", elapsed)
 
 	methodTimer = time.Now()
-	allPrCommits, err := vcs.GetMergedPrHashs(prs, lc, dir)
+	commitsFromPrs, err := vcs.GetCommitShaForMergedPr(prs, dir)
 	if err != nil {
 		return nil, err
 	}
+	allCommitsFromPrs := set.New[string](len(*commitsFromPrs) * 5)
+	for _, cs := range *commitsFromPrs {
+		for c := range cs.Items() {
+			pi, err := vcs.GetPatchId(dir, c)
+			if err != nil {
+				slog.Default().Warn("Get patch id failed", "err", err)
+				continue
+			}
+			allCommitsFromPrs.Insert(pi)
+		}
+	}
+
 	elapsed = time.Since(methodTimer)
 	logger.Info("Time to get pr hashes", "time", elapsed)
 
 	methodTimer = time.Now()
-	allCommits, err := vcs.GetCommitData(lc, dir, branch)
+	allCommits, err := vcs.GetCommitsFromBrach(dir, branch)
 	if err != nil {
 		return nil, err
 	}
+
+	allCommitShas := set.New[string](len(allCommits))
+	patchIdToCommit := make(map[string]*io.Commit, len(allCommits))
+	unsignedCommits := make([]io.Commit, 0, len(allCommits)/3)
+	for i := range allCommits {
+		c := &allCommits[i]
+		pi, err := vcs.GetPatchId(dir, c.GitOID)
+		if err != nil {
+			slog.Default().Warn("Get patch id failed", "err", err)
+			continue
+		}
+		allCommitShas.Insert(pi)
+		patchIdToCommit[pi] = c
+		if c.Signed == "N" || c.Signed == "B" {
+			unsignedCommits = append(unsignedCommits, *c)
+		}
+	}
+
+	commitsWithoutPrShas := allCommitShas.Difference(allCommitsFromPrs)
+	commitsWithoutPr := make([]io.Commit, 0, commitsWithoutPrShas.Size())
+
+	for h := range commitsWithoutPrShas.Items() {
+		c, ok := patchIdToCommit[h]
+		if !ok {
+			continue
+		}
+
+		commitsWithoutPr = append(commitsWithoutPr, *c)
+	}
+
 	elapsed = time.Since(methodTimer)
 	logger.Info("Time to get commit hashes from target branch", "time", elapsed)
 
-	ach := allCommits.Hashs
-	logger.Info("Number all commits", branch, ach.Size())
+	logger.Info("Number all commits", branch, allCommitShas.Size())
 
-	commitHashsWithoutPr := ach.Difference(allPrCommits)
+	logger.Info("Number commits from PRs", "number", allCommitsFromPrs.Size())
+	logger.Info("Number commits without PR", "number", commitsWithoutPrShas.Size())
 
-	logger.Info("Number commits from PRs", "number", allPrCommits.Size())
-	logger.Info("Number commits without PR", "number", commitHashsWithoutPr.Size())
-
+	heads, err := vcs.GetCommitsFromHashs(dir, []string{branch})
 	head := ""
-	h, err := lc.Head()
-	if err == nil {
-		head = h.Hash().String()
-	}
-
-	commitsWithoutPr := make([]io.Commit, commitHashsWithoutPr.Size())
-	for h := range commitHashsWithoutPr.Items() {
-		hash := plumbing.NewHash(h)
-		// todo: commit decoding is pretty expensive, we should add a commit cache
-		c, err := lc.CommitObject(hash)
-		if err != nil {
-			continue
-		}
-		ioc := io.Commit{
-			GitOID:  h,
-			Message: c.Message,
-			Date:    c.Committer.When.String(),
-			Signed:  c.PGPSignature != "",
-		}
-		commitsWithoutPr = append(commitsWithoutPr, ioc)
+	if err == nil || len(heads) == 1 {
+		head = heads[0].GitOID
 	}
 
 	repo := io.Repo{
@@ -109,24 +132,11 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		Url:              r.CloneUrl,
 		Head:             head,
 		CommitsWithoutPR: commitsWithoutPr,
-		UnsignedCommits:  allCommits.UnsignedCommits,
+		UnsignedCommits:  unsignedCommits,
 	}
 
 	timerEnd := time.Since(timer)
 	logger.Info("Processing of repo finished", "repo", config.Repo, "time", timerEnd)
 
 	return &repo, nil
-}
-
-func getRepo(config RepoConfig, cloneUrl string) (*git.Repository, error) {
-	switch {
-	case config.ClonePath != "":
-		return git.PlainClone(config.ClonePath, true, &git.CloneOptions{
-			URL: cloneUrl,
-		})
-	case config.LocalPath != "":
-		return git.PlainOpen(config.LocalPath)
-	default:
-		return nil, fmt.Errorf("invalid repo config: neither ClonePath nor LocalPath is set")
-	}
 }
