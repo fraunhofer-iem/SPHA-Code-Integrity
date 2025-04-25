@@ -33,6 +33,7 @@ func GetCommitShaForMergedPr(prs []gh.PR, repoDir string) (*map[int]*set.Set[str
 		if err != nil {
 			continue
 		}
+		logger.Debug("Commits from pr", "len", newCommits.Size())
 		res[pr.Number] = newCommits
 	}
 
@@ -77,6 +78,29 @@ func getCommitHashsForPr(dir string, pr gh.PR) (*set.Set[string], error) {
 	return commitSet, nil
 }
 
+// getRevList executes the git rev-list command and returns commit hashes.
+func getRevList(repoPath, arg string) ([]string, error) {
+	cmd := exec.Command("git", "rev-list", arg)
+	cmd.Dir = repoPath
+	out, err := cmd.Output()
+	if err != nil {
+		return nil, err
+	}
+	// Split by newline to get each commit hash.
+	commits := strings.Split(strings.TrimSpace(string(out)), "\n")
+	return commits, nil
+}
+
+func CloneRepo(url, dir string) error {
+	cmd := exec.Command("git", "clone", "--bare", url, dir)
+	_, err := cmd.Output()
+	if err != nil {
+		return err
+	}
+
+	return nil
+}
+
 func GetCommitsFromHashs(repoPath string, hashs []string) ([]io.Commit, error) {
 	return getCommit(show, repoPath, hashs)
 }
@@ -101,7 +125,7 @@ const (
 
 func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, error) {
 	format := "--pretty=tformat:%H" + value + "%f %b" + value + "%cd" + value + "%G?" + value + lineBreak
-	args := append([]string{string(gitCmd), "--no-patch", "--oneline", "--expand-tabs", "--first-parent", string(format)}, input...)
+	args := append([]string{string(gitCmd), "--no-patch", "--oneline", "--expand-tabs", string(format)}, input...)
 
 	cmd := exec.Command("git", args...)
 	cmd.Dir = repoPath
@@ -142,32 +166,8 @@ func parseCommits(rawCommits []string) []io.Commit {
 			Date:    split[2],
 			Signed:  split[3],
 		}
-		slog.Default().Info("parsed commit", "c", c)
 		commits = append(commits, c)
 	}
 
 	return commits
-}
-
-// getRevList executes the git rev-list command and returns commit hashes.
-func getRevList(repoPath, arg string) ([]string, error) {
-	cmd := exec.Command("git", "rev-list", arg)
-	cmd.Dir = repoPath
-	out, err := cmd.Output()
-	if err != nil {
-		return nil, err
-	}
-	// Split by newline to get each commit hash.
-	commits := strings.Split(strings.TrimSpace(string(out)), "\n")
-	return commits, nil
-}
-
-func CloneRepo(url, dir string) error {
-	cmd := exec.Command("git", "clone", "--bare", url, dir)
-	_, err := cmd.Output()
-	if err != nil {
-		return err
-	}
-
-	return nil
 }
