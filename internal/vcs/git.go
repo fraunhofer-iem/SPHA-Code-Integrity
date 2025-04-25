@@ -14,9 +14,10 @@ import (
 )
 
 func GetCommitShaForMergedPr(prs []gh.PR, repoDir string) (*map[int]*set.Set[string], error) {
+	logger := slog.Default()
 
 	if len(prs) == 0 {
-		slog.Default().Warn("No PRs provided to GetCommitShaForMergedPr", "repoDir", repoDir)
+		logger.Warn("No PRs provided to GetCommitShaForMergedPr", "repoDir", repoDir)
 		return &map[int]*set.Set[string]{}, nil
 	}
 
@@ -43,19 +44,20 @@ func fetchAllRefs(prs []gh.PR, dir string) error {
 		return nil
 	}
 
-	refs := "origin "
+	args := []string{"fetch", "origin"}
 	for _, pr := range prs {
 		if pr.State == "MERGED" {
 			prn := pr.Number
-			refs += fmt.Sprintf("pull/%d/head:pull/%d ", prn, prn)
+			args = append(args, fmt.Sprintf("pull/%d/head:pull/%d", prn, prn))
 		}
 	}
 
 	// git fetch origin pull/<pr_number>/head:<local_branch_name> ...
-	cmd := exec.Command("git", "fetch", refs)
+	cmd := exec.Command("git", args...)
 	cmd.Dir = dir
-	_, err := cmd.Output()
+	o, err := cmd.CombinedOutput()
 	if err != nil {
+		slog.Default().Error("Git fetch failed", "target dir", dir, "output", o)
 		return err
 	}
 
@@ -91,9 +93,8 @@ const (
 )
 
 func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, error) {
-	format := "--format={\"GitOID\":\"%H\", \"Message\":\"%B\", \"Date\":\"%cd\", \"Signed\":\"%G?\"}"
-
-	args := append([]string{string(gitCmd), "--no-patch", format}, input...)
+	format := `--pretty=tformat:{"GitOID":"%H", "Message":"%f %b", "Date": "%cd", "Signed":"%G?"}<<<CUSTOM_DELIMITER>>>`
+	args := append([]string{string(gitCmd), "--no-patch", "--expand-tabs", "--first-parent", format}, input...)
 
 	cmd := exec.Command("git", args...)
 	cmd.Dir = repoPath
@@ -103,8 +104,8 @@ func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, err
 		return nil, err
 	}
 	// Split by newline to get each commit hash.
-	rawCommits := strings.Split(strings.TrimSpace(string(out)), "\n")
-	slog.Default().Info("commits", "c", rawCommits)
+	rawCommits := strings.Split(strings.TrimSuffix(string(out), "<<<CUSTOM_DELIMITER>>>"), "<<<CUSTOM_DELIMITER>>>")
+	// slog.Default().Info("commits", "c", rawCommits)
 
 	return parseCommits(rawCommits), nil
 }
@@ -112,12 +113,29 @@ func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, err
 func parseCommits(rawCommits []string) []io.Commit {
 	commits := make([]io.Commit, len(rawCommits))
 	for _, rc := range rawCommits {
-		var c io.Commit
-		err := json.Unmarshal([]byte(rc), &c)
-		if err != nil {
-			slog.Default().Error("unmarshall for commit failed", "commit", rc)
+		entry := strings.ToValidUTF8(strings.TrimSpace(rc), "")
+		if entry == "" {
+			slog.Default().Warn("sanitization failed", "rc", rc)
 			continue
 		}
+
+		if !json.Valid([]byte(entry)) {
+			var raw json.RawMessage
+			err := json.Unmarshal([]byte(entry), &raw)
+			if err != nil {
+				slog.Default().Warn("First unmarshal failed", "entry", entry, "err", err)
+
+				continue
+			}
+		}
+
+		var c io.Commit
+		err := json.Unmarshal([]byte(entry), &c)
+		if err != nil {
+			slog.Default().Error("unmarshall for commit failed", "err", err, "commit", rc, "trim space", entry)
+			continue
+		}
+		slog.Default().Info("parsed commit", "c", c)
 		commits = append(commits, c)
 	}
 
@@ -126,7 +144,7 @@ func parseCommits(rawCommits []string) []io.Commit {
 
 // getRevList executes the git rev-list command and returns commit hashes.
 func getRevList(repoPath, arg string) ([]string, error) {
-	cmd := exec.Command("git", "rev-list")
+	cmd := exec.Command("git", "rev-list", arg)
 	cmd.Dir = repoPath
 	out, err := cmd.Output()
 	if err != nil {
@@ -138,8 +156,7 @@ func getRevList(repoPath, arg string) ([]string, error) {
 }
 
 func CloneRepo(url, dir string) error {
-	cmd := exec.Command("git", "clone", "--bare", url)
-	cmd.Dir = dir
+	cmd := exec.Command("git", "clone", "--bare", url, dir)
 	_, err := cmd.Output()
 	if err != nil {
 		return err

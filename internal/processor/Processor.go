@@ -30,11 +30,15 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	var dir string
 	if config.ClonePath != "" {
 		dir = config.ClonePath
-		err := vcs.CloneRepo(r.CloneUrl, config.ClonePath)
+		err := os.MkdirAll(dir, os.ModePerm)
 		if err != nil {
 			return nil, err
 		}
-		defer os.RemoveAll(config.ClonePath)
+		err = vcs.CloneRepo(r.CloneUrl, dir)
+		if err != nil {
+			return nil, err
+		}
+		defer os.RemoveAll(dir)
 	} else {
 		dir = config.LocalPath
 	}
@@ -83,9 +87,9 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	elapsed = time.Since(methodTimer)
 	logger.Info("Time to get commit hashes from target branch", "time", elapsed)
 
-	logger.Info("Number all commits", branch, len(allCommits))
+	logger.Info("Number all commits", branch, allCommitShas.Size())
 
-	logger.Info("Number commits from PRs", "number", allCommitsFromPrs.Size)
+	logger.Info("Number commits from PRs", "number", allCommitsFromPrs.Size())
 	logger.Info("Number commits without PR", "number", commitsWithoutPr.Size())
 
 	repo := io.Repo{

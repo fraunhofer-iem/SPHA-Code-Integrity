@@ -32,5 +32,5 @@ type Commit struct {
 	// "R" for a good signature made by a revoked key,
 	// "E" if the signature cannot be checked (e.g. missing key)
 	// and "N" for no signature
-	Signed bool
+	Signed string
 }
