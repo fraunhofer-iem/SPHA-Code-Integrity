@@ -64,8 +64,15 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		return nil, err
 	}
 	allCommitsFromPrs := set.New[string](len(*commitsFromPrs) * 5)
-	for _, c := range *commitsFromPrs {
-		allCommitsFromPrs.InsertSet(c)
+	for _, cs := range *commitsFromPrs {
+		for c := range cs.Items() {
+			pi, err := vcs.GetPatchId(dir, c)
+			if err != nil {
+				slog.Default().Warn("Get patch id failed", "err", err)
+				continue
+			}
+			allCommitsFromPrs.Insert(pi)
+		}
 	}
 
 	elapsed = time.Since(methodTimer)
@@ -78,11 +85,28 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	}
 
 	allCommitShas := set.New[string](len(allCommits))
+	patchIdToCommit := make(map[string]*io.Commit, len(allCommits))
 	for _, c := range allCommits {
-		allCommitShas.Insert(c.GitOID)
+		pi, err := vcs.GetPatchId(dir, c.GitOID)
+		if err != nil {
+			slog.Default().Warn("Get patch id failed", "err", err)
+			continue
+		}
+		allCommitShas.Insert(pi)
+		patchIdToCommit[pi] = &c
 	}
 
-	commitsWithoutPr := allCommitShas.Difference(allCommitsFromPrs)
+	commitsWithoutPrShas := allCommitShas.Difference(allCommitsFromPrs)
+	commitsWithoutPr := make([]io.Commit, commitsWithoutPrShas.Size())
+
+	for h := range commitsWithoutPrShas.Items() {
+		c, ok := patchIdToCommit[h]
+		if !ok {
+			continue
+		}
+
+		commitsWithoutPr = append(commitsWithoutPr, *c)
+	}
 
 	elapsed = time.Since(methodTimer)
 	logger.Info("Time to get commit hashes from target branch", "time", elapsed)
@@ -90,13 +114,13 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	logger.Info("Number all commits", branch, allCommitShas.Size())
 
 	logger.Info("Number commits from PRs", "number", allCommitsFromPrs.Size())
-	logger.Info("Number commits without PR", "number", commitsWithoutPr.Size())
+	logger.Info("Number commits without PR", "number", commitsWithoutPrShas.Size())
 
 	repo := io.Repo{
 		Branch: branch,
 		Url:    r.CloneUrl,
 		// Head:             head,
-		// CommitsWithoutPR: commitsWithoutPr,
+		CommitsWithoutPR: commitsWithoutPr,
 		// UnsignedCommits:  allCommits.UnsignedCommits,
 	}
 
