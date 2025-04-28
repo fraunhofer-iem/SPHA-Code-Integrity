@@ -68,7 +68,7 @@ func fetchAllRefs(prs []gh.PR, dir string) error {
 func getCommitHashsForPr(dir string, pr gh.PR) (*set.Set[string], error) {
 
 	slog.Default().Debug("processing pr", "pr number", pr.Number, "base ref", pr.BaseRefOid, "head ref", pr.HeadRefOid)
-	newCommits, err := getRevList(dir, fmt.Sprintf("%s...%s", pr.BaseRefOid, pr.HeadRefOid))
+	newCommits, err := getRevList(dir, fmt.Sprintf("%s..%s", pr.BaseRefOid, pr.HeadRefOid))
 	if err != nil {
 		return nil, err
 	}

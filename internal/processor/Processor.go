@@ -67,19 +67,20 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	for _, cs := range *commitsFromPrs {
 		for c := range cs.Items() {
 			pi, err := vcs.GetPatchId(dir, c)
-			if err != nil {
-				slog.Default().Warn("Get patch id failed", "err", err)
-				continue
+			if err != nil || pi == "" {
+				slog.Default().Warn("Get patch id failed. Setting patch id to original commit id", "err", err)
+				pi = c
 			}
 			allCommitsFromPrs.Insert(pi)
 		}
 	}
-
+	logger.Info("Commits from prs", "prs", commitsFromPrs)
 	elapsed = time.Since(methodTimer)
 	logger.Info("Time to get pr hashes", "time", elapsed)
 
 	methodTimer = time.Now()
 	allCommits, err := vcs.GetCommitsFromBrach(dir, branch)
+	logger.Info("All commits", "commits", allCommits)
 	if err != nil {
 		return nil, err
 	}
@@ -90,9 +91,10 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	for i := range allCommits {
 		c := &allCommits[i]
 		pi, err := vcs.GetPatchId(dir, c.GitOID)
-		if err != nil {
-			slog.Default().Warn("Get patch id failed", "err", err)
-			continue
+		logger.Info("getting patch id", "commit", c, "patch id", pi)
+		if err != nil || pi == "" {
+			slog.Default().Warn("Get patch id failed or is empty. Setting patch id to original commit id", "err", err)
+			pi = c.GitOID
 		}
 		allCommitShas.Insert(pi)
 		patchIdToCommit[pi] = c
@@ -100,6 +102,8 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 			unsignedCommits = append(unsignedCommits, *c)
 		}
 	}
+
+	logger.Info("all commits sha", "shas", allCommitShas)
 
 	commitsWithoutPrShas := allCommitShas.Difference(allCommitsFromPrs)
 	commitsWithoutPr := make([]io.Commit, 0, commitsWithoutPrShas.Size())
