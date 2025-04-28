@@ -49,6 +49,18 @@
         {
           "nameWithOwner": "CodeIntegrityBenchmark/Test_012",
           "url": "https://raw.githubusercontent.com/CodeIntegrityBenchmark/Test_012/refs/heads/main/expectedResults.json"
+        },
+        {
+          "nameWithOwner": "CodeIntegrityBenchmark/Test_013",
+          "url": "https://raw.githubusercontent.com/CodeIntegrityBenchmark/Test_013/refs/heads/main/expectedResults.json"
+        },
+        {
+          "nameWithOwner": "CodeIntegrityBenchmark/Test_014",
+          "url": "https://raw.githubusercontent.com/CodeIntegrityBenchmark/Test_014/refs/heads/main/expectedResults.json"
+        },
+        {
+          "nameWithOwner": "CodeIntegrityBenchmark/Test_015",
+          "url": "https://raw.githubusercontent.com/CodeIntegrityBenchmark/Test_015/refs/heads/main/expectedResults.json"
         }
       ]
     }
