@@ -14,7 +14,6 @@ import (
 
 var (
 	token       = flag.String("token", "", "GitHub access token")
-	mode        = flag.String("mode", "local", "Mode: 'local' or 'clone'")
 	cloneTarget = flag.String("cloneTarget", "", "Target to clone. Defaults to tmp")
 	logLevel    = flag.Int("logLevel", 0, "Can be 0 for INFO, -4 for DEBUG, 4 for WARN, or 8 for ERROR. Defaults to INFO.")
 	out         = flag.String("out", "", "Directory to which the output is written. Defaults to the current working directory.")
@@ -82,6 +81,10 @@ func main() {
 		}
 
 		outPath := path.Join(*out, config.Owner+config.Repo+"-result.json")
+		err = os.MkdirAll(*out, 0777)
+		if err != nil {
+			panic(err)
+		}
 		err = io.StoreResult(outPath, *repo)
 		if err != nil {
 			panic(err)

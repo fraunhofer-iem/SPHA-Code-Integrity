@@ -26,6 +26,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		return nil, err
 	}
 
+	// TODO: fix me !
 	var dir string
 	if config.ClonePath != "" {
 		dir = config.ClonePath
