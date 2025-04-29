@@ -34,7 +34,7 @@ func TestMain(t *testing.T) {
 	app := path.Join(dir, "cmd", "multiRepo", "Main.go")
 	in := path.Join(dir, "integrationTests", "TestRepos.json")
 
-	cmd := exec.Command("go", "run", app, "--in", in, "--out", out, "--cloneTarget", t.TempDir(), "--token", token)
+	cmd := exec.Command("go", "run", app, "--in", in, "--out", out, "--token", token)
 	cmd.Dir = dir
 	o, err := cmd.CombinedOutput()
 	if err != nil {

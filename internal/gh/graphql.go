@@ -4,6 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 	"fmt"
+	"iter"
 	"log/slog"
 	"net/http"
 )
@@ -229,7 +230,7 @@ func GetRepoInfo(owner, repo, token string) (*RepoInfo, error) {
 	}, nil
 }
 
-func GetPullRequests(owner, repo, branch, token string) ([]PR, error) {
+func GetPullRequests(owner, repo, branch, token string) iter.Seq[PR] {
 	variables := map[string]any{
 		"owner":  owner,
 		"name":   repo,
@@ -237,27 +238,50 @@ func GetPullRequests(owner, repo, branch, token string) ([]PR, error) {
 	}
 
 	client := &http.Client{}
-	var gqlResp PrReviewResponse
-	prs := []PR{}
 
-	// Execute the initial query.
-	if err := executeGraphQLRequest(client, URL, token, initialPRQuery, variables, &gqlResp); err != nil {
-		return prs, err
+	var initialResp PrReviewResponse
+	if err := executeGraphQLRequest(client, URL, token, initialPRQuery, variables, &initialResp); err != nil {
+		// Return a nil sequence and the error
+		return func(yield func(PR) bool) {}
 	}
 
-	prs = append(prs, gqlResp.Data.Repository.PullRequests.Nodes...)
+	// Define the iterator function
+	return func(yield func(PR) bool) {
+		slog.Default().Debug("Iterator started.")
+		// Use the already fetched initial response
+		currentResp := initialResp
 
-	// Cursor iteration for paginated results.
-	for gqlResp.Data.Repository.PullRequests.PageInfo.HasNextPage {
-		// Set the cursor for the next page.
-		variables["after"] = gqlResp.Data.Repository.PullRequests.PageInfo.EndCursor
+		// Loop indefinitely, relying on break conditions
+		for {
+			// Yield items from the current page
+			for _, pr := range currentResp.Data.Repository.PullRequests.Nodes {
+				if !yield(pr) {
+					slog.Default().Debug("Iterator stopping early due to yield returning false.")
+					return // Stop iteration if yield returns false
+				}
+			}
+			slog.Default().Debug("Finished yielding PRs from current page.")
 
-		if err := executeGraphQLRequest(client, URL, token, paginatedPRQuery, variables, &gqlResp); err != nil {
-			break
+			// Check if there's a next page
+			if !currentResp.Data.Repository.PullRequests.PageInfo.HasNextPage {
+				slog.Default().Debug("No next page. Iterator finished.")
+				break // Exit loop if no more pages
+			}
+
+			// Prepare for the next paginated request
+			slog.Default().Debug("Fetching next page...")
+			variables["after"] = currentResp.Data.Repository.PullRequests.PageInfo.EndCursor
+			var paginatedResp PrReviewResponse
+
+			// Execute the paginated query
+			if err := executeGraphQLRequest(client, URL, token, paginatedPRQuery, variables, &paginatedResp); err != nil {
+				// Log the error (optional) and stop iteration
+				fmt.Printf("Error fetching next page (cursor %v): %v. Iterator stopping.\n", variables["after"], err)
+				break // Exit loop on error during pagination
+			}
+			slog.Default().Debug("Next page fetched successfully.")
+			currentResp = paginatedResp // Update currentResp for the next iteration
 		}
-
-		prs = append(prs, gqlResp.Data.Repository.PullRequests.Nodes...)
+		slog.Default().Debug("Iterator function finished.")
 	}
-
-	return prs, nil
 }
