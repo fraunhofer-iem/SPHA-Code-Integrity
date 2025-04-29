@@ -15,8 +15,6 @@ var (
 	ownerAndRepo = flag.String("ownerAndRepo", "", "GitHub repository link (e.g., https://github.com/owner/repo)")
 	token        = flag.String("token", "", "GitHub access token")
 	targetBranch = flag.String("branch", "", "Target branch to analyze. Defaults to the default branch of the repository")
-	mode         = flag.String("mode", "local", "Mode: 'local' or 'clone'")
-	localPath    = flag.String("localPath", "", "Path to the local repository (required if mode is 'local')")
 	cloneTarget  = flag.String("cloneTarget", "", "Target to clone. Defaults to tmp")
 	logLevel     = flag.Int("logLevel", 0, "Can be 0 for INFO, -4 for DEBUG, 4 for WARN, or 8 for ERROR. Defaults to INFO.")
 	out          = flag.String("out", "", "Directory to which the output is written. Defaults to the current working directory.")
@@ -41,11 +39,7 @@ func main() {
 		panic("token is required")
 	}
 
-	if *mode == "local" && *localPath == "" {
-		panic("localPath is required if mode is 'local'")
-	}
-
-	if *mode == "clone" && *cloneTarget == "" {
+	if *cloneTarget == "" {
 		*cloneTarget = path.Join(os.TempDir(), "codeintegrity", ownerAndRepoSplit[1])
 	}
 
@@ -60,7 +54,6 @@ func main() {
 	config := processor.RepoConfig{
 		Owner:     ownerAndRepoSplit[0],
 		Repo:      ownerAndRepoSplit[1],
-		LocalPath: *localPath,
 		ClonePath: *cloneTarget,
 		Branch:    *targetBranch,
 		Token:     *token,

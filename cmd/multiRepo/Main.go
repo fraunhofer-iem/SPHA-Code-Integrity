@@ -70,7 +70,6 @@ func main() {
 		config := processor.RepoConfig{
 			Owner:     ownerAndRepoSplit[0],
 			Repo:      ownerAndRepoSplit[1],
-			LocalPath: "",
 			ClonePath: clonePath,
 			Branch:    "",
 			Token:     *token,
