@@ -82,7 +82,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		numberPrs++
 
 		methodTimer = time.Now()
-		commitsFromPrs, err := vcs.GetCommitShaForMergedPr([]gh.PR{pr}, dir)
+		commitsFromPrs, err := vcs.GetCommitShaForMergedPr(pr, dir)
 		if err != nil {
 			return nil, err
 		}

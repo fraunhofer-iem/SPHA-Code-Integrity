@@ -230,7 +230,7 @@ func GetRepoInfo(owner, repo, token string) (*RepoInfo, error) {
 	}, nil
 }
 
-func GetPullRequests(owner, repo, branch, token string) iter.Seq[PR] {
+func GetPullRequests(owner, repo, branch, token string) iter.Seq[[]PR] {
 	variables := map[string]any{
 		"owner":  owner,
 		"name":   repo,
@@ -242,11 +242,11 @@ func GetPullRequests(owner, repo, branch, token string) iter.Seq[PR] {
 	var initialResp PrReviewResponse
 	if err := executeGraphQLRequest(client, URL, token, initialPRQuery, variables, &initialResp); err != nil {
 		// Return a nil sequence and the error
-		return func(yield func(PR) bool) {}
+		return func(yield func([]PR) bool) {}
 	}
 
 	// Define the iterator function
-	return func(yield func(PR) bool) {
+	return func(yield func([]PR) bool) {
 		slog.Default().Debug("Iterator started.")
 		// Use the already fetched initial response
 		currentResp := initialResp
@@ -254,11 +254,9 @@ func GetPullRequests(owner, repo, branch, token string) iter.Seq[PR] {
 		// Loop indefinitely, relying on break conditions
 		for {
 			// Yield items from the current page
-			for _, pr := range currentResp.Data.Repository.PullRequests.Nodes {
-				if !yield(pr) {
-					slog.Default().Debug("Iterator stopping early due to yield returning false.")
-					return // Stop iteration if yield returns false
-				}
+			if !yield(currentResp.Data.Repository.PullRequests.Nodes) {
+				slog.Default().Debug("Iterator stopping early due to yield returning false.")
+				return // Stop iteration if yield returns false
 			}
 			slog.Default().Debug("Finished yielding PRs from current page.")
 
