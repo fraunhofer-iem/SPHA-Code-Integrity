@@ -60,6 +60,8 @@ func main() {
 	if err := decoder.Decode(&input); err != nil {
 		panic(err)
 	}
+
+	failedRepos := 0
 	for _, r := range input.Data.Search.Nodes {
 
 		ownerAndRepoSplit := strings.Split(r.NameWithOwner, "/")
@@ -77,19 +79,25 @@ func main() {
 
 		repo, err := processor.ProcessRepo(config)
 		if err != nil {
-			panic(err)
+			failedRepos++
+			logger.Warn("Process repo failed", "err", err)
+			continue
 		}
 
 		outPath := path.Join(*out, config.Owner+config.Repo+"-result.json")
 		err = os.MkdirAll(*out, 0777)
 		if err != nil {
-			panic(err)
+			failedRepos++
+			logger.Warn("Create result dir failed", "err", err)
+			continue
 		}
 		err = io.StoreResult(outPath, *repo)
 		if err != nil {
-			panic(err)
+			failedRepos++
+			logger.Warn("Store result failed", "err", err)
+			continue
 		}
 	}
 	elapsed := time.Since(start)
-	logger.Info("Execution finished", "time elapsed", elapsed)
+	logger.Info("Execution finished", "time elapsed", elapsed, "number of failed repos", failedRepos)
 }
