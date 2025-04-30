@@ -6,6 +6,7 @@ import (
 	"path"
 	"project-integrity-calculator/internal/gh"
 	"project-integrity-calculator/internal/io"
+	"project-integrity-calculator/internal/tasks"
 	"project-integrity-calculator/internal/vcs"
 	"time"
 )
@@ -72,32 +73,49 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 			unsignedCommits = append(unsignedCommits, *c)
 		}
 	}
+
 	elapsed := time.Since(methodTimer)
 	logger.Info("query all commits", "time", elapsed)
 
 	methodTimer = time.Now()
 	prIter := gh.GetPullRequests(config.Owner, config.Repo, branch, config.Token)
-	numberPrs := 0
-	for pr := range prIter {
-		numberPrs++
-
-		methodTimer = time.Now()
-		commitsFromPrs, err := vcs.GetCommitShaForMergedPr(pr, dir)
-		if err != nil {
-			return nil, err
-		}
-
-		for _, cs := range *commitsFromPrs {
-			for c := range cs.Items() {
-				pi, err := vcs.GetPatchId(dir, c)
-				if err != nil || pi == "" {
-					slog.Default().Warn("Get patch id failed. Setting patch id to original commit id", "err", err)
-					pi = c
+	worker := tasks.Worker[[]gh.PR, []string]{
+		Do: func(prs *[]gh.PR) (*[]string, error) {
+			commitsFromPrs, err := vcs.GetCommitShaForMergedPr(*prs, dir)
+			if err != nil {
+				return nil, err
+			}
+			ids := make([]string, 0, len(*commitsFromPrs))
+			for _, cs := range *commitsFromPrs {
+				for c := range cs.Items() {
+					pi, err := vcs.GetPatchId(dir, c)
+					if err != nil || pi == "" {
+						slog.Default().Warn("Get patch id failed. Setting patch id to original commit id", "err", err)
+						pi = c
+					}
+					ids = append(ids, pi)
 				}
-				delete(patchIdToCommit, pi)
+			}
+
+			return &ids, nil
+		},
+	}
+
+	collect := func(bufferedHashs []*[]string) error {
+		logger.Debug("Collecting hashes", "bufferedHashs", bufferedHashs)
+		for _, buff := range bufferedHashs {
+			for _, h := range *buff {
+				delete(patchIdToCommit, h)
 			}
 		}
+		return nil
 	}
+
+	collector := tasks.NewBufferedCollector(collect, tasks.BufferedCollectorConfig{})
+
+	noWorker := 3
+	dispatcher := tasks.NewDispatcher(worker, prIter, *collector, tasks.DispatcherConfig{NoWorker: &noWorker})
+	dispatcher.Dispatch()
 
 	commitsWithoutPr := make([]io.Commit, 0, len(patchIdToCommit))
 	for _, c := range patchIdToCommit {
@@ -124,7 +142,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		UnsignedCommits:  unsignedCommits,
 		Stats: io.Stats{
 			NumberCommits: numberCommits,
-			NumberPRs:     numberPrs,
+			NumberPRs:     0,
 			Stars:         r.Stars,
 			Languages:     r.Languages,
 		},
