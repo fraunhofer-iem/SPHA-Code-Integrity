@@ -65,7 +65,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		c := &allCommits[i]
 		pi, err := vcs.GetPatchId(dir, c.GitOID)
 		if err != nil || pi == "" {
-			slog.Default().Warn("Get patch id failed or is empty. Setting patch id to original commit id", "err", err)
+			slog.Default().Debug("Get patch id failed or is empty. Setting patch id to original commit id", "err", err)
 			pi = c.GitOID
 		}
 		patchIdToCommit[pi] = c
@@ -79,6 +79,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 
 	methodTimer = time.Now()
 	prIter := gh.GetPullRequests(config.Owner, config.Repo, branch, config.Token)
+
 	worker := tasks.Worker[[]gh.PR, []string]{
 		Do: func(prs *[]gh.PR) (*[]string, error) {
 			commitsFromPrs, err := vcs.GetCommitShaForMergedPr(*prs, dir)
@@ -90,13 +91,12 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 				for c := range cs.Items() {
 					pi, err := vcs.GetPatchId(dir, c)
 					if err != nil || pi == "" {
-						slog.Default().Warn("Get patch id failed. Setting patch id to original commit id", "err", err)
+						slog.Default().Debug("Get patch id failed. Setting patch id to original commit id", "err", err)
 						pi = c
 					}
 					ids = append(ids, pi)
 				}
 			}
-
 			return &ids, nil
 		},
 	}
@@ -125,7 +125,6 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	elapsed = time.Since(methodTimer)
 	logger.Info("processed all PRs", "time", elapsed)
 
-	// logger.Info("Number commits from PRs", "number", allCommitsFromPrs.Size())
 	logger.Info("Number commits without PR", "number", len(patchIdToCommit))
 
 	heads, err := vcs.GetCommitsFromHashs(dir, []string{branch})
