@@ -27,12 +27,12 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		return nil, err
 	}
 
-	var dir string
-	if config.ClonePath != "" {
-		dir = config.ClonePath
-	} else {
+	// setup clone path and clone repo
+	dir := config.ClonePath
+	if dir == "" {
 		dir = path.Join(os.TempDir(), "repos")
 	}
+
 	err = os.MkdirAll(dir, os.ModePerm)
 	if err != nil {
 		return nil, err
@@ -44,36 +44,15 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	}
 	defer os.RemoveAll(dir)
 
-	var branch string
-	if config.Branch != "" {
-		branch = config.Branch
-	} else {
+	branch := config.Branch
+	if config.Branch == "" {
 		branch = r.DefaultBranch
 	}
 
+	cache := vcs.NewPatchIdCache(10_000_000)
 	methodTimer := time.Now()
-	allCommits, err := vcs.GetCommitsFromBrach(dir, branch)
-	if err != nil {
-		return nil, err
-	}
-	numberCommits := len(allCommits)
-	logger.Info("Number all commits", branch, numberCommits)
-
-	patchIdToCommit := make(map[string]*io.Commit, len(allCommits))
-	unsignedCommits := make([]io.Commit, 0, len(allCommits)/3)
-
-	for i := range allCommits {
-		c := &allCommits[i]
-		pi, err := vcs.GetPatchId(dir, c.GitOID)
-		if err != nil || pi == "" {
-			slog.Default().Debug("Get patch id failed or is empty. Setting patch id to original commit id", "err", err)
-			pi = c.GitOID
-		}
-		patchIdToCommit[pi] = c
-		if c.Signed == "N" || c.Signed == "B" {
-			unsignedCommits = append(unsignedCommits, *c)
-		}
-	}
+	patchIdToCommit, unsignedCommits, err := vcs.GetPatchIdAndUnsignedCommits(dir, branch, cache)
+	numberCommits := len(*patchIdToCommit)
 
 	elapsed := time.Since(methodTimer)
 	logger.Info("query all commits", "time", elapsed)
@@ -90,7 +69,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 			ids := make([]string, 0, len(*commitsFromPrs))
 			for _, cs := range *commitsFromPrs {
 				for c := range cs.Items() {
-					pi, err := vcs.GetPatchId(dir, c)
+					pi, err := cache.GetOrCreatePatchId(dir, c)
 					if err != nil || pi == "" {
 						slog.Default().Debug("Get patch id failed. Setting patch id to original commit id", "err", err)
 						pi = c
@@ -106,7 +85,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		logger.Debug("Collecting hashes", "bufferedHashs", bufferedHashs)
 		for _, buff := range bufferedHashs {
 			for _, h := range *buff {
-				delete(patchIdToCommit, h)
+				delete(*patchIdToCommit, h)
 			}
 		}
 		return nil
@@ -114,23 +93,25 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 
 	collector := beehive.NewBufferedCollector(collect, beehive.BufferedCollectorConfig{})
 
-	numWorker := 3
+	// memory profiling for the Benchmark showed some larger memory spikes so we limit the number of worker to 4
+	// which works for our 256GB RAM VM
+	numWorker := 4
 	dispatcher := beehive.NewDispatcher(worker, prIter, *collector, beehive.DispatcherConfig{NumWorker: &numWorker})
 	dispatcher.Dispatch()
 
-	commitsWithoutPr := make([]io.Commit, 0, len(patchIdToCommit))
-	for _, c := range patchIdToCommit {
+	commitsWithoutPr := make([]io.Commit, 0, len(*patchIdToCommit))
+	for _, c := range *patchIdToCommit {
 		commitsWithoutPr = append(commitsWithoutPr, *c)
 	}
 
 	elapsed = time.Since(methodTimer)
 	logger.Info("processed all PRs", "time", elapsed)
 
-	logger.Info("Number commits without PR", "number", len(patchIdToCommit))
+	logger.Info("Number commits without PR", "number", len(*patchIdToCommit))
 
 	heads, err := vcs.GetCommitsFromHashs(dir, []string{branch})
 	head := ""
-	if err == nil || len(heads) == 1 {
+	if err == nil && len(heads) == 1 {
 		head = heads[0].GitOID
 	}
 
@@ -139,7 +120,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		Url:              r.CloneUrl,
 		Head:             head,
 		CommitsWithoutPR: commitsWithoutPr,
-		UnsignedCommits:  unsignedCommits,
+		UnsignedCommits:  *unsignedCommits,
 		Stats: io.Stats{
 			NumberCommits: numberCommits,
 			NumberPRs:     0,

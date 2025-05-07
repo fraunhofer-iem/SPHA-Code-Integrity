@@ -1,7 +1,6 @@
 package main
 
 import (
-	"encoding/json"
 	"flag"
 	"os"
 	"path"
@@ -48,16 +47,8 @@ func main() {
 		*out = wd
 	}
 
-	file, err := os.Open(*in)
+	input, err := io.GetInput(*in)
 	if err != nil {
-		panic(err)
-	}
-
-	defer file.Close()
-
-	decoder := json.NewDecoder(file)
-	var input io.Input
-	if err := decoder.Decode(&input); err != nil {
 		panic(err)
 	}
 
@@ -83,14 +74,8 @@ func main() {
 			continue
 		}
 
-		outPath := path.Join(*out, config.Owner+config.Repo+"-result.json")
-		err = os.MkdirAll(*out, 0777)
-		if err != nil {
-			failedRepos++
-			logger.Warn("Create result dir failed", "err", err)
-			continue
-		}
-		err = io.StoreResult(outPath, *repo)
+		fileName := config.Owner + config.Repo + "-result.json"
+		err = io.StoreResult(*out, fileName, *repo)
 		if err != nil {
 			failedRepos++
 			logger.Warn("Store result failed", "err", err)

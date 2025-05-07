@@ -109,6 +109,33 @@ func GetCommitsFromBrach(repoPath, branch string) ([]io.Commit, error) {
 	return getCommit(log, repoPath, []string{branch})
 }
 
+func GetPatchIdAndUnsignedCommits(repoPath, branch string, cache *PatchIdCache) (*map[string]*io.Commit, *[]io.Commit, error) {
+	allCommits, err := GetCommitsFromBrach(repoPath, branch)
+	if err != nil {
+		return nil, nil, err
+	}
+	numberCommits := len(allCommits)
+	slog.Default().Info("Number all commits", branch, numberCommits)
+
+	patchIdToCommit := make(map[string]*io.Commit, len(allCommits))
+	unsignedCommits := make([]io.Commit, 0, len(allCommits)/3)
+
+	for i := range allCommits {
+		c := &allCommits[i]
+		pi, err := cache.GetOrCreatePatchId(repoPath, c.GitOID)
+		if err != nil || pi == "" {
+			slog.Default().Debug("Get patch id failed or is empty. Setting patch id to original commit id", "err", err)
+			pi = c.GitOID
+		}
+		patchIdToCommit[pi] = c
+		if c.Signed == "N" || c.Signed == "B" {
+			unsignedCommits = append(unsignedCommits, *c)
+		}
+	}
+
+	return &patchIdToCommit, &unsignedCommits, nil
+}
+
 type GitCmd string
 
 const (
@@ -125,7 +152,7 @@ const (
 
 func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, error) {
 	format := "--pretty=tformat:%H" + value + "%f %b" + value + "%cd" + value + "%G?" + value + lineBreak
-	args := append([]string{string(gitCmd), "--no-patch", "--oneline", "--expand-tabs", string(format)}, input...)
+	args := append([]string{string(gitCmd), "--no-patch", "--expand-tabs", string(format)}, input...)
 
 	cmd := exec.Command("git", args...)
 	cmd.Dir = repoPath
