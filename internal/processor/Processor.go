@@ -6,9 +6,10 @@ import (
 	"path"
 	"project-integrity-calculator/internal/gh"
 	"project-integrity-calculator/internal/io"
-	"project-integrity-calculator/internal/tasks"
 	"project-integrity-calculator/internal/vcs"
 	"time"
+
+	"github.com/janniclas/beehive"
 )
 
 type RepoConfig struct {
@@ -80,8 +81,8 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	methodTimer = time.Now()
 	prIter := gh.GetPullRequests(config.Owner, config.Repo, branch, config.Token)
 
-	worker := tasks.Worker[[]gh.PR, []string]{
-		Do: func(prs *[]gh.PR) (*[]string, error) {
+	worker := beehive.Worker[[]gh.PR, []string]{
+		Work: func(prs *[]gh.PR) (*[]string, error) {
 			commitsFromPrs, err := vcs.GetCommitShaForMergedPr(*prs, dir)
 			if err != nil {
 				return nil, err
@@ -111,10 +112,10 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		return nil
 	}
 
-	collector := tasks.NewBufferedCollector(collect, tasks.BufferedCollectorConfig{})
+	collector := beehive.NewBufferedCollector(collect, beehive.BufferedCollectorConfig{})
 
-	noWorker := 3
-	dispatcher := tasks.NewDispatcher(worker, prIter, *collector, tasks.DispatcherConfig{NoWorker: &noWorker})
+	numWorker := 3
+	dispatcher := beehive.NewDispatcher(worker, prIter, *collector, beehive.DispatcherConfig{NumWorker: &numWorker})
 	dispatcher.Dispatch()
 
 	commitsWithoutPr := make([]io.Commit, 0, len(patchIdToCommit))
