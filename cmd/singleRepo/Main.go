@@ -65,8 +65,8 @@ func main() {
 		panic(err)
 	}
 
-	*out = path.Join(*out, "result.json")
-	err = io.StoreResult(*out, *repo)
+	fileName := ownerAndRepoSplit[0] + ownerAndRepoSplit[1] + "result.json"
+	err = io.StoreResult(*out, fileName, *repo)
 	if err != nil {
 		panic(err)
 	}

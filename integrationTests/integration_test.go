@@ -65,7 +65,7 @@ func TestMain(t *testing.T) {
 		var expectedCommits Commits
 		decoder = json.NewDecoder(resp.Body)
 		if err = decoder.Decode(&expectedCommits); err != nil {
-			t.Errorf("Couldn't decode expcted commits for %+v. Err %s", repo, err)
+			t.Errorf("Couldn't decode expected commits for %+v. Err %s", repo, err)
 		}
 
 		ownerRepoSplit := strings.Split(repo.NameWithOwner, "/")

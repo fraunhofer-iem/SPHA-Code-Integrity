@@ -5,22 +5,28 @@ import (
 	"log/slog"
 	"os/exec"
 	"strings"
+	"sync"
 )
 
 type PatchIdCache struct {
 	maxSize int
 	cache   map[string]string
+	rw      sync.RWMutex
 }
 
 func NewPatchIdCache(size int) *PatchIdCache {
 	c := PatchIdCache{
 		cache:   make(map[string]string),
 		maxSize: size,
+		rw:      sync.RWMutex{},
 	}
 	return &c
 }
 
 func (c *PatchIdCache) Add(key string, value string) {
+	c.rw.Lock()
+	defer c.rw.Unlock()
+
 	if len(c.cache) > c.maxSize {
 		slog.Default().Info("Max cache size reached")
 		deleteTarget := len(c.cache) / 10
@@ -37,7 +43,9 @@ func (c *PatchIdCache) Add(key string, value string) {
 	c.cache[key] = value
 }
 
-func (c *PatchIdCache) Get(key string) *string {
+func (c *PatchIdCache) get(key string) *string {
+	c.rw.RLock()
+	defer c.rw.RUnlock()
 	r := c.cache[key]
 	if r == "" {
 		return nil
@@ -45,11 +53,9 @@ func (c *PatchIdCache) Get(key string) *string {
 	return &r
 }
 
-var cache = NewPatchIdCache(10_000_000)
+func (c *PatchIdCache) GetOrCreatePatchId(dir string, hash string) (string, error) {
 
-func GetPatchId(dir string, hash string) (string, error) {
-
-	cacheResult := cache.Get(hash)
+	cacheResult := c.get(hash)
 	if cacheResult != nil {
 		return *cacheResult, nil
 	}
@@ -62,7 +68,7 @@ func GetPatchId(dir string, hash string) (string, error) {
 	}
 
 	patchId := strings.Split(string(out), " ")[0]
-	cache.Add(hash, patchId)
+	c.Add(hash, patchId)
 
 	return patchId, nil
 }
