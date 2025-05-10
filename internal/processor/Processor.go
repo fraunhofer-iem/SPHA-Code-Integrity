@@ -71,7 +71,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		Work: work,
 	}
 
-	var newestPr *gh.PR = nil
+	var firstPR *gh.PR = nil
 	// this implementation relys on the fact that there is only one collector at all times so no
 	// race conditions can happen
 	collect := func(workerResults []*WorkerResult) error {
@@ -81,8 +81,8 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 			for _, h := range *&res.PatchIds {
 				delete(*patchIdToCommit, h)
 			}
-			if config.IgnoreFirstCommits && (newestPr == nil || res.NewestPr.MergedAt < newestPr.MergedAt) {
-				newestPr = res.NewestPr
+			if config.IgnoreFirstCommits && (firstPR == nil || res.NewestPr.MergedAt < firstPR.MergedAt) {
+				firstPR = res.NewestPr
 			}
 		}
 		return nil
@@ -96,15 +96,13 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	dispatcher := beehive.NewDispatcher(worker, prIter, *collector, beehive.DispatcherConfig{NumWorker: &numWorker})
 	dispatcher.Dispatch()
 
-	if config.IgnoreFirstCommits {
-		logger.Info("newest PR", "pr", *newestPr)
-		if config.IgnoreFirstCommits && newestPr != nil {
-			// identify commits before newest PRs and whitelist them
-			// newestPr.HeadRefOid
-			for h, k := range *patchIdToCommit {
-				if k.Date < newestPr.MergedAt {
-					delete(*patchIdToCommit, h)
-				}
+	if config.IgnoreFirstCommits && firstPR != nil {
+		logger.Info("First PR", "pr", *firstPR)
+		// identify commits before newest PRs and whitelist them
+		// newestPr.HeadRefOid
+		for h, k := range *patchIdToCommit {
+			if k.Date < firstPR.MergedAt {
+				delete(*patchIdToCommit, h)
 			}
 		}
 	}
@@ -157,7 +155,7 @@ func WorkerWithoutNewestPr(dir string, cache *vcs.PatchIdCache) func(p *[]gh.PR)
 		}
 
 		prs := *p
-		newestPr := prs[0]
+		firstPR := prs[0]
 
 		commitsFromPrs, err := vcs.GetCommitShaForMergedPr(prs, dir)
 		if err != nil {
@@ -176,7 +174,7 @@ func WorkerWithoutNewestPr(dir string, cache *vcs.PatchIdCache) func(p *[]gh.PR)
 		}
 		return &WorkerResult{
 			PatchIds: ids,
-			NewestPr: &newestPr,
+			NewestPr: &firstPR,
 		}, nil
 	}
 }
