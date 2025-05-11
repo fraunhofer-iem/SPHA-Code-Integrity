@@ -81,7 +81,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 			for _, h := range *&res.PatchIds {
 				delete(*patchIdToCommit, h)
 			}
-			if config.IgnoreFirstCommits && (firstPR == nil || res.NewestPr.MergedAt < firstPR.MergedAt) {
+			if config.IgnoreFirstCommits && (firstPR == nil || (res.NewestPr != nil && res.NewestPr.MergedAt < firstPR.MergedAt)) {
 				firstPR = res.NewestPr
 			}
 		}
