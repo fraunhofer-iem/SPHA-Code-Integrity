@@ -47,6 +47,11 @@ func main() {
 			continue
 		}
 
+		for _, c := range repo.CommitsWithoutPR {
+			c.Message = strings.ReplaceAll(strings.ToLower(c.Message), "-", " ")
+
+		}
+
 		allCommits = append(allCommits, repo.CommitsWithoutPR...)
 	}
 
