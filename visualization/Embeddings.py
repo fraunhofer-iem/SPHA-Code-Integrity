@@ -1,5 +1,5 @@
 from sentence_transformers import SentenceTransformer
-from bertopic.representation import KeyBERTInspired
+from bertopic.representation import KeyBERTInspired, MaximalMarginalRelevance
 from bertopic.dimensionality import BaseDimensionalityReduction
 import pandas as pd
 from bertopic import BERTopic
@@ -63,12 +63,12 @@ if use_cuml:
     # Ensure hdbscan_model parameters are compatible with cuML's HDBSCAN
     # cuML's HDBSCAN might have slightly different parameter names or defaults
     # For example, `prediction_data=True` might be needed if you want to predict topics for new data later with cuML
-    hdbscan_model = cumlHDBSCAN(min_cluster_size=60, min_samples=1,
+    hdbscan_model = cumlHDBSCAN(min_cluster_size=20, min_samples=1,
                                 metric='euclidean', gen_min_span_tree=True,
                                 prediction_data=True) # prediction_data=True is often needed for later use
 else:
     umap_model = UMAP(n_neighbors=15, n_components=5, min_dist=0.0, metric='cosine', random_state=42)
-    hdbscan_model = HDBSCAN(min_cluster_size=60, metric='euclidean',
+    hdbscan_model = HDBSCAN(min_cluster_size=20, metric='euclidean',
                             cluster_selection_method='eom', prediction_data=True)
 
 
@@ -76,8 +76,15 @@ embedding_model_name = "sentence-transformers/all-mpnet-base-v2"
 # Pre-calculate embeddings
 embedding_model = SentenceTransformer(embedding_model_name)
 embeddings = embedding_model.encode(commit_messages, show_progress_bar=True)
-representation_model = KeyBERTInspired()
+# MMR
+mmr = MaximalMarginalRelevance(diversity=0.3)
+keybert = KeyBERTInspired()
 
+# All representation models
+representation_model = {
+    "KeyBERT": keybert,
+    "MMR": mmr,
+}
 
 topic_model = BERTopic(
     umap_model= umap_model,
