@@ -60,6 +60,13 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	methodTimer = time.Now()
 	prIter := gh.GetPullRequests(config.Owner, config.Repo, branch, config.Token)
 
+    noOfForcePushes, err := gh.GetForcePushInfo(config.Owner, config.Repo,config.Token, branch)
+    if err != nil {
+		return nil, err
+	}
+    
+    logger.Info("No of force Pushes", "commits", noOfForcePushes)
+
 	worker := beehive.Worker[[]gh.PR, []string]{
 		Work: func(prs *[]gh.PR) (*[]string, error) {
 			commitsFromPrs, err := vcs.GetCommitShaForMergedPr(*prs, dir)
@@ -118,6 +125,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	repo := io.Repo{
 		Branch:           branch,
 		Url:              r.CloneUrl,
+        NumberForcePushes : noOfForcePushes,
 		Head:             head,
 		CommitsWithoutPR: commitsWithoutPr,
 		UnsignedCommits:  *unsignedCommits,

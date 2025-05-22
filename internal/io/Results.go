@@ -8,16 +8,17 @@ type Repo struct {
 	Branch           string
 	Head             string
 	Url              string
+    NumberForcePushes int
 	Stats            Stats
 	CommitsWithoutPR []Commit
 	UnsignedCommits  []Commit
 }
 
 type Stats struct {
-	NumberCommits int
-	NumberPRs     int
-	Languages     []string
-	Stars         int
+	NumberCommits     int
+	NumberPRs         int
+	Languages         []string
+	Stars             int
 }
 
 type Commit struct {
