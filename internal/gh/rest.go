@@ -2,14 +2,12 @@ package gh
 
 import (
 	"net/http"
-    //"fmt"
     "regexp"
     "log/slog"
     "encoding/json"
 )
 
 const baseURL = "https://api.github.com"
-//var RequestCounter = 0
 var NumberForcePush = 0
 
 type Result struct {
@@ -17,10 +15,12 @@ type Result struct {
 }
 
 func createHttpRequest(client *http.Client, url string, token string, queryParameters map[string] string)(*http.Request, error) {
-    //fmt.Print("Start of Create Http Request")
+/*
+    Create an HTTP request using the parameters, token and http client.
+*/
+
     req, err := http.NewRequest("GET", url, nil)
     if err != nil {
-        //fmt.Errorf("Failed to create a new request: %v", err)
         return nil, err
     }
         
@@ -38,8 +38,10 @@ func createHttpRequest(client *http.Client, url string, token string, queryParam
 }
 
 func GetForcePushInfo(owner string, repo string, token string, branch string) (int, error){
+/*
+    Entry point for the Force Push processing, setting the url, query paramenters and creating the client.
+*/
     slog.Default().Info("Getting repo info - getForcePushInfo method")
-    //fmt.Print("Start of Get Force Push")
     repoActivityUrl := baseURL + "/repos/" + owner + "/" + repo + "/activity"
     queryParameters := map[string]string{
         "per_page" : "100",
@@ -58,36 +60,37 @@ func GetForcePushInfo(owner string, repo string, token string, branch string) (i
 }
 
 func executeHTTPRequest(client *http.Client, req *http.Request) (*http.Response, error){
-    //fmt.Print("Start of Execute Http Request")
+/*
+    Execute the HTTP request and return response
+*/
+
     resp, err := client.Do(req)
 	RequestCounter++
 	if err != nil {
-		//fmt.Errorf("HTTP request failed: %v", err)
         return nil, err
 	}
     return resp, nil
 }
 
 func processForcePushRequest(client *http.Client, repoActivityUrl string, token string, queryParameters map[string] string) error {
+/*
+    Method where calls to other methods (createHTTPRequest, executeHTTPRequest, processHttpResponse) is handled and loop is added so that requests are processed till there no rel = "next"
+*/
 
     slog.Default().Info("Getting Force Push Info - processForcePushRequestAndResponse method")
-    //fmt.Print("Start of Process Force Push")
     
     for true{
-        //fmt.Print("\n\n\nRepoActivityURL - %v\n\n\n", repoActivityUrl)
         httpReq, err := createHttpRequest(client, repoActivityUrl, token, queryParameters)
         if err != nil {
 	        slog.Default().Error("Failed to create HTML request: %v", err)
 	        return  err
         }
-        //fmt.Print("\n Http Request - %v",httpReq)
         resp, err := executeHTTPRequest(client, httpReq)
         if err != nil {
 		    slog.Default().Error("Failed to execute HTML request: %v - processForcePushRequest method", err)
 		    return err
 	    }
         defer resp.Body.Close()
-        //fmt.Print("\n Http Response - %v",resp.Body)
         repoActivityUrl, err = processHttpResponse(resp)
         if err != nil {
 	        slog.Default().Error("Failed to process HTTP response: %v - processForcePushRequest method", err)
@@ -101,7 +104,9 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, token 
 }
 
 func processHttpResponse(resp *http.Response)(string, error){
-    //fmt.Print("Start of Process Http Response")
+/*
+    Decode the response and assign it to the Result type struct, we are only interested in the array length of the result since we are only quering the force pushes. After getting the array length check the header for next page.
+*/
     hasNext := false
     var res []Result
 
@@ -130,8 +135,10 @@ func processHttpResponse(resp *http.Response)(string, error){
     
 }
 
-func checkIfNextPageExists(resp *http.Response) (bool, error){
-    //fmt.Print("\nStart of Check Next Page Exisits")
+func checkIfNextPageExists(resp *http.Response) (bool, error){  
+/*
+    Check if the header of the response contains rel = "next", return a boolean beased on the check
+*/
     linkHeader := resp.Header.Get("Link")
     hasNext := "rel=\"next\""
     hasNextMatch, err := regexp.Match(hasNext, []byte(linkHeader))
@@ -139,90 +146,19 @@ func checkIfNextPageExists(resp *http.Response) (bool, error){
 	    slog.Default().Error("Failed to check for Link Header: %v - checkIfNextPageExists method", err)
 	    return false, err
 	}
-    //fmt.Println(string(linkHeader))    
-    //fmt.Print("\nHas Next - ",hasNextMatch)
     return hasNextMatch, nil
 }
 
-func getNextURL(resp *http.Response)(string, error){
-    //fmt.Print("Start of Get Next Url")
+func getNextURL(resp *http.Response)(string, error){ 
+/*
+    Get the URL for the next HTTP request if rel = "next" exists.
+*/
     linkHeader := resp.Header.Get("Link")
-    nextUrl := "<([^{}]*)>; rel=\"next\""
+    nextUrl := "<([^{}]*)>; rel=\"next\""       
     nextPatternMatch := regexp.MustCompile(nextUrl)
     findString := nextPatternMatch.FindString(linkHeader)
-    //fmt.Println(findString[1 : len(findString)-13])
     return findString[1 : len(findString)-13], nil
 }
-/*
-func main(){
-    
-    repo := "Test_011"
-    branch :="sub-feature"
-    
-    
-    noForcePush, err := getForcePushInfo(owner, repo, token, branch)
-    if err != nil {
-		slog.Default().Error("Force Push Info Failed - %v", err)
-		
-	}
-    fmt.Print(noForcePush)
-
-    /*
-    url := "https://api.github.com/repos/fraunhofer-iem/SPHA-Code-Integrity/activity?page=1?activity_type=branch_creation"
-    req, err := http.NewRequest("GET",url, nil)
-    if err != nil {
-        fmt.Print(err.Error())
-    }
-    
-    res, err := http.DefaultClient.Do(req)
-    if err != nil {
-        fmt.Print(err.Error())
-    }
-    defer res.Body.Close()
-    body, readErr := ioutil.ReadAll(res.Body)
-    if readErr != nil {
-        fmt.Print(readErr.Error())
-    }
-    //header, err := ioutil.ReadAll(res.Header)
-    if err != nil {
-        fmt.Print(err.Error())
-    }
-    fmt.Println(string(body))
-    linkHeader := res.Header.Get("Link")
-    fmt.Println(string(linkHeader))
-    hasNext := "rel=\"next\""
-    nextUrl := "<([^{}]*)>"
-    fmt.Println(nextUrl)
-    hasNextMatch, err := regexp.Match(hasNext, []byte(linkHeader))
-    nextPatternMatch := regexp.MustCompile(nextUrl)
-    //find := obj.Find([]byte(linkHeader))
-    findString := nextPatternMatch.FindString(linkHeader)
-    fmt.Println(findString[1 : len(findString)-1])
-    fmt.Println(hasNextMatch)
-
-    url = findString[1 : len(findString)-1]
-    req, err = http.NewRequest("GET",url, nil)
-    if err != nil {
-        fmt.Print(err.Error())
-    }
-    
-    res, err = http.DefaultClient.Do(req)
-    if err != nil {
-        fmt.Print(err.Error())
-    }
-    defer res.Body.Close()
-    body, readErr = ioutil.ReadAll(res.Body)
-    if readErr != nil {
-        fmt.Print(readErr.Error())
-    }
-    //header, err := ioutil.ReadAll(res.Header)
-    if err != nil {
-        fmt.Print(err.Error())
-    }
-    fmt.Println(string(body))
-
-}
-*/
 
 
 
