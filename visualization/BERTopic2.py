@@ -1,5 +1,6 @@
 from sentence_transformers import SentenceTransformer
-from bertopic.representation import KeyBERTInspired, MaximalMarginalRelevance
+from bertopic.representation import KeyBERTInspired, MaximalMarginalRelevance, OpenAI
+import openai
 from bertopic.dimensionality import BaseDimensionalityReduction
 from sklearn.feature_extraction.text import CountVectorizer
 from bertopic.vectorizers import ClassTfidfTransformer
@@ -9,10 +10,11 @@ import numpy as np
 import json
 import os
 
+
 # --- Step 1: Prepare your commit messages from a JSON file ---
 
 # --- IMPORTANT: Specify the path to your JSON file ---
-json_file_path = '/Users/struewer/Documents/smallmMsg.json' #--- CHANGE THIS
+json_file_path = 'CodeIntegrity/smallMmsg.json' #--- CHANGE THIS
 
 commit_messages = [] # Initialize an empty list to store messages
 
@@ -82,11 +84,9 @@ embeddings = np.load("embeddings.npy")
 mmr = MaximalMarginalRelevance(diversity=0.3)
 keybert = KeyBERTInspired()
 
-# All representation models
-representation_model = {
-    "KeyBERT": keybert,
-    "MMR": mmr,
-}
+
+# Create your representation model
+representation_model = [mmr, keybert]
 
 vectorizer_model = CountVectorizer(stop_words="english", ngram_range=(1, 3),)
 

@@ -12,7 +12,7 @@ import os
 # --- Step 1: Prepare your commit messages from a JSON file ---
 
 # --- IMPORTANT: Specify the path to your JSON file ---
-json_file_path = '/Users/struewer/Documents/smallmMsg.json' #--- CHANGE THIS
+json_file_path = 'smallmMsg.json' #--- CHANGE THIS
 
 commit_messages = [] # Initialize an empty list to store messages
 
