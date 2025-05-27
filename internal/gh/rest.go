@@ -2,67 +2,103 @@ package gh
 
 import (
 	"net/http"
+    "net/url"
     "regexp"
     "log/slog"
     "encoding/json"
+    "io"
 )
 
 const baseURL = "https://api.github.com"
-var NumberForcePush = 0
 
 type Result struct {
     Entry string
 }
 
-func createHttpRequest(client *http.Client, url string, token string, queryParameters map[string] string)(*http.Request, error) {
-/*
-    Create an HTTP request using the parameters, token and http client.
-*/
+//  Create an HTTP request using the parameters, token, method and http client.
+func createHttpRequest(client *http.Client, reqUrl, requestMethod string, requestBody io.ReadCloser, queryParameters, headerParameters map[string] string)(*http.Request, error) {
 
-    req, err := http.NewRequest("GET", url, nil)
+    req, err := http.NewRequest(requestMethod, reqUrl, requestBody)
     if err != nil {
-        return nil, err
+        return req, err
     }
-        
-    req.Header.Set("Content-Type", "application/json")
-	req.Header.Set("Authorization", "Bearer "+token)
+
+    for key, value := range headerParameters{
+        req.Header.Set(key, value)
+    }
     
     query := req.URL.Query()
 
     for key, value := range queryParameters{
         query.Add(key, value)
     }
+
     req.URL.RawQuery = query.Encode()
 
     return req, nil
 }
 
-func GetForcePushInfo(owner string, repo string, token string, branch string) (int, error){
-/*
-    Entry point for the Force Push processing, setting the url, query paramenters and creating the client.
-*/
+//  Update an existing HTTP request using the parameters, token and method.
+func updateHttpRequest(reqUrl, requestMethod string, requestBody io.ReadCloser, queryParameters, headerParameters map[string] string, req *http.Request) error{
+
+    parsedUrl, err := url.Parse(reqUrl)
+    if err != nil {
+        slog.Default().Error("Error while parsing the URL", err)
+	    return err
+    }
+
+    query := parsedUrl.Query()
+    req.Method = requestMethod
+    req.Body = requestBody
+
+    for key, value := range headerParameters{
+        req.Header.Set(key, value)
+    }
+
+    for key, value := range queryParameters{
+        if query.Has(key){
+            query.Set(key, value)
+        } else {
+            query.Add(key, value)
+        }
+        
+    }
+
+    req.URL.RawQuery = query.Encode()
+
+    return nil
+}
+
+//  Entry point for the Force Push processing, setting the url, query paramenters and creating the client.
+func GetForcePushInfo(owner, repo, token, branch string) (int, error){
+
     slog.Default().Info("Getting repo info - getForcePushInfo method")
     repoActivityUrl := baseURL + "/repos/" + owner + "/" + repo + "/activity"
+
     queryParameters := map[string]string{
         "per_page" : "100",
         "activity_type" : "force_push",
         "ref" : branch,
     }
 
+    headerParameters := map[string]string{
+        "Content-Type" : "application/json",
+        "Authorization": "Bearer "+token,
+    }
+
     client := &http.Client{}
 
-    err := processForcePushRequest(client, repoActivityUrl, token, queryParameters) 
+    NumberForcePush, err := processForcePushRequest(client, repoActivityUrl, queryParameters, headerParameters) 
     if err != nil {
-        slog.Default().Info("Getting repo info falied - %v getForcePushInfo method", err)
+        slog.Default().Error("Getting repo info falied - %v getForcePushInfo method", err)
         return 0, err
     }    
     return NumberForcePush, nil
+
 }
 
+//  Execute the HTTP request and return response
 func executeHTTPRequest(client *http.Client, req *http.Request) (*http.Response, error){
-/*
-    Execute the HTTP request and return response
-*/
 
     resp, err := client.Do(req)
 	RequestCounter++
@@ -70,94 +106,113 @@ func executeHTTPRequest(client *http.Client, req *http.Request) (*http.Response,
         return nil, err
 	}
     return resp, nil
+
 }
 
-func processForcePushRequest(client *http.Client, repoActivityUrl string, token string, queryParameters map[string] string) error {
-/*
-    Method where calls to other methods (createHTTPRequest, executeHTTPRequest, processHttpResponse) is handled and loop is added so that requests are processed till there no rel = "next"
-*/
+//  Handle calls to other methods (createHTTPRequest, executeHTTPRequest, processHttpResponse) is handled and loop is added so that requests are processed till there no rel = "next"
+func processForcePushRequest(client *http.Client, repoActivityUrl string, queryParameters, headerParameters map[string] string) (int, error) {
 
-    slog.Default().Info("Getting Force Push Info - processForcePushRequestAndResponse method")
-    
-    for true{
-        httpReq, err := createHttpRequest(client, repoActivityUrl, token, queryParameters)
-        if err != nil {
-	        slog.Default().Error("Failed to create HTML request: %v", err)
-	        return  err
-        }
+    NumberForcePush := 0
+    hasNext := true
+
+    // Create an initial HTTP Request and set header and query parameters
+    httpReq, err := createHttpRequest(client, repoActivityUrl,"GET", nil, queryParameters, headerParameters)
+    if err != nil {
+        slog.Default().Error("Failed to create HTTP request: %v", err)
+        return  0, err
+    }
+
+    for hasNext{
+
+        // Execute the HTTP Request
         resp, err := executeHTTPRequest(client, httpReq)
         if err != nil {
 		    slog.Default().Error("Failed to execute HTML request: %v - processForcePushRequest method", err)
-		    return err
+		    return 0, err
 	    }
+
         defer resp.Body.Close()
-        repoActivityUrl, err = processHttpResponse(resp)
+        
+        // Process the response as result data type
+        res, err := processHttpResponse(resp)
         if err != nil {
 	        slog.Default().Error("Failed to process HTTP response: %v - processForcePushRequest method", err)
-	        return err
+	        return 0, err
 	    }
-        if (len(repoActivityUrl) == 0){
-            break
+
+        NumberForcePush += len(res)
+
+        // Check if Next Page exists         
+        hasNext, err = checkIfNextPageExists(resp)
+        if err != nil {
+	        slog.Default().Error("Failed to check for next pages in force pushes: %v - processHttpResponse method", err)
+	        return 0, err
+	    }        
+        // If next page exists get the url of the next page
+        if hasNext {
+
+            repoActivityUrl, err = getNextURL(resp)
+            if err != nil {
+	            slog.Default().Error("Failed to get Net Url: %v - processHttpResponse method", err)
+	            return 0, err
+	        }
+
+            // Update the exisiting http request
+            err := updateHttpRequest(repoActivityUrl, "GET", nil, queryParameters, headerParameters, httpReq)
+            if err != nil {
+                slog.Default().Error("Failed to update the Http Request: %v - processHttpResponse method", err)
+                return 0, err
+            } 
+
         }
     }
-    return nil
+
+    return NumberForcePush, nil
+
 }
 
-func processHttpResponse(resp *http.Response)(string, error){
-/*
-    Decode the response and assign it to the Result type struct, we are only interested in the array length of the result since we are only quering the force pushes. After getting the array length check the header for next page.
-*/
-    hasNext := false
+//  Decode the response and assign it to the Result type struct, we are only interested in the array length of the result since we are only quering the force pushes. After getting the array length check the header for next page.
+func processHttpResponse(resp *http.Response)([]Result, error){
+
     var res []Result
 
     decoder := json.NewDecoder(resp.Body)
+
     err := decoder.Decode(&res)
     if err != nil {
 		slog.Default().Error("Failed to decode JSON response: %v - processHttpResponse method", err)
-        return "", err
-	}
-    NumberForcePush += len(res)
-    hasNext, err = checkIfNextPageExists(resp)
-    if err != nil {
-	    slog.Default().Error("Failed to check for next pages in force pushes: %v - processHttpResponse method", err)
-	    return "", err
+        return nil, err
 	}
 
-    if (hasNext){
-        nextUrl, err := getNextURL(resp)
-        if err != nil {
-	        slog.Default().Error("Failed to get Net Url: %v - processHttpResponse method", err)
-	        return "", err
-	    }
-        return nextUrl, nil
-    }
-    return "", nil
-    
+    return res, nil   
 }
 
+//  Check if the header of the response contains rel = "next", return a boolean beased on the check
 func checkIfNextPageExists(resp *http.Response) (bool, error){  
-/*
-    Check if the header of the response contains rel = "next", return a boolean beased on the check
-*/
+
     linkHeader := resp.Header.Get("Link")
     hasNext := "rel=\"next\""
+
     hasNextMatch, err := regexp.Match(hasNext, []byte(linkHeader))
     if err != nil {
 	    slog.Default().Error("Failed to check for Link Header: %v - checkIfNextPageExists method", err)
 	    return false, err
 	}
+
     return hasNextMatch, nil
+
 }
 
+//  Get the URL for the next HTTP request if rel = "next" exists.
 func getNextURL(resp *http.Response)(string, error){ 
-/*
-    Get the URL for the next HTTP request if rel = "next" exists.
-*/
+
     linkHeader := resp.Header.Get("Link")
     nextUrl := "<([^{}]*)>; rel=\"next\""       
     nextPatternMatch := regexp.MustCompile(nextUrl)
     findString := nextPatternMatch.FindString(linkHeader)
+
     return findString[1 : len(findString)-13], nil
+
 }
 
 
