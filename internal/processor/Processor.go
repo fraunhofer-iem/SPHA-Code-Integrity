@@ -1,6 +1,7 @@
 package processor
 
 import (
+	"errors"
 	"log/slog"
 	"os"
 	"path"
@@ -14,7 +15,7 @@ import (
 
 type RepoConfig struct {
 	Owner, Repo, Branch, Token, ClonePath, Out string
-	IgnoreFirstCommits                         bool
+	IgnoreFirstCommits, FilterResults          bool
 }
 
 func ProcessRepo(config RepoConfig) (*io.Repo, error) {
@@ -113,6 +114,10 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	commitsWithoutPr := make([]io.Commit, 0, len(*patchIdToCommit))
 	for _, c := range *patchIdToCommit {
 		commitsWithoutPr = append(commitsWithoutPr, *c)
+	}
+
+	if config.FilterResults && len(commitsWithoutPr) > (numberCommits/2) {
+		return nil, errors.New("Inconclusive result. More than 50% of the commits were identified.")
 	}
 
 	elapsed = time.Since(methodTimer)
