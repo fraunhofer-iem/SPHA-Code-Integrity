@@ -28,7 +28,10 @@ jobs:
         run: go build -v ./...
 
       - name: Test with Go
-        run: cd integrationTests && GH_TOKEN=${{ secrets.GITHUB_TOKEN }} && go test -json > TestResults-${{ matrix.go-version }}.json
+        working-directory: integrationTests
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: go test -json > TestResults-${{ matrix.go-version }}.json
       - name: Upload Go test results
         uses: actions/upload-artifact@v4
         with:
