@@ -105,12 +105,12 @@ func GetCommitsFromHashs(repoPath string, hashs []string) ([]io.Commit, error) {
 	return getCommit(show, repoPath, hashs)
 }
 
-func GetCommitsFromBrach(repoPath, branch string) ([]io.Commit, error) {
+func GetCommitsFromBranch(repoPath, branch string) ([]io.Commit, error) {
 	return getCommit(log, repoPath, []string{branch})
 }
 
 func GetPatchIdAndUnsignedCommits(repoPath, branch string, cache *PatchIdCache) (*map[string]*io.Commit, *[]io.Commit, error) {
-	allCommits, err := GetCommitsFromBrach(repoPath, branch)
+	allCommits, err := GetCommitsFromBranch(repoPath, branch)
 	if err != nil {
 		return nil, nil, err
 	}
@@ -151,7 +151,7 @@ const (
 )
 
 func getCommit(gitCmd GitCmd, repoPath string, input []string) ([]io.Commit, error) {
-	format := "--pretty=tformat:%H" + value + "%f %b" + value + "%cd" + value + "%G?" + value + lineBreak
+	format := "--pretty=tformat:%H" + value + "%f %b" + value + "%ci" + value + "%G?" + value + lineBreak
 	args := append([]string{string(gitCmd), "--no-patch", "--expand-tabs", string(format)}, input...)
 
 	cmd := exec.Command("git", args...)

@@ -1,0 +1,5008 @@
+{
+  "data": {
+    "search": {
+      "nodes": [
+        {
+          "nameWithOwner": "torvalds/linux",
+          "stargazerCount": 191807,
+          "url": "https://github.com/torvalds/linux"
+        },
+        {
+          "nameWithOwner": "Genymobile/scrcpy",
+          "stargazerCount": 120726,
+          "url": "https://github.com/Genymobile/scrcpy"
+        },
+        {
+          "nameWithOwner": "netdata/netdata",
+          "stargazerCount": 74275,
+          "url": "https://github.com/netdata/netdata"
+        },
+        {
+          "nameWithOwner": "redis/redis",
+          "stargazerCount": 68736,
+          "url": "https://github.com/redis/redis"
+        },
+        {
+          "nameWithOwner": "ventoy/Ventoy",
+          "stargazerCount": 66112,
+          "url": "https://github.com/ventoy/Ventoy"
+        },
+        {
+          "nameWithOwner": "obsproject/obs-studio",
+          "stargazerCount": 63566,
+          "url": "https://github.com/obsproject/obs-studio"
+        },
+        {
+          "nameWithOwner": "git/git",
+          "stargazerCount": 54437,
+          "url": "https://github.com/git/git"
+        },
+        {
+          "nameWithOwner": "FFmpeg/FFmpeg",
+          "stargazerCount": 49164,
+          "url": "https://github.com/FFmpeg/FFmpeg"
+        },
+        {
+          "nameWithOwner": "php/php-src",
+          "stargazerCount": 38899,
+          "url": "https://github.com/php/php-src"
+        },
+        {
+          "nameWithOwner": "wg/wrk",
+          "stargazerCount": 38785,
+          "url": "https://github.com/wg/wrk"
+        },
+        {
+          "nameWithOwner": "curl/curl",
+          "stargazerCount": 37631,
+          "url": "https://github.com/curl/curl"
+        },
+        {
+          "nameWithOwner": "tmux/tmux",
+          "stargazerCount": 37135,
+          "url": "https://github.com/tmux/tmux"
+        },
+        {
+          "nameWithOwner": "bilibili/ijkplayer",
+          "stargazerCount": 32827,
+          "url": "https://github.com/bilibili/ijkplayer"
+        },
+        {
+          "nameWithOwner": "lizongying/my-tv",
+          "stargazerCount": 31947,
+          "url": "https://github.com/lizongying/my-tv"
+        },
+        {
+          "nameWithOwner": "jqlang/jq",
+          "stargazerCount": 31547,
+          "url": "https://github.com/jqlang/jq"
+        },
+        {
+          "nameWithOwner": "pbatard/rufus",
+          "stargazerCount": 31003,
+          "url": "https://github.com/pbatard/rufus"
+        },
+        {
+          "nameWithOwner": "coolsnowwolf/lede",
+          "stargazerCount": 30571,
+          "url": "https://github.com/coolsnowwolf/lede"
+        },
+        {
+          "nameWithOwner": "mpv-player/mpv",
+          "stargazerCount": 30352,
+          "url": "https://github.com/mpv-player/mpv"
+        },
+        {
+          "nameWithOwner": "nothings/stb",
+          "stargazerCount": 28494,
+          "url": "https://github.com/nothings/stb"
+        },
+        {
+          "nameWithOwner": "cfenollosa/os-tutorial",
+          "stargazerCount": 28120,
+          "url": "https://github.com/cfenollosa/os-tutorial"
+        },
+        {
+          "nameWithOwner": "openssl/openssl",
+          "stargazerCount": 27185,
+          "url": "https://github.com/openssl/openssl"
+        },
+        {
+          "nameWithOwner": "valinet/ExplorerPatcher",
+          "stargazerCount": 26841,
+          "url": "https://github.com/valinet/ExplorerPatcher"
+        },
+        {
+          "nameWithOwner": "nginx/nginx",
+          "stargazerCount": 26610,
+          "url": "https://github.com/nginx/nginx"
+        },
+        {
+          "nameWithOwner": "ValdikSS/GoodbyeDPI",
+          "stargazerCount": 26583,
+          "url": "https://github.com/ValdikSS/GoodbyeDPI"
+        },
+        {
+          "nameWithOwner": "ggreer/the_silver_searcher",
+          "stargazerCount": 26475,
+          "url": "https://github.com/ggreer/the_silver_searcher"
+        },
+        {
+          "nameWithOwner": "pjreddie/darknet",
+          "stargazerCount": 26117,
+          "url": "https://github.com/pjreddie/darknet"
+        },
+        {
+          "nameWithOwner": "kingToolbox/WindTerm",
+          "stargazerCount": 26003,
+          "url": "https://github.com/kingToolbox/WindTerm"
+        },
+        {
+          "nameWithOwner": "raysan5/raylib",
+          "stargazerCount": 25886,
+          "url": "https://github.com/raysan5/raylib"
+        },
+        {
+          "nameWithOwner": "koekeishiya/yabai",
+          "stargazerCount": 25493,
+          "url": "https://github.com/koekeishiya/yabai"
+        },
+        {
+          "nameWithOwner": "libuv/libuv",
+          "stargazerCount": 25134,
+          "url": "https://github.com/libuv/libuv"
+        },
+        {
+          "nameWithOwner": "facebook/zstd",
+          "stargazerCount": 24719,
+          "url": "https://github.com/facebook/zstd"
+        },
+        {
+          "nameWithOwner": "robertdavidgraham/masscan",
+          "stargazerCount": 24324,
+          "url": "https://github.com/robertdavidgraham/masscan"
+        },
+        {
+          "nameWithOwner": "taosdata/TDengine",
+          "stargazerCount": 23767,
+          "url": "https://github.com/taosdata/TDengine"
+        },
+        {
+          "nameWithOwner": "arendst/Tasmota",
+          "stargazerCount": 23058,
+          "url": "https://github.com/arendst/Tasmota"
+        },
+        {
+          "nameWithOwner": "hashcat/hashcat",
+          "stargazerCount": 22441,
+          "url": "https://github.com/hashcat/hashcat"
+        },
+        {
+          "nameWithOwner": "openwrt/openwrt",
+          "stargazerCount": 22164,
+          "url": "https://github.com/openwrt/openwrt"
+        },
+        {
+          "nameWithOwner": "SamyPesse/How-to-Make-a-Computer-Operating-System",
+          "stargazerCount": 21801,
+          "url": "https://github.com/SamyPesse/How-to-Make-a-Computer-Operating-System"
+        },
+        {
+          "nameWithOwner": "radareorg/radare2",
+          "stargazerCount": 21526,
+          "url": "https://github.com/radareorg/radare2"
+        },
+        {
+          "nameWithOwner": "julycoding/The-Art-Of-Programming-By-July-2nd",
+          "stargazerCount": 21414,
+          "url": "https://github.com/julycoding/The-Art-Of-Programming-By-July-2nd"
+        },
+        {
+          "nameWithOwner": "iovisor/bcc",
+          "stargazerCount": 21239,
+          "url": "https://github.com/iovisor/bcc"
+        },
+        {
+          "nameWithOwner": "micropython/micropython",
+          "stargazerCount": 20191,
+          "url": "https://github.com/micropython/micropython"
+        },
+        {
+          "nameWithOwner": "valkey-io/valkey",
+          "stargazerCount": 20064,
+          "url": "https://github.com/valkey-io/valkey"
+        },
+        {
+          "nameWithOwner": "gentilkiwi/mimikatz",
+          "stargazerCount": 20053,
+          "url": "https://github.com/gentilkiwi/mimikatz"
+        },
+        {
+          "nameWithOwner": "TheAlgorithms/C",
+          "stargazerCount": 20044,
+          "url": "https://github.com/TheAlgorithms/C"
+        },
+        {
+          "nameWithOwner": "jarun/nnn",
+          "stargazerCount": 19967,
+          "url": "https://github.com/jarun/nnn"
+        },
+        {
+          "nameWithOwner": "Awesome-HarmonyOS/HarmonyOS",
+          "stargazerCount": 19539,
+          "url": "https://github.com/Awesome-HarmonyOS/HarmonyOS"
+        },
+        {
+          "nameWithOwner": "lvgl/lvgl",
+          "stargazerCount": 19339,
+          "url": "https://github.com/lvgl/lvgl"
+        },
+        {
+          "nameWithOwner": "HandBrake/HandBrake",
+          "stargazerCount": 19261,
+          "url": "https://github.com/HandBrake/HandBrake"
+        },
+        {
+          "nameWithOwner": "allinurl/goaccess",
+          "stargazerCount": 19245,
+          "url": "https://github.com/allinurl/goaccess"
+        },
+        {
+          "nameWithOwner": "jart/cosmopolitan",
+          "stargazerCount": 19225,
+          "url": "https://github.com/jart/cosmopolitan"
+        },
+        {
+          "nameWithOwner": "DarkFlippers/unleashed-firmware",
+          "stargazerCount": 19060,
+          "url": "https://github.com/DarkFlippers/unleashed-firmware"
+        },
+        {
+          "nameWithOwner": "qmk/qmk_firmware",
+          "stargazerCount": 19006,
+          "url": "https://github.com/qmk/qmk_firmware"
+        },
+        {
+          "nameWithOwner": "timescale/timescaledb",
+          "stargazerCount": 18858,
+          "url": "https://github.com/timescale/timescaledb"
+        },
+        {
+          "nameWithOwner": "karpathy/llama2.c",
+          "stargazerCount": 18291,
+          "url": "https://github.com/karpathy/llama2.c"
+        },
+        {
+          "nameWithOwner": "ish-app/ish",
+          "stargazerCount": 17891,
+          "url": "https://github.com/ish-app/ish"
+        },
+        {
+          "nameWithOwner": "postgres/postgres",
+          "stargazerCount": 17353,
+          "url": "https://github.com/postgres/postgres"
+        },
+        {
+          "nameWithOwner": "woltapp/blurhash",
+          "stargazerCount": 16242,
+          "url": "https://github.com/woltapp/blurhash"
+        },
+        {
+          "nameWithOwner": "ExistentialAudio/BlackHole",
+          "stargazerCount": 16200,
+          "url": "https://github.com/ExistentialAudio/BlackHole"
+        },
+        {
+          "nameWithOwner": "skywind3000/kcp",
+          "stargazerCount": 15966,
+          "url": "https://github.com/skywind3000/kcp"
+        },
+        {
+          "nameWithOwner": "NVIDIA/open-gpu-kernel-modules",
+          "stargazerCount": 15715,
+          "url": "https://github.com/NVIDIA/open-gpu-kernel-modules"
+        },
+        {
+          "nameWithOwner": "ffmpegwasm/ffmpeg.wasm",
+          "stargazerCount": 15516,
+          "url": "https://github.com/ffmpegwasm/ffmpeg.wasm"
+        },
+        {
+          "nameWithOwner": "reactos/reactos",
+          "stargazerCount": 15389,
+          "url": "https://github.com/reactos/reactos"
+        },
+        {
+          "nameWithOwner": "videolan/vlc",
+          "stargazerCount": 15308,
+          "url": "https://github.com/videolan/vlc"
+        },
+        {
+          "nameWithOwner": "swaywm/sway",
+          "stargazerCount": 15253,
+          "url": "https://github.com/swaywm/sway"
+        },
+        {
+          "nameWithOwner": "pgvector/pgvector",
+          "stargazerCount": 15155,
+          "url": "https://github.com/pgvector/pgvector"
+        },
+        {
+          "nameWithOwner": "UberGuidoZ/Flipper",
+          "stargazerCount": 15116,
+          "url": "https://github.com/UberGuidoZ/Flipper"
+        },
+        {
+          "nameWithOwner": "espressif/esp-idf",
+          "stargazerCount": 15006,
+          "url": "https://github.com/espressif/esp-idf"
+        },
+        {
+          "nameWithOwner": "sandboxie-plus/Sandboxie",
+          "stargazerCount": 14893,
+          "url": "https://github.com/sandboxie-plus/Sandboxie"
+        },
+        {
+          "nameWithOwner": "sumatrapdfreader/sumatrapdf",
+          "stargazerCount": 14602,
+          "url": "https://github.com/sumatrapdfreader/sumatrapdf"
+        },
+        {
+          "nameWithOwner": "tursodatabase/libsql",
+          "stargazerCount": 14375,
+          "url": "https://github.com/tursodatabase/libsql"
+        },
+        {
+          "nameWithOwner": "gojue/ecapture",
+          "stargazerCount": 14164,
+          "url": "https://github.com/gojue/ecapture"
+        },
+        {
+          "nameWithOwner": "flipperdevices/flipperzero-firmware",
+          "stargazerCount": 14062,
+          "url": "https://github.com/flipperdevices/flipperzero-firmware"
+        },
+        {
+          "nameWithOwner": "systemd/systemd",
+          "stargazerCount": 14000,
+          "url": "https://github.com/systemd/systemd"
+        },
+        {
+          "nameWithOwner": "SpacehuhnTech/esp8266_deauther",
+          "stargazerCount": 13977,
+          "url": "https://github.com/SpacehuhnTech/esp8266_deauther"
+        },
+        {
+          "nameWithOwner": "davatorium/rofi",
+          "stargazerCount": 13938,
+          "url": "https://github.com/davatorium/rofi"
+        },
+        {
+          "nameWithOwner": "acidanthera/OpenCorePkg",
+          "stargazerCount": 13818,
+          "url": "https://github.com/acidanthera/OpenCorePkg"
+        },
+        {
+          "nameWithOwner": "memcached/memcached",
+          "stargazerCount": 13783,
+          "url": "https://github.com/memcached/memcached"
+        },
+        {
+          "nameWithOwner": "vurtun/nuklear",
+          "stargazerCount": 13745,
+          "url": "https://github.com/vurtun/nuklear"
+        },
+        {
+          "nameWithOwner": "arut/nginx-rtmp-module",
+          "stargazerCount": 13718,
+          "url": "https://github.com/arut/nginx-rtmp-module"
+        },
+        {
+          "nameWithOwner": "glfw/glfw",
+          "stargazerCount": 13699,
+          "url": "https://github.com/glfw/glfw"
+        },
+        {
+          "nameWithOwner": "cloudwu/skynet",
+          "stargazerCount": 13609,
+          "url": "https://github.com/cloudwu/skynet"
+        },
+        {
+          "nameWithOwner": "s-matyukevich/raspberry-pi-os",
+          "stargazerCount": 13432,
+          "url": "https://github.com/s-matyukevich/raspberry-pi-os"
+        },
+        {
+          "nameWithOwner": "nicbarker/clay",
+          "stargazerCount": 13417,
+          "url": "https://github.com/nicbarker/clay"
+        },
+        {
+          "nameWithOwner": "fastfetch-cli/fastfetch",
+          "stargazerCount": 13370,
+          "url": "https://github.com/fastfetch-cli/fastfetch"
+        },
+        {
+          "nameWithOwner": "ImageMagick/ImageMagick",
+          "stargazerCount": 13324,
+          "url": "https://github.com/ImageMagick/ImageMagick"
+        },
+        {
+          "nameWithOwner": "peng-zhihui/Dummy-Robot",
+          "stargazerCount": 13206,
+          "url": "https://github.com/peng-zhihui/Dummy-Robot"
+        },
+        {
+          "nameWithOwner": "haiwen/seafile",
+          "stargazerCount": 12990,
+          "url": "https://github.com/haiwen/seafile"
+        },
+        {
+          "nameWithOwner": "openresty/openresty",
+          "stargazerCount": 12968,
+          "url": "https://github.com/openresty/openresty"
+        },
+        {
+          "nameWithOwner": "alibaba/tengine",
+          "stargazerCount": 12954,
+          "url": "https://github.com/alibaba/tengine"
+        },
+        {
+          "nameWithOwner": "jonas/tig",
+          "stargazerCount": 12681,
+          "url": "https://github.com/jonas/tig"
+        },
+        {
+          "nameWithOwner": "jedisct1/libsodium",
+          "stargazerCount": 12630,
+          "url": "https://github.com/jedisct1/libsodium"
+        },
+        {
+          "nameWithOwner": "octalmage/robotjs",
+          "stargazerCount": 12524,
+          "url": "https://github.com/octalmage/robotjs"
+        },
+        {
+          "nameWithOwner": "twitter/twemproxy",
+          "stargazerCount": 12232,
+          "url": "https://github.com/twitter/twemproxy"
+        },
+        {
+          "nameWithOwner": "coturn/coturn",
+          "stargazerCount": 12197,
+          "url": "https://github.com/coturn/coturn"
+        },
+        {
+          "nameWithOwner": "SoftEtherVPN/SoftEtherVPN",
+          "stargazerCount": 12171,
+          "url": "https://github.com/SoftEtherVPN/SoftEtherVPN"
+        },
+        {
+          "nameWithOwner": "brunodev85/winlator",
+          "stargazerCount": 12015,
+          "url": "https://github.com/brunodev85/winlator"
+        },
+        {
+          "nameWithOwner": "libsdl-org/SDL",
+          "stargazerCount": 11999,
+          "url": "https://github.com/libsdl-org/SDL"
+        },
+        {
+          "nameWithOwner": "zephyrproject-rtos/zephyr",
+          "stargazerCount": 11910,
+          "url": "https://github.com/zephyrproject-rtos/zephyr"
+        },
+        {
+          "nameWithOwner": "google/sanitizers",
+          "stargazerCount": 11896,
+          "url": "https://github.com/google/sanitizers"
+        },
+        {
+          "nameWithOwner": "winsiderss/systeminformer",
+          "stargazerCount": 11725,
+          "url": "https://github.com/winsiderss/systeminformer"
+        },
+        {
+          "nameWithOwner": "microsoft/PowerToys",
+          "stargazerCount": 117425,
+          "url": "https://github.com/microsoft/PowerToys"
+        },
+        {
+          "nameWithOwner": "2dust/v2rayN",
+          "stargazerCount": 78232,
+          "url": "https://github.com/2dust/v2rayN"
+        },
+        {
+          "nameWithOwner": "shadowsocks/shadowsocks-windows",
+          "stargazerCount": 58759,
+          "url": "https://github.com/shadowsocks/shadowsocks-windows"
+        },
+        {
+          "nameWithOwner": "PowerShell/PowerShell",
+          "stargazerCount": 47035,
+          "url": "https://github.com/PowerShell/PowerShell"
+        },
+        {
+          "nameWithOwner": "jellyfin/jellyfin",
+          "stargazerCount": 38816,
+          "url": "https://github.com/jellyfin/jellyfin"
+        },
+        {
+          "nameWithOwner": "files-community/Files",
+          "stargazerCount": 36788,
+          "url": "https://github.com/files-community/Files"
+        },
+        {
+          "nameWithOwner": "dotnet/aspnetcore",
+          "stargazerCount": 36468,
+          "url": "https://github.com/dotnet/aspnetcore"
+        },
+        {
+          "nameWithOwner": "huiyadanli/RevokeMsgPatcher",
+          "stargazerCount": 32311,
+          "url": "https://github.com/huiyadanli/RevokeMsgPatcher"
+        },
+        {
+          "nameWithOwner": "ShareX/ShareX",
+          "stargazerCount": 32018,
+          "url": "https://github.com/ShareX/ShareX"
+        },
+        {
+          "nameWithOwner": "DevToys-app/DevToys",
+          "stargazerCount": 28622,
+          "url": "https://github.com/DevToys-app/DevToys"
+        },
+        {
+          "nameWithOwner": "dnSpy/dnSpy",
+          "stargazerCount": 27405,
+          "url": "https://github.com/dnSpy/dnSpy"
+        },
+        {
+          "nameWithOwner": "AvaloniaUI/Avalonia",
+          "stargazerCount": 27377,
+          "url": "https://github.com/AvaloniaUI/Avalonia"
+        },
+        {
+          "nameWithOwner": "NickeManarin/ScreenToGif",
+          "stargazerCount": 24745,
+          "url": "https://github.com/NickeManarin/ScreenToGif"
+        },
+        {
+          "nameWithOwner": "dotnet-architecture/eShopOnContainers",
+          "stargazerCount": 24529,
+          "url": "https://github.com/dotnet-architecture/eShopOnContainers"
+        },
+        {
+          "nameWithOwner": "microsoft/semantic-kernel",
+          "stargazerCount": 24039,
+          "url": "https://github.com/microsoft/semantic-kernel"
+        },
+        {
+          "nameWithOwner": "mxgmn/WaveFunctionCollapse",
+          "stargazerCount": 23931,
+          "url": "https://github.com/mxgmn/WaveFunctionCollapse"
+        },
+        {
+          "nameWithOwner": "CodeHubApp/CodeHub",
+          "stargazerCount": 22765,
+          "url": "https://github.com/CodeHubApp/CodeHub"
+        },
+        {
+          "nameWithOwner": "icsharpcode/ILSpy",
+          "stargazerCount": 22698,
+          "url": "https://github.com/icsharpcode/ILSpy"
+        },
+        {
+          "nameWithOwner": "leiurayer/downkyi",
+          "stargazerCount": 22603,
+          "url": "https://github.com/leiurayer/downkyi"
+        },
+        {
+          "nameWithOwner": "dotnet/maui",
+          "stargazerCount": 22599,
+          "url": "https://github.com/dotnet/maui"
+        },
+        {
+          "nameWithOwner": "BeyondDimension/SteamTools",
+          "stargazerCount": 21796,
+          "url": "https://github.com/BeyondDimension/SteamTools"
+        },
+        {
+          "nameWithOwner": "thangchung/awesome-dotnet-core",
+          "stargazerCount": 20371,
+          "url": "https://github.com/thangchung/awesome-dotnet-core"
+        },
+        {
+          "nameWithOwner": "dotnet/roslyn",
+          "stargazerCount": 19441,
+          "url": "https://github.com/dotnet/roslyn"
+        },
+        {
+          "nameWithOwner": "QL-Win/QuickLook",
+          "stargazerCount": 18891,
+          "url": "https://github.com/QL-Win/QuickLook"
+        },
+        {
+          "nameWithOwner": "Unity-Technologies/ml-agents",
+          "stargazerCount": 17964,
+          "url": "https://github.com/Unity-Technologies/ml-agents"
+        },
+        {
+          "nameWithOwner": "jasontaylordev/CleanArchitecture",
+          "stargazerCount": 17934,
+          "url": "https://github.com/jasontaylordev/CleanArchitecture"
+        },
+        {
+          "nameWithOwner": "DapperLib/Dapper",
+          "stargazerCount": 17835,
+          "url": "https://github.com/DapperLib/Dapper"
+        },
+        {
+          "nameWithOwner": "peass-ng/PEASS-ng",
+          "stargazerCount": 17302,
+          "url": "https://github.com/peass-ng/PEASS-ng"
+        },
+        {
+          "nameWithOwner": "TGSAN/CMWTAT_Digital_Edition",
+          "stargazerCount": 17272,
+          "url": "https://github.com/TGSAN/CMWTAT_Digital_Edition"
+        },
+        {
+          "nameWithOwner": "ardalis/CleanArchitecture",
+          "stargazerCount": 16940,
+          "url": "https://github.com/ardalis/CleanArchitecture"
+        },
+        {
+          "nameWithOwner": "netchx/netch",
+          "stargazerCount": 16729,
+          "url": "https://github.com/netchx/netch"
+        },
+        {
+          "nameWithOwner": "bitwarden/server",
+          "stargazerCount": 16398,
+          "url": "https://github.com/bitwarden/server"
+        },
+        {
+          "nameWithOwner": "ppy/osu",
+          "stargazerCount": 16397,
+          "url": "https://github.com/ppy/osu"
+        },
+        {
+          "nameWithOwner": "dotnet/runtime",
+          "stargazerCount": 16141,
+          "url": "https://github.com/dotnet/runtime"
+        },
+        {
+          "nameWithOwner": "rocksdanister/lively",
+          "stargazerCount": 16138,
+          "url": "https://github.com/rocksdanister/lively"
+        },
+        {
+          "nameWithOwner": "hellzerg/optimizer",
+          "stargazerCount": 15901,
+          "url": "https://github.com/hellzerg/optimizer"
+        },
+        {
+          "nameWithOwner": "marticliment/UniGetUI",
+          "stargazerCount": 15637,
+          "url": "https://github.com/marticliment/UniGetUI"
+        },
+        {
+          "nameWithOwner": "MaterialDesignInXAML/MaterialDesignInXamlToolkit",
+          "stargazerCount": 15549,
+          "url": "https://github.com/MaterialDesignInXAML/MaterialDesignInXamlToolkit"
+        },
+        {
+          "nameWithOwner": "OpenRA/OpenRA",
+          "stargazerCount": 15471,
+          "url": "https://github.com/OpenRA/OpenRA"
+        },
+        {
+          "nameWithOwner": "nilaoda/N_m3u8DL-CLI",
+          "stargazerCount": 14981,
+          "url": "https://github.com/nilaoda/N_m3u8DL-CLI"
+        },
+        {
+          "nameWithOwner": "Klocman/Bulk-Crap-Uninstaller",
+          "stargazerCount": 14310,
+          "url": "https://github.com/Klocman/Bulk-Crap-Uninstaller"
+        },
+        {
+          "nameWithOwner": "BluePointLilac/ContextMenuManager",
+          "stargazerCount": 14133,
+          "url": "https://github.com/BluePointLilac/ContextMenuManager"
+        },
+        {
+          "nameWithOwner": "dotnet/efcore",
+          "stargazerCount": 14051,
+          "url": "https://github.com/dotnet/efcore"
+        },
+        {
+          "nameWithOwner": "Perfare/AssetStudio",
+          "stargazerCount": 13979,
+          "url": "https://github.com/Perfare/AssetStudio"
+        },
+        {
+          "nameWithOwner": "App-vNext/Polly",
+          "stargazerCount": 13710,
+          "url": "https://github.com/App-vNext/Polly"
+        },
+        {
+          "nameWithOwner": "abpframework/abp",
+          "stargazerCount": 13390,
+          "url": "https://github.com/abpframework/abp"
+        },
+        {
+          "nameWithOwner": "Jackett/Jackett",
+          "stargazerCount": 13235,
+          "url": "https://github.com/Jackett/Jackett"
+        },
+        {
+          "nameWithOwner": "dotnet/AspNetCore.Docs",
+          "stargazerCount": 12842,
+          "url": "https://github.com/dotnet/AspNetCore.Docs"
+        },
+        {
+          "nameWithOwner": "winsw/winsw",
+          "stargazerCount": 12801,
+          "url": "https://github.com/winsw/winsw"
+        },
+        {
+          "nameWithOwner": "QuestPDF/QuestPDF",
+          "stargazerCount": 12743,
+          "url": "https://github.com/QuestPDF/QuestPDF"
+        },
+        {
+          "nameWithOwner": "Unity-Technologies/UnityCsReference",
+          "stargazerCount": 12188,
+          "url": "https://github.com/Unity-Technologies/UnityCsReference"
+        },
+        {
+          "nameWithOwner": "duplicati/duplicati",
+          "stargazerCount": 12144,
+          "url": "https://github.com/duplicati/duplicati"
+        },
+        {
+          "nameWithOwner": "MonoGame/MonoGame",
+          "stargazerCount": 12013,
+          "url": "https://github.com/MonoGame/MonoGame"
+        },
+        {
+          "nameWithOwner": "dotnet/csharplang",
+          "stargazerCount": 11910,
+          "url": "https://github.com/dotnet/csharplang"
+        },
+        {
+          "nameWithOwner": "aspnetboilerplate/aspnetboilerplate",
+          "stargazerCount": 11906,
+          "url": "https://github.com/aspnetboilerplate/aspnetboilerplate"
+        },
+        {
+          "nameWithOwner": "JustArchiNET/ArchiSteamFarm",
+          "stargazerCount": 11887,
+          "url": "https://github.com/JustArchiNET/ArchiSteamFarm"
+        },
+        {
+          "nameWithOwner": "kgrzybek/modular-monolith-with-ddd",
+          "stargazerCount": 11832,
+          "url": "https://github.com/kgrzybek/modular-monolith-with-ddd"
+        },
+        {
+          "nameWithOwner": "Sonarr/Sonarr",
+          "stargazerCount": 11652,
+          "url": "https://github.com/Sonarr/Sonarr"
+        },
+        {
+          "nameWithOwner": "jbogard/MediatR",
+          "stargazerCount": 11588,
+          "url": "https://github.com/jbogard/MediatR"
+        },
+        {
+          "nameWithOwner": "nilaoda/BBDown",
+          "stargazerCount": 11361,
+          "url": "https://github.com/nilaoda/BBDown"
+        },
+        {
+          "nameWithOwner": "Radarr/Radarr",
+          "stargazerCount": 11350,
+          "url": "https://github.com/Radarr/Radarr"
+        },
+        {
+          "nameWithOwner": "mono/mono",
+          "stargazerCount": 11253,
+          "url": "https://github.com/mono/mono"
+        },
+        {
+          "nameWithOwner": "Tyrrrz/YoutubeDownloader",
+          "stargazerCount": 11115,
+          "url": "https://github.com/Tyrrrz/YoutubeDownloader"
+        },
+        {
+          "nameWithOwner": "QuantConnect/Lean",
+          "stargazerCount": 11037,
+          "url": "https://github.com/QuantConnect/Lean"
+        },
+        {
+          "nameWithOwner": "srwi/EverythingToolbar",
+          "stargazerCount": 11016,
+          "url": "https://github.com/srwi/EverythingToolbar"
+        },
+        {
+          "nameWithOwner": "JamesNK/Newtonsoft.Json",
+          "stargazerCount": 11014,
+          "url": "https://github.com/JamesNK/Newtonsoft.Json"
+        },
+        {
+          "nameWithOwner": "microsoft/garnet",
+          "stargazerCount": 10969,
+          "url": "https://github.com/microsoft/garnet"
+        },
+        {
+          "nameWithOwner": "coding-horror/basic-computer-games",
+          "stargazerCount": 10962,
+          "url": "https://github.com/coding-horror/basic-computer-games"
+        },
+        {
+          "nameWithOwner": "dotnet/BenchmarkDotNet",
+          "stargazerCount": 10913,
+          "url": "https://github.com/dotnet/BenchmarkDotNet"
+        },
+        {
+          "nameWithOwner": "chocolatey/choco",
+          "stargazerCount": 10704,
+          "url": "https://github.com/chocolatey/choco"
+        },
+        {
+          "nameWithOwner": "xupefei/Locale-Emulator",
+          "stargazerCount": 10523,
+          "url": "https://github.com/xupefei/Locale-Emulator"
+        },
+        {
+          "nameWithOwner": "JosefNemec/Playnite",
+          "stargazerCount": 10456,
+          "url": "https://github.com/JosefNemec/Playnite"
+        },
+        {
+          "nameWithOwner": "dotnet-architecture/eShopOnWeb",
+          "stargazerCount": 10372,
+          "url": "https://github.com/dotnet-architecture/eShopOnWeb"
+        },
+        {
+          "nameWithOwner": "dotnet/orleans",
+          "stargazerCount": 10351,
+          "url": "https://github.com/dotnet/orleans"
+        },
+        {
+          "nameWithOwner": "MathewSachin/Captura",
+          "stargazerCount": 10141,
+          "url": "https://github.com/MathewSachin/Captura"
+        },
+        {
+          "nameWithOwner": "AutoMapper/AutoMapper",
+          "stargazerCount": 10105,
+          "url": "https://github.com/AutoMapper/AutoMapper"
+        },
+        {
+          "nameWithOwner": "spectreconsole/spectre.console",
+          "stargazerCount": 10051,
+          "url": "https://github.com/spectreconsole/spectre.console"
+        },
+        {
+          "nameWithOwner": "gui-cs/Terminal.Gui",
+          "stargazerCount": 10010,
+          "url": "https://github.com/gui-cs/Terminal.Gui"
+        },
+        {
+          "nameWithOwner": "cefsharp/CefSharp",
+          "stargazerCount": 10008,
+          "url": "https://github.com/cefsharp/CefSharp"
+        },
+        {
+          "nameWithOwner": "SubtitleEdit/subtitleedit",
+          "stargazerCount": 9922,
+          "url": "https://github.com/SubtitleEdit/subtitleedit"
+        },
+        {
+          "nameWithOwner": "dodyg/practical-aspnetcore",
+          "stargazerCount": 9918,
+          "url": "https://github.com/dodyg/practical-aspnetcore"
+        },
+        {
+          "nameWithOwner": "wmjordan/PDFPatcher",
+          "stargazerCount": 9907,
+          "url": "https://github.com/wmjordan/PDFPatcher"
+        },
+        {
+          "nameWithOwner": "lucasg/Dependencies",
+          "stargazerCount": 9771,
+          "url": "https://github.com/lucasg/Dependencies"
+        },
+        {
+          "nameWithOwner": "restsharp/RestSharp",
+          "stargazerCount": 9725,
+          "url": "https://github.com/restsharp/RestSharp"
+        },
+        {
+          "nameWithOwner": "d2phap/ImageGlass",
+          "stargazerCount": 9697,
+          "url": "https://github.com/d2phap/ImageGlass"
+        },
+        {
+          "nameWithOwner": "HangfireIO/Hangfire",
+          "stargazerCount": 9650,
+          "url": "https://github.com/HangfireIO/Hangfire"
+        },
+        {
+          "nameWithOwner": "OdysseusYuan/LKY_OfficeTools",
+          "stargazerCount": 9646,
+          "url": "https://github.com/OdysseusYuan/LKY_OfficeTools"
+        },
+        {
+          "nameWithOwner": "Tichau/FileConverter",
+          "stargazerCount": 9604,
+          "url": "https://github.com/Tichau/FileConverter"
+        },
+        {
+          "nameWithOwner": "nopSolutions/nopCommerce",
+          "stargazerCount": 9569,
+          "url": "https://github.com/nopSolutions/nopCommerce"
+        },
+        {
+          "nameWithOwner": "MahApps/MahApps.Metro",
+          "stargazerCount": 9549,
+          "url": "https://github.com/MahApps/MahApps.Metro"
+        },
+        {
+          "nameWithOwner": "mRemoteNG/mRemoteNG",
+          "stargazerCount": 9536,
+          "url": "https://github.com/mRemoteNG/mRemoteNG"
+        },
+        {
+          "nameWithOwner": "File-New-Project/EarTrumpet",
+          "stargazerCount": 9514,
+          "url": "https://github.com/File-New-Project/EarTrumpet"
+        },
+        {
+          "nameWithOwner": "Flow-Launcher/Flow.Launcher",
+          "stargazerCount": 9441,
+          "url": "https://github.com/Flow-Launcher/Flow.Launcher"
+        },
+        {
+          "nameWithOwner": "seerge/g-helper",
+          "stargazerCount": 9385,
+          "url": "https://github.com/seerge/g-helper"
+        },
+        {
+          "nameWithOwner": "unoplatform/uno",
+          "stargazerCount": 9314,
+          "url": "https://github.com/unoplatform/uno"
+        },
+        {
+          "nameWithOwner": "FluentValidation/FluentValidation",
+          "stargazerCount": 9314,
+          "url": "https://github.com/FluentValidation/FluentValidation"
+        },
+        {
+          "nameWithOwner": "felixse/FluentTerminal",
+          "stargazerCount": 9289,
+          "url": "https://github.com/felixse/FluentTerminal"
+        },
+        {
+          "nameWithOwner": "SignalR/SignalR",
+          "stargazerCount": 9260,
+          "url": "https://github.com/SignalR/SignalR"
+        },
+        {
+          "nameWithOwner": "egametang/ET",
+          "stargazerCount": 9220,
+          "url": "https://github.com/egametang/ET"
+        },
+        {
+          "nameWithOwner": "bchavez/Bogus",
+          "stargazerCount": 9205,
+          "url": "https://github.com/bchavez/Bogus"
+        },
+        {
+          "nameWithOwner": "tensorflow/tensorflow",
+          "stargazerCount": 189408,
+          "url": "https://github.com/tensorflow/tensorflow"
+        },
+        {
+          "nameWithOwner": "facebook/react-native",
+          "stargazerCount": 121563,
+          "url": "https://github.com/facebook/react-native"
+        },
+        {
+          "nameWithOwner": "electron/electron",
+          "stargazerCount": 116422,
+          "url": "https://github.com/electron/electron"
+        },
+        {
+          "nameWithOwner": "microsoft/terminal",
+          "stargazerCount": 97706,
+          "url": "https://github.com/microsoft/terminal"
+        },
+        {
+          "nameWithOwner": "godotengine/godot",
+          "stargazerCount": 96252,
+          "url": "https://github.com/godotengine/godot"
+        },
+        {
+          "nameWithOwner": "bitcoin/bitcoin",
+          "stargazerCount": 82927,
+          "url": "https://github.com/bitcoin/bitcoin"
+        },
+        {
+          "nameWithOwner": "opencv/opencv",
+          "stargazerCount": 81728,
+          "url": "https://github.com/opencv/opencv"
+        },
+        {
+          "nameWithOwner": "ggml-org/llama.cpp",
+          "stargazerCount": 78277,
+          "url": "https://github.com/ggml-org/llama.cpp"
+        },
+        {
+          "nameWithOwner": "nomic-ai/gpt4all",
+          "stargazerCount": 73124,
+          "url": "https://github.com/nomic-ai/gpt4all"
+        },
+        {
+          "nameWithOwner": "swiftlang/swift",
+          "stargazerCount": 68442,
+          "url": "https://github.com/swiftlang/swift"
+        },
+        {
+          "nameWithOwner": "protocolbuffers/protobuf",
+          "stargazerCount": 67303,
+          "url": "https://github.com/protocolbuffers/protobuf"
+        },
+        {
+          "nameWithOwner": "tesseract-ocr/tesseract",
+          "stargazerCount": 66215,
+          "url": "https://github.com/tesseract-ocr/tesseract"
+        },
+        {
+          "nameWithOwner": "ocornut/imgui",
+          "stargazerCount": 64792,
+          "url": "https://github.com/ocornut/imgui"
+        },
+        {
+          "nameWithOwner": "topjohnwu/Magisk",
+          "stargazerCount": 52252,
+          "url": "https://github.com/topjohnwu/Magisk"
+        },
+        {
+          "nameWithOwner": "WerWolv/ImHex",
+          "stargazerCount": 47870,
+          "url": "https://github.com/WerWolv/ImHex"
+        },
+        {
+          "nameWithOwner": "x64dbg/x64dbg",
+          "stargazerCount": 45852,
+          "url": "https://github.com/x64dbg/x64dbg"
+        },
+        {
+          "nameWithOwner": "nlohmann/json",
+          "stargazerCount": 45257,
+          "url": "https://github.com/nlohmann/json"
+        },
+        {
+          "nameWithOwner": "grpc/grpc",
+          "stargazerCount": 42881,
+          "url": "https://github.com/grpc/grpc"
+        },
+        {
+          "nameWithOwner": "Light-City/CPlusPlusThings",
+          "stargazerCount": 40897,
+          "url": "https://github.com/Light-City/CPlusPlusThings"
+        },
+        {
+          "nameWithOwner": "ClickHouse/ClickHouse",
+          "stargazerCount": 40168,
+          "url": "https://github.com/ClickHouse/ClickHouse"
+        },
+        {
+          "nameWithOwner": "ggml-org/whisper.cpp",
+          "stargazerCount": 39303,
+          "url": "https://github.com/ggml-org/whisper.cpp"
+        },
+        {
+          "nameWithOwner": "zhongyang219/TrafficMonitor",
+          "stargazerCount": 38575,
+          "url": "https://github.com/zhongyang219/TrafficMonitor"
+        },
+        {
+          "nameWithOwner": "google/leveldb",
+          "stargazerCount": 37459,
+          "url": "https://github.com/google/leveldb"
+        },
+        {
+          "nameWithOwner": "LadybirdBrowser/ladybird",
+          "stargazerCount": 37357,
+          "url": "https://github.com/LadybirdBrowser/ladybird"
+        },
+        {
+          "nameWithOwner": "aria2/aria2",
+          "stargazerCount": 37341,
+          "url": "https://github.com/aria2/aria2"
+        },
+        {
+          "nameWithOwner": "huihut/interview",
+          "stargazerCount": 35918,
+          "url": "https://github.com/huihut/interview"
+        },
+        {
+          "nameWithOwner": "google/googletest",
+          "stargazerCount": 35886,
+          "url": "https://github.com/google/googletest"
+        },
+        {
+          "nameWithOwner": "facebookresearch/faiss",
+          "stargazerCount": 34355,
+          "url": "https://github.com/facebookresearch/faiss"
+        },
+        {
+          "nameWithOwner": "BVLC/caffe",
+          "stargazerCount": 34305,
+          "url": "https://github.com/BVLC/caffe"
+        },
+        {
+          "nameWithOwner": "carbon-language/carbon-lang",
+          "stargazerCount": 32808,
+          "url": "https://github.com/carbon-language/carbon-lang"
+        },
+        {
+          "nameWithOwner": "CMU-Perceptual-Computing-Lab/openpose",
+          "stargazerCount": 32299,
+          "url": "https://github.com/CMU-Perceptual-Computing-Lab/openpose"
+        },
+        {
+          "nameWithOwner": "aseprite/aseprite",
+          "stargazerCount": 31692,
+          "url": "https://github.com/aseprite/aseprite"
+        },
+        {
+          "nameWithOwner": "TheAlgorithms/C-Plus-Plus",
+          "stargazerCount": 31642,
+          "url": "https://github.com/TheAlgorithms/C-Plus-Plus"
+        },
+        {
+          "nameWithOwner": "SerenityOS/serenity",
+          "stargazerCount": 31497,
+          "url": "https://github.com/SerenityOS/serenity"
+        },
+        {
+          "nameWithOwner": "qbittorrent/qBittorrent",
+          "stargazerCount": 30760,
+          "url": "https://github.com/qbittorrent/qBittorrent"
+        },
+        {
+          "nameWithOwner": "microsoft/calculator",
+          "stargazerCount": 30231,
+          "url": "https://github.com/microsoft/calculator"
+        },
+        {
+          "nameWithOwner": "facebook/rocksdb",
+          "stargazerCount": 29508,
+          "url": "https://github.com/facebook/rocksdb"
+        },
+        {
+          "nameWithOwner": "ariya/phantomjs",
+          "stargazerCount": 29508,
+          "url": "https://github.com/ariya/phantomjs"
+        },
+        {
+          "nameWithOwner": "google-ai-edge/mediapipe",
+          "stargazerCount": 29403,
+          "url": "https://github.com/google-ai-edge/mediapipe"
+        },
+        {
+          "nameWithOwner": "facebook/folly",
+          "stargazerCount": 29266,
+          "url": "https://github.com/facebook/folly"
+        },
+        {
+          "nameWithOwner": "duckdb/duckdb",
+          "stargazerCount": 28481,
+          "url": "https://github.com/duckdb/duckdb"
+        },
+        {
+          "nameWithOwner": "dragonflydb/dragonfly",
+          "stargazerCount": 27722,
+          "url": "https://github.com/dragonflydb/dragonfly"
+        },
+        {
+          "nameWithOwner": "telegramdesktop/tdesktop",
+          "stargazerCount": 27381,
+          "url": "https://github.com/telegramdesktop/tdesktop"
+        },
+        {
+          "nameWithOwner": "mongodb/mongo",
+          "stargazerCount": 27041,
+          "url": "https://github.com/mongodb/mongo"
+        },
+        {
+          "nameWithOwner": "taichi-dev/taichi",
+          "stargazerCount": 27007,
+          "url": "https://github.com/taichi-dev/taichi"
+        },
+        {
+          "nameWithOwner": "rethinkdb/rethinkdb",
+          "stargazerCount": 26868,
+          "url": "https://github.com/rethinkdb/rethinkdb"
+        },
+        {
+          "nameWithOwner": "dmlc/xgboost",
+          "stargazerCount": 26818,
+          "url": "https://github.com/dmlc/xgboost"
+        },
+        {
+          "nameWithOwner": "ossrs/srs",
+          "stargazerCount": 26780,
+          "url": "https://github.com/ossrs/srs"
+        },
+        {
+          "nameWithOwner": "emscripten-core/emscripten",
+          "stargazerCount": 26398,
+          "url": "https://github.com/emscripten-core/emscripten"
+        },
+        {
+          "nameWithOwner": "cmderdev/cmder",
+          "stargazerCount": 26325,
+          "url": "https://github.com/cmderdev/cmder"
+        },
+        {
+          "nameWithOwner": "mozilla/DeepSpeech",
+          "stargazerCount": 26237,
+          "url": "https://github.com/mozilla/DeepSpeech"
+        },
+        {
+          "nameWithOwner": "ValveSoftware/Proton",
+          "stargazerCount": 26002,
+          "url": "https://github.com/ValveSoftware/Proton"
+        },
+        {
+          "nameWithOwner": "flameshot-org/flameshot",
+          "stargazerCount": 25982,
+          "url": "https://github.com/flameshot-org/flameshot"
+        },
+        {
+          "nameWithOwner": "gabime/spdlog",
+          "stargazerCount": 25876,
+          "url": "https://github.com/gabime/spdlog"
+        },
+        {
+          "nameWithOwner": "envoyproxy/envoy",
+          "stargazerCount": 25833,
+          "url": "https://github.com/envoyproxy/envoy"
+        },
+        {
+          "nameWithOwner": "ApolloAuto/apollo",
+          "stargazerCount": 25658,
+          "url": "https://github.com/ApolloAuto/apollo"
+        },
+        {
+          "nameWithOwner": "changkun/modern-cpp-tutorial",
+          "stargazerCount": 24680,
+          "url": "https://github.com/changkun/modern-cpp-tutorial"
+        },
+        {
+          "nameWithOwner": "hyprwm/Hyprland",
+          "stargazerCount": 24540,
+          "url": "https://github.com/hyprwm/Hyprland"
+        },
+        {
+          "nameWithOwner": "LizardByte/Sunshine",
+          "stargazerCount": 24455,
+          "url": "https://github.com/LizardByte/Sunshine"
+        },
+        {
+          "nameWithOwner": "notepad-plus-plus/notepad-plus-plus",
+          "stargazerCount": 24349,
+          "url": "https://github.com/notepad-plus-plus/notepad-plus-plus"
+        },
+        {
+          "nameWithOwner": "ethereum/solidity",
+          "stargazerCount": 24261,
+          "url": "https://github.com/ethereum/solidity"
+        },
+        {
+          "nameWithOwner": "aristocratos/btop",
+          "stargazerCount": 24233,
+          "url": "https://github.com/aristocratos/btop"
+        },
+        {
+          "nameWithOwner": "microsoft/winget-cli",
+          "stargazerCount": 24098,
+          "url": "https://github.com/microsoft/winget-cli"
+        },
+        {
+          "nameWithOwner": "google/flatbuffers",
+          "stargazerCount": 24070,
+          "url": "https://github.com/google/flatbuffers"
+        },
+        {
+          "nameWithOwner": "v8/v8",
+          "stargazerCount": 24014,
+          "url": "https://github.com/v8/v8"
+        },
+        {
+          "nameWithOwner": "FreeCAD/FreeCAD",
+          "stargazerCount": 23952,
+          "url": "https://github.com/FreeCAD/FreeCAD"
+        },
+        {
+          "nameWithOwner": "barry-ran/QtScrcpy",
+          "stargazerCount": 23668,
+          "url": "https://github.com/barry-ran/QtScrcpy"
+        },
+        {
+          "nameWithOwner": "RedisInsight/RedisDesktopManager",
+          "stargazerCount": 23065,
+          "url": "https://github.com/RedisInsight/RedisDesktopManager"
+        },
+        {
+          "nameWithOwner": "keepassxreboot/keepassxc",
+          "stargazerCount": 22903,
+          "url": "https://github.com/keepassxreboot/keepassxc"
+        },
+        {
+          "nameWithOwner": "typesense/typesense",
+          "stargazerCount": 22809,
+          "url": "https://github.com/typesense/typesense"
+        },
+        {
+          "nameWithOwner": "PaddlePaddle/Paddle",
+          "stargazerCount": 22685,
+          "url": "https://github.com/PaddlePaddle/Paddle"
+        },
+        {
+          "nameWithOwner": "osquery/osquery",
+          "stargazerCount": 22385,
+          "url": "https://github.com/osquery/osquery"
+        },
+        {
+          "nameWithOwner": "Mozilla-Ocho/llamafile",
+          "stargazerCount": 22201,
+          "url": "https://github.com/Mozilla-Ocho/llamafile"
+        },
+        {
+          "nameWithOwner": "sqlitebrowser/sqlitebrowser",
+          "stargazerCount": 22187,
+          "url": "https://github.com/sqlitebrowser/sqlitebrowser"
+        },
+        {
+          "nameWithOwner": "shadps4-emu/shadPS4",
+          "stargazerCount": 21757,
+          "url": "https://github.com/shadps4-emu/shadPS4"
+        },
+        {
+          "nameWithOwner": "ssloy/tinyrenderer",
+          "stargazerCount": 21686,
+          "url": "https://github.com/ssloy/tinyrenderer"
+        },
+        {
+          "nameWithOwner": "fmtlib/fmt",
+          "stargazerCount": 21668,
+          "url": "https://github.com/fmtlib/fmt"
+        },
+        {
+          "nameWithOwner": "Tencent/ncnn",
+          "stargazerCount": 21318,
+          "url": "https://github.com/Tencent/ncnn"
+        },
+        {
+          "nameWithOwner": "electronicarts/CnC_Remastered_Collection",
+          "stargazerCount": 20995,
+          "url": "https://github.com/electronicarts/CnC_Remastered_Collection"
+        },
+        {
+          "nameWithOwner": "apache/mxnet",
+          "stargazerCount": 20799,
+          "url": "https://github.com/apache/mxnet"
+        },
+        {
+          "nameWithOwner": "chromium/chromium",
+          "stargazerCount": 20428,
+          "url": "https://github.com/chromium/chromium"
+        },
+        {
+          "nameWithOwner": "scottbez1/smartknob",
+          "stargazerCount": 20378,
+          "url": "https://github.com/scottbez1/smartknob"
+        },
+        {
+          "nameWithOwner": "ml-explore/mlx",
+          "stargazerCount": 20207,
+          "url": "https://github.com/ml-explore/mlx"
+        },
+        {
+          "nameWithOwner": "simdjson/simdjson",
+          "stargazerCount": 20079,
+          "url": "https://github.com/simdjson/simdjson"
+        },
+        {
+          "nameWithOwner": "pqrs-org/Karabiner-Elements",
+          "stargazerCount": 19827,
+          "url": "https://github.com/pqrs-org/Karabiner-Elements"
+        },
+        {
+          "nameWithOwner": "catchorg/Catch2",
+          "stargazerCount": 19293,
+          "url": "https://github.com/catchorg/Catch2"
+        },
+        {
+          "nameWithOwner": "trojan-gfw/trojan",
+          "stargazerCount": 19219,
+          "url": "https://github.com/trojan-gfw/trojan"
+        },
+        {
+          "nameWithOwner": "xbmc/xbmc",
+          "stargazerCount": 19191,
+          "url": "https://github.com/xbmc/xbmc"
+        },
+        {
+          "nameWithOwner": "swoole/swoole-src",
+          "stargazerCount": 18629,
+          "url": "https://github.com/swoole/swoole-src"
+        },
+        {
+          "nameWithOwner": "lettier/3d-game-shaders-for-beginners",
+          "stargazerCount": 18594,
+          "url": "https://github.com/lettier/3d-game-shaders-for-beginners"
+        },
+        {
+          "nameWithOwner": "cocos2d/cocos2d-x",
+          "stargazerCount": 18474,
+          "url": "https://github.com/cocos2d/cocos2d-x"
+        },
+        {
+          "nameWithOwner": "facebook/hhvm",
+          "stargazerCount": 18358,
+          "url": "https://github.com/facebook/hhvm"
+        },
+        {
+          "nameWithOwner": "google/filament",
+          "stargazerCount": 18335,
+          "url": "https://github.com/google/filament"
+        },
+        {
+          "nameWithOwner": "alibaba/weex",
+          "stargazerCount": 18329,
+          "url": "https://github.com/alibaba/weex"
+        },
+        {
+          "nameWithOwner": "qinguoyi/TinyWebServer",
+          "stargazerCount": 17874,
+          "url": "https://github.com/qinguoyi/TinyWebServer"
+        },
+        {
+          "nameWithOwner": "uNetworking/uWebSockets",
+          "stargazerCount": 17858,
+          "url": "https://github.com/uNetworking/uWebSockets"
+        },
+        {
+          "nameWithOwner": "Tencent/MMKV",
+          "stargazerCount": 17838,
+          "url": "https://github.com/Tencent/MMKV"
+        },
+        {
+          "nameWithOwner": "haoel/leetcode",
+          "stargazerCount": 17779,
+          "url": "https://github.com/haoel/leetcode"
+        },
+        {
+          "nameWithOwner": "facebook/yoga",
+          "stargazerCount": 17604,
+          "url": "https://github.com/facebook/yoga"
+        },
+        {
+          "nameWithOwner": "microsoft/CNTK",
+          "stargazerCount": 17568,
+          "url": "https://github.com/microsoft/CNTK"
+        },
+        {
+          "nameWithOwner": "avelino/awesome-go",
+          "stargazerCount": 141959,
+          "url": "https://github.com/avelino/awesome-go"
+        },
+        {
+          "nameWithOwner": "ollama/ollama",
+          "stargazerCount": 137606,
+          "url": "https://github.com/ollama/ollama"
+        },
+        {
+          "nameWithOwner": "golang/go",
+          "stargazerCount": 127239,
+          "url": "https://github.com/golang/go"
+        },
+        {
+          "nameWithOwner": "kubernetes/kubernetes",
+          "stargazerCount": 114472,
+          "url": "https://github.com/kubernetes/kubernetes"
+        },
+        {
+          "nameWithOwner": "fatedier/frp",
+          "stargazerCount": 92739,
+          "url": "https://github.com/fatedier/frp"
+        },
+        {
+          "nameWithOwner": "gin-gonic/gin",
+          "stargazerCount": 81781,
+          "url": "https://github.com/gin-gonic/gin"
+        },
+        {
+          "nameWithOwner": "gohugoio/hugo",
+          "stargazerCount": 79555,
+          "url": "https://github.com/gohugoio/hugo"
+        },
+        {
+          "nameWithOwner": "moby/moby",
+          "stargazerCount": 69551,
+          "url": "https://github.com/moby/moby"
+        },
+        {
+          "nameWithOwner": "junegunn/fzf",
+          "stargazerCount": 69461,
+          "url": "https://github.com/junegunn/fzf"
+        },
+        {
+          "nameWithOwner": "syncthing/syncthing",
+          "stargazerCount": 69459,
+          "url": "https://github.com/syncthing/syncthing"
+        },
+        {
+          "nameWithOwner": "caddyserver/caddy",
+          "stargazerCount": 63558,
+          "url": "https://github.com/caddyserver/caddy"
+        },
+        {
+          "nameWithOwner": "nektos/act",
+          "stargazerCount": 59817,
+          "url": "https://github.com/nektos/act"
+        },
+        {
+          "nameWithOwner": "jesseduffield/lazygit",
+          "stargazerCount": 58917,
+          "url": "https://github.com/jesseduffield/lazygit"
+        },
+        {
+          "nameWithOwner": "prometheus/prometheus",
+          "stargazerCount": 58182,
+          "url": "https://github.com/prometheus/prometheus"
+        },
+        {
+          "nameWithOwner": "traefik/traefik",
+          "stargazerCount": 54210,
+          "url": "https://github.com/traefik/traefik"
+        },
+        {
+          "nameWithOwner": "FiloSottile/mkcert",
+          "stargazerCount": 53133,
+          "url": "https://github.com/FiloSottile/mkcert"
+        },
+        {
+          "nameWithOwner": "minio/minio",
+          "stargazerCount": 51835,
+          "url": "https://github.com/minio/minio"
+        },
+        {
+          "nameWithOwner": "wagoodman/dive",
+          "stargazerCount": 50346,
+          "url": "https://github.com/wagoodman/dive"
+        },
+        {
+          "nameWithOwner": "rclone/rclone",
+          "stargazerCount": 49875,
+          "url": "https://github.com/rclone/rclone"
+        },
+        {
+          "nameWithOwner": "etcd-io/etcd",
+          "stargazerCount": 49134,
+          "url": "https://github.com/etcd-io/etcd"
+        },
+        {
+          "nameWithOwner": "ethereum/go-ethereum",
+          "stargazerCount": 48787,
+          "url": "https://github.com/ethereum/go-ethereum"
+        },
+        {
+          "nameWithOwner": "AlistGo/alist",
+          "stargazerCount": 48444,
+          "url": "https://github.com/AlistGo/alist"
+        },
+        {
+          "nameWithOwner": "go-gitea/gitea",
+          "stargazerCount": 48155,
+          "url": "https://github.com/go-gitea/gitea"
+        },
+        {
+          "nameWithOwner": "gogs/gogs",
+          "stargazerCount": 46226,
+          "url": "https://github.com/gogs/gogs"
+        },
+        {
+          "nameWithOwner": "v2ray/v2ray-core",
+          "stargazerCount": 45929,
+          "url": "https://github.com/v2ray/v2ray-core"
+        },
+        {
+          "nameWithOwner": "pocketbase/pocketbase",
+          "stargazerCount": 45381,
+          "url": "https://github.com/pocketbase/pocketbase"
+        },
+        {
+          "nameWithOwner": "hashicorp/terraform",
+          "stargazerCount": 45004,
+          "url": "https://github.com/hashicorp/terraform"
+        },
+        {
+          "nameWithOwner": "jesseduffield/lazydocker",
+          "stargazerCount": 43522,
+          "url": "https://github.com/jesseduffield/lazydocker"
+        },
+        {
+          "nameWithOwner": "astaxie/build-web-application-with-golang",
+          "stargazerCount": 43512,
+          "url": "https://github.com/astaxie/build-web-application-with-golang"
+        },
+        {
+          "nameWithOwner": "coreybutler/nvm-windows",
+          "stargazerCount": 40634,
+          "url": "https://github.com/coreybutler/nvm-windows"
+        },
+        {
+          "nameWithOwner": "spf13/cobra",
+          "stargazerCount": 40148,
+          "url": "https://github.com/spf13/cobra"
+        },
+        {
+          "nameWithOwner": "usememos/memos",
+          "stargazerCount": 38946,
+          "url": "https://github.com/usememos/memos"
+        },
+        {
+          "nameWithOwner": "cli/cli",
+          "stargazerCount": 38884,
+          "url": "https://github.com/cli/cli"
+        },
+        {
+          "nameWithOwner": "evanw/esbuild",
+          "stargazerCount": 38815,
+          "url": "https://github.com/evanw/esbuild"
+        },
+        {
+          "nameWithOwner": "pingcap/tidb",
+          "stargazerCount": 38280,
+          "url": "https://github.com/pingcap/tidb"
+        },
+        {
+          "nameWithOwner": "go-gorm/gorm",
+          "stargazerCount": 37999,
+          "url": "https://github.com/go-gorm/gorm"
+        },
+        {
+          "nameWithOwner": "photoprism/photoprism",
+          "stargazerCount": 37006,
+          "url": "https://github.com/photoprism/photoprism"
+        },
+        {
+          "nameWithOwner": "istio/istio",
+          "stargazerCount": 36749,
+          "url": "https://github.com/istio/istio"
+        },
+        {
+          "nameWithOwner": "gofiber/fiber",
+          "stargazerCount": 36117,
+          "url": "https://github.com/gofiber/fiber"
+        },
+        {
+          "nameWithOwner": "docker/compose",
+          "stargazerCount": 35194,
+          "url": "https://github.com/docker/compose"
+        },
+        {
+          "nameWithOwner": "unknwon/the-way-to-go_ZH_CN",
+          "stargazerCount": 34850,
+          "url": "https://github.com/unknwon/the-way-to-go_ZH_CN"
+        },
+        {
+          "nameWithOwner": "milvus-io/milvus",
+          "stargazerCount": 34109,
+          "url": "https://github.com/milvus-io/milvus"
+        },
+        {
+          "nameWithOwner": "halfrost/LeetCode-Go",
+          "stargazerCount": 33467,
+          "url": "https://github.com/halfrost/LeetCode-Go"
+        },
+        {
+          "nameWithOwner": "harness/harness",
+          "stargazerCount": 32599,
+          "url": "https://github.com/harness/harness"
+        },
+        {
+          "nameWithOwner": "hashicorp/vault",
+          "stargazerCount": 32223,
+          "url": "https://github.com/hashicorp/vault"
+        },
+        {
+          "nameWithOwner": "beego/beego",
+          "stargazerCount": 32004,
+          "url": "https://github.com/beego/beego"
+        },
+        {
+          "nameWithOwner": "mudler/LocalAI",
+          "stargazerCount": 31824,
+          "url": "https://github.com/mudler/LocalAI"
+        },
+        {
+          "nameWithOwner": "ehang-io/nps",
+          "stargazerCount": 31695,
+          "url": "https://github.com/ehang-io/nps"
+        },
+        {
+          "nameWithOwner": "v2fly/v2ray-core",
+          "stargazerCount": 30897,
+          "url": "https://github.com/v2fly/v2ray-core"
+        },
+        {
+          "nameWithOwner": "labstack/echo",
+          "stargazerCount": 30857,
+          "url": "https://github.com/labstack/echo"
+        },
+        {
+          "nameWithOwner": "zeromicro/go-zero",
+          "stargazerCount": 30767,
+          "url": "https://github.com/zeromicro/go-zero"
+        },
+        {
+          "nameWithOwner": "cockroachdb/cockroach",
+          "stargazerCount": 30757,
+          "url": "https://github.com/cockroachdb/cockroach"
+        },
+        {
+          "nameWithOwner": "charmbracelet/bubbletea",
+          "stargazerCount": 30753,
+          "url": "https://github.com/charmbracelet/bubbletea"
+        },
+        {
+          "nameWithOwner": "danielmiessler/fabric",
+          "stargazerCount": 30730,
+          "url": "https://github.com/danielmiessler/fabric"
+        },
+        {
+          "nameWithOwner": "kubernetes/minikube",
+          "stargazerCount": 30238,
+          "url": "https://github.com/kubernetes/minikube"
+        },
+        {
+          "nameWithOwner": "schollz/croc",
+          "stargazerCount": 29930,
+          "url": "https://github.com/schollz/croc"
+        },
+        {
+          "nameWithOwner": "derailed/k9s",
+          "stargazerCount": 29418,
+          "url": "https://github.com/derailed/k9s"
+        },
+        {
+          "nameWithOwner": "IceWhaleTech/CasaOS",
+          "stargazerCount": 29403,
+          "url": "https://github.com/IceWhaleTech/CasaOS"
+        },
+        {
+          "nameWithOwner": "k3s-io/k3s",
+          "stargazerCount": 29348,
+          "url": "https://github.com/k3s-io/k3s"
+        },
+        {
+          "nameWithOwner": "iawia002/lux",
+          "stargazerCount": 29159,
+          "url": "https://github.com/iawia002/lux"
+        },
+        {
+          "nameWithOwner": "hashicorp/consul",
+          "stargazerCount": 28898,
+          "url": "https://github.com/hashicorp/consul"
+        },
+        {
+          "nameWithOwner": "filebrowser/filebrowser",
+          "stargazerCount": 28643,
+          "url": "https://github.com/filebrowser/filebrowser"
+        },
+        {
+          "nameWithOwner": "spf13/viper",
+          "stargazerCount": 28313,
+          "url": "https://github.com/spf13/viper"
+        },
+        {
+          "nameWithOwner": "restic/restic",
+          "stargazerCount": 28273,
+          "url": "https://github.com/restic/restic"
+        },
+        {
+          "nameWithOwner": "XTLS/Xray-core",
+          "stargazerCount": 28051,
+          "url": "https://github.com/XTLS/Xray-core"
+        },
+        {
+          "nameWithOwner": "AdguardTeam/AdGuardHome",
+          "stargazerCount": 27940,
+          "url": "https://github.com/AdguardTeam/AdGuardHome"
+        },
+        {
+          "nameWithOwner": "wailsapp/wails",
+          "stargazerCount": 27840,
+          "url": "https://github.com/wailsapp/wails"
+        },
+        {
+          "nameWithOwner": "helm/helm",
+          "stargazerCount": 27759,
+          "url": "https://github.com/helm/helm"
+        },
+        {
+          "nameWithOwner": "grafana/k6",
+          "stargazerCount": 27326,
+          "url": "https://github.com/grafana/k6"
+        },
+        {
+          "nameWithOwner": "juanfont/headscale",
+          "stargazerCount": 27220,
+          "url": "https://github.com/juanfont/headscale"
+        },
+        {
+          "nameWithOwner": "go-kit/kit",
+          "stargazerCount": 26964,
+          "url": "https://github.com/go-kit/kit"
+        },
+        {
+          "nameWithOwner": "1Panel-dev/1Panel",
+          "stargazerCount": 26628,
+          "url": "https://github.com/1Panel-dev/1Panel"
+        },
+        {
+          "nameWithOwner": "containers/podman",
+          "stargazerCount": 26354,
+          "url": "https://github.com/containers/podman"
+        },
+        {
+          "nameWithOwner": "fyne-io/fyne",
+          "stargazerCount": 26199,
+          "url": "https://github.com/fyne-io/fyne"
+        },
+        {
+          "nameWithOwner": "tmrts/go-patterns",
+          "stargazerCount": 26163,
+          "url": "https://github.com/tmrts/go-patterns"
+        },
+        {
+          "nameWithOwner": "zyedidia/micro",
+          "stargazerCount": 25958,
+          "url": "https://github.com/zyedidia/micro"
+        },
+        {
+          "nameWithOwner": "openfaas/faas",
+          "stargazerCount": 25594,
+          "url": "https://github.com/openfaas/faas"
+        },
+        {
+          "nameWithOwner": "aquasecurity/trivy",
+          "stargazerCount": 25496,
+          "url": "https://github.com/aquasecurity/trivy"
+        },
+        {
+          "nameWithOwner": "kataras/iris",
+          "stargazerCount": 25457,
+          "url": "https://github.com/kataras/iris"
+        },
+        {
+          "nameWithOwner": "Wox-launcher/Wox",
+          "stargazerCount": 25423,
+          "url": "https://github.com/Wox-launcher/Wox"
+        },
+        {
+          "nameWithOwner": "goharbor/harbor",
+          "stargazerCount": 25345,
+          "url": "https://github.com/goharbor/harbor"
+        },
+        {
+          "nameWithOwner": "yeasy/docker_practice",
+          "stargazerCount": 25330,
+          "url": "https://github.com/yeasy/docker_practice"
+        },
+        {
+          "nameWithOwner": "nsqio/nsq",
+          "stargazerCount": 25211,
+          "url": "https://github.com/nsqio/nsq"
+        },
+        {
+          "nameWithOwner": "grafana/loki",
+          "stargazerCount": 25206,
+          "url": "https://github.com/grafana/loki"
+        },
+        {
+          "nameWithOwner": "sirupsen/logrus",
+          "stargazerCount": 25186,
+          "url": "https://github.com/sirupsen/logrus"
+        },
+        {
+          "nameWithOwner": "opentofu/opentofu",
+          "stargazerCount": 24992,
+          "url": "https://github.com/opentofu/opentofu"
+        },
+        {
+          "nameWithOwner": "dapr/dapr",
+          "stargazerCount": 24661,
+          "url": "https://github.com/dapr/dapr"
+        },
+        {
+          "nameWithOwner": "stretchr/testify",
+          "stargazerCount": 24431,
+          "url": "https://github.com/stretchr/testify"
+        },
+        {
+          "nameWithOwner": "inconshreveable/ngrok",
+          "stargazerCount": 24313,
+          "url": "https://github.com/inconshreveable/ngrok"
+        },
+        {
+          "nameWithOwner": "go-kratos/kratos",
+          "stargazerCount": 24171,
+          "url": "https://github.com/go-kratos/kratos"
+        },
+        {
+          "nameWithOwner": "tsenart/vegeta",
+          "stargazerCount": 24162,
+          "url": "https://github.com/tsenart/vegeta"
+        },
+        {
+          "nameWithOwner": "seaweedfs/seaweedfs",
+          "stargazerCount": 24144,
+          "url": "https://github.com/seaweedfs/seaweedfs"
+        },
+        {
+          "nameWithOwner": "gocolly/colly",
+          "stargazerCount": 24043,
+          "url": "https://github.com/gocolly/colly"
+        },
+        {
+          "nameWithOwner": "rancher/rancher",
+          "stargazerCount": 24040,
+          "url": "https://github.com/rancher/rancher"
+        },
+        {
+          "nameWithOwner": "go-delve/delve",
+          "stargazerCount": 23658,
+          "url": "https://github.com/go-delve/delve"
+        },
+        {
+          "nameWithOwner": "authelia/authelia",
+          "stargazerCount": 23469,
+          "url": "https://github.com/authelia/authelia"
+        },
+        {
+          "nameWithOwner": "gorilla/websocket",
+          "stargazerCount": 23382,
+          "url": "https://github.com/gorilla/websocket"
+        },
+        {
+          "nameWithOwner": "asdf-vm/asdf",
+          "stargazerCount": 23370,
+          "url": "https://github.com/asdf-vm/asdf"
+        },
+        {
+          "nameWithOwner": "SagerNet/sing-box",
+          "stargazerCount": 23205,
+          "url": "https://github.com/SagerNet/sing-box"
+        },
+        {
+          "nameWithOwner": "urfave/cli",
+          "stargazerCount": 23037,
+          "url": "https://github.com/urfave/cli"
+        },
+        {
+          "nameWithOwner": "Snailclimb/JavaGuide",
+          "stargazerCount": 149233,
+          "url": "https://github.com/Snailclimb/JavaGuide"
+        },
+        {
+          "nameWithOwner": "krahets/hello-algo",
+          "stargazerCount": 111701,
+          "url": "https://github.com/krahets/hello-algo"
+        },
+        {
+          "nameWithOwner": "iluwatar/java-design-patterns",
+          "stargazerCount": 91315,
+          "url": "https://github.com/iluwatar/java-design-patterns"
+        },
+        {
+          "nameWithOwner": "macrozheng/mall",
+          "stargazerCount": 79933,
+          "url": "https://github.com/macrozheng/mall"
+        },
+        {
+          "nameWithOwner": "doocs/advanced-java",
+          "stargazerCount": 77452,
+          "url": "https://github.com/doocs/advanced-java"
+        },
+        {
+          "nameWithOwner": "spring-projects/spring-boot",
+          "stargazerCount": 76827,
+          "url": "https://github.com/spring-projects/spring-boot"
+        },
+        {
+          "nameWithOwner": "MisterBooo/LeetCodeAnimation",
+          "stargazerCount": 75828,
+          "url": "https://github.com/MisterBooo/LeetCodeAnimation"
+        },
+        {
+          "nameWithOwner": "elastic/elasticsearch",
+          "stargazerCount": 72374,
+          "url": "https://github.com/elastic/elasticsearch"
+        },
+        {
+          "nameWithOwner": "kdn251/interviews",
+          "stargazerCount": 64081,
+          "url": "https://github.com/kdn251/interviews"
+        },
+        {
+          "nameWithOwner": "TheAlgorithms/Java",
+          "stargazerCount": 61343,
+          "url": "https://github.com/TheAlgorithms/Java"
+        },
+        {
+          "nameWithOwner": "spring-projects/spring-framework",
+          "stargazerCount": 57856,
+          "url": "https://github.com/spring-projects/spring-framework"
+        },
+        {
+          "nameWithOwner": "NationalSecurityAgency/ghidra",
+          "stargazerCount": 56320,
+          "url": "https://github.com/NationalSecurityAgency/ghidra"
+        },
+        {
+          "nameWithOwner": "Stirling-Tools/Stirling-PDF",
+          "stargazerCount": 56051,
+          "url": "https://github.com/Stirling-Tools/Stirling-PDF"
+        },
+        {
+          "nameWithOwner": "google/guava",
+          "stargazerCount": 50676,
+          "url": "https://github.com/google/guava"
+        },
+        {
+          "nameWithOwner": "ReactiveX/RxJava",
+          "stargazerCount": 48081,
+          "url": "https://github.com/ReactiveX/RxJava"
+        },
+        {
+          "nameWithOwner": "skylot/jadx",
+          "stargazerCount": 43604,
+          "url": "https://github.com/skylot/jadx"
+        },
+        {
+          "nameWithOwner": "dbeaver/dbeaver",
+          "stargazerCount": 43134,
+          "url": "https://github.com/dbeaver/dbeaver"
+        },
+        {
+          "nameWithOwner": "jeecgboot/JeecgBoot",
+          "stargazerCount": 42305,
+          "url": "https://github.com/jeecgboot/JeecgBoot"
+        },
+        {
+          "nameWithOwner": "apache/dubbo",
+          "stargazerCount": 40904,
+          "url": "https://github.com/apache/dubbo"
+        },
+        {
+          "nameWithOwner": "termux/termux-app",
+          "stargazerCount": 40622,
+          "url": "https://github.com/termux/termux-app"
+        },
+        {
+          "nameWithOwner": "PhilJay/MPAndroidChart",
+          "stargazerCount": 37922,
+          "url": "https://github.com/PhilJay/MPAndroidChart"
+        },
+        {
+          "nameWithOwner": "eugenp/tutorials",
+          "stargazerCount": 37127,
+          "url": "https://github.com/eugenp/tutorials"
+        },
+        {
+          "nameWithOwner": "alibaba/arthas",
+          "stargazerCount": 36165,
+          "url": "https://github.com/alibaba/arthas"
+        },
+        {
+          "nameWithOwner": "geekxh/hello-algorithm",
+          "stargazerCount": 35577,
+          "url": "https://github.com/geekxh/hello-algorithm"
+        },
+        {
+          "nameWithOwner": "airbnb/lottie-android",
+          "stargazerCount": 35284,
+          "url": "https://github.com/airbnb/lottie-android"
+        },
+        {
+          "nameWithOwner": "halo-dev/halo",
+          "stargazerCount": 35233,
+          "url": "https://github.com/halo-dev/halo"
+        },
+        {
+          "nameWithOwner": "bumptech/glide",
+          "stargazerCount": 34845,
+          "url": "https://github.com/bumptech/glide"
+        },
+        {
+          "nameWithOwner": "netty/netty",
+          "stargazerCount": 34025,
+          "url": "https://github.com/netty/netty"
+        },
+        {
+          "nameWithOwner": "doocs/leetcode",
+          "stargazerCount": 33666,
+          "url": "https://github.com/doocs/leetcode"
+        },
+        {
+          "nameWithOwner": "xkcoding/spring-boot-demo",
+          "stargazerCount": 33581,
+          "url": "https://github.com/xkcoding/spring-boot-demo"
+        },
+        {
+          "nameWithOwner": "Blankj/AndroidUtilCode",
+          "stargazerCount": 33542,
+          "url": "https://github.com/Blankj/AndroidUtilCode"
+        },
+        {
+          "nameWithOwner": "TeamNewPipe/NewPipe",
+          "stargazerCount": 33517,
+          "url": "https://github.com/TeamNewPipe/NewPipe"
+        },
+        {
+          "nameWithOwner": "alibaba/easyexcel",
+          "stargazerCount": 33298,
+          "url": "https://github.com/alibaba/easyexcel"
+        },
+        {
+          "nameWithOwner": "zxing/zxing",
+          "stargazerCount": 33228,
+          "url": "https://github.com/zxing/zxing"
+        },
+        {
+          "nameWithOwner": "SeleniumHQ/selenium",
+          "stargazerCount": 32080,
+          "url": "https://github.com/SeleniumHQ/selenium"
+        },
+        {
+          "nameWithOwner": "alibaba/nacos",
+          "stargazerCount": 31190,
+          "url": "https://github.com/alibaba/nacos"
+        },
+        {
+          "nameWithOwner": "binarywang/WxJava",
+          "stargazerCount": 30947,
+          "url": "https://github.com/binarywang/WxJava"
+        },
+        {
+          "nameWithOwner": "YunaiV/ruoyi-vue-pro",
+          "stargazerCount": 30438,
+          "url": "https://github.com/YunaiV/ruoyi-vue-pro"
+        },
+        {
+          "nameWithOwner": "ityouknow/spring-boot-examples",
+          "stargazerCount": 30435,
+          "url": "https://github.com/ityouknow/spring-boot-examples"
+        },
+        {
+          "nameWithOwner": "apache/kafka",
+          "stargazerCount": 29897,
+          "url": "https://github.com/apache/kafka"
+        },
+        {
+          "nameWithOwner": "chinabugotech/hutool",
+          "stargazerCount": 29753,
+          "url": "https://github.com/chinabugotech/hutool"
+        },
+        {
+          "nameWithOwner": "apolloconfig/apollo",
+          "stargazerCount": 29444,
+          "url": "https://github.com/apolloconfig/apollo"
+        },
+        {
+          "nameWithOwner": "alibaba/canal",
+          "stargazerCount": 29002,
+          "url": "https://github.com/alibaba/canal"
+        },
+        {
+          "nameWithOwner": "wuyouzhuguli/SpringAll",
+          "stargazerCount": 28742,
+          "url": "https://github.com/wuyouzhuguli/SpringAll"
+        },
+        {
+          "nameWithOwner": "xuxueli/xxl-job",
+          "stargazerCount": 28611,
+          "url": "https://github.com/xuxueli/xxl-job"
+        },
+        {
+          "nameWithOwner": "alibaba/spring-cloud-alibaba",
+          "stargazerCount": 28396,
+          "url": "https://github.com/alibaba/spring-cloud-alibaba"
+        },
+        {
+          "nameWithOwner": "alibaba/druid",
+          "stargazerCount": 28114,
+          "url": "https://github.com/alibaba/druid"
+        },
+        {
+          "nameWithOwner": "lenve/vhr",
+          "stargazerCount": 27724,
+          "url": "https://github.com/lenve/vhr"
+        },
+        {
+          "nameWithOwner": "crossoverJie/JCSprout",
+          "stargazerCount": 27098,
+          "url": "https://github.com/crossoverJie/JCSprout"
+        },
+        {
+          "nameWithOwner": "keycloak/keycloak",
+          "stargazerCount": 26665,
+          "url": "https://github.com/keycloak/keycloak"
+        },
+        {
+          "nameWithOwner": "qiurunze123/miaosha",
+          "stargazerCount": 26314,
+          "url": "https://github.com/qiurunze123/miaosha"
+        },
+        {
+          "nameWithOwner": "DrKLO/Telegram",
+          "stargazerCount": 26030,
+          "url": "https://github.com/DrKLO/Telegram"
+        },
+        {
+          "nameWithOwner": "alibaba/fastjson",
+          "stargazerCount": 25768,
+          "url": "https://github.com/alibaba/fastjson"
+        },
+        {
+          "nameWithOwner": "apache/incubator-seata",
+          "stargazerCount": 25600,
+          "url": "https://github.com/apache/incubator-seata"
+        },
+        {
+          "nameWithOwner": "JakeWharton/butterknife",
+          "stargazerCount": 25527,
+          "url": "https://github.com/JakeWharton/butterknife"
+        },
+        {
+          "nameWithOwner": "hollischuang/toBeTopJavaer",
+          "stargazerCount": 25429,
+          "url": "https://github.com/hollischuang/toBeTopJavaer"
+        },
+        {
+          "nameWithOwner": "scwang90/SmartRefreshLayout",
+          "stargazerCount": 25072,
+          "url": "https://github.com/scwang90/SmartRefreshLayout"
+        },
+        {
+          "nameWithOwner": "proxyee-down-org/proxyee-down",
+          "stargazerCount": 24908,
+          "url": "https://github.com/proxyee-down-org/proxyee-down"
+        },
+        {
+          "nameWithOwner": "apache/flink",
+          "stargazerCount": 24757,
+          "url": "https://github.com/apache/flink"
+        },
+        {
+          "nameWithOwner": "greenrobot/EventBus",
+          "stargazerCount": 24752,
+          "url": "https://github.com/greenrobot/EventBus"
+        },
+        {
+          "nameWithOwner": "Netflix/Hystrix",
+          "stargazerCount": 24298,
+          "url": "https://github.com/Netflix/Hystrix"
+        },
+        {
+          "nameWithOwner": "apache/skywalking",
+          "stargazerCount": 24236,
+          "url": "https://github.com/apache/skywalking"
+        },
+        {
+          "nameWithOwner": "bazelbuild/bazel",
+          "stargazerCount": 23949,
+          "url": "https://github.com/bazelbuild/bazel"
+        },
+        {
+          "nameWithOwner": "libgdx/libgdx",
+          "stargazerCount": 23927,
+          "url": "https://github.com/libgdx/libgdx"
+        },
+        {
+          "nameWithOwner": "jenkinsci/jenkins",
+          "stargazerCount": 23869,
+          "url": "https://github.com/jenkinsci/jenkins"
+        },
+        {
+          "nameWithOwner": "redisson/redisson",
+          "stargazerCount": 23728,
+          "url": "https://github.com/redisson/redisson"
+        },
+        {
+          "nameWithOwner": "google/gson",
+          "stargazerCount": 23665,
+          "url": "https://github.com/google/gson"
+        },
+        {
+          "nameWithOwner": "Anuken/Mindustry",
+          "stargazerCount": 23638,
+          "url": "https://github.com/Anuken/Mindustry"
+        },
+        {
+          "nameWithOwner": "OpenAPITools/openapi-generator",
+          "stargazerCount": 23455,
+          "url": "https://github.com/OpenAPITools/openapi-generator"
+        },
+        {
+          "nameWithOwner": "alibaba/Sentinel",
+          "stargazerCount": 22687,
+          "url": "https://github.com/alibaba/Sentinel"
+        },
+        {
+          "nameWithOwner": "doocs/source-code-hunter",
+          "stargazerCount": 22642,
+          "url": "https://github.com/doocs/source-code-hunter"
+        },
+        {
+          "nameWithOwner": "CodePhiliaX/Chat2DB",
+          "stargazerCount": 22438,
+          "url": "https://github.com/CodePhiliaX/Chat2DB"
+        },
+        {
+          "nameWithOwner": "ashishps1/awesome-system-design-resources",
+          "stargazerCount": 22342,
+          "url": "https://github.com/ashishps1/awesome-system-design-resources"
+        },
+        {
+          "nameWithOwner": "EnterpriseQualityCoding/FizzBuzzEnterpriseEdition",
+          "stargazerCount": 22337,
+          "url": "https://github.com/EnterpriseQualityCoding/FizzBuzzEnterpriseEdition"
+        },
+        {
+          "nameWithOwner": "yuliskov/SmartTube",
+          "stargazerCount": 22245,
+          "url": "https://github.com/yuliskov/SmartTube"
+        },
+        {
+          "nameWithOwner": "google/ExoPlayer",
+          "stargazerCount": 21819,
+          "url": "https://github.com/google/ExoPlayer"
+        },
+        {
+          "nameWithOwner": "iBotPeaches/Apktool",
+          "stargazerCount": 21785,
+          "url": "https://github.com/iBotPeaches/Apktool"
+        },
+        {
+          "nameWithOwner": "apache/rocketmq",
+          "stargazerCount": 21704,
+          "url": "https://github.com/apache/rocketmq"
+        },
+        {
+          "nameWithOwner": "elunez/eladmin",
+          "stargazerCount": 21599,
+          "url": "https://github.com/elunez/eladmin"
+        },
+        {
+          "nameWithOwner": "openjdk/jdk",
+          "stargazerCount": 20833,
+          "url": "https://github.com/openjdk/jdk"
+        },
+        {
+          "nameWithOwner": "oracle/graal",
+          "stargazerCount": 20791,
+          "url": "https://github.com/oracle/graal"
+        },
+        {
+          "nameWithOwner": "CarGuo/GSYVideoPlayer",
+          "stargazerCount": 20693,
+          "url": "https://github.com/CarGuo/GSYVideoPlayer"
+        },
+        {
+          "nameWithOwner": "conductor-oss/conductor",
+          "stargazerCount": 20410,
+          "url": "https://github.com/conductor-oss/conductor"
+        },
+        {
+          "nameWithOwner": "brettwooldridge/HikariCP",
+          "stargazerCount": 20387,
+          "url": "https://github.com/brettwooldridge/HikariCP"
+        },
+        {
+          "nameWithOwner": "didi/DoKit",
+          "stargazerCount": 20302,
+          "url": "https://github.com/didi/DoKit"
+        },
+        {
+          "nameWithOwner": "apache/shardingsphere",
+          "stargazerCount": 20188,
+          "url": "https://github.com/apache/shardingsphere"
+        },
+        {
+          "nameWithOwner": "mybatis/mybatis-3",
+          "stargazerCount": 20039,
+          "url": "https://github.com/mybatis/mybatis-3"
+        },
+        {
+          "nameWithOwner": "dataease/dataease",
+          "stargazerCount": 19917,
+          "url": "https://github.com/dataease/dataease"
+        },
+        {
+          "nameWithOwner": "ReactiveX/RxAndroid",
+          "stargazerCount": 19881,
+          "url": "https://github.com/ReactiveX/RxAndroid"
+        },
+        {
+          "nameWithOwner": "LSPosed/LSPosed",
+          "stargazerCount": 19868,
+          "url": "https://github.com/LSPosed/LSPosed"
+        },
+        {
+          "nameWithOwner": "linlinjava/litemall",
+          "stargazerCount": 19611,
+          "url": "https://github.com/linlinjava/litemall"
+        },
+        {
+          "nameWithOwner": "yudaocode/SpringBoot-Labs",
+          "stargazerCount": 19556,
+          "url": "https://github.com/yudaocode/SpringBoot-Labs"
+        },
+        {
+          "nameWithOwner": "Baseflow/PhotoView",
+          "stargazerCount": 18842,
+          "url": "https://github.com/Baseflow/PhotoView"
+        },
+        {
+          "nameWithOwner": "dianping/cat",
+          "stargazerCount": 18833,
+          "url": "https://github.com/dianping/cat"
+        },
+        {
+          "nameWithOwner": "kunal-kushwaha/DSA-Bootcamp-Java",
+          "stargazerCount": 18815,
+          "url": "https://github.com/kunal-kushwaha/DSA-Bootcamp-Java"
+        },
+        {
+          "nameWithOwner": "thingsboard/thingsboard",
+          "stargazerCount": 18645,
+          "url": "https://github.com/thingsboard/thingsboard"
+        },
+        {
+          "nameWithOwner": "forezp/SpringCloudLearning",
+          "stargazerCount": 17937,
+          "url": "https://github.com/forezp/SpringCloudLearning"
+        },
+        {
+          "nameWithOwner": "JetBrains/intellij-community",
+          "stargazerCount": 17839,
+          "url": "https://github.com/JetBrains/intellij-community"
+        },
+        {
+          "nameWithOwner": "williamfiset/Algorithms",
+          "stargazerCount": 17835,
+          "url": "https://github.com/williamfiset/Algorithms"
+        },
+        {
+          "nameWithOwner": "antlr/antlr4",
+          "stargazerCount": 17813,
+          "url": "https://github.com/antlr/antlr4"
+        },
+        {
+          "nameWithOwner": "facebook/react",
+          "stargazerCount": 234648,
+          "url": "https://github.com/facebook/react"
+        },
+        {
+          "nameWithOwner": "trekhleb/javascript-algorithms",
+          "stargazerCount": 190957,
+          "url": "https://github.com/trekhleb/javascript-algorithms"
+        },
+        {
+          "nameWithOwner": "airbnb/javascript",
+          "stargazerCount": 146551,
+          "url": "https://github.com/airbnb/javascript"
+        },
+        {
+          "nameWithOwner": "vercel/next.js",
+          "stargazerCount": 131125,
+          "url": "https://github.com/vercel/next.js"
+        },
+        {
+          "nameWithOwner": "Chalarangelo/30-seconds-of-code",
+          "stargazerCount": 123412,
+          "url": "https://github.com/Chalarangelo/30-seconds-of-code"
+        },
+        {
+          "nameWithOwner": "f/awesome-chatgpt-prompts",
+          "stargazerCount": 123086,
+          "url": "https://github.com/f/awesome-chatgpt-prompts"
+        },
+        {
+          "nameWithOwner": "nodejs/node",
+          "stargazerCount": 110639,
+          "url": "https://github.com/nodejs/node"
+        },
+        {
+          "nameWithOwner": "axios/axios",
+          "stargazerCount": 106698,
+          "url": "https://github.com/axios/axios"
+        },
+        {
+          "nameWithOwner": "mrdoob/three.js",
+          "stargazerCount": 105745,
+          "url": "https://github.com/mrdoob/three.js"
+        },
+        {
+          "nameWithOwner": "facebook/create-react-app",
+          "stargazerCount": 103150,
+          "url": "https://github.com/facebook/create-react-app"
+        },
+        {
+          "nameWithOwner": "ryanmcdermott/clean-code-javascript",
+          "stargazerCount": 92792,
+          "url": "https://github.com/ryanmcdermott/clean-code-javascript"
+        },
+        {
+          "nameWithOwner": "open-webui/open-webui",
+          "stargazerCount": 89892,
+          "url": "https://github.com/open-webui/open-webui"
+        },
+        {
+          "nameWithOwner": "microsoft/Web-Dev-For-Beginners",
+          "stargazerCount": 87326,
+          "url": "https://github.com/microsoft/Web-Dev-For-Beginners"
+        },
+        {
+          "nameWithOwner": "sveltejs/svelte",
+          "stargazerCount": 82277,
+          "url": "https://github.com/sveltejs/svelte"
+        },
+        {
+          "nameWithOwner": "jaywcjlove/awesome-mac",
+          "stargazerCount": 82044,
+          "url": "https://github.com/jaywcjlove/awesome-mac"
+        },
+        {
+          "nameWithOwner": "FortAwesome/Font-Awesome",
+          "stargazerCount": 74945,
+          "url": "https://github.com/FortAwesome/Font-Awesome"
+        },
+        {
+          "nameWithOwner": "typicode/json-server",
+          "stargazerCount": 74040,
+          "url": "https://github.com/typicode/json-server"
+        },
+        {
+          "nameWithOwner": "anuraghazra/github-readme-stats",
+          "stargazerCount": 72597,
+          "url": "https://github.com/anuraghazra/github-readme-stats"
+        },
+        {
+          "nameWithOwner": "hakimel/reveal.js",
+          "stargazerCount": 68708,
+          "url": "https://github.com/hakimel/reveal.js"
+        },
+        {
+          "nameWithOwner": "louislam/uptime-kuma",
+          "stargazerCount": 67266,
+          "url": "https://github.com/louislam/uptime-kuma"
+        },
+        {
+          "nameWithOwner": "expressjs/express",
+          "stargazerCount": 66771,
+          "url": "https://github.com/expressjs/express"
+        },
+        {
+          "nameWithOwner": "chartjs/Chart.js",
+          "stargazerCount": 65722,
+          "url": "https://github.com/chartjs/Chart.js"
+        },
+        {
+          "nameWithOwner": "webpack/webpack",
+          "stargazerCount": 65208,
+          "url": "https://github.com/webpack/webpack"
+        },
+        {
+          "nameWithOwner": "leonardomso/33-js-concepts",
+          "stargazerCount": 65030,
+          "url": "https://github.com/leonardomso/33-js-concepts"
+        },
+        {
+          "nameWithOwner": "resume/resume.github.com",
+          "stargazerCount": 62369,
+          "url": "https://github.com/resume/resume.github.com"
+        },
+        {
+          "nameWithOwner": "atom/atom",
+          "stargazerCount": 60394,
+          "url": "https://github.com/atom/atom"
+        },
+        {
+          "nameWithOwner": "lodash/lodash",
+          "stargazerCount": 60346,
+          "url": "https://github.com/lodash/lodash"
+        },
+        {
+          "nameWithOwner": "adam-p/markdown-here",
+          "stargazerCount": 59876,
+          "url": "https://github.com/adam-p/markdown-here"
+        },
+        {
+          "nameWithOwner": "jquery/jquery",
+          "stargazerCount": 59492,
+          "url": "https://github.com/jquery/jquery"
+        },
+        {
+          "nameWithOwner": "angular/angular.js",
+          "stargazerCount": 58746,
+          "url": "https://github.com/angular/angular.js"
+        },
+        {
+          "nameWithOwner": "juliangarnier/anime",
+          "stargazerCount": 57856,
+          "url": "https://github.com/juliangarnier/anime"
+        },
+        {
+          "nameWithOwner": "h5bp/html5-boilerplate",
+          "stargazerCount": 56895,
+          "url": "https://github.com/h5bp/html5-boilerplate"
+        },
+        {
+          "nameWithOwner": "scutan90/DeepLearning-500-questions",
+          "stargazerCount": 55821,
+          "url": "https://github.com/scutan90/DeepLearning-500-questions"
+        },
+        {
+          "nameWithOwner": "gatsbyjs/gatsby",
+          "stargazerCount": 55814,
+          "url": "https://github.com/gatsbyjs/gatsby"
+        },
+        {
+          "nameWithOwner": "azl397985856/leetcode",
+          "stargazerCount": 55251,
+          "url": "https://github.com/azl397985856/leetcode"
+        },
+        {
+          "nameWithOwner": "jgraph/drawio-desktop",
+          "stargazerCount": 53919,
+          "url": "https://github.com/jgraph/drawio-desktop"
+        },
+        {
+          "nameWithOwner": "gorhill/uBlock",
+          "stargazerCount": 52791,
+          "url": "https://github.com/gorhill/uBlock"
+        },
+        {
+          "nameWithOwner": "Semantic-Org/Semantic-UI",
+          "stargazerCount": 51160,
+          "url": "https://github.com/Semantic-Org/Semantic-UI"
+        },
+        {
+          "nameWithOwner": "mozilla/pdf.js",
+          "stargazerCount": 50454,
+          "url": "https://github.com/mozilla/pdf.js"
+        },
+        {
+          "nameWithOwner": "prettier/prettier",
+          "stargazerCount": 50278,
+          "url": "https://github.com/prettier/prettier"
+        },
+        {
+          "nameWithOwner": "marktext/marktext",
+          "stargazerCount": 49327,
+          "url": "https://github.com/marktext/marktext"
+        },
+        {
+          "nameWithOwner": "TryGhost/Ghost",
+          "stargazerCount": 49024,
+          "url": "https://github.com/TryGhost/Ghost"
+        },
+        {
+          "nameWithOwner": "chinese-poetry/chinese-poetry",
+          "stargazerCount": 48989,
+          "url": "https://github.com/chinese-poetry/chinese-poetry"
+        },
+        {
+          "nameWithOwner": "NARKOZ/hacker-scripts",
+          "stargazerCount": 48373,
+          "url": "https://github.com/NARKOZ/hacker-scripts"
+        },
+        {
+          "nameWithOwner": "poteto/hiring-without-whiteboards",
+          "stargazerCount": 48111,
+          "url": "https://github.com/poteto/hiring-without-whiteboards"
+        },
+        {
+          "nameWithOwner": "moment/moment",
+          "stargazerCount": 48075,
+          "url": "https://github.com/moment/moment"
+        },
+        {
+          "nameWithOwner": "iamkun/dayjs",
+          "stargazerCount": 47679,
+          "url": "https://github.com/iamkun/dayjs"
+        },
+        {
+          "nameWithOwner": "algorithm-visualizer/algorithm-visualizer",
+          "stargazerCount": 47336,
+          "url": "https://github.com/algorithm-visualizer/algorithm-visualizer"
+        },
+        {
+          "nameWithOwner": "agalwood/Motrix",
+          "stargazerCount": 47229,
+          "url": "https://github.com/agalwood/Motrix"
+        },
+        {
+          "nameWithOwner": "serverless/serverless",
+          "stargazerCount": 46655,
+          "url": "https://github.com/serverless/serverless"
+        },
+        {
+          "nameWithOwner": "typescript-cheatsheets/react",
+          "stargazerCount": 46145,
+          "url": "https://github.com/typescript-cheatsheets/react"
+        },
+        {
+          "nameWithOwner": "meteor/meteor",
+          "stargazerCount": 44639,
+          "url": "https://github.com/meteor/meteor"
+        },
+        {
+          "nameWithOwner": "bigskysoftware/htmx",
+          "stargazerCount": 44290,
+          "url": "https://github.com/bigskysoftware/htmx"
+        },
+        {
+          "nameWithOwner": "Asabeneh/30-Days-Of-JavaScript",
+          "stargazerCount": 44227,
+          "url": "https://github.com/Asabeneh/30-Days-Of-JavaScript"
+        },
+        {
+          "nameWithOwner": "google/zx",
+          "stargazerCount": 43967,
+          "url": "https://github.com/google/zx"
+        },
+        {
+          "nameWithOwner": "parcel-bundler/parcel",
+          "stargazerCount": 43768,
+          "url": "https://github.com/parcel-bundler/parcel"
+        },
+        {
+          "nameWithOwner": "Mintplex-Labs/anything-llm",
+          "stargazerCount": 42940,
+          "url": "https://github.com/Mintplex-Labs/anything-llm"
+        },
+        {
+          "nameWithOwner": "Leaflet/Leaflet",
+          "stargazerCount": 42527,
+          "url": "https://github.com/Leaflet/Leaflet"
+        },
+        {
+          "nameWithOwner": "LeCoupa/awesome-cheatsheets",
+          "stargazerCount": 42216,
+          "url": "https://github.com/LeCoupa/awesome-cheatsheets"
+        },
+        {
+          "nameWithOwner": "microsoft/monaco-editor",
+          "stargazerCount": 42131,
+          "url": "https://github.com/microsoft/monaco-editor"
+        },
+        {
+          "nameWithOwner": "Unitech/pm2",
+          "stargazerCount": 42121,
+          "url": "https://github.com/Unitech/pm2"
+        },
+        {
+          "nameWithOwner": "GitSquared/edex-ui",
+          "stargazerCount": 42014,
+          "url": "https://github.com/GitSquared/edex-ui"
+        },
+        {
+          "nameWithOwner": "sudheerj/reactjs-interview-questions",
+          "stargazerCount": 41758,
+          "url": "https://github.com/sudheerj/reactjs-interview-questions"
+        },
+        {
+          "nameWithOwner": "yarnpkg/yarn",
+          "stargazerCount": 41528,
+          "url": "https://github.com/yarnpkg/yarn"
+        },
+        {
+          "nameWithOwner": "nolimits4web/swiper",
+          "stargazerCount": 40823,
+          "url": "https://github.com/nolimits4web/swiper"
+        },
+        {
+          "nameWithOwner": "nwjs/nw.js",
+          "stargazerCount": 40675,
+          "url": "https://github.com/nwjs/nw.js"
+        },
+        {
+          "nameWithOwner": "dcloudio/uni-app",
+          "stargazerCount": 40651,
+          "url": "https://github.com/dcloudio/uni-app"
+        },
+        {
+          "nameWithOwner": "Dogfalo/materialize",
+          "stargazerCount": 38874,
+          "url": "https://github.com/Dogfalo/materialize"
+        },
+        {
+          "nameWithOwner": "videojs/video.js",
+          "stargazerCount": 38661,
+          "url": "https://github.com/videojs/video.js"
+        },
+        {
+          "nameWithOwner": "NaiboWang/EasySpider",
+          "stargazerCount": 38501,
+          "url": "https://github.com/NaiboWang/EasySpider"
+        },
+        {
+          "nameWithOwner": "phaserjs/phaser",
+          "stargazerCount": 37796,
+          "url": "https://github.com/phaserjs/phaser"
+        },
+        {
+          "nameWithOwner": "impress/impress.js",
+          "stargazerCount": 37771,
+          "url": "https://github.com/impress/impress.js"
+        },
+        {
+          "nameWithOwner": "modelcontextprotocol/servers",
+          "stargazerCount": 37397,
+          "url": "https://github.com/modelcontextprotocol/servers"
+        },
+        {
+          "nameWithOwner": "preactjs/preact",
+          "stargazerCount": 37375,
+          "url": "https://github.com/preactjs/preact"
+        },
+        {
+          "nameWithOwner": "naptha/tesseract.js",
+          "stargazerCount": 36391,
+          "url": "https://github.com/naptha/tesseract.js"
+        },
+        {
+          "nameWithOwner": "saadeghi/daisyui",
+          "stargazerCount": 36372,
+          "url": "https://github.com/saadeghi/daisyui"
+        },
+        {
+          "nameWithOwner": "denysdovhan/wtfjs",
+          "stargazerCount": 36181,
+          "url": "https://github.com/denysdovhan/wtfjs"
+        },
+        {
+          "nameWithOwner": "Kong/insomnia",
+          "stargazerCount": 36097,
+          "url": "https://github.com/Kong/insomnia"
+        },
+        {
+          "nameWithOwner": "goabstract/Awesome-Design-Tools",
+          "stargazerCount": 35610,
+          "url": "https://github.com/goabstract/Awesome-Design-Tools"
+        },
+        {
+          "nameWithOwner": "koajs/koa",
+          "stargazerCount": 35409,
+          "url": "https://github.com/koajs/koa"
+        },
+        {
+          "nameWithOwner": "alvarotrigo/fullPage.js",
+          "stargazerCount": 35405,
+          "url": "https://github.com/alvarotrigo/fullPage.js"
+        },
+        {
+          "nameWithOwner": "ToolJet/ToolJet",
+          "stargazerCount": 35377,
+          "url": "https://github.com/ToolJet/ToolJet"
+        },
+        {
+          "nameWithOwner": "jondot/awesome-react-native",
+          "stargazerCount": 35076,
+          "url": "https://github.com/jondot/awesome-react-native"
+        },
+        {
+          "nameWithOwner": "carbon-app/carbon",
+          "stargazerCount": 35054,
+          "url": "https://github.com/carbon-app/carbon"
+        },
+        {
+          "nameWithOwner": "sahat/hackathon-starter",
+          "stargazerCount": 34987,
+          "url": "https://github.com/sahat/hackathon-starter"
+        },
+        {
+          "nameWithOwner": "zenorocha/clipboard.js",
+          "stargazerCount": 34125,
+          "url": "https://github.com/zenorocha/clipboard.js"
+        },
+        {
+          "nameWithOwner": "atlassian/react-beautiful-dnd",
+          "stargazerCount": 33842,
+          "url": "https://github.com/atlassian/react-beautiful-dnd"
+        },
+        {
+          "nameWithOwner": "fastify/fastify",
+          "stargazerCount": 33499,
+          "url": "https://github.com/fastify/fastify"
+        },
+        {
+          "nameWithOwner": "typicode/husky",
+          "stargazerCount": 33353,
+          "url": "https://github.com/typicode/husky"
+        },
+        {
+          "nameWithOwner": "adobe/brackets",
+          "stargazerCount": 33223,
+          "url": "https://github.com/adobe/brackets"
+        },
+        {
+          "nameWithOwner": "TheAlgorithms/JavaScript",
+          "stargazerCount": 33104,
+          "url": "https://github.com/TheAlgorithms/JavaScript"
+        },
+        {
+          "nameWithOwner": "gulpjs/gulp",
+          "stargazerCount": 33086,
+          "url": "https://github.com/gulpjs/gulp"
+        },
+        {
+          "nameWithOwner": "usebruno/bruno",
+          "stargazerCount": 32568,
+          "url": "https://github.com/usebruno/bruno"
+        },
+        {
+          "nameWithOwner": "ryanhanwu/How-To-Ask-Questions-The-Smart-Way",
+          "stargazerCount": 32398,
+          "url": "https://github.com/ryanhanwu/How-To-Ask-Questions-The-Smart-Way"
+        },
+        {
+          "nameWithOwner": "qishibo/AnotherRedisDesktopManager",
+          "stargazerCount": 32060,
+          "url": "https://github.com/qishibo/AnotherRedisDesktopManager"
+        },
+        {
+          "nameWithOwner": "remoteintech/remote-jobs",
+          "stargazerCount": 31414,
+          "url": "https://github.com/remoteintech/remote-jobs"
+        },
+        {
+          "nameWithOwner": "pcottle/learnGitBranching",
+          "stargazerCount": 31353,
+          "url": "https://github.com/pcottle/learnGitBranching"
+        },
+        {
+          "nameWithOwner": "airbnb/lottie-web",
+          "stargazerCount": 31027,
+          "url": "https://github.com/airbnb/lottie-web"
+        },
+        {
+          "nameWithOwner": "gchq/CyberChef",
+          "stargazerCount": 30942,
+          "url": "https://github.com/gchq/CyberChef"
+        },
+        {
+          "nameWithOwner": "SortableJS/Sortable",
+          "stargazerCount": 30276,
+          "url": "https://github.com/SortableJS/Sortable"
+        },
+        {
+          "nameWithOwner": "danielmiessler/SecLists",
+          "stargazerCount": 62172,
+          "url": "https://github.com/danielmiessler/SecLists"
+        },
+        {
+          "nameWithOwner": "coollabsio/coolify",
+          "stargazerCount": 40165,
+          "url": "https://github.com/coollabsio/coolify"
+        },
+        {
+          "nameWithOwner": "laravel/framework",
+          "stargazerCount": 33476,
+          "url": "https://github.com/laravel/framework"
+        },
+        {
+          "nameWithOwner": "blueimp/jQuery-File-Upload",
+          "stargazerCount": 30931,
+          "url": "https://github.com/blueimp/jQuery-File-Upload"
+        },
+        {
+          "nameWithOwner": "symfony/symfony",
+          "stargazerCount": 30283,
+          "url": "https://github.com/symfony/symfony"
+        },
+        {
+          "nameWithOwner": "nextcloud/server",
+          "stargazerCount": 29273,
+          "url": "https://github.com/nextcloud/server"
+        },
+        {
+          "nameWithOwner": "composer/composer",
+          "stargazerCount": 28921,
+          "url": "https://github.com/composer/composer"
+        },
+        {
+          "nameWithOwner": "fzaninotto/Faker",
+          "stargazerCount": 26796,
+          "url": "https://github.com/fzaninotto/Faker"
+        },
+        {
+          "nameWithOwner": "guzzle/guzzle",
+          "stargazerCount": 23374,
+          "url": "https://github.com/guzzle/guzzle"
+        },
+        {
+          "nameWithOwner": "livewire/livewire",
+          "stargazerCount": 22838,
+          "url": "https://github.com/livewire/livewire"
+        },
+        {
+          "nameWithOwner": "filamentphp/filament",
+          "stargazerCount": 22752,
+          "url": "https://github.com/filamentphp/filament"
+        },
+        {
+          "nameWithOwner": "monicahq/monica",
+          "stargazerCount": 22628,
+          "url": "https://github.com/monicahq/monica"
+        },
+        {
+          "nameWithOwner": "DesignPatternsPHP/DesignPatternsPHP",
+          "stargazerCount": 22126,
+          "url": "https://github.com/DesignPatternsPHP/DesignPatternsPHP"
+        },
+        {
+          "nameWithOwner": "PHPMailer/PHPMailer",
+          "stargazerCount": 21396,
+          "url": "https://github.com/PHPMailer/PHPMailer"
+        },
+        {
+          "nameWithOwner": "Seldaek/monolog",
+          "stargazerCount": 21198,
+          "url": "https://github.com/Seldaek/monolog"
+        },
+        {
+          "nameWithOwner": "matomo-org/matomo",
+          "stargazerCount": 20420,
+          "url": "https://github.com/matomo-org/matomo"
+        },
+        {
+          "nameWithOwner": "WordPress/WordPress",
+          "stargazerCount": 20055,
+          "url": "https://github.com/WordPress/WordPress"
+        },
+        {
+          "nameWithOwner": "sebastianbergmann/phpunit",
+          "stargazerCount": 19842,
+          "url": "https://github.com/sebastianbergmann/phpunit"
+        },
+        {
+          "nameWithOwner": "firefly-iii/firefly-iii",
+          "stargazerCount": 18740,
+          "url": "https://github.com/firefly-iii/firefly-iii"
+        },
+        {
+          "nameWithOwner": "bcit-ci/CodeIgniter",
+          "stargazerCount": 18257,
+          "url": "https://github.com/bcit-ci/CodeIgniter"
+        },
+        {
+          "nameWithOwner": "barryvdh/laravel-debugbar",
+          "stargazerCount": 18178,
+          "url": "https://github.com/barryvdh/laravel-debugbar"
+        },
+        {
+          "nameWithOwner": "bagisto/bagisto",
+          "stargazerCount": 17977,
+          "url": "https://github.com/bagisto/bagisto"
+        },
+        {
+          "nameWithOwner": "easychen/howto-make-more-money",
+          "stargazerCount": 17260,
+          "url": "https://github.com/easychen/howto-make-more-money"
+        },
+        {
+          "nameWithOwner": "nikic/PHP-Parser",
+          "stargazerCount": 17221,
+          "url": "https://github.com/nikic/PHP-Parser"
+        },
+        {
+          "nameWithOwner": "briannesbitt/Carbon",
+          "stargazerCount": 16623,
+          "url": "https://github.com/briannesbitt/Carbon"
+        },
+        {
+          "nameWithOwner": "BookStackApp/BookStack",
+          "stargazerCount": 16439,
+          "url": "https://github.com/BookStackApp/BookStack"
+        },
+        {
+          "nameWithOwner": "koel/koel",
+          "stargazerCount": 16356,
+          "url": "https://github.com/koel/koel"
+        },
+        {
+          "nameWithOwner": "flarum/flarum",
+          "stargazerCount": 15694,
+          "url": "https://github.com/flarum/flarum"
+        },
+        {
+          "nameWithOwner": "erusev/parsedown",
+          "stargazerCount": 14887,
+          "url": "https://github.com/erusev/parsedown"
+        },
+        {
+          "nameWithOwner": "getgrav/grav",
+          "stargazerCount": 14886,
+          "url": "https://github.com/getgrav/grav"
+        },
+        {
+          "nameWithOwner": "barryvdh/laravel-ide-helper",
+          "stargazerCount": 14517,
+          "url": "https://github.com/barryvdh/laravel-ide-helper"
+        },
+        {
+          "nameWithOwner": "cachethq/cachet",
+          "stargazerCount": 14401,
+          "url": "https://github.com/cachethq/cachet"
+        },
+        {
+          "nameWithOwner": "yiisoft/yii2",
+          "stargazerCount": 14268,
+          "url": "https://github.com/yiisoft/yii2"
+        },
+        {
+          "nameWithOwner": "Intervention/image",
+          "stargazerCount": 14120,
+          "url": "https://github.com/Intervention/image"
+        },
+        {
+          "nameWithOwner": "PHPOffice/PhpSpreadsheet",
+          "stargazerCount": 13595,
+          "url": "https://github.com/PHPOffice/PhpSpreadsheet"
+        },
+        {
+          "nameWithOwner": "thephpleague/flysystem",
+          "stargazerCount": 13428,
+          "url": "https://github.com/thephpleague/flysystem"
+        },
+        {
+          "nameWithOwner": "vlucas/phpdotenv",
+          "stargazerCount": 13322,
+          "url": "https://github.com/vlucas/phpdotenv"
+        },
+        {
+          "nameWithOwner": "phpstan/phpstan",
+          "stargazerCount": 13312,
+          "url": "https://github.com/phpstan/phpstan"
+        },
+        {
+          "nameWithOwner": "filp/whoops",
+          "stargazerCount": 13224,
+          "url": "https://github.com/filp/whoops"
+        },
+        {
+          "nameWithOwner": "PHP-CS-Fixer/PHP-CS-Fixer",
+          "stargazerCount": 13118,
+          "url": "https://github.com/PHP-CS-Fixer/PHP-CS-Fixer"
+        },
+        {
+          "nameWithOwner": "roots/sage",
+          "stargazerCount": 12927,
+          "url": "https://github.com/roots/sage"
+        },
+        {
+          "nameWithOwner": "librespeed/speedtest",
+          "stargazerCount": 12896,
+          "url": "https://github.com/librespeed/speedtest"
+        },
+        {
+          "nameWithOwner": "ramsey/uuid",
+          "stargazerCount": 12519,
+          "url": "https://github.com/ramsey/uuid"
+        },
+        {
+          "nameWithOwner": "SpartnerNL/Laravel-Excel",
+          "stargazerCount": 12470,
+          "url": "https://github.com/SpartnerNL/Laravel-Excel"
+        },
+        {
+          "nameWithOwner": "spatie/laravel-permission",
+          "stargazerCount": 12436,
+          "url": "https://github.com/spatie/laravel-permission"
+        },
+        {
+          "nameWithOwner": "piotrplenik/clean-code-php",
+          "stargazerCount": 12357,
+          "url": "https://github.com/piotrplenik/clean-code-php"
+        },
+        {
+          "nameWithOwner": "phacility/phabricator",
+          "stargazerCount": 12331,
+          "url": "https://github.com/phacility/phabricator"
+        },
+        {
+          "nameWithOwner": "slimphp/Slim",
+          "stargazerCount": 12069,
+          "url": "https://github.com/slimphp/Slim"
+        },
+        {
+          "nameWithOwner": "grokability/snipe-it",
+          "stargazerCount": 11994,
+          "url": "https://github.com/grokability/snipe-it"
+        },
+        {
+          "nameWithOwner": "thedevdojo/voyager",
+          "stargazerCount": 11831,
+          "url": "https://github.com/thedevdojo/voyager"
+        },
+        {
+          "nameWithOwner": "typecho/typecho",
+          "stargazerCount": 11776,
+          "url": "https://github.com/typecho/typecho"
+        },
+        {
+          "nameWithOwner": "magento/magento2",
+          "stargazerCount": 11771,
+          "url": "https://github.com/magento/magento2"
+        },
+        {
+          "nameWithOwner": "docker/labs",
+          "stargazerCount": 11628,
+          "url": "https://github.com/docker/labs"
+        },
+        {
+          "nameWithOwner": "egulias/EmailValidator",
+          "stargazerCount": 11534,
+          "url": "https://github.com/egulias/EmailValidator"
+        },
+        {
+          "nameWithOwner": "PHPOffice/PHPExcel",
+          "stargazerCount": 11440,
+          "url": "https://github.com/PHPOffice/PHPExcel"
+        },
+        {
+          "nameWithOwner": "tymondesigns/jwt-auth",
+          "stargazerCount": 11379,
+          "url": "https://github.com/tymondesigns/jwt-auth"
+        },
+        {
+          "nameWithOwner": "walkor/workerman",
+          "stargazerCount": 11337,
+          "url": "https://github.com/walkor/workerman"
+        },
+        {
+          "nameWithOwner": "doctrine/inflector",
+          "stargazerCount": 11306,
+          "url": "https://github.com/doctrine/inflector"
+        },
+        {
+          "nameWithOwner": "FreshRSS/FreshRSS",
+          "stargazerCount": 11301,
+          "url": "https://github.com/FreshRSS/FreshRSS"
+        },
+        {
+          "nameWithOwner": "z-song/laravel-admin",
+          "stargazerCount": 11168,
+          "url": "https://github.com/z-song/laravel-admin"
+        },
+        {
+          "nameWithOwner": "wallabag/wallabag",
+          "stargazerCount": 11147,
+          "url": "https://github.com/wallabag/wallabag"
+        },
+        {
+          "nameWithOwner": "YOURLS/YOURLS",
+          "stargazerCount": 11144,
+          "url": "https://github.com/YOURLS/YOURLS"
+        },
+        {
+          "nameWithOwner": "doctrine/lexer",
+          "stargazerCount": 11117,
+          "url": "https://github.com/doctrine/lexer"
+        },
+        {
+          "nameWithOwner": "octobercms/october",
+          "stargazerCount": 11092,
+          "url": "https://github.com/octobercms/october"
+        },
+        {
+          "nameWithOwner": "digininja/DVWA",
+          "stargazerCount": 11041,
+          "url": "https://github.com/digininja/DVWA"
+        },
+        {
+          "nameWithOwner": "doctrine/instantiator",
+          "stargazerCount": 10991,
+          "url": "https://github.com/doctrine/instantiator"
+        },
+        {
+          "nameWithOwner": "phalcon/cphalcon",
+          "stargazerCount": 10812,
+          "url": "https://github.com/phalcon/cphalcon"
+        },
+        {
+          "nameWithOwner": "deployphp/deployer",
+          "stargazerCount": 10790,
+          "url": "https://github.com/deployphp/deployer"
+        },
+        {
+          "nameWithOwner": "dompdf/dompdf",
+          "stargazerCount": 10767,
+          "url": "https://github.com/dompdf/dompdf"
+        },
+        {
+          "nameWithOwner": "squizlabs/PHP_CodeSniffer",
+          "stargazerCount": 10740,
+          "url": "https://github.com/squizlabs/PHP_CodeSniffer"
+        },
+        {
+          "nameWithOwner": "mockery/mockery",
+          "stargazerCount": 10691,
+          "url": "https://github.com/mockery/mockery"
+        },
+        {
+          "nameWithOwner": "serbanghita/Mobile-Detect",
+          "stargazerCount": 10625,
+          "url": "https://github.com/serbanghita/Mobile-Detect"
+        },
+        {
+          "nameWithOwner": "php-fig/log",
+          "stargazerCount": 10428,
+          "url": "https://github.com/php-fig/log"
+        },
+        {
+          "nameWithOwner": "assimon/dujiaoka",
+          "stargazerCount": 10380,
+          "url": "https://github.com/assimon/dujiaoka"
+        },
+        {
+          "nameWithOwner": "tennc/webshell",
+          "stargazerCount": 10322,
+          "url": "https://github.com/tennc/webshell"
+        },
+        {
+          "nameWithOwner": "w7corp/easywechat",
+          "stargazerCount": 10319,
+          "url": "https://github.com/w7corp/easywechat"
+        },
+        {
+          "nameWithOwner": "pestphp/pest",
+          "stargazerCount": 10157,
+          "url": "https://github.com/pestphp/pest"
+        },
+        {
+          "nameWithOwner": "doctrine/orm",
+          "stargazerCount": 10031,
+          "url": "https://github.com/doctrine/orm"
+        },
+        {
+          "nameWithOwner": "php-fig/container",
+          "stargazerCount": 9988,
+          "url": "https://github.com/php-fig/container"
+        },
+        {
+          "nameWithOwner": "symfony/console",
+          "stargazerCount": 9796,
+          "url": "https://github.com/symfony/console"
+        },
+        {
+          "nameWithOwner": "bobthecow/psysh",
+          "stargazerCount": 9775,
+          "url": "https://github.com/bobthecow/psysh"
+        },
+        {
+          "nameWithOwner": "woocommerce/woocommerce",
+          "stargazerCount": 9694,
+          "url": "https://github.com/woocommerce/woocommerce"
+        },
+        {
+          "nameWithOwner": "guyueyingmu/avbook",
+          "stargazerCount": 9632,
+          "url": "https://github.com/guyueyingmu/avbook"
+        },
+        {
+          "nameWithOwner": "Anankke/SSPanel-UIM",
+          "stargazerCount": 9598,
+          "url": "https://github.com/Anankke/SSPanel-UIM"
+        },
+        {
+          "nameWithOwner": "doctrine/dbal",
+          "stargazerCount": 9576,
+          "url": "https://github.com/doctrine/dbal"
+        },
+        {
+          "nameWithOwner": "helloqingfeng/Awsome-Front-End-learning-resource",
+          "stargazerCount": 9562,
+          "url": "https://github.com/helloqingfeng/Awsome-Front-End-learning-resource"
+        },
+        {
+          "nameWithOwner": "swiftmailer/swiftmailer",
+          "stargazerCount": 9528,
+          "url": "https://github.com/swiftmailer/swiftmailer"
+        },
+        {
+          "nameWithOwner": "googleapis/google-api-php-client",
+          "stargazerCount": 9527,
+          "url": "https://github.com/googleapis/google-api-php-client"
+        },
+        {
+          "nameWithOwner": "rectorphp/rector",
+          "stargazerCount": 9507,
+          "url": "https://github.com/rectorphp/rector"
+        },
+        {
+          "nameWithOwner": "phpDocumentor/ReflectionDocBlock",
+          "stargazerCount": 9367,
+          "url": "https://github.com/phpDocumentor/ReflectionDocBlock"
+        },
+        {
+          "nameWithOwner": "dingo/api",
+          "stargazerCount": 9338,
+          "url": "https://github.com/dingo/api"
+        },
+        {
+          "nameWithOwner": "FriendsOfPHP/Goutte",
+          "stargazerCount": 9252,
+          "url": "https://github.com/FriendsOfPHP/Goutte"
+        },
+        {
+          "nameWithOwner": "phpDocumentor/TypeResolver",
+          "stargazerCount": 9172,
+          "url": "https://github.com/phpDocumentor/TypeResolver"
+        },
+        {
+          "nameWithOwner": "phpDocumentor/ReflectionCommon",
+          "stargazerCount": 9059,
+          "url": "https://github.com/phpDocumentor/ReflectionCommon"
+        },
+        {
+          "nameWithOwner": "reactphp/reactphp",
+          "stargazerCount": 9005,
+          "url": "https://github.com/reactphp/reactphp"
+        },
+        {
+          "nameWithOwner": "sebastianbergmann/php-code-coverage",
+          "stargazerCount": 8879,
+          "url": "https://github.com/sebastianbergmann/php-code-coverage"
+        },
+        {
+          "nameWithOwner": "myclabs/DeepCopy",
+          "stargazerCount": 8826,
+          "url": "https://github.com/myclabs/DeepCopy"
+        },
+        {
+          "nameWithOwner": "kanboard/kanboard",
+          "stargazerCount": 8776,
+          "url": "https://github.com/kanboard/kanboard"
+        },
+        {
+          "nameWithOwner": "invoiceninja/invoiceninja",
+          "stargazerCount": 8753,
+          "url": "https://github.com/invoiceninja/invoiceninja"
+        },
+        {
+          "nameWithOwner": "cakephp/cakephp",
+          "stargazerCount": 8718,
+          "url": "https://github.com/cakephp/cakephp"
+        },
+        {
+          "nameWithOwner": "public-apis/public-apis",
+          "stargazerCount": 335760,
+          "url": "https://github.com/public-apis/public-apis"
+        },
+        {
+          "nameWithOwner": "donnemartin/system-design-primer",
+          "stargazerCount": 296529,
+          "url": "https://github.com/donnemartin/system-design-primer"
+        },
+        {
+          "nameWithOwner": "vinta/awesome-python",
+          "stargazerCount": 240661,
+          "url": "https://github.com/vinta/awesome-python"
+        },
+        {
+          "nameWithOwner": "TheAlgorithms/Python",
+          "stargazerCount": 199484,
+          "url": "https://github.com/TheAlgorithms/Python"
+        },
+        {
+          "nameWithOwner": "Significant-Gravitas/AutoGPT",
+          "stargazerCount": 174543,
+          "url": "https://github.com/Significant-Gravitas/AutoGPT"
+        },
+        {
+          "nameWithOwner": "AUTOMATIC1111/stable-diffusion-webui",
+          "stargazerCount": 151343,
+          "url": "https://github.com/AUTOMATIC1111/stable-diffusion-webui"
+        },
+        {
+          "nameWithOwner": "huggingface/transformers",
+          "stargazerCount": 143099,
+          "url": "https://github.com/huggingface/transformers"
+        },
+        {
+          "nameWithOwner": "ytdl-org/youtube-dl",
+          "stargazerCount": 135168,
+          "url": "https://github.com/ytdl-org/youtube-dl"
+        },
+        {
+          "nameWithOwner": "yt-dlp/yt-dlp",
+          "stargazerCount": 107895,
+          "url": "https://github.com/yt-dlp/yt-dlp"
+        },
+        {
+          "nameWithOwner": "521xueweihan/HelloGitHub",
+          "stargazerCount": 101494,
+          "url": "https://github.com/521xueweihan/HelloGitHub"
+        },
+        {
+          "nameWithOwner": "deepseek-ai/DeepSeek-V3",
+          "stargazerCount": 95724,
+          "url": "https://github.com/deepseek-ai/DeepSeek-V3"
+        },
+        {
+          "nameWithOwner": "nvbn/thefuck",
+          "stargazerCount": 91471,
+          "url": "https://github.com/nvbn/thefuck"
+        },
+        {
+          "nameWithOwner": "pytorch/pytorch",
+          "stargazerCount": 89077,
+          "url": "https://github.com/pytorch/pytorch"
+        },
+        {
+          "nameWithOwner": "fastapi/fastapi",
+          "stargazerCount": 83400,
+          "url": "https://github.com/fastapi/fastapi"
+        },
+        {
+          "nameWithOwner": "django/django",
+          "stargazerCount": 83200,
+          "url": "https://github.com/django/django"
+        },
+        {
+          "nameWithOwner": "openai/whisper",
+          "stargazerCount": 80157,
+          "url": "https://github.com/openai/whisper"
+        },
+        {
+          "nameWithOwner": "home-assistant/core",
+          "stargazerCount": 78115,
+          "url": "https://github.com/home-assistant/core"
+        },
+        {
+          "nameWithOwner": "tensorflow/models",
+          "stargazerCount": 77484,
+          "url": "https://github.com/tensorflow/models"
+        },
+        {
+          "nameWithOwner": "3b1b/manim",
+          "stargazerCount": 76823,
+          "url": "https://github.com/3b1b/manim"
+        },
+        {
+          "nameWithOwner": "comfyanonymous/ComfyUI",
+          "stargazerCount": 74478,
+          "url": "https://github.com/comfyanonymous/ComfyUI"
+        },
+        {
+          "nameWithOwner": "bregman-arie/devops-exercises",
+          "stargazerCount": 73987,
+          "url": "https://github.com/bregman-arie/devops-exercises"
+        },
+        {
+          "nameWithOwner": "fighting41love/funNLP",
+          "stargazerCount": 72503,
+          "url": "https://github.com/fighting41love/funNLP"
+        },
+        {
+          "nameWithOwner": "abi/screenshot-to-code",
+          "stargazerCount": 69573,
+          "url": "https://github.com/abi/screenshot-to-code"
+        },
+        {
+          "nameWithOwner": "pallets/flask",
+          "stargazerCount": 69333,
+          "url": "https://github.com/pallets/flask"
+        },
+        {
+          "nameWithOwner": "d2l-ai/d2l-zh",
+          "stargazerCount": 68490,
+          "url": "https://github.com/d2l-ai/d2l-zh"
+        },
+        {
+          "nameWithOwner": "binary-husky/gpt_academic",
+          "stargazerCount": 68207,
+          "url": "https://github.com/binary-husky/gpt_academic"
+        },
+        {
+          "nameWithOwner": "josephmisiti/awesome-machine-learning",
+          "stargazerCount": 67593,
+          "url": "https://github.com/josephmisiti/awesome-machine-learning"
+        },
+        {
+          "nameWithOwner": "python/cpython",
+          "stargazerCount": 66330,
+          "url": "https://github.com/python/cpython"
+        },
+        {
+          "nameWithOwner": "ansible/ansible",
+          "stargazerCount": 64752,
+          "url": "https://github.com/ansible/ansible"
+        },
+        {
+          "nameWithOwner": "swisskyrepo/PayloadsAllTheThings",
+          "stargazerCount": 64728,
+          "url": "https://github.com/swisskyrepo/PayloadsAllTheThings"
+        },
+        {
+          "nameWithOwner": "xtekky/gpt4free",
+          "stargazerCount": 64058,
+          "url": "https://github.com/xtekky/gpt4free"
+        },
+        {
+          "nameWithOwner": "sherlock-project/sherlock",
+          "stargazerCount": 63696,
+          "url": "https://github.com/sherlock-project/sherlock"
+        },
+        {
+          "nameWithOwner": "keras-team/keras",
+          "stargazerCount": 62885,
+          "url": "https://github.com/keras-team/keras"
+        },
+        {
+          "nameWithOwner": "scikit-learn/scikit-learn",
+          "stargazerCount": 61772,
+          "url": "https://github.com/scikit-learn/scikit-learn"
+        },
+        {
+          "nameWithOwner": "Alvin9999/new-pac",
+          "stargazerCount": 60516,
+          "url": "https://github.com/Alvin9999/new-pac"
+        },
+        {
+          "nameWithOwner": "labmlai/annotated_deep_learning_paper_implementations",
+          "stargazerCount": 60055,
+          "url": "https://github.com/labmlai/annotated_deep_learning_paper_implementations"
+        },
+        {
+          "nameWithOwner": "OpenInterpreter/open-interpreter",
+          "stargazerCount": 59125,
+          "url": "https://github.com/OpenInterpreter/open-interpreter"
+        },
+        {
+          "nameWithOwner": "localstack/localstack",
+          "stargazerCount": 58627,
+          "url": "https://github.com/localstack/localstack"
+        },
+        {
+          "nameWithOwner": "meta-llama/llama",
+          "stargazerCount": 58112,
+          "url": "https://github.com/meta-llama/llama"
+        },
+        {
+          "nameWithOwner": "browser-use/browser-use",
+          "stargazerCount": 56397,
+          "url": "https://github.com/browser-use/browser-use"
+        },
+        {
+          "nameWithOwner": "zylon-ai/private-gpt",
+          "stargazerCount": 55646,
+          "url": "https://github.com/zylon-ai/private-gpt"
+        },
+        {
+          "nameWithOwner": "soimort/you-get",
+          "stargazerCount": 55478,
+          "url": "https://github.com/soimort/you-get"
+        },
+        {
+          "nameWithOwner": "langflow-ai/langflow",
+          "stargazerCount": 55252,
+          "url": "https://github.com/langflow-ai/langflow"
+        },
+        {
+          "nameWithOwner": "scrapy/scrapy",
+          "stargazerCount": 54915,
+          "url": "https://github.com/scrapy/scrapy"
+        },
+        {
+          "nameWithOwner": "geekan/MetaGPT",
+          "stargazerCount": 54693,
+          "url": "https://github.com/geekan/MetaGPT"
+        },
+        {
+          "nameWithOwner": "ageitgey/face_recognition",
+          "stargazerCount": 54596,
+          "url": "https://github.com/ageitgey/face_recognition"
+        },
+        {
+          "nameWithOwner": "CorentinJ/Real-Time-Voice-Cloning",
+          "stargazerCount": 54002,
+          "url": "https://github.com/CorentinJ/Real-Time-Voice-Cloning"
+        },
+        {
+          "nameWithOwner": "AntonOsika/gpt-engineer",
+          "stargazerCount": 53894,
+          "url": "https://github.com/AntonOsika/gpt-engineer"
+        },
+        {
+          "nameWithOwner": "deepfakes/faceswap",
+          "stargazerCount": 53688,
+          "url": "https://github.com/deepfakes/faceswap"
+        },
+        {
+          "nameWithOwner": "ultralytics/yolov5",
+          "stargazerCount": 53444,
+          "url": "https://github.com/ultralytics/yolov5"
+        },
+        {
+          "nameWithOwner": "commaai/openpilot",
+          "stargazerCount": 53127,
+          "url": "https://github.com/commaai/openpilot"
+        },
+        {
+          "nameWithOwner": "All-Hands-AI/OpenHands",
+          "stargazerCount": 52933,
+          "url": "https://github.com/All-Hands-AI/OpenHands"
+        },
+        {
+          "nameWithOwner": "psf/requests",
+          "stargazerCount": 52746,
+          "url": "https://github.com/psf/requests"
+        },
+        {
+          "nameWithOwner": "Z4nzu/hackingtool",
+          "stargazerCount": 52193,
+          "url": "https://github.com/Z4nzu/hackingtool"
+        },
+        {
+          "nameWithOwner": "Textualize/rich",
+          "stargazerCount": 51722,
+          "url": "https://github.com/Textualize/rich"
+        },
+        {
+          "nameWithOwner": "hacksider/Deep-Live-Cam",
+          "stargazerCount": 50311,
+          "url": "https://github.com/hacksider/Deep-Live-Cam"
+        },
+        {
+          "nameWithOwner": "xai-org/grok-1",
+          "stargazerCount": 50249,
+          "url": "https://github.com/xai-org/grok-1"
+        },
+        {
+          "nameWithOwner": "microsoft/markitdown",
+          "stargazerCount": 49178,
+          "url": "https://github.com/microsoft/markitdown"
+        },
+        {
+          "nameWithOwner": "PaddlePaddle/PaddleOCR",
+          "stargazerCount": 48391,
+          "url": "https://github.com/PaddlePaddle/PaddleOCR"
+        },
+        {
+          "nameWithOwner": "charlax/professional-programming",
+          "stargazerCount": 47531,
+          "url": "https://github.com/charlax/professional-programming"
+        },
+        {
+          "nameWithOwner": "minimaxir/big-list-of-naughty-strings",
+          "stargazerCount": 47087,
+          "url": "https://github.com/minimaxir/big-list-of-naughty-strings"
+        },
+        {
+          "nameWithOwner": "hiyouga/LLaMA-Factory",
+          "stargazerCount": 47038,
+          "url": "https://github.com/hiyouga/LLaMA-Factory"
+        },
+        {
+          "nameWithOwner": "Asabeneh/30-Days-Of-Python",
+          "stargazerCount": 45843,
+          "url": "https://github.com/Asabeneh/30-Days-Of-Python"
+        },
+        {
+          "nameWithOwner": "pandas-dev/pandas",
+          "stargazerCount": 45158,
+          "url": "https://github.com/pandas-dev/pandas"
+        },
+        {
+          "nameWithOwner": "vllm-project/vllm",
+          "stargazerCount": 45111,
+          "url": "https://github.com/vllm-project/vllm"
+        },
+        {
+          "nameWithOwner": "lllyasviel/Fooocus",
+          "stargazerCount": 44342,
+          "url": "https://github.com/lllyasviel/Fooocus"
+        },
+        {
+          "nameWithOwner": "RVC-Boss/GPT-SoVITS",
+          "stargazerCount": 44228,
+          "url": "https://github.com/RVC-Boss/GPT-SoVITS"
+        },
+        {
+          "nameWithOwner": "mannaandpoem/OpenManus",
+          "stargazerCount": 43492,
+          "url": "https://github.com/mannaandpoem/OpenManus"
+        },
+        {
+          "nameWithOwner": "microsoft/autogen",
+          "stargazerCount": 43307,
+          "url": "https://github.com/microsoft/autogen"
+        },
+        {
+          "nameWithOwner": "oobabooga/text-generation-webui",
+          "stargazerCount": 43212,
+          "url": "https://github.com/oobabooga/text-generation-webui"
+        },
+        {
+          "nameWithOwner": "odoo/odoo",
+          "stargazerCount": 42324,
+          "url": "https://github.com/odoo/odoo"
+        },
+        {
+          "nameWithOwner": "faif/python-patterns",
+          "stargazerCount": 41251,
+          "url": "https://github.com/faif/python-patterns"
+        },
+        {
+          "nameWithOwner": "THUDM/ChatGLM-6B",
+          "stargazerCount": 41034,
+          "url": "https://github.com/THUDM/ChatGLM-6B"
+        },
+        {
+          "nameWithOwner": "run-llama/llama_index",
+          "stargazerCount": 40989,
+          "url": "https://github.com/run-llama/llama_index"
+        },
+        {
+          "nameWithOwner": "OpenBB-finance/OpenBB",
+          "stargazerCount": 40905,
+          "url": "https://github.com/OpenBB-finance/OpenBB"
+        },
+        {
+          "nameWithOwner": "Stability-AI/stablediffusion",
+          "stargazerCount": 40782,
+          "url": "https://github.com/Stability-AI/stablediffusion"
+        },
+        {
+          "nameWithOwner": "hpcaitech/ColossalAI",
+          "stargazerCount": 40780,
+          "url": "https://github.com/hpcaitech/ColossalAI"
+        },
+        {
+          "nameWithOwner": "karpathy/nanoGPT",
+          "stargazerCount": 40728,
+          "url": "https://github.com/karpathy/nanoGPT"
+        },
+        {
+          "nameWithOwner": "mingrammer/diagrams",
+          "stargazerCount": 40614,
+          "url": "https://github.com/mingrammer/diagrams"
+        },
+        {
+          "nameWithOwner": "apachecn/ailearning",
+          "stargazerCount": 40595,
+          "url": "https://github.com/apachecn/ailearning"
+        },
+        {
+          "nameWithOwner": "getsentry/sentry",
+          "stargazerCount": 40589,
+          "url": "https://github.com/getsentry/sentry"
+        },
+        {
+          "nameWithOwner": "psf/black",
+          "stargazerCount": 40095,
+          "url": "https://github.com/psf/black"
+        },
+        {
+          "nameWithOwner": "unclecode/crawl4ai",
+          "stargazerCount": 39807,
+          "url": "https://github.com/unclecode/crawl4ai"
+        },
+        {
+          "nameWithOwner": "apache/airflow",
+          "stargazerCount": 39651,
+          "url": "https://github.com/apache/airflow"
+        },
+        {
+          "nameWithOwner": "ultralytics/ultralytics",
+          "stargazerCount": 39522,
+          "url": "https://github.com/ultralytics/ultralytics"
+        },
+        {
+          "nameWithOwner": "coqui-ai/TTS",
+          "stargazerCount": 39385,
+          "url": "https://github.com/coqui-ai/TTS"
+        },
+        {
+          "nameWithOwner": "chubin/cheat.sh",
+          "stargazerCount": 39256,
+          "url": "https://github.com/chubin/cheat.sh"
+        },
+        {
+          "nameWithOwner": "google-research/bert",
+          "stargazerCount": 39026,
+          "url": "https://github.com/google-research/bert"
+        },
+        {
+          "nameWithOwner": "floodsung/Deep-Learning-Papers-Reading-Roadmap",
+          "stargazerCount": 38939,
+          "url": "https://github.com/floodsung/Deep-Learning-Papers-Reading-Roadmap"
+        },
+        {
+          "nameWithOwner": "streamlit/streamlit",
+          "stargazerCount": 38853,
+          "url": "https://github.com/streamlit/streamlit"
+        },
+        {
+          "nameWithOwner": "mitmproxy/mitmproxy",
+          "stargazerCount": 38725,
+          "url": "https://github.com/mitmproxy/mitmproxy"
+        },
+        {
+          "nameWithOwner": "freqtrade/freqtrade",
+          "stargazerCount": 38440,
+          "url": "https://github.com/freqtrade/freqtrade"
+        },
+        {
+          "nameWithOwner": "lm-sys/FastChat",
+          "stargazerCount": 38413,
+          "url": "https://github.com/lm-sys/FastChat"
+        },
+        {
+          "nameWithOwner": "deepspeedai/DeepSpeed",
+          "stargazerCount": 37961,
+          "url": "https://github.com/deepspeedai/DeepSpeed"
+        },
+        {
+          "nameWithOwner": "QuivrHQ/quivr",
+          "stargazerCount": 37711,
+          "url": "https://github.com/QuivrHQ/quivr"
+        },
+        {
+          "nameWithOwner": "gradio-app/gradio",
+          "stargazerCount": 37513,
+          "url": "https://github.com/gradio-app/gradio"
+        },
+        {
+          "nameWithOwner": "LAION-AI/Open-Assistant",
+          "stargazerCount": 37303,
+          "url": "https://github.com/LAION-AI/Open-Assistant"
+        },
+        {
+          "nameWithOwner": "unslothai/unsloth",
+          "stargazerCount": 37192,
+          "url": "https://github.com/unslothai/unsloth"
+        },
+        {
+          "nameWithOwner": "gto76/python-cheatsheet",
+          "stargazerCount": 37071,
+          "url": "https://github.com/gto76/python-cheatsheet"
+        },
+        {
+          "nameWithOwner": "0voice/interview_internal_reference",
+          "stargazerCount": 36883,
+          "url": "https://github.com/0voice/interview_internal_reference"
+        },
+        {
+          "nameWithOwner": "ohmyzsh/ohmyzsh",
+          "stargazerCount": 177719,
+          "url": "https://github.com/ohmyzsh/ohmyzsh"
+        },
+        {
+          "nameWithOwner": "d3/d3",
+          "stargazerCount": 110399,
+          "url": "https://github.com/d3/d3"
+        },
+        {
+          "nameWithOwner": "papers-we-love/papers-we-love",
+          "stargazerCount": 92386,
+          "url": "https://github.com/papers-we-love/papers-we-love"
+        },
+        {
+          "nameWithOwner": "nvm-sh/nvm",
+          "stargazerCount": 83998,
+          "url": "https://github.com/nvm-sh/nvm"
+        },
+        {
+          "nameWithOwner": "base/node",
+          "stargazerCount": 68515,
+          "url": "https://github.com/base/node"
+        },
+        {
+          "nameWithOwner": "youngyangyang04/leetcode-master",
+          "stargazerCount": 55547,
+          "url": "https://github.com/youngyangyang04/leetcode-master"
+        },
+        {
+          "nameWithOwner": "pi-hole/pi-hole",
+          "stargazerCount": 51503,
+          "url": "https://github.com/pi-hole/pi-hole"
+        },
+        {
+          "nameWithOwner": "sickcodes/Docker-OSX",
+          "stargazerCount": 50178,
+          "url": "https://github.com/sickcodes/Docker-OSX"
+        },
+        {
+          "nameWithOwner": "romkatv/powerlevel10k",
+          "stargazerCount": 48845,
+          "url": "https://github.com/romkatv/powerlevel10k"
+        },
+        {
+          "nameWithOwner": "acmesh-official/acme.sh",
+          "stargazerCount": 42201,
+          "url": "https://github.com/acmesh-official/acme.sh"
+        },
+        {
+          "nameWithOwner": "dylanaraps/pure-bash-bible",
+          "stargazerCount": 37029,
+          "url": "https://github.com/dylanaraps/pure-bash-bible"
+        },
+        {
+          "nameWithOwner": "inkonchain/node",
+          "stargazerCount": 36689,
+          "url": "https://github.com/inkonchain/node"
+        },
+        {
+          "nameWithOwner": "open-guides/og-aws",
+          "stargazerCount": 35946,
+          "url": "https://github.com/open-guides/og-aws"
+        },
+        {
+          "nameWithOwner": "dockur/windows",
+          "stargazerCount": 34194,
+          "url": "https://github.com/dockur/windows"
+        },
+        {
+          "nameWithOwner": "zsh-users/zsh-autosuggestions",
+          "stargazerCount": 32713,
+          "url": "https://github.com/zsh-users/zsh-autosuggestions"
+        },
+        {
+          "nameWithOwner": "mathiasbynens/dotfiles",
+          "stargazerCount": 30717,
+          "url": "https://github.com/mathiasbynens/dotfiles"
+        },
+        {
+          "nameWithOwner": "dokku/dokku",
+          "stargazerCount": 30346,
+          "url": "https://github.com/dokku/dokku"
+        },
+        {
+          "nameWithOwner": "shengxinjing/programmer-job-blacklist",
+          "stargazerCount": 28411,
+          "url": "https://github.com/shengxinjing/programmer-job-blacklist"
+        },
+        {
+          "nameWithOwner": "MichaelCade/90DaysOfDevOps",
+          "stargazerCount": 27831,
+          "url": "https://github.com/MichaelCade/90DaysOfDevOps"
+        },
+        {
+          "nameWithOwner": "VSCodium/vscodium",
+          "stargazerCount": 27049,
+          "url": "https://github.com/VSCodium/vscodium"
+        },
+        {
+          "nameWithOwner": "nvie/gitflow",
+          "stargazerCount": 26797,
+          "url": "https://github.com/nvie/gitflow"
+        },
+        {
+          "nameWithOwner": "hwdsl2/setup-ipsec-vpn",
+          "stargazerCount": 26054,
+          "url": "https://github.com/hwdsl2/setup-ipsec-vpn"
+        },
+        {
+          "nameWithOwner": "powerline/fonts",
+          "stargazerCount": 25971,
+          "url": "https://github.com/powerline/fonts"
+        },
+        {
+          "nameWithOwner": "233boy/v2ray",
+          "stargazerCount": 25894,
+          "url": "https://github.com/233boy/v2ray"
+        },
+        {
+          "nameWithOwner": "mbadolato/iTerm2-Color-Schemes",
+          "stargazerCount": 25541,
+          "url": "https://github.com/mbadolato/iTerm2-Color-Schemes"
+        },
+        {
+          "nameWithOwner": "StreisandEffect/streisand",
+          "stargazerCount": 23281,
+          "url": "https://github.com/StreisandEffect/streisand"
+        },
+        {
+          "nameWithOwner": "gpakosz/.tmux",
+          "stargazerCount": 22843,
+          "url": "https://github.com/gpakosz/.tmux"
+        },
+        {
+          "nameWithOwner": "dylanaraps/neofetch",
+          "stargazerCount": 22738,
+          "url": "https://github.com/dylanaraps/neofetch"
+        },
+        {
+          "nameWithOwner": "lewagon/dotfiles",
+          "stargazerCount": 21172,
+          "url": "https://github.com/lewagon/dotfiles"
+        },
+        {
+          "nameWithOwner": "zsh-users/zsh-syntax-highlighting",
+          "stargazerCount": 20996,
+          "url": "https://github.com/zsh-users/zsh-syntax-highlighting"
+        },
+        {
+          "nameWithOwner": "nikitavoloboev/config",
+          "stargazerCount": 20869,
+          "url": "https://github.com/nikitavoloboev/config"
+        },
+        {
+          "nameWithOwner": "spaceship-prompt/spaceship-prompt",
+          "stargazerCount": 19906,
+          "url": "https://github.com/spaceship-prompt/spaceship-prompt"
+        },
+        {
+          "nameWithOwner": "Nyr/openvpn-install",
+          "stargazerCount": 19716,
+          "url": "https://github.com/Nyr/openvpn-install"
+        },
+        {
+          "nameWithOwner": "yuaotian/go-cursor-help",
+          "stargazerCount": 19337,
+          "url": "https://github.com/yuaotian/go-cursor-help"
+        },
+        {
+          "nameWithOwner": "tj/n",
+          "stargazerCount": 19207,
+          "url": "https://github.com/tj/n"
+        },
+        {
+          "nameWithOwner": "deviantony/docker-elk",
+          "stargazerCount": 17762,
+          "url": "https://github.com/deviantony/docker-elk"
+        },
+        {
+          "nameWithOwner": "tj/git-extras",
+          "stargazerCount": 17571,
+          "url": "https://github.com/tj/git-extras"
+        },
+        {
+          "nameWithOwner": "taizilongxu/interview_python",
+          "stargazerCount": 16809,
+          "url": "https://github.com/taizilongxu/interview_python"
+        },
+        {
+          "nameWithOwner": "source-foundry/Hack",
+          "stargazerCount": 16738,
+          "url": "https://github.com/source-foundry/Hack"
+        },
+        {
+          "nameWithOwner": "QwenLM/Qwen2.5",
+          "stargazerCount": 16697,
+          "url": "https://github.com/QwenLM/Qwen2.5"
+        },
+        {
+          "nameWithOwner": "rupa/z",
+          "stargazerCount": 16617,
+          "url": "https://github.com/rupa/z"
+        },
+        {
+          "nameWithOwner": "rbenv/rbenv",
+          "stargazerCount": 16336,
+          "url": "https://github.com/rbenv/rbenv"
+        },
+        {
+          "nameWithOwner": "agarrharr/awesome-cli-apps",
+          "stargazerCount": 16295,
+          "url": "https://github.com/agarrharr/awesome-cli-apps"
+        },
+        {
+          "nameWithOwner": "unixorn/awesome-zsh-plugins",
+          "stargazerCount": 16188,
+          "url": "https://github.com/unixorn/awesome-zsh-plugins"
+        },
+        {
+          "nameWithOwner": "docker-mailserver/docker-mailserver",
+          "stargazerCount": 15767,
+          "url": "https://github.com/docker-mailserver/docker-mailserver"
+        },
+        {
+          "nameWithOwner": "mack-a/v2ray-agent",
+          "stargazerCount": 15425,
+          "url": "https://github.com/mack-a/v2ray-agent"
+        },
+        {
+          "nameWithOwner": "redox-os/redox",
+          "stargazerCount": 15399,
+          "url": "https://github.com/redox-os/redox"
+        },
+        {
+          "nameWithOwner": "ramitsurana/awesome-kubernetes",
+          "stargazerCount": 15344,
+          "url": "https://github.com/ramitsurana/awesome-kubernetes"
+        },
+        {
+          "nameWithOwner": "tteck/Proxmox",
+          "stargazerCount": 14865,
+          "url": "https://github.com/tteck/Proxmox"
+        },
+        {
+          "nameWithOwner": "kaldi-asr/kaldi",
+          "stargazerCount": 14777,
+          "url": "https://github.com/kaldi-asr/kaldi"
+        },
+        {
+          "nameWithOwner": "Bash-it/bash-it",
+          "stargazerCount": 14491,
+          "url": "https://github.com/Bash-it/bash-it"
+        },
+        {
+          "nameWithOwner": "angristan/openvpn-install",
+          "stargazerCount": 14475,
+          "url": "https://github.com/angristan/openvpn-install"
+        },
+        {
+          "nameWithOwner": "thibmaek/awesome-raspberry-pi",
+          "stargazerCount": 14392,
+          "url": "https://github.com/thibmaek/awesome-raspberry-pi"
+        },
+        {
+          "nameWithOwner": "graphql/graphql-spec",
+          "stargazerCount": 14351,
+          "url": "https://github.com/graphql/graphql-spec"
+        },
+        {
+          "nameWithOwner": "sorin-ionescu/prezto",
+          "stargazerCount": 14169,
+          "url": "https://github.com/sorin-ionescu/prezto"
+        },
+        {
+          "nameWithOwner": "termux/termux-packages",
+          "stargazerCount": 14097,
+          "url": "https://github.com/termux/termux-packages"
+        },
+        {
+          "nameWithOwner": "CISOfy/lynis",
+          "stargazerCount": 14063,
+          "url": "https://github.com/CISOfy/lynis"
+        },
+        {
+          "nameWithOwner": "community-scripts/ProxmoxVE",
+          "stargazerCount": 13984,
+          "url": "https://github.com/community-scripts/ProxmoxVE"
+        },
+        {
+          "nameWithOwner": "foxlet/macOS-Simple-KVM",
+          "stargazerCount": 13747,
+          "url": "https://github.com/foxlet/macOS-Simple-KVM"
+        },
+        {
+          "nameWithOwner": "trimstray/nginx-admins-handbook",
+          "stargazerCount": 13646,
+          "url": "https://github.com/trimstray/nginx-admins-handbook"
+        },
+        {
+          "nameWithOwner": "nodesource/distributions",
+          "stargazerCount": 13640,
+          "url": "https://github.com/nodesource/distributions"
+        },
+        {
+          "nameWithOwner": "myspaghetti/macos-virtualbox",
+          "stargazerCount": 13535,
+          "url": "https://github.com/myspaghetti/macos-virtualbox"
+        },
+        {
+          "nameWithOwner": "sindresorhus/pure",
+          "stargazerCount": 13510,
+          "url": "https://github.com/sindresorhus/pure"
+        },
+        {
+          "nameWithOwner": "Powerlevel9k/powerlevel9k",
+          "stargazerCount": 13458,
+          "url": "https://github.com/Powerlevel9k/powerlevel9k"
+        },
+        {
+          "nameWithOwner": "tmux-plugins/tpm",
+          "stargazerCount": 12936,
+          "url": "https://github.com/tmux-plugins/tpm"
+        },
+        {
+          "nameWithOwner": "haoel/haoel.github.io",
+          "stargazerCount": 12872,
+          "url": "https://github.com/haoel/haoel.github.io"
+        },
+        {
+          "nameWithOwner": "hq450/fancyss",
+          "stargazerCount": 12807,
+          "url": "https://github.com/hq450/fancyss"
+        },
+        {
+          "nameWithOwner": "awslabs/git-secrets",
+          "stargazerCount": 12691,
+          "url": "https://github.com/awslabs/git-secrets"
+        },
+        {
+          "nameWithOwner": "k4m4/terminals-are-sexy",
+          "stargazerCount": 12482,
+          "url": "https://github.com/k4m4/terminals-are-sexy"
+        },
+        {
+          "nameWithOwner": "alex000kim/nsfw_data_scraper",
+          "stargazerCount": 12399,
+          "url": "https://github.com/alex000kim/nsfw_data_scraper"
+        },
+        {
+          "nameWithOwner": "p8952/bocker",
+          "stargazerCount": 12328,
+          "url": "https://github.com/p8952/bocker"
+        },
+        {
+          "nameWithOwner": "skywind3000/awesome-cheatsheets",
+          "stargazerCount": 11991,
+          "url": "https://github.com/skywind3000/awesome-cheatsheets"
+        },
+        {
+          "nameWithOwner": "quickemu-project/quickemu",
+          "stargazerCount": 11772,
+          "url": "https://github.com/quickemu-project/quickemu"
+        },
+        {
+          "nameWithOwner": "ansible/ansible-examples",
+          "stargazerCount": 11771,
+          "url": "https://github.com/ansible/ansible-examples"
+        },
+        {
+          "nameWithOwner": "tmux-plugins/tmux-resurrect",
+          "stargazerCount": 11755,
+          "url": "https://github.com/tmux-plugins/tmux-resurrect"
+        },
+        {
+          "nameWithOwner": "JetBrains/JetBrainsMono",
+          "stargazerCount": 11521,
+          "url": "https://github.com/JetBrains/JetBrainsMono"
+        },
+        {
+          "nameWithOwner": "dockur/macos",
+          "stargazerCount": 11503,
+          "url": "https://github.com/dockur/macos"
+        },
+        {
+          "nameWithOwner": "fuzhengwei/CodeGuide",
+          "stargazerCount": 11449,
+          "url": "https://github.com/fuzhengwei/CodeGuide"
+        },
+        {
+          "nameWithOwner": "rootsongjc/kubernetes-handbook",
+          "stargazerCount": 11227,
+          "url": "https://github.com/rootsongjc/kubernetes-handbook"
+        },
+        {
+          "nameWithOwner": "jayphelps/git-blame-someone-else",
+          "stargazerCount": 11195,
+          "url": "https://github.com/jayphelps/git-blame-someone-else"
+        },
+        {
+          "nameWithOwner": "google/oss-fuzz",
+          "stargazerCount": 10974,
+          "url": "https://github.com/google/oss-fuzz"
+        },
+        {
+          "nameWithOwner": "itzg/docker-minecraft-server",
+          "stargazerCount": 10972,
+          "url": "https://github.com/itzg/docker-minecraft-server"
+        },
+        {
+          "nameWithOwner": "aristocratos/bashtop",
+          "stargazerCount": 10958,
+          "url": "https://github.com/aristocratos/bashtop"
+        },
+        {
+          "nameWithOwner": "moovweb/gvm",
+          "stargazerCount": 10833,
+          "url": "https://github.com/moovweb/gvm"
+        },
+        {
+          "nameWithOwner": "k4m4/movies-for-hackers",
+          "stargazerCount": 10791,
+          "url": "https://github.com/k4m4/movies-for-hackers"
+        },
+        {
+          "nameWithOwner": "oh-my-fish/oh-my-fish",
+          "stargazerCount": 10756,
+          "url": "https://github.com/oh-my-fish/oh-my-fish"
+        },
+        {
+          "nameWithOwner": "codota/TabNine",
+          "stargazerCount": 10754,
+          "url": "https://github.com/codota/TabNine"
+        },
+        {
+          "nameWithOwner": "89luca89/distrobox",
+          "stargazerCount": 10739,
+          "url": "https://github.com/89luca89/distrobox"
+        },
+        {
+          "nameWithOwner": "juewuy/ShellCrash",
+          "stargazerCount": 10196,
+          "url": "https://github.com/juewuy/ShellCrash"
+        },
+        {
+          "nameWithOwner": "learnbyexample/Command-line-text-processing",
+          "stargazerCount": 10190,
+          "url": "https://github.com/learnbyexample/Command-line-text-processing"
+        },
+        {
+          "nameWithOwner": "RetroPie/RetroPie-Setup",
+          "stargazerCount": 10174,
+          "url": "https://github.com/RetroPie/RetroPie-Setup"
+        },
+        {
+          "nameWithOwner": "brendangregg/perf-tools",
+          "stargazerCount": 10073,
+          "url": "https://github.com/brendangregg/perf-tools"
+        },
+        {
+          "nameWithOwner": "LSPosed/MagiskOnWSALocal",
+          "stargazerCount": 9987,
+          "url": "https://github.com/LSPosed/MagiskOnWSALocal"
+        },
+        {
+          "nameWithOwner": "xdissent/ievms",
+          "stargazerCount": 9820,
+          "url": "https://github.com/xdissent/ievms"
+        },
+        {
+          "nameWithOwner": "super-linter/super-linter",
+          "stargazerCount": 9783,
+          "url": "https://github.com/super-linter/super-linter"
+        },
+        {
+          "nameWithOwner": "alexanderepstein/Bash-Snippets",
+          "stargazerCount": 9766,
+          "url": "https://github.com/alexanderepstein/Bash-Snippets"
+        },
+        {
+          "nameWithOwner": "rgcr/m-cli",
+          "stargazerCount": 9738,
+          "url": "https://github.com/rgcr/m-cli"
+        },
+        {
+          "nameWithOwner": "Gogh-Co/Gogh",
+          "stargazerCount": 9656,
+          "url": "https://github.com/Gogh-Co/Gogh"
+        },
+        {
+          "nameWithOwner": "xzhih/one-key-hidpi",
+          "stargazerCount": 9601,
+          "url": "https://github.com/xzhih/one-key-hidpi"
+        },
+        {
+          "nameWithOwner": "DaoCloud/public-image-mirror",
+          "stargazerCount": 9597,
+          "url": "https://github.com/DaoCloud/public-image-mirror"
+        },
+        {
+          "nameWithOwner": "freeCodeCamp/freeCodeCamp",
+          "stargazerCount": 416616,
+          "url": "https://github.com/freeCodeCamp/freeCodeCamp"
+        },
+        {
+          "nameWithOwner": "kamranahmedse/developer-roadmap",
+          "stargazerCount": 313811,
+          "url": "https://github.com/kamranahmedse/developer-roadmap"
+        },
+        {
+          "nameWithOwner": "vuejs/vue",
+          "stargazerCount": 208708,
+          "url": "https://github.com/vuejs/vue"
+        },
+        {
+          "nameWithOwner": "microsoft/vscode",
+          "stargazerCount": 170108,
+          "url": "https://github.com/microsoft/vscode"
+        },
+        {
+          "nameWithOwner": "yangshun/tech-interview-handbook",
+          "stargazerCount": 125301,
+          "url": "https://github.com/yangshun/tech-interview-handbook"
+        },
+        {
+          "nameWithOwner": "microsoft/TypeScript",
+          "stargazerCount": 104045,
+          "url": "https://github.com/microsoft/TypeScript"
+        },
+        {
+          "nameWithOwner": "excalidraw/excalidraw",
+          "stargazerCount": 97675,
+          "url": "https://github.com/excalidraw/excalidraw"
+        },
+        {
+          "nameWithOwner": "angular/angular",
+          "stargazerCount": 97506,
+          "url": "https://github.com/angular/angular"
+        },
+        {
+          "nameWithOwner": "mui/material-ui",
+          "stargazerCount": 95368,
+          "url": "https://github.com/mui/material-ui"
+        },
+        {
+          "nameWithOwner": "ant-design/ant-design",
+          "stargazerCount": 94291,
+          "url": "https://github.com/ant-design/ant-design"
+        },
+        {
+          "nameWithOwner": "iptv-org/iptv",
+          "stargazerCount": 92461,
+          "url": "https://github.com/iptv-org/iptv"
+        },
+        {
+          "nameWithOwner": "langgenius/dify",
+          "stargazerCount": 92455,
+          "url": "https://github.com/langgenius/dify"
+        },
+        {
+          "nameWithOwner": "puppeteer/puppeteer",
+          "stargazerCount": 90397,
+          "url": "https://github.com/puppeteer/puppeteer"
+        },
+        {
+          "nameWithOwner": "tailwindlabs/tailwindcss",
+          "stargazerCount": 87195,
+          "url": "https://github.com/tailwindlabs/tailwindcss"
+        },
+        {
+          "nameWithOwner": "storybookjs/storybook",
+          "stargazerCount": 86406,
+          "url": "https://github.com/storybookjs/storybook"
+        },
+        {
+          "nameWithOwner": "shadcn-ui/ui",
+          "stargazerCount": 85469,
+          "url": "https://github.com/shadcn-ui/ui"
+        },
+        {
+          "nameWithOwner": "ChatGPTNextWeb/NextChat",
+          "stargazerCount": 82808,
+          "url": "https://github.com/ChatGPTNextWeb/NextChat"
+        },
+        {
+          "nameWithOwner": "n8n-io/n8n",
+          "stargazerCount": 82172,
+          "url": "https://github.com/n8n-io/n8n"
+        },
+        {
+          "nameWithOwner": "gothinkster/realworld",
+          "stargazerCount": 81444,
+          "url": "https://github.com/gothinkster/realworld"
+        },
+        {
+          "nameWithOwner": "supabase/supabase",
+          "stargazerCount": 81047,
+          "url": "https://github.com/supabase/supabase"
+        },
+        {
+          "nameWithOwner": "mermaid-js/mermaid",
+          "stargazerCount": 78202,
+          "url": "https://github.com/mermaid-js/mermaid"
+        },
+        {
+          "nameWithOwner": "vitejs/vite",
+          "stargazerCount": 72144,
+          "url": "https://github.com/vitejs/vite"
+        },
+        {
+          "nameWithOwner": "microsoft/playwright",
+          "stargazerCount": 71755,
+          "url": "https://github.com/microsoft/playwright"
+        },
+        {
+          "nameWithOwner": "hoppscotch/hoppscotch",
+          "stargazerCount": 71188,
+          "url": "https://github.com/hoppscotch/hoppscotch"
+        },
+        {
+          "nameWithOwner": "coder/code-server",
+          "stargazerCount": 71061,
+          "url": "https://github.com/coder/code-server"
+        },
+        {
+          "nameWithOwner": "nestjs/nest",
+          "stargazerCount": 70461,
+          "url": "https://github.com/nestjs/nest"
+        },
+        {
+          "nameWithOwner": "grafana/grafana",
+          "stargazerCount": 67540,
+          "url": "https://github.com/grafana/grafana"
+        },
+        {
+          "nameWithOwner": "strapi/strapi",
+          "stargazerCount": 66152,
+          "url": "https://github.com/strapi/strapi"
+        },
+        {
+          "nameWithOwner": "apache/superset",
+          "stargazerCount": 65755,
+          "url": "https://github.com/apache/superset"
+        },
+        {
+          "nameWithOwner": "immich-app/immich",
+          "stargazerCount": 63791,
+          "url": "https://github.com/immich-app/immich"
+        },
+        {
+          "nameWithOwner": "apache/echarts",
+          "stargazerCount": 63254,
+          "url": "https://github.com/apache/echarts"
+        },
+        {
+          "nameWithOwner": "Eugeny/tabby",
+          "stargazerCount": 63089,
+          "url": "https://github.com/Eugeny/tabby"
+        },
+        {
+          "nameWithOwner": "socketio/socket.io",
+          "stargazerCount": 61916,
+          "url": "https://github.com/socketio/socket.io"
+        },
+        {
+          "nameWithOwner": "reduxjs/redux",
+          "stargazerCount": 61147,
+          "url": "https://github.com/reduxjs/redux"
+        },
+        {
+          "nameWithOwner": "facebook/docusaurus",
+          "stargazerCount": 59403,
+          "url": "https://github.com/facebook/docusaurus"
+        },
+        {
+          "nameWithOwner": "lobehub/lobe-chat",
+          "stargazerCount": 58937,
+          "url": "https://github.com/lobehub/lobe-chat"
+        },
+        {
+          "nameWithOwner": "nuxt/nuxt",
+          "stargazerCount": 56825,
+          "url": "https://github.com/nuxt/nuxt"
+        },
+        {
+          "nameWithOwner": "clash-verge-rev/clash-verge-rev",
+          "stargazerCount": 55098,
+          "url": "https://github.com/clash-verge-rev/clash-verge-rev"
+        },
+        {
+          "nameWithOwner": "remix-run/react-router",
+          "stargazerCount": 54588,
+          "url": "https://github.com/remix-run/react-router"
+        },
+        {
+          "nameWithOwner": "nocodb/nocodb",
+          "stargazerCount": 53789,
+          "url": "https://github.com/nocodb/nocodb"
+        },
+        {
+          "nameWithOwner": "pmndrs/zustand",
+          "stargazerCount": 51692,
+          "url": "https://github.com/pmndrs/zustand"
+        },
+        {
+          "nameWithOwner": "ionic-team/ionic-framework",
+          "stargazerCount": 51624,
+          "url": "https://github.com/ionic-team/ionic-framework"
+        },
+        {
+          "nameWithOwner": "withastro/astro",
+          "stargazerCount": 50538,
+          "url": "https://github.com/withastro/astro"
+        },
+        {
+          "nameWithOwner": "toeverything/AFFiNE",
+          "stargazerCount": 49803,
+          "url": "https://github.com/toeverything/AFFiNE"
+        },
+        {
+          "nameWithOwner": "vuejs/core",
+          "stargazerCount": 49696,
+          "url": "https://github.com/vuejs/core"
+        },
+        {
+          "nameWithOwner": "DefinitelyTyped/DefinitelyTyped",
+          "stargazerCount": 49595,
+          "url": "https://github.com/DefinitelyTyped/DefinitelyTyped"
+        },
+        {
+          "nameWithOwner": "infiniflow/ragflow",
+          "stargazerCount": 49315,
+          "url": "https://github.com/infiniflow/ragflow"
+        },
+        {
+          "nameWithOwner": "laurent22/joplin",
+          "stargazerCount": 48786,
+          "url": "https://github.com/laurent22/joplin"
+        },
+        {
+          "nameWithOwner": "cypress-io/cypress",
+          "stargazerCount": 48524,
+          "url": "https://github.com/cypress-io/cypress"
+        },
+        {
+          "nameWithOwner": "appwrite/appwrite",
+          "stargazerCount": 48183,
+          "url": "https://github.com/appwrite/appwrite"
+        },
+        {
+          "nameWithOwner": "slab/quill",
+          "stargazerCount": 45144,
+          "url": "https://github.com/slab/quill"
+        },
+        {
+          "nameWithOwner": "type-challenges/type-challenges",
+          "stargazerCount": 45070,
+          "url": "https://github.com/type-challenges/type-challenges"
+        },
+        {
+          "nameWithOwner": "pixijs/pixijs",
+          "stargazerCount": 44941,
+          "url": "https://github.com/pixijs/pixijs"
+        },
+        {
+          "nameWithOwner": "TanStack/query",
+          "stargazerCount": 44765,
+          "url": "https://github.com/TanStack/query"
+        },
+        {
+          "nameWithOwner": "jestjs/jest",
+          "stargazerCount": 44705,
+          "url": "https://github.com/jestjs/jest"
+        },
+        {
+          "nameWithOwner": "vercel/hyper",
+          "stargazerCount": 43875,
+          "url": "https://github.com/vercel/hyper"
+        },
+        {
+          "nameWithOwner": "FuelLabs/fuels-ts",
+          "stargazerCount": 43828,
+          "url": "https://github.com/FuelLabs/fuels-ts"
+        },
+        {
+          "nameWithOwner": "babel/babel",
+          "stargazerCount": 43508,
+          "url": "https://github.com/babel/babel"
+        },
+        {
+          "nameWithOwner": "lyswhut/lx-music-desktop",
+          "stargazerCount": 43431,
+          "url": "https://github.com/lyswhut/lx-music-desktop"
+        },
+        {
+          "nameWithOwner": "streamich/react-use",
+          "stargazerCount": 42903,
+          "url": "https://github.com/streamich/react-use"
+        },
+        {
+          "nameWithOwner": "react-hook-form/react-hook-form",
+          "stargazerCount": 42888,
+          "url": "https://github.com/react-hook-form/react-hook-form"
+        },
+        {
+          "nameWithOwner": "RocketChat/Rocket.Chat",
+          "stargazerCount": 42483,
+          "url": "https://github.com/RocketChat/Rocket.Chat"
+        },
+        {
+          "nameWithOwner": "prisma/prisma",
+          "stargazerCount": 41908,
+          "url": "https://github.com/prisma/prisma"
+        },
+        {
+          "nameWithOwner": "styled-components/styled-components",
+          "stargazerCount": 40784,
+          "url": "https://github.com/styled-components/styled-components"
+        },
+        {
+          "nameWithOwner": "cline/cline",
+          "stargazerCount": 40444,
+          "url": "https://github.com/cline/cline"
+        },
+        {
+          "nameWithOwner": "vuetifyjs/vuetify",
+          "stargazerCount": 40437,
+          "url": "https://github.com/vuetifyjs/vuetify"
+        },
+        {
+          "nameWithOwner": "hexojs/hexo",
+          "stargazerCount": 40230,
+          "url": "https://github.com/hexojs/hexo"
+        },
+        {
+          "nameWithOwner": "tldraw/tldraw",
+          "stargazerCount": 39617,
+          "url": "https://github.com/tldraw/tldraw"
+        },
+        {
+          "nameWithOwner": "expo/expo",
+          "stargazerCount": 39133,
+          "url": "https://github.com/expo/expo"
+        },
+        {
+          "nameWithOwner": "chakra-ui/chakra-ui",
+          "stargazerCount": 38950,
+          "url": "https://github.com/chakra-ui/chakra-ui"
+        },
+        {
+          "nameWithOwner": "AykutSarac/jsoncrack.com",
+          "stargazerCount": 37503,
+          "url": "https://github.com/AykutSarac/jsoncrack.com"
+        },
+        {
+          "nameWithOwner": "FlowiseAI/Flowise",
+          "stargazerCount": 37291,
+          "url": "https://github.com/FlowiseAI/Flowise"
+        },
+        {
+          "nameWithOwner": "colinhacks/zod",
+          "stargazerCount": 37149,
+          "url": "https://github.com/colinhacks/zod"
+        },
+        {
+          "nameWithOwner": "ant-design/ant-design-pro",
+          "stargazerCount": 37022,
+          "url": "https://github.com/ant-design/ant-design-pro"
+        },
+        {
+          "nameWithOwner": "trpc/trpc",
+          "stargazerCount": 36977,
+          "url": "https://github.com/trpc/trpc"
+        },
+        {
+          "nameWithOwner": "novuhq/novu",
+          "stargazerCount": 36793,
+          "url": "https://github.com/novuhq/novu"
+        },
+        {
+          "nameWithOwner": "appsmithorg/appsmith",
+          "stargazerCount": 36670,
+          "url": "https://github.com/appsmithorg/appsmith"
+        },
+        {
+          "nameWithOwner": "inkonchain/ink-kit",
+          "stargazerCount": 36582,
+          "url": "https://github.com/inkonchain/ink-kit"
+        },
+        {
+          "nameWithOwner": "upscayl/upscayl",
+          "stargazerCount": 36379,
+          "url": "https://github.com/upscayl/upscayl"
+        },
+        {
+          "nameWithOwner": "NervJS/taro",
+          "stargazerCount": 36367,
+          "url": "https://github.com/NervJS/taro"
+        },
+        {
+          "nameWithOwner": "DIYgod/RSSHub",
+          "stargazerCount": 36251,
+          "url": "https://github.com/DIYgod/RSSHub"
+        },
+        {
+          "nameWithOwner": "slidevjs/slidev",
+          "stargazerCount": 36059,
+          "url": "https://github.com/slidevjs/slidev"
+        },
+        {
+          "nameWithOwner": "mendableai/firecrawl",
+          "stargazerCount": 36025,
+          "url": "https://github.com/mendableai/firecrawl"
+        },
+        {
+          "nameWithOwner": "lerna/lerna",
+          "stargazerCount": 35914,
+          "url": "https://github.com/lerna/lerna"
+        },
+        {
+          "nameWithOwner": "calcom/cal.com",
+          "stargazerCount": 35788,
+          "url": "https://github.com/calcom/cal.com"
+        },
+        {
+          "nameWithOwner": "date-fns/date-fns",
+          "stargazerCount": 35642,
+          "url": "https://github.com/date-fns/date-fns"
+        },
+        {
+          "nameWithOwner": "makeplane/plane",
+          "stargazerCount": 35366,
+          "url": "https://github.com/makeplane/plane"
+        },
+        {
+          "nameWithOwner": "typeorm/typeorm",
+          "stargazerCount": 35204,
+          "url": "https://github.com/typeorm/typeorm"
+        },
+        {
+          "nameWithOwner": "nativefier/nativefier",
+          "stargazerCount": 35138,
+          "url": "https://github.com/nativefier/nativefier"
+        },
+        {
+          "nameWithOwner": "chatchat-space/Langchain-Chatchat",
+          "stargazerCount": 34698,
+          "url": "https://github.com/chatchat-space/Langchain-Chatchat"
+        },
+        {
+          "nameWithOwner": "markedjs/marked",
+          "stargazerCount": 34403,
+          "url": "https://github.com/markedjs/marked"
+        },
+        {
+          "nameWithOwner": "spacedriveapp/spacedrive",
+          "stargazerCount": 34295,
+          "url": "https://github.com/spacedriveapp/spacedrive"
+        },
+        {
+          "nameWithOwner": "jaredpalmer/formik",
+          "stargazerCount": 34226,
+          "url": "https://github.com/jaredpalmer/formik"
+        },
+        {
+          "nameWithOwner": "chatboxai/chatbox",
+          "stargazerCount": 34198,
+          "url": "https://github.com/chatboxai/chatbox"
+        },
+        {
+          "nameWithOwner": "payloadcms/payload",
+          "stargazerCount": 33972,
+          "url": "https://github.com/payloadcms/payload"
+        },
+        {
+          "nameWithOwner": "siyuan-note/siyuan",
+          "stargazerCount": 33949,
+          "url": "https://github.com/siyuan-note/siyuan"
+        },
+        {
+          "nameWithOwner": "reworkd/AgentGPT",
+          "stargazerCount": 33790,
+          "url": "https://github.com/reworkd/AgentGPT"
+        },
+        {
+          "nameWithOwner": "solidjs/solid",
+          "stargazerCount": 33349,
+          "url": "https://github.com/solidjs/solid"
+        },
+        {
+          "nameWithOwner": "immutable-js/immutable-js",
+          "stargazerCount": 33039,
+          "url": "https://github.com/immutable-js/immutable-js"
+        },
+        {
+          "nameWithOwner": "portainer/portainer",
+          "stargazerCount": 32674,
+          "url": "https://github.com/portainer/portainer"
+        }
+      ]
+    }
+  }
+}

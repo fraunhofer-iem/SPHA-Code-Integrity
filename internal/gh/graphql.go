@@ -38,6 +38,7 @@ type PR struct {
 	Title       string      `json:"title"`
 	State       string      `json:"state"`
 	MergeCommit MergeCommit `json:"mergeCommit"`
+	MergedAt    string      `json:"mergedAt"` // An ISO-8601 encoded UTC date string.
 	Reviews     struct {
 		Nodes []struct {
 			State string `json:"state"`
@@ -78,7 +79,8 @@ query ($owner: String!, $name: String!, $branch: String!) {
 		            oid
 		            message
 		        }
-			    baseRefOid
+				mergedAt
+				baseRefOid
         		headRefOid
 				number
 				title
@@ -114,6 +116,7 @@ repository(owner: $owner, name: $name) {
 	            oid
 	            message
 	        }
+			mergedAt
 			baseRefOid
    		    headRefOid
 			number

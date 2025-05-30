@@ -1,5 +1,10 @@
 package io
 
+import (
+	"encoding/json"
+	"os"
+)
+
 type Result struct {
 	Repo []Repo
 }
@@ -33,4 +38,21 @@ type Commit struct {
 	// "E" if the signature cannot be checked (e.g. missing key)
 	// and "N" for no signature
 	Signed string
+}
+
+func GetResult(in string) (*Repo, error) {
+	file, err := os.Open(in)
+	if err != nil {
+		return nil, err
+	}
+
+	defer file.Close()
+
+	decoder := json.NewDecoder(file)
+	var repo Repo
+	if err := decoder.Decode(&repo); err != nil {
+		return nil, err
+	}
+
+	return &repo, nil
 }

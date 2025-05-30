@@ -12,12 +12,13 @@ import (
 )
 
 var (
-	ownerAndRepo = flag.String("ownerAndRepo", "", "GitHub repository link (e.g., https://github.com/owner/repo)")
-	token        = flag.String("token", "", "GitHub access token")
-	targetBranch = flag.String("branch", "", "Target branch to analyze. Defaults to the default branch of the repository")
-	cloneTarget  = flag.String("cloneTarget", "", "Target to clone. Defaults to tmp")
-	logLevel     = flag.Int("logLevel", 0, "Can be 0 for INFO, -4 for DEBUG, 4 for WARN, or 8 for ERROR. Defaults to INFO.")
-	out          = flag.String("out", "", "Directory to which the output is written. Defaults to the current working directory.")
+	ownerAndRepo       = flag.String("ownerAndRepo", "", "GitHub repository link (e.g., https://github.com/owner/repo)")
+	token              = flag.String("token", "", "GitHub access token")
+	targetBranch       = flag.String("branch", "", "Target branch to analyze. Defaults to the default branch of the repository")
+	cloneTarget        = flag.String("cloneTarget", "", "Target to clone. Defaults to tmp")
+	logLevel           = flag.Int("logLevel", 0, "Can be 0 for INFO, -4 for DEBUG, 4 for WARN, or 8 for ERROR. Defaults to INFO.")
+	out                = flag.String("out", "", "Directory to which the output is written. Defaults to the current working directory.")
+	ignoreFirstCommits = flag.Bool("ignore", false, "If set to true all commits until the first PR has been merged are ignored. Defaults to false.")
 )
 
 func main() {
@@ -52,12 +53,13 @@ func main() {
 	}
 
 	config := processor.RepoConfig{
-		Owner:     ownerAndRepoSplit[0],
-		Repo:      ownerAndRepoSplit[1],
-		ClonePath: *cloneTarget,
-		Branch:    *targetBranch,
-		Token:     *token,
-		Out:       *out,
+		Owner:              ownerAndRepoSplit[0],
+		Repo:               ownerAndRepoSplit[1],
+		ClonePath:          *cloneTarget,
+		Branch:             *targetBranch,
+		Token:              *token,
+		Out:                *out,
+		IgnoreFirstCommits: *ignoreFirstCommits,
 	}
 
 	repo, err := processor.ProcessRepo(config)
