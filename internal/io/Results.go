@@ -10,12 +10,13 @@ type Result struct {
 }
 
 type Repo struct {
-	Branch           string
-	Head             string
-	Url              string
-	Stats            Stats
-	CommitsWithoutPR []Commit
-	UnsignedCommits  []Commit
+	Branch            string
+	Head              string
+	Url               string
+	NumberForcePushes int
+	Stats             Stats
+	CommitsWithoutPR  []Commit
+	UnsignedCommits   []Commit
 }
 
 type Stats struct {
