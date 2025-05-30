@@ -62,5 +62,8 @@ func main() {
 
 	defer file.Close()
 	encoder := json.NewEncoder(file)
-	encoder.Encode(&allCommits)
+	err = encoder.Encode(&allCommits)
+	if err != nil {
+		panic(err)
+	}
 }

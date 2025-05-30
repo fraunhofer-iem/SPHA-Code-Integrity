@@ -18,7 +18,10 @@ var out = flag.String("out", "", "Path to write the transformed result to")
 func main() {
 	flag.Parse()
 
-	writeCommitsToCSVFile(*in, *out)
+	err := writeCommitsToCSVFile(*in, *out)
+	if err != nil {
+		panic(err)
+	}
 }
 
 func writeCommitsToCSVFile(folderPath, outputFilePath string) error {

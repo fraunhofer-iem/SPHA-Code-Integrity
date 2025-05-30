@@ -53,6 +53,9 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	cache := vcs.NewPatchIdCache(10_000_000)
 	methodTimer := time.Now()
 	patchIdToCommit, unsignedCommits, err := vcs.GetPatchIdAndUnsignedCommits(dir, branch, cache)
+	if err != nil {
+		return nil, err
+	}
 	numberCommits := len(*patchIdToCommit)
 
 	elapsed := time.Since(methodTimer)
@@ -78,7 +81,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		logger.Debug("Collecting hashes", "bufferedHashs", workerResults)
 		for i := range workerResults {
 			res := workerResults[i]
-			for _, h := range *&res.PatchIds {
+			for _, h := range res.PatchIds {
 				delete(*patchIdToCommit, h)
 			}
 			if config.IgnoreFirstCommits && (firstPR == nil || (res.NewestPr != nil && res.NewestPr.MergedAt < firstPR.MergedAt)) {
