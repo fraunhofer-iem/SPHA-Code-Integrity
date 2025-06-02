@@ -15,8 +15,8 @@ type Result struct {
 	Entry string
 }
 
-// Create an HTTP request using the parameters, token, method and http client.
-func createHttpRequest(client *http.Client, reqUrl, requestMethod string, requestBody io.ReadCloser, queryParameters, headerParameters map[string]string) (*http.Request, error) {
+// Create an HTTP request using the parameters, token, method.
+func createHttpRequest(reqUrl, requestMethod string, requestBody io.ReadCloser, queryParameters, headerParameters map[string]string) (*http.Request, error) {
 
 	req, err := http.NewRequest(requestMethod, reqUrl, requestBody)
 	if err != nil {
@@ -43,7 +43,7 @@ func updateHttpRequest(reqUrl, requestMethod string, requestBody io.ReadCloser, 
 
 	parsedUrl, err := url.Parse(reqUrl)
 	if err != nil {
-		slog.Default().Error("Error while parsing the URL", err)
+		slog.Default().Error("Error while parsing the URL - %v ", "error", err)
 		return err
 	}
 
@@ -90,7 +90,7 @@ func GetForcePushInfo(owner, repo, token, branch string) (int, error) {
 
 	numberForcePush, err := processForcePushRequest(client, repoActivityUrl, queryParameters, headerParameters)
 	if err != nil {
-		slog.Default().Error("Getting repo info falied - %v getForcePushInfo method", err)
+		slog.Default().Error("Getting repo info falied - %v getForcePushInfo method", "error", err)
 		return 0, err
 	}
 	return numberForcePush, nil
@@ -116,9 +116,9 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 	hasNext := true
 
 	// Create an initial HTTP Request and set header and query parameters
-	httpReq, err := createHttpRequest(client, repoActivityUrl, "GET", nil, queryParameters, headerParameters)
+	httpReq, err := createHttpRequest(repoActivityUrl, "GET", nil, queryParameters, headerParameters)
 	if err != nil {
-		slog.Default().Error("Failed to create HTTP request: %v", err)
+		slog.Default().Error("Failed to create HTTP request: %v", "error", err)
 		return 0, err
 	}
 
@@ -127,7 +127,7 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 		// Execute the HTTP Request
 		resp, err := executeHTTPRequest(client, httpReq)
 		if err != nil {
-			slog.Default().Error("Failed to execute HTML request: %v - processForcePushRequest method", err)
+			slog.Default().Error("Failed to execute HTML request: %v - processForcePushRequest method", "error", err)
 			return 0, err
 		}
 
@@ -136,7 +136,7 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 		// Process the response as result data type
 		res, err := processHttpResponse(resp)
 		if err != nil {
-			slog.Default().Error("Failed to process HTTP response: %v - processForcePushRequest method", err)
+			slog.Default().Error("Failed to process HTTP response: %v - processForcePushRequest method", "error", err)
 			return 0, err
 		}
 
@@ -145,7 +145,7 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 		// Check if Next Page exists
 		hasNext, err = checkIfNextPageExists(resp)
 		if err != nil {
-			slog.Default().Error("Failed to check for next pages in force pushes: %v - processHttpResponse method", err)
+			slog.Default().Error("Failed to check for next pages in force pushes: %v - processHttpResponse method", "error", err)
 			return 0, err
 		}
 
@@ -156,14 +156,14 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 
 		repoActivityUrl, err = getNextURL(resp)
 		if err != nil {
-			slog.Default().Error("Failed to get Net Url: %v - processHttpResponse method", err)
+			slog.Default().Error("Failed to get Net Url: %v - processHttpResponse method", "error", err)
 			return 0, err
 		}
 
 		// Update the exisiting http request
 		err = updateHttpRequest(repoActivityUrl, "GET", nil, nil, headerParameters, httpReq)
 		if err != nil {
-			slog.Default().Error("Failed to update the Http Request: %v - processHttpResponse method", err)
+			slog.Default().Error("Failed to update the Http Request: %v - processHttpResponse method", "error", err)
 			return 0, err
 		}
 
@@ -182,7 +182,7 @@ func processHttpResponse(resp *http.Response) ([]Result, error) {
 
 	err := decoder.Decode(&res)
 	if err != nil {
-		slog.Default().Error("Failed to decode JSON response: %v - processHttpResponse method", err)
+		slog.Default().Error("Failed to decode JSON response: %v - processHttpResponse method", "error", err)
 		return nil, err
 	}
 
@@ -197,7 +197,7 @@ func checkIfNextPageExists(resp *http.Response) (bool, error) {
 
 	hasNextMatch, err := regexp.Match(hasNext, []byte(linkHeader))
 	if err != nil {
-		slog.Default().Error("Failed to check for Link Header: %v - checkIfNextPageExists method", err)
+		slog.Default().Error("Failed to check for Link Header: %v - checkIfNextPageExists method", "error", err)
 		return false, err
 	}
 
