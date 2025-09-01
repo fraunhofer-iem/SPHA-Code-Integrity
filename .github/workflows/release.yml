@@ -2,7 +2,8 @@ name: Release
 
 on:
   push:
-    branches: [ "main" ]
+    tags:
+      - 'v*'
 
 permissions:
   contents: write  # needed to create releases and upload assets
