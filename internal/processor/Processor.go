@@ -70,6 +70,8 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		work = WorkerWithoutNewestPr(dir, cache)
 	}
 
+	noOfForcePushes, err := gh.GetForcePushInfo(config.Owner, config.Repo, config.Token, branch)
+
 	worker := beehive.Worker[[]gh.PR, WorkerResult]{
 		Work: work,
 	}
@@ -127,11 +129,12 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	}
 
 	repo := io.Repo{
-		Branch:           branch,
-		Url:              r.CloneUrl,
-		Head:             head,
-		CommitsWithoutPR: commitsWithoutPr,
-		UnsignedCommits:  *unsignedCommits,
+		Branch:            branch,
+		Url:               r.CloneUrl,
+		NumberForcePushes: noOfForcePushes,
+		Head:              head,
+		CommitsWithoutPR:  commitsWithoutPr,
+		UnsignedCommits:   *unsignedCommits,
 		Stats: io.Stats{
 			NumberCommits: numberCommits,
 			NumberPRs:     0,
