@@ -1,0 +1,38 @@
+name: Create Tag
+
+on:
+  workflow_dispatch: # run manually from GitHub UI
+    inputs:
+      version:
+        description: 'Tag version (e.g. v1.2.3). Leave empty to auto-generate.'
+        required: false
+        default: ''
+
+permissions:
+  contents: write # required to push tags
+
+jobs:
+  create-tag:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v5
+        with:
+          fetch-depth: 0 # needed to push tags
+
+      - name: Generate tag
+        id: tag
+        run: |
+          if [ -n "${{ github.event.inputs.version }}" ]; then
+            tag="${{ github.event.inputs.version }}"
+          else
+            tag="v$(date +'%Y.%m.%d')-$(echo $GITHUB_SHA | cut -c1-7)"
+          fi
+          echo "tag=$tag" >> $GITHUB_OUTPUT
+
+      - name: Create tag
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git tag ${{ steps.tag.outputs.tag }}
+          git push origin ${{ steps.tag.outputs.tag }}
