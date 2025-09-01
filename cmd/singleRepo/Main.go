@@ -47,7 +47,7 @@ func main() {
 	if *out == "" {
 		wd, err := os.Getwd()
 		if err != nil {
-			panic("Couldn't get workind directory")
+			panic("Couldn't get working directory")
 		}
 		*out = wd
 	}

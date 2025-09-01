@@ -78,7 +78,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	}
 
 	var firstPR *gh.PR = nil
-	// this implementation relys on the fact that there is only one collector at all times so no
+	// this implementation relays on the fact that there is only one collector at all times so no
 	// race conditions can happen
 	collect := func(workerResults []*WorkerResult) error {
 		logger.Debug("Collecting hashes", "bufferedHashs", workerResults)
