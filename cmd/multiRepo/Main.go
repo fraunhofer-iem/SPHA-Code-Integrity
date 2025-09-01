@@ -18,6 +18,7 @@ var (
 	out                = flag.String("out", "", "Directory to which the output is written. Defaults to the current working directory.")
 	in                 = flag.String("in", "", "Input file with the repositories to process.")
 	ignoreFirstCommits = flag.Bool("ignore", false, "If set to true all commits until the first PR has been merged are ignored. Defaults to false.")
+	filterResults      = flag.Bool("filter", false, "If set to true all repositories with more than 50% of commits going against the rules are filtered. Defaults to false.")
 )
 
 func main() {
@@ -67,6 +68,7 @@ func main() {
 			Token:              *token,
 			Out:                *out,
 			IgnoreFirstCommits: *ignoreFirstCommits,
+			FilterResults:      *filterResults,
 		}
 
 		repo, err := processor.ProcessRepo(config)
