@@ -1,6 +1,6 @@
 module project-integrity-calculator
 
-go 1.24.1
+go 1.24.4
 
 require (
 	github.com/hashicorp/go-set/v3 v3.0.1
