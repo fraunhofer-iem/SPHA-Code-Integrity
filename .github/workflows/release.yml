@@ -1,0 +1,63 @@
+name: Release
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: write  # needed to create releases and upload assets
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        goos: [ linux, windows, darwin ]
+        goarch: [ amd64, arm64 ]
+        exclude:
+          - goos: windows
+            goarch: arm64  # not supported
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-go@v5
+        with:
+          go-version: '1.23.x'
+
+      - name: Build binaries
+        run: |
+          mkdir -p dist
+          for cmd in singleRepo multiRepo groupResult transformResult; do
+            suffix="${{ matrix.goos }}-${{ matrix.goarch }}"
+            ext=$([ "${{ matrix.goos }}" = "windows" ] && echo ".exe" || echo "")
+            GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o "dist/spha-${cmd}-${suffix}${ext}" "./cmd/$cmd"
+          done
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: binaries-${{ matrix.goos }}-${{ matrix.goarch }}
+          path: dist/*
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          path: dist
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: dist/**/*
+          body: |
+            ## SPHA Code Integrity Tools Release
+
+            This release contains the executables for the Software Project Health Assistant (SPHA) Code Integrity tools.
+
+            ### Available Tools:
+            - **spha-singleRepo**: Analyze a single repository
+            - **spha-multiRepo**: Analyze multiple repositories
+            - **spha-groupResult**: Group analysis results
+            - **spha-transformResult**: Transform analysis results
+
+            ### Supported Platforms:
+            - Linux (amd64)
+            - Windows (amd64)
