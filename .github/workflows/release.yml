@@ -1,64 +1,93 @@
-name: Release
+name: Build, Test, and Publish
 
 on:
   push:
-    tags:
-      - 'v*'
-
-permissions:
-  contents: write  # needed to create releases and upload assets
+    branches: [ main, develop ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        goos: [ linux, windows, darwin ]
-        goarch: [ amd64, arm64 ]
-        exclude:
-          - goos: windows
-            goarch: arm64  # not supported
+  # =============================
+  #      Test Job
+  # =============================
+  test:
+    name: Test and Validate
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
-      - uses: actions/setup-go@v5
-        with:
-          go-version: '1.23.x'
+      - name: Checkout code
+        uses: actions/checkout@v4
 
-      - name: Build binaries
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x' # latest stable (1.24.x doesn't exist yet)
+
+      - name: Download dependencies
+        run: go mod download
+
+      - name: Run tests with coverage
+        run: go test -v -race -coverprofile=coverage.out -covermode=atomic ./...
+
+  # =============================
+  #      Publish Job
+  # =============================
+  publish:
+    name: Build and Publish
+    runs-on: ubuntu-24.04
+    needs: test
+    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+
+    permissions:
+      contents: write
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Go
+        uses: actions/setup-go@v5
+        with:
+          go-version: '1.24.x'
+
+      # 🔑 Login to GitHub Container Registry (GHCR)
+      - name: Log in to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # 🏷️ Extract metadata (tags and labels) for Docker
+      - name: Extract Docker metadata
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository }}
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      # 📦 Build all Go executables (multi-binary project)
+      - name: Build Go executables
         run: |
-          mkdir -p dist
+          mkdir -p bin
           for cmd in singleRepo multiRepo groupResult transformResult; do
-            suffix="${{ matrix.goos }}-${{ matrix.goarch }}"
-            ext=$([ "${{ matrix.goos }}" = "windows" ] && echo ".exe" || echo "")
-            GOOS=${{ matrix.goos }} GOARCH=${{ matrix.goarch }} go build -o "dist/spha-${cmd}-${suffix}${ext}" "./cmd/$cmd"
+            go build -v -o "bin/spha-${cmd}" "./cmd/$cmd"
           done
 
-      - uses: actions/upload-artifact@v4
+
+      # 🔒 Generate SHA256 checksums
+      - name: Generate checksums
+        run: |
+          cd bin
+          sha256sum * > SHA256SUMS.txt
+
+      # 🎉 Create a GitHub Release and upload the Go executables as assets
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
         with:
-          name: binaries-${{ matrix.goos }}-${{ matrix.goarch }}
-          path: dist/*
-
-  release:
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          path: dist
-      - uses: softprops/action-gh-release@v2
-        with:
-          files: dist/**/*
-          body: |
-            ## SPHA Code Integrity Tools Release
-
-            This release contains the executables for the Software Project Health Assistant (SPHA) Code Integrity tools.
-
-            ### Available Tools:
-            - **spha-singleRepo**: Analyze a single repository
-            - **spha-multiRepo**: Analyze multiple repositories
-            - **spha-groupResult**: Group analysis results
-            - **spha-transformResult**: Transform analysis results
-
-            ### Supported Platforms:
-            - Linux (amd64)
-            - Windows (amd64)
+          tag_name: "v${{ github.run_number }}"
+          name: "Release ${{ github.run_number }}"
+          files: |
+            bin/*
