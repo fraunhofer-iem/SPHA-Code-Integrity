@@ -123,7 +123,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	}
 
 	if config.FilterResults && len(commitsWithoutPr) > (numberCommits/2) {
-		return nil, errors.New("Inconclusive result. More than 50% of the commits were identified")
+		return nil, errors.New("inconclusive result. More than 50% of the commits were identified")
 	}
 
 	elapsed = time.Since(methodTimer)

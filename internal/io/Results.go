@@ -49,6 +49,7 @@ func GetResult(in string) (*Repo, error) {
 	defer func() {
 		if err := file.Close(); err != nil {
 			// Log error but don't return it to avoid masking the original error
+			_ = err // explicitly ignore the error
 		}
 	}()
 

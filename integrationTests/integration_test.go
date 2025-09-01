@@ -17,7 +17,7 @@ type Commits struct {
 	Commits []string `json:"commits"`
 }
 
-func TestMain(t *testing.T) {
+func TestIntegration(t *testing.T) {
 	// run multirepo with TestRepos.json
 	// write result data into tmp
 	token := os.Getenv("GH_TOKEN")
@@ -46,7 +46,7 @@ func TestMain(t *testing.T) {
 	if err != nil {
 		panic(err)
 	}
-	defer file.Close()
+	defer func() { _ = file.Close() }()
 
 	decoder := json.NewDecoder(file)
 	var input io.Input
@@ -60,7 +60,7 @@ func TestMain(t *testing.T) {
 		if err != nil {
 			t.Errorf("Couldn't get results for %+v. Err %s", repo, err)
 		}
-		defer resp.Body.Close()
+		defer func() { _ = resp.Body.Close() }()
 
 		var expectedCommits Commits
 		decoder = json.NewDecoder(resp.Body)
@@ -75,7 +75,7 @@ func TestMain(t *testing.T) {
 		if err != nil {
 			t.Errorf("Read result file %s. Err %s", outResultPath, err)
 		}
-		defer resultFile.Close()
+		defer func() { _ = resultFile.Close() }()
 
 		decoder = json.NewDecoder(resultFile)
 		var result io.Repo

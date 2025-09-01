@@ -60,7 +60,11 @@ func main() {
 		panic(err)
 	}
 
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			log.Printf("Error closing file: %v", err)
+		}
+	}()
 	encoder := json.NewEncoder(file)
 	err = encoder.Encode(&allCommits)
 	if err != nil {

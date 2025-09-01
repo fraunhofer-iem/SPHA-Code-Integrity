@@ -26,6 +26,7 @@ func GetInput(in string) (*Input, error) {
 	defer func() {
 		if err := file.Close(); err != nil {
 			// Log the error but don't return it to avoid masking the original error
+			_ = err // explicitly ignore the error
 		}
 	}()
 
