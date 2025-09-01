@@ -4,3 +4,4 @@ out
 js
 .env
 *.log
+.idea
