@@ -29,7 +29,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		return nil, err
 	}
 
-	// setup clone path and clone repo
+	// set up clone path and clone repo
 	dir := config.ClonePath
 	if dir == "" {
 		dir = path.Join(os.TempDir(), "repos")
@@ -44,7 +44,11 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	if err != nil {
 		return nil, err
 	}
-	defer os.RemoveAll(dir)
+	defer func() {
+		if err := os.RemoveAll(dir); err != nil {
+			slog.Default().Warn("Failed to remove temporary directory", "dir", dir, "error", err)
+		}
+	}()
 
 	branch := config.Branch
 	if config.Branch == "" {
@@ -71,7 +75,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 		work = WorkerWithoutNewestPr(dir, cache)
 	}
 
-	noOfForcePushes, err := gh.GetForcePushInfo(config.Owner, config.Repo, config.Token, branch)
+	noOfForcePushes, _ := gh.GetForcePushInfo(config.Owner, config.Repo, config.Token, branch)
 
 	worker := beehive.Worker[[]gh.PR, WorkerResult]{
 		Work: work,
@@ -119,7 +123,7 @@ func ProcessRepo(config RepoConfig) (*io.Repo, error) {
 	}
 
 	if config.FilterResults && len(commitsWithoutPr) > (numberCommits/2) {
-		return nil, errors.New("Inconclusive result. More than 50% of the commits were identified.")
+		return nil, errors.New("Inconclusive result. More than 50% of the commits were identified")
 	}
 
 	elapsed = time.Since(methodTimer)

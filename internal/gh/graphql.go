@@ -171,7 +171,12 @@ func executeGraphQLRequest(client *http.Client, url, token, query string, variab
 	if err != nil {
 		return fmt.Errorf("HTTP request failed: %v", err)
 	}
-	defer resp.Body.Close()
+	defer func() {
+		if err := resp.Body.Close(); err != nil {
+			// Log the error but don't return it to avoid masking the original error
+			fmt.Printf("Warning: failed to close response body: %v\n", err)
+		}
+	}()
 
 	decoder := json.NewDecoder(resp.Body)
 	if err := decoder.Decode(result); err != nil {

@@ -30,7 +30,11 @@ func writeCommitsToCSVFile(folderPath, outputFilePath string) error {
 	if err != nil {
 		return fmt.Errorf("failed to create output file %s: %w", outputFilePath, err)
 	}
-	defer outputFile.Close() // Ensure the file is closed
+	defer func() {
+		if err := outputFile.Close(); err != nil {
+			log.Printf("Warning: failed to close output file: %v", err)
+		}
+	}() // Ensure the file is closed
 
 	csvWriter := csv.NewWriter(outputFile)
 	// No defer Flush() here, we will call Flush explicitly at the end
@@ -70,7 +74,7 @@ func writeCommitsToCSVFile(folderPath, outputFilePath string) error {
 		// 5. Parse the JSON file into a Repo struct
 		repo, err := io.GetResult(filePath)
 		if err != nil {
-			// Log the error and skip this file, but continue processing others
+			// Log the error and skip this file but continue processing others
 			log.Printf("Skipping file %s due to parsing error: %v", filePath, err)
 			continue
 		}

@@ -69,7 +69,7 @@ func updateHttpRequest(reqUrl, requestMethod string, requestBody io.ReadCloser, 
 	return nil
 }
 
-// Entry point for the Force Push processing, setting the url, query paramenters and creating the client.
+// GetForcePushInfo Entry point for the Force Push processing, setting the url, query parameters and creating the client.
 func GetForcePushInfo(owner, repo, token, branch string) (int, error) {
 
 	slog.Default().Info("Getting repo info - getForcePushInfo method")
@@ -109,7 +109,7 @@ func executeHTTPRequest(client *http.Client, req *http.Request) (*http.Response,
 
 }
 
-// Handle calls to other methods (createHTTPRequest, executeHTTPRequest, processHttpResponse) is handled and loop is added so that requests are processed till there no rel = "next"
+// Handle calls to other methods (createHTTPRequest, executeHTTPRequest, processHttpResponse) are handled, and a loop is added so that requests are processed till there no rel = "next"
 func processForcePushRequest(client *http.Client, repoActivityUrl string, queryParameters, headerParameters map[string]string) (int, error) {
 
 	numberForcePush := 0
@@ -131,9 +131,13 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 			return 0, err
 		}
 
-		defer resp.Body.Close()
+		defer func() {
+			if err := resp.Body.Close(); err != nil {
+				slog.Default().Warn("Failed to close response body", "error", err)
+			}
+		}()
 
-		// Process the response as result data type
+		// Process the response as a result data type
 		res, err := processHttpResponse(resp)
 		if err != nil {
 			slog.Default().Error("Failed to process HTTP response: %v - processForcePushRequest method", "error", err)
@@ -160,7 +164,7 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 			return 0, err
 		}
 
-		// Update the exisiting http request
+		// Update the existing http request
 		err = updateHttpRequest(repoActivityUrl, "GET", nil, nil, headerParameters, httpReq)
 		if err != nil {
 			slog.Default().Error("Failed to update the Http Request: %v - processHttpResponse method", "error", err)
@@ -170,10 +174,10 @@ func processForcePushRequest(client *http.Client, repoActivityUrl string, queryP
 	}
 
 	return numberForcePush, nil
-
 }
 
-// Decode the response and assign it to the Result type struct, we are only interested in the array length of the result since we are only quering the force pushes. After getting the array length check the header for next page.
+// Decode the response and assign it to the Result type struct, we are only interested in the array length of the result since we are only querying the force pushes.
+// After getting the array length, check the header for the next page.
 func processHttpResponse(resp *http.Response) ([]Result, error) {
 
 	var res []Result
@@ -189,7 +193,7 @@ func processHttpResponse(resp *http.Response) ([]Result, error) {
 	return res, nil
 }
 
-// Check if the header of the response contains rel = "next", return a boolean beased on the check
+// Check if the header of the response contains rel = "next", return a boolean based on the check
 func checkIfNextPageExists(resp *http.Response) (bool, error) {
 
 	linkHeader := resp.Header.Get("Link")
@@ -214,5 +218,4 @@ func getNextURL(resp *http.Response) (string, error) {
 	findString := nextPatternMatch.FindString(linkHeader)
 
 	return findString[1 : len(findString)-13], nil
-
 }

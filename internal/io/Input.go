@@ -23,7 +23,11 @@ func GetInput(in string) (*Input, error) {
 		return nil, err
 	}
 
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			// Log the error but don't return it to avoid masking the original error
+		}
+	}()
 
 	decoder := json.NewDecoder(file)
 	var input Input

@@ -46,7 +46,11 @@ func GetResult(in string) (*Repo, error) {
 		return nil, err
 	}
 
-	defer file.Close()
+	defer func() {
+		if err := file.Close(); err != nil {
+			// Log error but don't return it to avoid masking the original error
+		}
+	}()
 
 	decoder := json.NewDecoder(file)
 	var repo Repo
